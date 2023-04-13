@@ -1,0 +1,342 @@
+#xwayland disable 
+##xwayland enable 
+set $mod Mod4
+
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+set $term foot
+#set $menu "rofi -show drun"
+set $menu "wofi --gtk-dark --show drun"
+
+font pango: Iosevka 18
+#output * bg #282a36 solid_color
+output * background ~/incoming/ultra-4k-wallpapers_110631198_312.jpg center #282a36
+
+### Idle configuration
+#timeout 9000  waylock \
+exec swayidle -w \
+        timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+
+# Mako
+bindsym $mod+n exec makoctl dismiss
+bindsym $mod+Shift+n exec makoctl dismiss -a
+
+exec mako
+
+exec foot
+
+input "1278:32:PFU_Limited_HHKB-Classic" {
+    xkb_model   "hhk"
+    xkb_layout  "us,us"
+    xkb_variant "altgr-intl,dvorak"
+    #xkb_options "compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock"
+    xkb_options "compose:sclk,grp:shifts_toggle"
+}
+
+input "13364:385:Keychron_Keychron_Q8" {
+    xkb_model   "pc105"
+    xkb_layout  "us,us"
+    xkb_variant "altgr-intl,dvorak"
+    #xkb_options "compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock"
+    xkb_options "compose:sclk,grp:shifts_toggle"
+}
+
+# Start a terminal emulator
+#bindsym $mod+Shift+Return exec $term
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start your launcher
+bindsym $mod+d exec $menu
+#bindsym --release $mod exec $menu
+# https://www.reddit.com/r/swaywm/comments/ljqso9/use_only_the_super_key_for_a_launcher/
+#####bindsym --release Super_L exec $menu
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+#bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exit
+
+
+### Multimedia keys
+#
+# TODO: pipewire and then use pactl as shown:
+#pactl set-sink-volume @DEFAULT_SINK@ -1%
+#bindsym --locked XF86AudioRaiseVolume exec amixer set PCM 1%+
+#bindsym --locked XF86AudioLowerVolume exec amixer set PCM 1%-
+#bindsym --locked XF86AudioMute        exec amixer set PCM toggle
+#bindsym --locked XF86Eject            exec amixer set PCM toggle
+#bindsym --locked XF86AudioPlay        exec playerctl play-pause
+#bindsym --locked XF86AudioNext        exec playerctl next
+#bindsym --locked XF86AudioPrev        exec playerctl previous
+#bindsym --locked XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86AudioRaiseVolume	exec pactl set-sink-volume @DEFAULT_SINK@   +1%
+bindsym XF86AudioLowerVolume	exec pactl set-sink-volume @DEFAULT_SINK@   -1%
+#bindsym XF86AudioMute		exec pactl set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMute		exec wpctl set-mute        @DEFAULT_SINK@   toggle
+
+#bindsym XF86AudioMicMute	exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86Eject		exec amixer -D sysdefault set PCM toggle
+bindsym XF86AudioPlay		exec playerctl play-pause
+bindsym XF86AudioNext		exec playerctl next
+bindsym XF86AudioPrev		exec playerctl previous
+
+#bindsym XF86AudioRaiseVolume	exec pactl set-sink-volume @DEFAULT_SINK@   +5%
+#bindsym XF86AudioLowerVolume	exec pactl set-sink-volume @DEFAULT_SINK@   -5%
+#bindsym XF86AudioMute		exec pactl set-sink-mute   @DEFAULT_SINK@   toggle
+#bindsym XF86AudioMicMute	exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86Eject		exec amixer -D sysdefault set PCM toggle
+#bindsym XF86MonBrightnessDown	exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp	exec brightnessctl set +5%
+#bindsym XF86AudioPlay		exec playerctl play-pause
+#bindsym XF86AudioNext		exec playerctl next
+#bindsym XF86AudioPrev		exec playerctl previous
+#bindsym XF86Search		exec bemenu-run
+
+
+# https://www.reddit.com/r/swaywm/comments/mmhvyf/swap_mode/
+#
+# Swap Mode:
+#
+# Swaps focused window with window in direction in order to move it
+# around a layout without altering the layout.
+#
+#    mode "swap" {
+#        bindsym $left  mark --add "_swap", focus left,  swap container with mark "_swap", focus left,  unmark "_swap"
+#        bindsym $down  mark --add "_swap", focus down,  swap container with mark "_swap", focus down,  unmark "_swap"
+#        bindsym $up    mark --add "_swap", focus up,    swap container with mark "_swap", focus up,    unmark "_swap"
+#        bindsym $right mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
+#
+#        # Return to default mode
+#        bindsym q      mode "default"
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#    }
+#    bindsym $mod+Return mode "swap"
+#
+   # TODO: eval this alternative strategy
+   # Maybe we can use it to mark _master and swap with it
+   # bindsym $mod+y [con_mark="_swapy"] unmark "_swapy"; \
+   #                      mark --add "_swapy"
+   #  bindsym $mod+p swap container with mark "_swapy"; \
+   #                      [con_mark="_swapy"] focus; \
+   #                      unmark "_swapy"
+# TODO: it's not obvious to me how to mark the initial "master" window
+#bindsym $mod+y [con_mark="_swapy"] unmark "_swapy"; mark --add "_swapy"
+#bindsym $mod+p swap container with mark "_swapy"; [con_mark="_swapy"] focus; unmark "_swapy"
+
+#
+# Moving around:
+#
+# Move your focus around
+bindsym $mod+$left     focus left
+bindsym $mod+$down     focus down
+bindsym $mod+$up       focus up
+bindsym $mod+$right    focus right
+bindsym $mod+tab       focus next
+bindsym $mod+Shift+tab focus prev
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+#
+# Workspaces:
+#
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
+
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+a workspace back_and_forth
+
+#
+# Layout stuff:
+#
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+#bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus parent
+
+#
+# Scratchpad:
+#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+#
+# Resizing containers:
+#
+mode "resize" {
+    # Rationale:
+    #
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+
+    # Resize large chunks by default
+    bindsym $left        resize shrink width  100px
+    bindsym $right       resize grow   width  100px
+    bindsym $up          resize shrink height 100px
+    bindsym $down        resize grow   height 100px
+
+    # Get finer movement when combined with Shift
+    bindsym Shift+$left  resize shrink width  5px
+    bindsym Shift+$right resize grow   width  5px
+    bindsym Shift+$up    resize shrink height 5px
+    bindsym Shift+$down  resize grow   height 5px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position bottom
+
+    mode hide
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    #status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    #status_command waybar
+
+    colors {
+        statusline         #f8f8f2
+        background         #282a3660
+        focused_workspace  #6772a4ff #bd93f9ff #f8f8f2
+        inactive_workspace #6272a4ff #6272a4ff #f8f8f2
+        urgent_workspace   #6272a4ff #ff5555ff #f8f8f2
+        binding_mode       #6272a4ff #ff79c6ff #f8f8f2
+    }
+}
+
+client.focused          #bd93f9 #bd93f9 #f8f8f2
+client.focused_inactive #6272a4 #6272a4 #f8f8f2
+client.unfocused        #6272a4 #6272a4 #f8f8f2
+
+#gaps inner 25
+gaps inner 5
+mouse_warping container
+smart_gaps on
+# https://github.com/swaywm/sway/issues/5484
+smart_borders on
+default_border pixel 2
+#seat seat0 hide_cursor 1000
+seat seat0 hide_cursor 10000
+
+
+# https://www.reddit.com/r/swaywm/comments/nuhz5l/screenlock_inhibit_idle_and_swaylock_confusion/
+for_window [title="Home\ -\ Netflix\ -\ Google Chrome$"] inhibit_idle open
+for_window [app_id="mpv$"] inhibit_idle open
+
+# via Rodri
+bindsym $mod+Shift+Delete exec swaylock -f -c 000000
+
+#####bindsym --release Super_L+paren exec $term
+
+bindsym $mod+x           exec emacs
+bindsym $mod+slash       exec chromium --incognito
+bindsym $mod+Shift+slash exec google-chrome-stable
+bindsym $mod+m           exec foot ncmpc
+# cannot possibly work: the output would have to be sent to the client window
+# bindsym $mod+Shift+v     exec wl-paste --primary
+
+# Via GPT-4:
+## Take a screenshot of the entire screen
+#bindsym Print exec grim ~/Pictures/Screenshot-$(date +'%Y-%m-%d-%H-%M-%S').png
+
+## Take a screenshot of a selected region
+#bindsym --release $mod+Print exec grim -g "$(slurp)" ~/Pictures/Screenshot-$(date +'%Y-%m-%d-%H-%M-%S').png
+
+# Take a screenshot of the entire screen
+bindsym Print exec grimshot save
+
+# Take a screenshot of a selected region
+bindsym --release $mod+Print exec grimshot save area
+
+# Copy the entire screen to clipboard
+bindsym Ctrl+Print exec grimshot copy
+
+# Copy a selected region to clipboard
+bindsym --release Ctrl+$mod+Print exec grimshot copy area
+
+# (Optional) Record the entire screen
+bindsym $mod+F9 exec grimshot record
+
+# (Optional) Record a selected region
+bindsym $mod+F10 exec grimshot record area
+
+
+include /etc/sway/config.d/*
