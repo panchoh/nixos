@@ -1,12 +1,10 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = { self, nixpkgs }: {
-
-    nixosConfigurations.container = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.helium = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = ./configuration.nix;
+      modules = [ ./configuration.nix ];
     };
-
   };
 }
