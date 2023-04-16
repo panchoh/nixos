@@ -22,7 +22,7 @@ in
 
   # Bootloader.
   #boot.loader.timeout = null;
-  boot.loader.timeout = 5;
+  boot.loader.timeout = 0;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "keep";
   boot.loader.systemd-boot.memtest86.enable = true;
