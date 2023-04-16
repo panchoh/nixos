@@ -4,7 +4,14 @@
 
 { config, pkgs, ... }:
 
+let customEmacs = let
+    myEmacs = (pkgs.emacs.override { withPgtk = true; });
+    emacsWithPackages = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages;
+  in
+    emacsWithPackages (epkgs: (with epkgs.melpaPackages; [ magit vterm ]));
+in
 {
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -183,7 +190,8 @@
       (nerdfonts.override { fonts = [ "Iosevka" ]; })
       # https://nixos.org/manual/nixos/stable/#sec-customising-packages
       # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
-      (emacs.override { withPgtk = true; })
+      #(emacs.override { withPgtk = true; })
+      customEmacs
       fd
       ripgrep
     ];
