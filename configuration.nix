@@ -4,16 +4,19 @@
 
 { config, pkgs, ... }:
 
-let customEmacs = let
-    myEmacs = (pkgs.emacs.override { withPgtk = true; });
-    emacsWithPackages = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages;
-  in
+let
+  customEmacs =
+    let
+      myEmacs = (pkgs.emacs.override { withPgtk = true; });
+      emacsWithPackages = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages;
+    in
     emacsWithPackages (epkgs: (with epkgs.melpaPackages; [ magit vterm ]));
 in
 {
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -46,7 +49,7 @@ in
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
   networking.useNetworkd = true;
-  networking.search = ["home"];
+  networking.search = [ "home" ];
 
 
   # Configure network proxy if necessary
@@ -65,7 +68,7 @@ in
       intel-ocl
       intel-compute-runtime
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
     ];
@@ -209,8 +212,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -218,7 +221,8 @@ in
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-      foot foot.themes
+      foot
+      foot.themes
       swaylock
       swayidle
       wofi
@@ -232,12 +236,12 @@ in
   };
   environment.etc = {
     "sway/config".source = sway/config;
-     "xdg/foot/foot.ini".text = ''
-        include=${pkgs.foot.themes}/share/foot/themes/dracula
-        [main]
-        font=Iosevka:weight=Light:size=16
-        font-bold=Iosevka:weight=Regular:size=16
-        dpi-aware=no
+    "xdg/foot/foot.ini".text = ''
+      include=${pkgs.foot.themes}/share/foot/themes/dracula
+      [main]
+      font=Iosevka:weight=Light:size=16
+      font-bold=Iosevka:weight=Regular:size=16
+      dpi-aware=no
     '';
   };
   xdg.portal.wlr.enable = true;
