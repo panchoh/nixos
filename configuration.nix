@@ -5,15 +5,11 @@
 { config, pkgs, ... }:
 
 let
-  customEmacs =
-    let
-      myEmacs = (pkgs.emacs.override { withPgtk = true; });
-      emacsWithPackages = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages;
-    in
-    emacsWithPackages (epkgs: (with epkgs.melpaPackages; [ magit vterm ]));
+  emacsWithPgtk = pkgs.emacs.override { withPgtk = true; };
+  emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
+  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [ magit vterm ]);
 in
 {
-
   imports =
     [
       # Include the results of the hardware scan.
