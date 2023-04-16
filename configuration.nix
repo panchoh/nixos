@@ -163,6 +163,13 @@
     };
   };
 
+  # TOTEST
+  # https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806/8
+
+  # nixpkgs.config.packageOverrides = pkgs: {
+  # emacs = pkgs.emacs.override { withPgtk = true; };
+  # };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pancho = {
     isNormalUser = true;
