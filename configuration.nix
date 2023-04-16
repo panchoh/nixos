@@ -177,6 +177,7 @@
       # https://nixos.org/manual/nixos/stable/#sec-customising-packages
       # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
       (emacs.override { withPgtk = true; })
+      ripgrep
     ];
     initialPassword = "password";
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton" ];
