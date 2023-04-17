@@ -198,9 +198,17 @@ in
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton" ];
   };
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
