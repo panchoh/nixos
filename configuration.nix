@@ -7,7 +7,7 @@
 let
   emacsWithPgtk = pkgs.emacs.override { withPgtk = true; };
   emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
-  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [ magit vterm ]);
+  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [ magit vterm dracula-theme ]);
 in
 {
   imports =
@@ -184,6 +184,7 @@ in
     extraGroups = [ "wheel" "libvirtd" "docker" "audio" ];
     shell = pkgs.fish;
     packages = with pkgs; [
+      dracula-theme
       firefox
       starship
       babelfish
