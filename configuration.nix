@@ -32,9 +32,10 @@ in
   boot.consoleLogLevel = 0;
   boot.plymouth.enable = true;
 
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
-
+  # system.autoUpgrade.enable = true;
+  # system.autoUpgrade.allowReboot = true;
+  # system.autoUpgrade.flake = "github:panchoh/nixos-flake-sandbox";
+  # system.autoUpgrade.flags = [ "--update-input" "nixpkgs" "--commit-lock-file" ];
   powerManagement.cpuFreqGovernor = "performance";
 
   networking.usePredictableInterfaceNames = false;
