@@ -1,20 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
-let
-  emacsWithPgtk = pkgs.emacs.override { withPgtk = true; };
-  emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
-  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [ magit vterm dracula-theme ]);
-in
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: let
+  emacsWithPgtk = pkgs.emacs.override {withPgtk = true;};
+  emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
+  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [magit pdf-tools vterm dracula-theme]);
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   #boot.loader.timeout = null;
@@ -26,8 +25,8 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "quiet" "loglevel=3" "systemd.show_status=auto" "udev.log_level=3" ];
-  boot.initrd.kernelModules = [ "btrfs" ];
+  boot.kernelParams = ["quiet" "loglevel=3" "systemd.show_status=auto" "udev.log_level=3"];
+  # boot.initrd.kernelModules = [ "btrfs" ];
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   boot.plymouth.enable = true;
@@ -46,8 +45,7 @@ in
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
   networking.useNetworkd = true;
-  networking.search = [ "home" ];
-
+  networking.search = ["home"];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -89,7 +87,7 @@ in
   console = {
     earlySetup = true;
     font = "ter-powerline-v24b";
-    packages = with pkgs; [ terminus_font powerline-fonts ];
+    packages = with pkgs; [terminus_font powerline-fonts];
     useXkbConfig = true;
   };
 
@@ -163,9 +161,9 @@ in
 
     fontconfig = {
       defaultFonts = {
-        serif = [ "Iosevka" ];
-        sansSerif = [ "Iosevka Sans" ];
-        monospace = [ "Iosevka Mono" ];
+        serif = ["Iosevka"];
+        sansSerif = ["Iosevka Sans"];
+        monospace = ["Iosevka Mono"];
       };
     };
   };
@@ -181,14 +179,14 @@ in
   users.users.pancho = {
     isNormalUser = true;
     description = "pancho";
-    extraGroups = [ "wheel" "libvirtd" "docker" "audio" ];
+    extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [
       dracula-theme
       firefox
       starship
       babelfish
-      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      (nerdfonts.override {fonts = ["Iosevka"];})
       # https://nixos.org/manual/nixos/stable/#sec-customising-packages
       # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
       #(emacs.override { withPgtk = true; })
@@ -197,7 +195,7 @@ in
       ripgrep
     ];
     initialPassword = "password";
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton" ];
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton"];
   };
 
   nix = {
@@ -260,7 +258,7 @@ in
     defaultEditor = true;
     configure = {
       packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [ vim-nix ];
+        start = [vim-nix];
       };
     };
   };
@@ -284,7 +282,6 @@ in
   #virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
-
 
   # List services that you want to enable:
 
@@ -311,5 +308,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }
