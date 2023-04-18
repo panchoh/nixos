@@ -15,7 +15,7 @@
       nixos-hardware,
       home-manager,
       hyprland,
-  }: let
+  } @ inputs: let
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
