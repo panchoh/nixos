@@ -25,8 +25,9 @@
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       modules = [
-        nixos-hardware.nixosModules.intel-nuc-8i7beh
         ./configuration.nix
+        # https://github.com/NixOS/nixos-hardware#using-nix-flakes-support
+        nixos-hardware.nixosModules.intel-nuc-8i7beh
         home-manager.nixosModules.home-manager
       ];
     };
