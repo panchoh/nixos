@@ -1,0 +1,7 @@
+#+title: Todo
+
+* dotfiles to explore
+[ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
+[ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
+
+[ ] xe's
