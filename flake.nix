@@ -32,6 +32,7 @@
         {
           home-manager.useUserPackages = true;
           home-manager.useGlobalPkgs = true;
+          home-manager.users.${user} = import ./home.nix;
         }
       ];
     };
@@ -39,10 +40,18 @@
     # https://nix-community.github.io/home-manager/index.html#ch-installation
     # https://wiki.hyprland.org/hyprland-wiki/pages/Nix/Hyprland-on-Home-Manager/
     # https://github.com/hyprwm/Hyprland/blob/main/nix/hm-module.nix
+    # https://nix-community.github.io/home-manager/release-notes.html#sec-release-22.11-highlights
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
         ./home.nix
+        #{
+        #  home = {
+        #    username = "pancho";
+        #    homeDirectory = "/home/pancho";
+        #    stateVersion = "22.11";
+        #  };
+        #}
         hyprland.homeManagerModules.default
         {
           wayland.windowManager.hyprland.enable = true;

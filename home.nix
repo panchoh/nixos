@@ -3,10 +3,11 @@
   pkgs,
   ...
 }: {
-  home.username = "pancho";
-  home.homeDirectory = "/home/pancho";
-
-  home.stateVersion = "22.11";
+  home = {
+    username = "pancho";
+    homeDirectory = "/home/pancho";
+    stateVersion = "22.11";
+  };
 
   programs.foot = {
     enable = true;
