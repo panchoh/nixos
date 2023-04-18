@@ -12,6 +12,7 @@
     enable = true;
     settings = {
       main = {
+        include = "${pkgs.foot.themes}/share/foot/themes/dracula";
         font = "Iosevka:weight=Light:size=16";
         font-bold = "Iosevka:weight=Regular:size=16";
         dpi-aware = false;
