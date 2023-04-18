@@ -12,8 +12,8 @@
     enable = true;
     settings = {
       main = {
-        font = "Iosevka Nerd Font Mono:weight=Light:size=16";
-        font-bold = "Iosevka Nerd Font Mono:weight=Regular:size=16";
+        font = "Iosevka:weight=Light:size=16";
+        font-bold = "Iosevka:weight=Regular:size=16";
         dpi-aware = false;
       };
       mouse = {
