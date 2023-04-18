@@ -175,9 +175,6 @@ in {
   # emacs = pkgs.emacs.override { withPgtk = true; };
   # };
 
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pancho = {
     isNormalUser = true;
