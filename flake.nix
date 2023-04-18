@@ -11,10 +11,10 @@
 
   outputs = {
     self,
-      nixpkgs,
-      nixos-hardware,
-      home-manager,
-      hyprland,
+    nixpkgs,
+    nixos-hardware,
+    home-manager,
+    hyprland,
   } @ inputs: let
     user = "pancho";
     host = "helium";
@@ -28,7 +28,8 @@
         ./configuration.nix
         # https://github.com/NixOS/nixos-hardware#using-nix-flakes-support
         nixos-hardware.nixosModules.intel-nuc-8i7beh
-        home-manager.nixosModules.home-manager {
+        home-manager.nixosModules.home-manager
+        {
           home-manager.useUserPackages = true;
           home-manager.useGlobalPkgs = true;
         }
@@ -42,7 +43,8 @@
       inherit pkgs;
       modules = [
         ./home.nix
-        hyprland.homeManagerModules.default {
+        hyprland.homeManagerModules.default
+        {
           wayland.windowManager.hyprland.enable = true;
           wayland.windowManager.hyprland.extraConfig = ''
             bind = SUPER, Return, exec, foot
