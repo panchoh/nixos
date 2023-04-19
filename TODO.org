@@ -1,11 +1,10 @@
 #+title: Todo
 
 * dotfiles to explore
-[ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
-
-[ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
-
-[ ] xe's
+- [ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
+- [ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
+- [ ] xe's
+- [ ] https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix
 
 * https://nixos.wiki/wiki/Comparison_of_NixOS_setups
 * https://nixos.wiki/wiki/Configuration_Collection
