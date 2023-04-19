@@ -26,6 +26,16 @@
       homeDirectory = "/home/${user}";
       stateVersion = "22.11";
     };
+    hypr = {
+      wayland.windowManager.hyprland.enable = true;
+      wayland.windowManager.hyprland.extraConfig = ''
+        bind = SUPER, Return, exec, foot
+        # ...
+        # *
+        # **
+        # ***
+      '';
+    };
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
@@ -51,16 +61,7 @@
             imports = [
               ./home.nix
               hyprland.homeManagerModules.default
-              {
-                wayland.windowManager.hyprland.enable = true;
-                wayland.windowManager.hyprland.extraConfig = ''
-                  bind = SUPER, Return, exec, foot
-                  # ...
-                  # *
-                  # **
-                  # ***
-                '';
-              }
+              hypr
             ];
           };
           #home-manager.extraSpecialArgs = { inherit home; };
@@ -84,14 +85,7 @@
         { inherit home; }
         ./home.nix
         hyprland.homeManagerModules.default
-        {
-          wayland.windowManager.hyprland.enable = true;
-          wayland.windowManager.hyprland.extraConfig = ''
-            bind = SUPER, Return, exec, foot
-            # ...
-          '';
-        }
-        # ...
+        hypr
       ];
     };
   };
