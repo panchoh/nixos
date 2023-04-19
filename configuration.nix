@@ -194,6 +194,7 @@ in {
       fd
       ripgrep
       pavucontrol
+      fuzzel
     ];
     initialPassword = "password";
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton"];
