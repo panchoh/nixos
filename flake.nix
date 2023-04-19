@@ -56,7 +56,7 @@
           home-manager.verbose = true;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${user} = { ... }: {
+          home-manager.users.${user} = {...}: {
             inherit home;
             imports = [
               ./home.nix
@@ -82,7 +82,7 @@
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        { inherit home; }
+        {inherit home;}
         ./home.nix
         hyprland.homeManagerModules.default
         # hypr
