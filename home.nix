@@ -3,10 +3,20 @@
   pkgs,
   ...
 }: {
-  home = {
-    username = "pancho";
-    homeDirectory = "/home/pancho";
-    stateVersion = "22.11";
+  programs.home-manager.enable = true;
+
+  # home = {
+  #   username = "pancho";
+  #   homeDirectory = "/home/pancho";
+  #   stateVersion = "22.11";
+  # };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = ''
+      bind = SUPER, Return, exec, foot
+      # ...
+    '';
   };
 
   programs.foot = {
@@ -74,5 +84,4 @@
     #audio-device=alsa/hdmi:CARD=PCH,DEV=0
     #audio-device=alsa/iec958:CARD=X,DEV=0
   };
-  programs.home-manager.enable = true;
 }
