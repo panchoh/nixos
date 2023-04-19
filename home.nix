@@ -11,13 +11,13 @@
   #   stateVersion = "22.11";
   # };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = ''
-      bind = SUPER, Return, exec, foot
-      # ...
-    '';
-  };
+  # wayland.windowManager.hyprland = {
+  #   enable = true;
+  #   extraConfig = ''
+  #     bind = SUPER, Return, exec, foot
+  #     # ...
+  #   '';
+  # };
 
   programs.foot = {
     enable = true;

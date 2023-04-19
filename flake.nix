@@ -31,6 +31,7 @@
 
     # https://www.reddit.com/r/NixOS/comments/10zr4wl/nixos_home_manager_module_not_detected/
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+      # specialArgs = home;
       modules = [
         ./configuration.nix
 
@@ -38,16 +39,33 @@
         nixos-hardware.nixosModules.intel-nuc-8i7beh
 
         # https://github.com/nix-community/home-manager/issues/252
+        # https://github.com/nix-community/home-manager/issues/1698
+        # https://discourse.nixos.org/t/nixos-flakes-with-home-manager/18476
         home-manager.nixosModules.home-manager
         {
+          home-manager.verbose = true;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = { ... }: {
             inherit home;
-            imports = [ ./home.nix ];
+            imports = [
+              ./home.nix
+              hyprland.homeManagerModules.default
+              {
+                wayland.windowManager.hyprland.enable = true;
+                wayland.windowManager.hyprland.extraConfig = ''
+                  bind = SUPER, Return, exec, foot
+                  # ...
+                  # *
+                  # **
+                  # ***
+                '';
+              }
+            ];
           };
+          #home-manager.extraSpecialArgs = { inherit home; };
+          #home-manager.extraSpecialArgs = { home-manager.users.${user} = home; };
         }
-        hyprland.homeManagerModules.default
 
         hyprland.nixosModules.default
         {
@@ -66,13 +84,13 @@
         { inherit home; }
         ./home.nix
         hyprland.homeManagerModules.default
-        # {
-        #   wayland.windowManager.hyprland.enable = true;
-        #   wayland.windowManager.hyprland.extraConfig = ''
-        #     bind = SUPER, Return, exec, foot
-        #     # ...
-        #   '';
-        # }
+        {
+          wayland.windowManager.hyprland.enable = true;
+          wayland.windowManager.hyprland.extraConfig = ''
+            bind = SUPER, Return, exec, foot
+            # ...
+          '';
+        }
         # ...
       ];
     };
