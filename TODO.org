@@ -3,7 +3,7 @@
 * dotfiles to explore
 - [ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
 - [ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
-- [ ] xe's
+- [ ] xe's https://github.com/Xe/nixos-configs
 - [ ] https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix
 - [ ] hyprland https://github.com/davmedeiros/dotfiles/blob/main/hyprland/.config/hypr/hyprland.conf
 * https://nixos.wiki/wiki/Comparison_of_NixOS_setups
