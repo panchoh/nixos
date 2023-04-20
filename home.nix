@@ -27,12 +27,17 @@
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=,preferred,auto,auto
-
+      monitor=DP-1, 3840x1600@60, 0x0, 1, bitdepth, 10
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       # Execute your favorite apps at launch
       # exec-once = waybar & hyprpaper & firefox
+      exec-once = foot
+
+      # https://github.com/hyprwm/Hyprland/issues/1475
+      # https://github.com/hyprwm/Hyprland/discussions/179
+      exec-once = swayidle -w timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -66,6 +71,14 @@
           kb_options = compose:sclk,grp:shifts_toggle
       }
 
+      device:PFU_Limited_HHKB-Classic" {
+          kb_model = hhk
+          kb_layout = us,us
+          kb_variant = altgr-intl,dvorak
+          #kb_options = compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock
+          kb_options compose:sclk,grp:shifts_toggle
+      }
+
       general {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
@@ -76,6 +89,11 @@
           col.inactive_border = rgba(595959aa)
 
           layout = dwindle
+          layout = master
+
+          cursor_inactive_timeout = 5
+          resize_on_border = true
+          hover_icon_on_border = true
       }
 
       decoration {
@@ -110,13 +128,16 @@
 
       dwindle {
           # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-          pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          pseudotile = yes # master switch for pseudotiling. Enabling is bound to SUPER + P in the keybinds section below
           preserve_split = yes # you probably want this
+          # no_gaps_when_only = yes
       }
 
       master {
           # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          mfact = 0.50
           new_is_master = true
+          orientation = center
       }
 
       gestures {
@@ -138,25 +159,45 @@
 
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-      $mainMod = SUPER
+      #$mainMod = SUPER
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = SUPER, Return, exec, foot
-      bind = SUPER, C, killactive,
-      bind = SUPER, M, exit,
-      bind = SUPER, E, exec, dolphin
-      bind = SUPER, V, togglefloating,
-      #bind = SUPER, D, exec, wofi --show drun
+      bind = SUPER, Slash, exec, chromium
+      bind = SUPER, X, exec, emacs
+      bind = SUPER SHIFT, Slash, exec, google-chrome-stable
+      bind = SUPER SHIFT, Q, killactive,
+      bind = SUPER SHIFT, E, exit,
+      #bind = SUPER, E, exec, dolphin
+      bind = SUPER SHIFT, SPACE, togglefloating,
+      bind = SUPER, SPACE, focusurgentorlast,
       bind = SUPER, P, pseudo, # dwindle
-      bind = SUPER SHIFT, J, togglesplit, # dwindle
+      bind = SUPER, S, togglesplit, # dwindle
 
-      # Move focus with mainMod + arrow keys
+      # Master
+      bind = SUPER SHIFT, Return, layoutmsg, swapwithmaster auto
+      bind = SUPER, M, layoutmsg, focusmaster auto
+
+      # Move focus with SUPER + cursors
       bind = SUPER, H, movefocus, l
       bind = SUPER, L, movefocus, r
       bind = SUPER, K, movefocus, u
       bind = SUPER, J, movefocus, d
+      bind = SUPER, TAB, cyclenext,
+      bind = SUPER SHIFT, TAB, cyclenext, prev
 
-      # Switch workspaces with mainMod + [0-9]
+      # Swap windows with SUPER SHIFT + cursors
+      # for the next release
+      #bind = SUPER SHIFT, H, swapwindow, l
+      #bind = SUPER SHIFT, L, swapwindow, r
+      #bind = SUPER SHIFT, K, swapwindow, u
+      #bind = SUPER SHIFT, J, swapwindow, d
+      bind = SUPER SHIFT, H, movewindow, l
+      bind = SUPER SHIFT, L, movewindow, r
+      bind = SUPER SHIFT, K, movewindow, u
+      bind = SUPER SHIFT, J, movewindow, d
+
+      # Switch workspaces with SUPER + [0-9]
       bind = SUPER, 1, workspace, 1
       bind = SUPER, 2, workspace, 2
       bind = SUPER, 3, workspace, 3
@@ -168,31 +209,87 @@
       bind = SUPER, 9, workspace, 9
       bind = SUPER, 0, workspace, 10
 
-      # Move active window to a workspace with mainMod + SHIFT + [0-9]
-      bind = SUPER SHIFT, 1, movetoworkspace, 1
-      bind = SUPER SHIFT, 2, movetoworkspace, 2
-      bind = SUPER SHIFT, 3, movetoworkspace, 3
-      bind = SUPER SHIFT, 4, movetoworkspace, 4
-      bind = SUPER SHIFT, 5, movetoworkspace, 5
-      bind = SUPER SHIFT, 6, movetoworkspace, 6
-      bind = SUPER SHIFT, 7, movetoworkspace, 7
-      bind = SUPER SHIFT, 8, movetoworkspace, 8
-      bind = SUPER SHIFT, 9, movetoworkspace, 9
-      bind = SUPER SHIFT, 0, movetoworkspace, 10
+      bind = SUPER, right, workspace, +1
+      bind = SUPER, left, workspace, -1
 
-      # Scroll through existing workspaces with mainMod + scroll
+      # Move active window to a workspace with SUPER + SHIFT + [0-9]
+      bind = SUPER SHIFT, 1, movetoworkspacesilent, 1
+      bind = SUPER SHIFT, 2, movetoworkspacesilent, 2
+      bind = SUPER SHIFT, 3, movetoworkspacesilent, 3
+      bind = SUPER SHIFT, 4, movetoworkspacesilent, 4
+      bind = SUPER SHIFT, 5, movetoworkspacesilent, 5
+      bind = SUPER SHIFT, 6, movetoworkspacesilent, 6
+      bind = SUPER SHIFT, 7, movetoworkspacesilent, 7
+      bind = SUPER SHIFT, 8, movetoworkspacesilent, 8
+      bind = SUPER SHIFT, 9, movetoworkspacesilent, 9
+      bind = SUPER SHIFT, 0, movetoworkspacesilent, 10
+
+      bind = SUPER SHIFT, MINUS, movetoworkspace, special
+      bind = SUPER, MINUS, togglespecialworkspace,
+
+      bind = SUPER, A, focuscurrentorlast,
+
+      # Scroll through existing workspaces with SUPER + scroll
       bind = SUPER, mouse_down, workspace, e+1
       bind = SUPER, mouse_up, workspace, e-1
 
-      # Move/resize windows with mainMod + LMB/RMB and dragging
+      bind = SUPER, F, fullscreen, 0
+      bind = SUPER ALT, F, fullscreen, 1
+      bind = SUPER SHIFT, F, fakefullscreen,
+
+      # Submaps, see https://wiki.hyprland.org/Configuring/Binds/#submaps
+      # will switch to a submap called resize
+      bind = SUPER, R, submap, resize
+
+      # will start a submap called "resize"
+      submap = resize
+
+      # sets repeatable binds for resizing the active window
+      binde = , L, resizeactive, 5 0
+      binde = , H, resizeactive, -5 0
+      binde = , K, resizeactive, 0 -5
+      binde = , J, resizeactive, 0 5
+      binde = SHIFT, L, resizeactive, 100 0
+      binde = SHIFT, H, resizeactive, -100 0
+      binde = SHIFT, K, resizeactive, 0 -100
+      binde = SHIFT, J, resizeactive, 0 100
+
+      # use reset to go back to the global submap
+      bind = , Escape, submap, reset
+      bind = , Return, submap, reset
+
+      # will reset the submap, meaning end the current one and return to the global one
+      submap = reset
+      # keybinds further down will be global again...
+
+
+      # Move/resize windows with SUPER + LMB/RMB and dragging
       bindm = SUPER, mouse:272, movewindow
       bindm = SUPER, mouse:273, resizewindow
 
       # Start wofi opens wofi on first press, closes it on second
-      #bindr=SUPER, SUPER_L, exec, pkill wofi || wofi --show drun
+      #bindr = SUPER, SUPER_L, exec, pkill wofi || wofi --show drun
+      bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
 
-      # Start fuzzel opens fuzzen on first press, closes it on second
-      bindr=SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
+      # Handle notifications
+      bind = SUPER, N, exec, makoctl dismiss
+      bind = SUPER SHIFT, N, exec, makoctl dismiss -a
+
+      # Multimedia
+      #bindl = , XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@   +1%
+      #bindl = , XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@   -1%
+      #bindl = , XF86AudioMute,        exec, pactl set-sink-mute   @DEFAULT_SINK@   toggle
+      #bindl = , XF86AudioMute,        exec, wpctl set-mute        @DEFAULT_SINK@   toggle
+
+      bindl =      , XF86AudioMute,        exec, wpctl set-mute        @DEFAULT_AUDIO_SINK@   toggle
+      bindl =      , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   1%+
+      bindl =      , XF86AudioLowerVolume, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   1%-
+      bindl = SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   5%+
+      bindl = SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   5%-
+
+      bindl = , XF86AudioPlay, exec, playerctl play-pause
+      bindl = , XF86AudioNext, exec, playerctl next
+      bindl = , XF86AudioPrev, exec, playerctl previous
     '';
   };
 
