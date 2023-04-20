@@ -191,6 +191,7 @@ in {
       # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
       #(emacs.override { withPgtk = true; })
       customEmacs
+      emacs-all-the-icons-fonts
       fd
       ripgrep
       pavucontrol
