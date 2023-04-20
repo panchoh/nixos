@@ -8,3 +8,6 @@
 - [ ] hyprland https://github.com/davmedeiros/dotfiles/blob/main/hyprland/.config/hypr/hyprland.conf
 * https://nixos.wiki/wiki/Comparison_of_NixOS_setups
 * https://nixos.wiki/wiki/Configuration_Collection
+
+* foot
+** https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
