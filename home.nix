@@ -94,6 +94,11 @@
           cursor_inactive_timeout = 5
           resize_on_border = true
           hover_icon_on_border = true
+
+          # FIXME: For next release?
+          # workspace_back_and_forth = true
+          # allow_workspace_cycles = true
+
       }
 
       decoration {
@@ -130,7 +135,7 @@
           # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
           pseudotile = yes # master switch for pseudotiling. Enabling is bound to SUPER + P in the keybinds section below
           preserve_split = yes # you probably want this
-          # no_gaps_when_only = yes
+          no_gaps_when_only = yes
       }
 
       master {
@@ -138,6 +143,7 @@
           mfact = 0.50
           new_is_master = true
           orientation = center
+          no_gaps_when_only = yes
       }
 
       gestures {
@@ -209,6 +215,8 @@
       bind = SUPER, 9, workspace, 9
       bind = SUPER, 0, workspace, 10
 
+      # FIXME
+      #bind = SUPER, right, workspace, previous
       bind = SUPER, right, workspace, +1
       bind = SUPER, left, workspace, -1
 
@@ -224,10 +232,14 @@
       bind = SUPER SHIFT, 9, movetoworkspacesilent, 9
       bind = SUPER SHIFT, 0, movetoworkspacesilent, 10
 
-      bind = SUPER SHIFT, MINUS, movetoworkspace, special
-      bind = SUPER, MINUS, togglespecialworkspace,
+      bind = SUPER SHIFT, Minus, movetoworkspace, special:s1
+      bind = SUPER, Minus, togglespecialworkspace, s1
+      bind = SUPER SHIFT, Equal, movetoworkspace, special:s2
+      bind = SUPER, Equal, togglespecialworkspace, s2
 
-      bind = SUPER, A, focuscurrentorlast,
+      # https://github.com/hyprwm/Hyprland/pull/352
+      #bind = SUPER, A, focuscurrentorlast,
+      bind = SUPER, A, workspace, previous
 
       # Scroll through existing workspaces with SUPER + scroll
       bind = SUPER, mouse_down, workspace, e+1
