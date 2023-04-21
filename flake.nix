@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -14,6 +16,7 @@
     self,
     nixpkgs,
     nixos-hardware,
+    disko,
     home-manager,
     hyprland,
   } @ inputs: let
@@ -47,6 +50,10 @@
 
         # https://github.com/NixOS/nixos-hardware#using-nix-flakes-support
         nixos-hardware.nixosModules.intel-nuc-8i7beh
+
+        # https://github.com/nix-community/disko#installing-nixos-module
+        disko.nixosModules.disko
+        ./disko-config.nix
 
         # https://github.com/nix-community/home-manager/issues/252
         # https://github.com/nix-community/home-manager/issues/1698
