@@ -29,7 +29,7 @@ in {
   # boot.initrd.kernelModules = [ "btrfs" ];
   boot.initrd.verbose = false;
   # EXPERIMENTAL:
-  # boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.enable = true;
   boot.consoleLogLevel = 0;
   boot.plymouth.enable = true;
 
@@ -156,16 +156,47 @@ in {
   # services.xserver.libinput.enable = true;
 
   fonts = {
-    enableDefaultFonts = true;
-    fonts = [
-      pkgs.iosevka
-    ];
-
+    # enableDefaultFonts = true;
+    fonts = [ pkgs.iosevka-bin ];
     fontconfig = {
       defaultFonts = {
-        serif = ["Iosevka"];
-        sansSerif = ["Iosevka Sans"];
-        monospace = ["Iosevka Mono"];
+        serif = ["Iosevka Etoile"];
+        sansSerif = ["Iosevka Aile"];
+        monospace = ["Iosevka Term"];
+      };
+    };
+  };
+
+  stylix = {
+    image = pkgs.fetchurl {
+      url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
+      sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+    };
+    # image = ./wallpaper.jpg;
+    # polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+
+    fonts = {
+      sizes.terminal = 16;
+
+      serif = {
+        package = pkgs.iosevka-bin;
+        name = "Iosevka Etoile";
+      };
+
+      sansSerif = {
+        package = pkgs.iosevka-bin;
+        name = "Iosevka Aile";
+      };
+
+      monospace = {
+        package = pkgs.iosevka-bin;
+        name = "Iosevka Term";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
       };
     };
   };
@@ -184,11 +215,13 @@ in {
     extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [
-      dracula-theme
+      # dracula-theme
+      bat
+      chromium
       firefox
       starship
       babelfish
-      (nerdfonts.override {fonts = ["Iosevka"];})
+      #### (nerdfonts.override {fonts = ["Iosevka"];})
       # https://nixos.org/manual/nixos/stable/#sec-customising-packages
       # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
       #(emacs.override { withPgtk = true; })

@@ -51,7 +51,7 @@
             inherit home;
             imports = [
               hyprland.homeManagerModules.default
-              stylix.nixosModules.stylix
+              # stylix.nixosModules.stylix
               ./home.nix
             ];
           };
@@ -61,17 +61,20 @@
         {
           programs.hyprland.enable = true;
         }
+
         stylix.nixosModules.stylix
+
         ./configuration.nix
       ];
     };
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
+      # extraSpecialArgs = { inherit home; }; # Does not work as intented
       modules = [
         {inherit home;}
-        ./home.nix
         hyprland.homeManagerModules.default
+        ./home.nix
       ];
     };
   };

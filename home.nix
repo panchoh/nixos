@@ -11,9 +11,6 @@
   #   stateVersion = "22.11";
   # };
 
-  stylix.image = ./Epic-Anime-Awesome-Wallpapers.jpg;
-  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml"
-
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
@@ -330,10 +327,10 @@
     enable = true;
     settings = {
       main = {
-        include = "${pkgs.foot.themes}/share/foot/themes/dracula";
-        font = "Iosevka:weight=Light:size=16";
-        font-bold = "Iosevka:weight=Regular:size=16";
-        dpi-aware = false;
+        #include = "${pkgs.foot.themes}/share/foot/themes/dracula";
+        #font = "Iosevka:weight=Light:size=16";
+        #font-bold = "Iosevka:weight=Regular:size=16";
+        #dpi-aware = false;
       };
       mouse = {
         hide-when-typing = true;
