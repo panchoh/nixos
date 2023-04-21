@@ -28,6 +28,8 @@ in {
   boot.kernelParams = ["quiet" "loglevel=3" "systemd.show_status=auto" "udev.log_level=3"];
   # boot.initrd.kernelModules = [ "btrfs" ];
   boot.initrd.verbose = false;
+  # EXPERIMENTAL:
+  # boot.initrd.systemd.enable = true;
   boot.consoleLogLevel = 0;
   boot.plymouth.enable = true;
 
