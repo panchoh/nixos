@@ -25,11 +25,9 @@ in
           };
         }
         {
-          type = "partition";
           name = "swap";
           start = "512MiB";
           end = "4GiB";
-          part-type = "primary";
           content = {
             type = "swap";
             # randomEncryption = true;
