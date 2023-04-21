@@ -1,52 +1,75 @@
-{ disks ? [ "/dev/nvme0n1" ], ... }: {
-  disko.devices = {
-    disk = {
-      nvm0en1 = {
-        type = "disk";
-        device = builtins.elemAt disks 0;
-        content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "ESP";
-              start = "1MiB";
-              end = "512MiB";
-              fs-type = "fat32";
-              bootable = true;
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot/efi";
+let
+  sharedMountOptions = [
+    "compress=zstd:1" "noatime" "discard=async" "autodefrag"
+  ];
+in
+{
+  disko.devices.disk.nvm0en1 = {
+    type = "disk";
+    device = "/dev/nvme0n1";
+    content = {
+      type = "table";
+      format = "gpt";
+      partitions = [
+        {
+          name = "ESP";
+          start = "1MiB";
+          end = "512MiB";
+          fs-type = "fat32";
+          bootable = true;
+          content = {
+            type = "filesystem";
+            format = "vfat";
+            mountpoint = "/boot";
+          };
+        }
+        {
+          type = "partition";
+          name = "swap";
+          start = "512MiB";
+          end = "4GiB";
+          part-type = "primary";
+          content = {
+            type = "swap";
+            # randomEncryption = true;
+          };
+        }
+        {
+          name = "root";
+          start = "4GiB";
+          end = "100%";
+          content = {
+            type = "btrfs";
+            extraArgs = [ "-f" ]; # Override existing partition
+            subvolumes = {
+              "@" = {
+                mountpoint = "/";
+                mountOptions = sharedMountOptions;
               };
-            }
-            {
-              name = "root";
-              start = "512MiB";
-              end = "100%";
-              content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
-                subvolumes = {
-                  # Subvolume name is different from mountpoint
-                  "/rootfs" = {
-                    mountpoint = "/";
-                    mountOptions = [ "compress=zstd:1" "noatime" "discard=async" "autodefrag" ];
-                  };
-                  # Mountpoints inferred from subvolume name
-                  "/home" = {
-                    mountOptions = [ "compress=zstd:1" "noatime" "discard=async" "autodefrag" ];
-                  };
-                  "/nix" = {
-                    mountOptions = [ "compress=zstd:1" "noatime" "discard=async" "autodefrag" ];
-                  };
-                  "/test" = { };
-                };
+              "@home" = {
+                mountpoint = "/home";
+                mountOptions = sharedMountOptions;
               };
-            }
-          ];
-        };
-      };
+              "@nix" = {
+                mountpoint = "/nix";
+                mountOptions = sharedMountOptions;
+              };
+              "@var" = {
+                mountpoint = "/var";
+                mountOptions = sharedMountOptions;
+              };
+              "@srv" = {
+                mountpoint = "/srv";
+                mountOptions = sharedMountOptions;
+              };
+              "@snapshots" = {
+                mountpoint = "/.snapshots";
+                mountOptions = sharedMountOptions;
+              };
+            };
+          };
+        }
+      ];
     };
   };
 }
