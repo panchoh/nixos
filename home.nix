@@ -5,11 +5,56 @@
 }: {
   programs.home-manager.enable = true;
 
-  # home = {
-  #   username = "pancho";
-  #   homeDirectory = "/home/pancho";
-  #   stateVersion = "22.11";
-  # };
+  home = {
+    username = "pancho";
+    homeDirectory = "/home/pancho";
+    stateVersion = "22.11";
+  };
+
+  stylix = {
+    image = pkgs.fetchurl {
+      url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
+      sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+    };
+
+    # image = pkgs.fetchurl {
+    #   url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
+    #   sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
+    # };
+
+    # image = ./wallpaper.jpg;
+
+    # polarity = "dark";
+
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+
+    fonts = {
+      serif = {
+        package = pkgs.iosevka-bin;
+        name = "Iosevka Etoile";
+      };
+
+      sansSerif = {
+        package = pkgs.iosevka-bin;
+        name = "Iosevka Aile";
+      };
+
+      monospace = {
+        package = pkgs.iosevka-bin;
+        name = "Iosevka Term";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+
+      sizes = {
+        terminal = 16;
+        desktop = 14;
+      };
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;

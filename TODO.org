@@ -17,3 +17,7 @@
 ** https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
 * swap
 https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
+* emacs
+https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
+* stylix
+** https://github.com/danth/stylix/pull/23 dualiy hm nixos
