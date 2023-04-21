@@ -10,6 +10,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -19,6 +21,7 @@
     disko,
     home-manager,
     hyprland,
+    stylix,
   } @ inputs: let
     user = "pancho";
     host = "helium";
@@ -48,6 +51,7 @@
             inherit home;
             imports = [
               hyprland.homeManagerModules.default
+              stylix.nixosModules.stylix
               ./home.nix
             ];
           };
@@ -57,6 +61,7 @@
         {
           programs.hyprland.enable = true;
         }
+        stylix.nixosModules.stylix
         ./configuration.nix
       ];
     };
