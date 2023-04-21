@@ -1,3 +1,4 @@
+{ ... }:
 let
   sharedMountOptions = [
     "compress=zstd:1" "noatime" "discard=async" "autodefrag"
