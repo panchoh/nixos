@@ -1,5 +1,7 @@
-#+title: Todo
+#+title: README
 
+* TODO
+* Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 * dotfiles to explore
 - [ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
 - [ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
