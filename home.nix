@@ -260,10 +260,12 @@
       bind = SUPER, 9, workspace, 9
       bind = SUPER, 0, workspace, 10
 
+      # Cycle through active workspaces
+      bind = SUPER, right, workspace, e+1
+      bind = SUPER, left, workspace, e-1
+
       # FIXME
-      #bind = SUPER, right, workspace, previous
-      bind = SUPER, right, workspace, +1
-      bind = SUPER, left, workspace, -1
+      #bind = SUPER, left, workspace, previous
 
       # Move active window to a workspace with SUPER + SHIFT + [0-9]
       bind = SUPER SHIFT, 1, movetoworkspacesilent, 1
