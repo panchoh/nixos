@@ -28,7 +28,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter.${system} = pkgs.alejandra;
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       modules = [
