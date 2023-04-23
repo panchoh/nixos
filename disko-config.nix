@@ -1,10 +1,11 @@
-{ ... }:
-let
+{...}: let
   sharedMountOptions = [
-    "compress=zstd:1" "noatime" "discard=async" "autodefrag"
+    "compress=zstd:1"
+    "noatime"
+    "discard=async"
+    "autodefrag"
   ];
-in
-{
+in {
   disko.devices.disk.nvm0en1 = {
     type = "disk";
     device = "/dev/nvme0n1";
@@ -39,7 +40,7 @@ in
           end = "100%";
           content = {
             type = "btrfs";
-            extraArgs = [ "-f" ]; # Override existing partition
+            extraArgs = ["-f"]; # Override existing partition
             subvolumes = {
               "@" = {
                 mountpoint = "/";

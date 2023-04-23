@@ -157,7 +157,7 @@ in {
 
   fonts = {
     # enableDefaultFonts = true;
-    fonts = [ pkgs.iosevka-bin ];
+    fonts = [pkgs.iosevka-bin];
     fontconfig = {
       defaultFonts = {
         serif = ["Iosevka Etoile"];
