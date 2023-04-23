@@ -12,6 +12,7 @@
 - [ ] https://github.com/fufexan/dotfiles/blob/main/flake.nix
 - [ ] https://guekka.github.io/nixos-server-1/
 - [ ] https://codeberg.org/imMaturana/dotfiles/src/branch/main/flake.nix
+- [ ] https://github.com/dwarfmaster/home-nix/blob/master/flake.nix
 * https://nixos.wiki/wiki/Comparison_of_NixOS_setups
 * https://nixos.wiki/wiki/Configuration_Collection
 
