@@ -155,17 +155,20 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  fonts = {
-    # enableDefaultFonts = true;
-    fonts = [pkgs.iosevka-bin];
-    fontconfig = {
-      defaultFonts = {
-        serif = ["Iosevka Etoile"];
-        sansSerif = ["Iosevka Aile"];
-        monospace = ["Iosevka Term"];
-      };
-    };
-  };
+  # handled by stylix
+  # https://github.com/danth/stylix/blob/master/stylix/nixos/fonts.nix
+  # fonts = {
+  #   # enableDefaultFonts = true;
+  #   fonts = with pkgs; [iosevka-bin openmoji-color];
+  #   fontconfig = {
+  #     defaultFonts = {
+  #       serif = ["Iosevka Etoile"];
+  #       sansSerif = ["Iosevka Aile"];
+  #       monospace = ["Iosevka Term"];
+  #       emoji = ["OpenMoji Color"];
+  #     };
+  #   };
+  # };
   # TOTEST
   # https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806/8
 
@@ -174,7 +177,7 @@ in {
   # };
 
   stylix = {
-    homeManagerIntegration.followSystem = false;
+    homeManagerIntegration.followSystem = true;
     homeManagerIntegration.autoImport = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
   };
