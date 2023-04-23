@@ -174,20 +174,10 @@ in {
   # };
 
   stylix = {
-    image = pkgs.fetchurl {
-      url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-      sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-    };
-
-    # image = pkgs.fetchurl {
-    #   url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
-    #   sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
-    # };
-
-    # image = ./wallpaper.jpg;
+    homeManagerIntegration.followSystem = false;
+    homeManagerIntegration.autoImport = false;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
   };
-
-  programs.hyprland.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pancho = {
