@@ -32,6 +32,7 @@
     formatter.${system} = pkgs.alejandra;
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit nixpkgs; };
       modules = [
         nixos-hardware.nixosModules.intel-nuc-8i7beh
         disko.nixosModules.disko

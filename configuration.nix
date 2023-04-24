@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  nixpkgs,
   ...
 }: let
   emacsWithPgtk = pkgs.emacs.override {withPgtk = true;};
@@ -211,6 +212,7 @@ in {
   };
 
   nix = {
+    registry.nixpkgs.flake = nixpkgs;
     settings.auto-optimise-store = true;
     gc = {
       automatic = true;
