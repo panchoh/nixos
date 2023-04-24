@@ -44,15 +44,17 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
-          # home-manager.verbose = true;
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${user} = {...}: {
-            imports = [
-              stylix.homeManagerModules.stylix
-              hyprland.homeManagerModules.default
-              ./home.nix
-            ];
+          home-manager = {
+            verbose = true;
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${user} = {...}: {
+              imports = [
+                stylix.homeManagerModules.stylix
+                hyprland.homeManagerModules.default
+                ./home.nix
+              ];
+            };
           };
         }
       ];
