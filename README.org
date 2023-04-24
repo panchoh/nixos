@@ -31,3 +31,4 @@ https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
 * nix registry
 https://discourse.nixos.org/t/how-to-pin-nix-registry-nixpkgs-to-release-channel/14883/6
 https://discourse.nixos.org/t/using-flakes-in-home-manager-module-especially-for-unfree-packages/21476
+https://discourse.nixos.org/t/local-flake-based-nix-search-nix-run-and-nix-shell/13433/13
