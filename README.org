@@ -3,6 +3,7 @@
 * TODO
 * Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 * dotfiles to explore
+- [ ] https://github.com/tejing1/nixos-config/
 - [ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
 - [ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
 - [ ] xe's https://github.com/Xe/nixos-configs
@@ -29,7 +30,11 @@ https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
 * https://github.com/nix-community/nixos-generators
 
 * nix registry
-https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
-https://discourse.nixos.org/t/how-to-pin-nix-registry-nixpkgs-to-release-channel/14883/6
-https://discourse.nixos.org/t/using-flakes-in-home-manager-module-especially-for-unfree-packages/21476
-https://discourse.nixos.org/t/local-flake-based-nix-search-nix-run-and-nix-shell/13433/13
+** https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
+** https://discourse.nixos.org/t/how-to-pin-nix-registry-nixpkgs-to-release-channel/14883/6
+** https://discourse.nixos.org/t/using-flakes-in-home-manager-module-especially-for-unfree-packages/21476
+** https://discourse.nixos.org/t/local-flake-based-nix-search-nix-run-and-nix-shell/13433/13
+** https://github.com/tejing1/nixos-config/blob/11424383bed8eff2d5399f638cc5d1ef732425dc/nixosConfigurations/tejingdesk/registry.nix#L27-L29
+# the version of this flake used to build the system
+  nix.registry.activeconfig.flake = self;
+  environment.etc."nix/path/activeconfig".source = self;
