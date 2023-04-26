@@ -28,6 +28,11 @@
     host = "helium";
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    shared-modules = [
+      stylix.homeManagerModules.stylix
+      hyprland.homeManagerModules.default
+      ./home.nix
+    ];
   in {
     formatter.${system} = pkgs.alejandra;
 
@@ -49,11 +54,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${user} = {...}: {
-              imports = [
-                stylix.homeManagerModules.stylix
-                hyprland.homeManagerModules.default
-                ./home.nix
-              ];
+              imports = shared-modules;
             };
           };
         }
@@ -62,11 +63,7 @@
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [
-        stylix.homeManagerModules.stylix
-        hyprland.homeManagerModules.default
-        ./home.nix
-      ];
+      modules = shared-modules;
     };
   };
 }
