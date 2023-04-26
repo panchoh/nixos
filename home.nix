@@ -371,22 +371,24 @@
   };
 
   xdg.enable = true;
-  xdg.configFile."fuzzel/fuzzel.ini".enable = true;
-  xdg.configFile."fuzzel/fuzzel.ini".text = ''
-    [main]
-    font = Iosevka:size=16:weight=ExtraLight
-    terminal = ${pkgs.foot}/bin/foot -e
+  xdg.configFile."fuzzel/fuzzel.ini" = {
+    enable = true;
+    text = ''
+      [main]
+      font = Iosevka:size=16:weight=ExtraLight
+      terminal = ${pkgs.foot}/bin/foot -e
 
-    # https://raw.githubusercontent.com/dracula/fuzzel/main/fuzzel.ini
-    [colors]
-    background=282a36dd
-    text=f8f8f2ff
-    match=8be9fdff
-    selection-match=8be9fdff
-    selection=44475add
-    selection-text=f8f8f2ff
-    border=bd93f9ff
-  '';
+      # https://raw.githubusercontent.com/dracula/fuzzel/main/fuzzel.ini
+      [colors]
+      background=282a36dd
+      text=f8f8f2ff
+      match=8be9fdff
+      selection-match=8be9fdff
+      selection=44475add
+      selection-text=f8f8f2ff
+      border=bd93f9ff
+    '';
+  };
 
   stylix.targets.foot.enable = false;
   programs.foot = {
