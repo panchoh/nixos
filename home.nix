@@ -215,6 +215,11 @@
       # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
       # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
+      # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
+      misc {
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+      }
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       #$mainMod = SUPER
