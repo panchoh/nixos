@@ -69,6 +69,13 @@
     };
   };
 
+  home.packages = with pkgs; [
+      fd
+      ripgrep
+      pavucontrol
+      fuzzel
+    ];
+
   # TODO: https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login
   # [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ] && exec Hyprland &>~/.Wsession.errors
   wayland.windowManager.hyprland = {
@@ -408,7 +415,25 @@
     };
   };
 
+  programs.bash.enable = true;
+
+  programs.fish = {
+    enable = true;
+    loginShellInit = ''
+      [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ] && exec ${pkgs.hyprland}/bin/Hyprland &>~/.Wsession.errors
+    '';
+  };
   programs.starship.enable = true;
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    extraOptions = [
+      "--group-directories-first"
+      "--header"
+    ];
+    icons = true;
+  };
+  programs.bat.enable = true;
 
   programs.git = {
     enable = true;
@@ -464,5 +489,12 @@
       #audio-device=alsa/hdmi:CARD=PCH,DEV=0
       #audio-device=alsa/iec958:CARD=X,DEV=0
     };
+  };
+
+  programs.firefox.enable = true;
+
+  programs.chromium = {
+    enable = true;
+    commandLineArgs = ["--incognito"];
   };
 }

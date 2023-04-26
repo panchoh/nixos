@@ -187,26 +187,16 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pancho = {
     isNormalUser = true;
-    description = "pancho";
+    description = "pancho horrillo";
     extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [
-      # dracula-theme
-      bat
-      chromium
-      firefox
-      starship
-      babelfish
       #### (nerdfonts.override {fonts = ["Iosevka"];})
       # https://nixos.org/manual/nixos/stable/#sec-customising-packages
       # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
       #(emacs.override { withPgtk = true; })
       customEmacs
       emacs-all-the-icons-fonts
-      fd
-      ripgrep
-      pavucontrol
-      fuzzel
     ];
     initialPassword = "password";
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton"];
@@ -232,8 +222,7 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -291,7 +280,6 @@ in {
       set -g fish_greeting
     '';
   };
-  programs.starship.enable = true;
 
   virtualisation.libvirtd.enable = true;
   #virtualisation.docker.enable = true;
