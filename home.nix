@@ -406,6 +406,8 @@
     };
   };
 
+  programs.starship.enable = true;
+
   programs.git = {
     enable = true;
     userName = "pancho horrillo";
