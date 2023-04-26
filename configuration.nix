@@ -178,7 +178,7 @@ in {
   # };
 
   stylix = {
-    homeManagerIntegration.followSystem = true;
+    homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
   };
