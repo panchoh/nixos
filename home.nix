@@ -91,7 +91,7 @@
 
       # Execute your favorite apps at launch
       # exec-once = waybar & hyprpaper & firefox
-      exec-once = foot
+      exec-once = ${pkgs.foot}/bin/foot
 
       # https://github.com/hyprwm/Hyprland/issues/1475
       # https://github.com/hyprwm/Hyprland/discussions/179
@@ -231,8 +231,8 @@
       #$mainMod = SUPER
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = SUPER, Return, exec, foot
-      bind = SUPER, Slash, exec, chromium
+      bind = SUPER, Return, exec, ${pkgs.foot}/bin/foot
+      bind = SUPER, Slash, exec, ${pkgs.chromium}/bin/chromium
       bind = SUPER, X, exec, emacs
       bind = SUPER SHIFT, Slash, exec, google-chrome-stable
       bind = SUPER SHIFT, Q, killactive,
