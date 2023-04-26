@@ -238,33 +238,33 @@ in {
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-      foot
-      foot.themes
-      swaylock
-      swayidle
-      wofi
-      mako
-      dracula-theme
-      grim
-      slurp
-      wl-clipboard
-      wev
-    ];
-  };
-  environment.etc = {
-    "sway/config".source = sway/config;
-    "xdg/foot/foot.ini".text = ''
-      include=${pkgs.foot.themes}/share/foot/themes/dracula
-      [main]
-      font=Iosevka:weight=Light:size=16
-      font-bold=Iosevka:weight=Regular:size=16
-      dpi-aware=no
-    '';
-  };
-  xdg.portal.wlr.enable = true;
+  # programs.sway = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [
+  #     foot
+  #     foot.themes
+  #     swaylock
+  #     swayidle
+  #     wofi
+  #     mako
+  #     dracula-theme
+  #     grim
+  #     slurp
+  #     wl-clipboard
+  #     wev
+  #   ];
+  # };
+  # environment.etc = {
+  #   "sway/config".source = sway/config;
+  #   "xdg/foot/foot.ini".text = ''
+  #     include=${pkgs.foot.themes}/share/foot/themes/dracula
+  #     [main]
+  #     font=Iosevka:weight=Light:size=16
+  #     font-bold=Iosevka:weight=Regular:size=16
+  #     dpi-aware=no
+  #   '';
+  # };
+  # xdg.portal.wlr.enable = true;
   programs.mtr.enable = true;
   programs.neovim = {
     enable = true;
