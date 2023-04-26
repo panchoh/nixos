@@ -43,9 +43,8 @@
         disko.nixosModules.disko
         ./disko-config.nix
         stylix.nixosModules.stylix
-        # {disabledModules = ["programs/hyprland.nix"];}
-        # hyprland.nixosModules.default
-        # {programs.hyprland.enable = true;}
+        hyprland.nixosModules.default
+        {programs.hyprland.enable = true;}
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
