@@ -374,7 +374,7 @@
   xdg.configFile."fuzzel/fuzzel.ini".enable = true;
   xdg.configFile."fuzzel/fuzzel.ini".text = ''
     [main]
-    font = Iosevka:size=16:weight=light
+    font = Iosevka:size=16:weight=ExtraLight
     terminal = foot -e
 
     # https://raw.githubusercontent.com/dracula/fuzzel/main/fuzzel.ini
