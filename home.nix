@@ -241,7 +241,7 @@
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = SUPER, Return, exec, ${pkgs.foot}/bin/foot
-      bind = SUPER, Slash, exec, ${pkgs.chromium}/bin/chromium
+      bind = SUPER, Slash, exec, chromium
       bind = SUPER, X, exec, emacs
       bind = SUPER SHIFT, Slash, exec, google-chrome-stable
       bind = SUPER SHIFT, Q, killactive,
@@ -377,6 +377,7 @@
       bindl = , XF86AudioNext, exec, playerctl next
       bindl = , XF86AudioPrev, exec, playerctl previous
     '';
+    recommendedEnvironment = true;
   };
 
   xdg.enable = true;
