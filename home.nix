@@ -388,14 +388,15 @@
     border=bd93f9ff
   '';
 
+  stylix.targets.foot.enable = false;
   programs.foot = {
     enable = true;
     settings = {
       main = {
-        #include = "${pkgs.foot.themes}/share/foot/themes/dracula";
-        #font = "Iosevka:weight=Light:size=16";
-        #font-bold = "Iosevka:weight=Regular:size=16";
-        #dpi-aware = false;
+        include = "${pkgs.foot.themes}/share/foot/themes/dracula";
+        font = "Iosevka:weight=Light:size=16";
+        font-bold = "Iosevka:weight=Regular:size=16";
+        dpi-aware = false;
       };
       mouse = {
         hide-when-typing = true;
