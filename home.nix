@@ -85,6 +85,8 @@
     emacs-all-the-icons-fonts
   ];
 
+  # home.extraOutputsToInstall = []; # FIXME
+
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
