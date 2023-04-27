@@ -70,6 +70,8 @@
     };
   };
 
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     fd
     ripgrep
@@ -95,6 +97,8 @@
     shfmt
     shellcheck
     nodejs_20
+
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
@@ -373,8 +377,8 @@
     settings = {
       main = {
         include = "${pkgs.foot.themes}/share/foot/themes/dracula";
-        font = "Iosevka:weight=Light:size=16";
-        font-bold = "Iosevka:weight=Regular:size=16";
+        font = "IosevkaTerm NFM:weight=Light:size=16";
+        font-bold = "IosevkaTerm NFM:weight=Regular:size=16";
         dpi-aware = false;
       };
       mouse = {
