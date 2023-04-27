@@ -36,6 +36,11 @@
   in {
     formatter.${system} = pkgs.alejandra;
 
+    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = hm-modules;
+    };
+
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit nixpkgs; };
       modules = [
@@ -58,11 +63,6 @@
           };
         }
       ];
-    };
-
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = hm-modules;
     };
   };
 }
