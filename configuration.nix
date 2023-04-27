@@ -6,11 +6,8 @@
   pkgs,
   nixpkgs,
   ...
-}: let
-  emacsWithPgtk = pkgs.emacs.override {withPgtk = true;};
-  emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
-  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [magit pdf-tools vterm dracula-theme]);
-in {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -97,7 +94,6 @@ in {
 
   services.fwupd.enable = true;
 
-
   # Configure keymap in X11
   services.xserver = {
     xkbModel = "hhk";
@@ -107,7 +103,7 @@ in {
   #  videoDrivers = [ "intel" ];
   };
 
-  # Enable CUPS to print documents.
+  # FIXME Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -135,12 +131,6 @@ in {
   #     };
   #   };
   # };
-  # TOTEST
-  # https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806/8
-
-  # nixpkgs.config.packageOverrides = pkgs: {
-  # emacs = pkgs.emacs.override { withPgtk = true; };
-  # };
 
   stylix = {
     homeManagerIntegration.followSystem = false;
@@ -156,12 +146,7 @@ in {
     extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [
-      #### (nerdfonts.override {fonts = ["Iosevka"];})
-      # https://nixos.org/manual/nixos/stable/#sec-customising-packages
-      # https://git.sr.ht/~glorifiedgluer/monorepo/tree/a0748af498a7eaa25f227145de7b4e31a63a63d6/item/dotfiles/home/doom/default.nix
-      #(emacs.override { withPgtk = true; })
-      customEmacs
-      emacs-all-the-icons-fonts
+      # (nerdfonts.override {fonts = ["Iosevka"];})
     ];
     initialPassword = "password";
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton"];
@@ -190,6 +175,7 @@ in {
     wget
   ];
 
+  # FIXME: add this via HM
   # xdg.portal.wlr.enable = true;
   programs.mtr.enable = true;
   programs.neovim = {
@@ -219,7 +205,7 @@ in {
   };
 
   virtualisation.libvirtd.enable = true;
-  #virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true; # FIXME
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 

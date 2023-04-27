@@ -22,12 +22,41 @@
 
 * foot
 ** https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
+
 * swap
 https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
+
 * emacs
 https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
+https://nixos.org/manual/nixos/stable/#sec-customising-packages
+** (emacs.override { withPgtk = true; };
+** configuration.nix
+#+begin_src nix
+{...}: let
+  emacsWithPgtk = pkgs.emacs.override {withPgtk = true;};
+  emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
+  customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [magit pdf-tools vterm dracula-theme]);
+in {
+  ...
+    packages = with pkgs; [
+    customEmacs
+    emacs-all-the-icons-fonts
+  ]
+#+end_src
+
+** configuration.nix
+#+begin_src nix
+# TOTEST
+# https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806/8
+
+nixpkgs.config.packageOverrides = pkgs: {
+  emacs = pkgs.emacs.override { withPgtk = true; };
+};
+#+end_src
+
 * stylix
 ** https://github.com/danth/stylix/pull/23 dualiy hm nixos
+
 * https://github.com/nix-community/nixos-generators
 
 * nix registry

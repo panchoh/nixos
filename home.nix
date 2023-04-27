@@ -81,6 +81,8 @@
     slurp
     wl-clipboard
     wev
+    gopls
+    emacs-all-the-icons-fonts
   ];
 
   wayland.windowManager.hyprland = {
@@ -448,5 +450,16 @@
   programs.chromium = {
     enable = true;
     commandLineArgs = ["--incognito"];
+  };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs.override {withPgtk = true;};
+    extraPackages = epkgs: with epkgs; [
+      magit
+      pdf-tools
+      dracula-theme
+      vterm
+    ];
   };
 }
