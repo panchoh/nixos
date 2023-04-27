@@ -39,17 +39,17 @@
 
     fonts = {
       serif = {
-        package = pkgs.iosevka-bin;
+        package = pkgs.iosevka-bin.override { variant = "etoile"; };
         name = "Iosevka Etoile";
       };
 
       sansSerif = {
-        package = pkgs.iosevka-bin;
+        package = pkgs.iosevka-bin.override { variant = "aile"; };
         name = "Iosevka Aile";
       };
 
       monospace = {
-        package = pkgs.iosevka-bin;
+        package = pkgs.iosevka-bin.override { variant = ""; };
         name = "Iosevka Term";
       };
 
@@ -99,6 +99,7 @@
     nodejs_20
 
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
+    (iosevka-bin.override { variant = "slab"; })
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
