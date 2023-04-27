@@ -27,7 +27,7 @@ in {
   # boot.loader.efi.efiSysMountPoint = "/boot";
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = ["quiet" "loglevel=3" "systemd.show_status=auto" "udev.log_level=3"];
-  # boot.initrd.kernelModules = [ "btrfs" ];
+  boot.initrd.kernelModules = [ "i915" "btrfs" ];
   boot.initrd.verbose = false;
   # EXPERIMENTAL:
   boot.initrd.systemd.enable = true;
