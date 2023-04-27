@@ -56,6 +56,9 @@ nixpkgs.config.packageOverrides = pkgs: {
 };
 #+end_src
 
+** Iosevka
+https://stackoverflow.com/questions/62230166/configuring-iosevka-for-nix
+
 * stylix
 ** https://github.com/danth/stylix/pull/23 dualiy hm nixos
 
