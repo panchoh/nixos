@@ -74,6 +74,13 @@
     ripgrep
     pavucontrol
     fuzzel
+    swaylock
+    swayidle
+    mako
+    grim
+    slurp
+    wl-clipboard
+    wev
   ];
 
   # TODO: https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login
