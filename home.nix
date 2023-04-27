@@ -478,6 +478,11 @@
       with epkgs; [
         dracula-theme
         editorconfig
+        sqlite3
+        emacsql
+        emacsql-sqlite-module
+        # FIXME for emacs 29
+        # emacsql-sqlite-builtin
         magit
         pdf-tools
         vterm
