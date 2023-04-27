@@ -83,8 +83,6 @@
     wev
   ];
 
-  # TODO: https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login
-  # [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ] && exec Hyprland &>~/.Wsession.errors
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
