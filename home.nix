@@ -70,11 +70,11 @@
   };
 
   home.packages = with pkgs; [
-      fd
-      ripgrep
-      pavucontrol
-      fuzzel
-    ];
+    fd
+    ripgrep
+    pavucontrol
+    fuzzel
+  ];
 
   # TODO: https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login
   # [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ] && exec Hyprland &>~/.Wsession.errors
