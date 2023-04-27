@@ -348,6 +348,7 @@
       # use reset to go back to the global submap
       bind = , Escape, submap, reset
       bind = , Return, submap, reset
+      bind = SUPER, R, submap, reset
 
       # will reset the submap, meaning end the current one and return to the global one
       submap = reset
