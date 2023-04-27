@@ -82,8 +82,19 @@
     slurp
     wl-clipboard
     wev
-    gopls
+
+    alejandra
     emacs-all-the-icons-fonts
+    python311Packages.grip
+    go
+    gotools
+    gopls
+    gomodifytags
+    gotests
+    gore
+    shfmt
+    shellcheck
+    nodejs_20
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
@@ -460,9 +471,10 @@
     package = pkgs.emacs.override {withPgtk = true;};
     extraPackages = epkgs:
       with epkgs; [
+        dracula-theme
+        editorconfig
         magit
         pdf-tools
-        dracula-theme
         vterm
       ];
   };
