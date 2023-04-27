@@ -6,8 +6,7 @@
   pkgs,
   nixpkgs,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -21,7 +20,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = ["quiet" "loglevel=3" "systemd.show_status=auto" "udev.log_level=3"];
-  boot.initrd.kernelModules = [ "i915" "btrfs" ];
+  boot.initrd.kernelModules = ["i915" "btrfs"];
   boot.initrd.verbose = false;
   boot.initrd.systemd.enable = true;
   boot.consoleLogLevel = 0;
@@ -100,7 +99,7 @@
     layout = "us,us";
     xkbVariant = "altgr-intl,dvorak-alt-intl";
     xkbOptions = "compose:sclk,grp:shifts_toggle";
-  #  videoDrivers = [ "intel" ];
+    # videoDrivers = [ "intel" ];
   };
 
   # FIXME Enable CUPS to print documents.

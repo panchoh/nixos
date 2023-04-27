@@ -455,11 +455,12 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs.override {withPgtk = true;};
-    extraPackages = epkgs: with epkgs; [
-      magit
-      pdf-tools
-      dracula-theme
-      vterm
-    ];
+    extraPackages = epkgs:
+      with epkgs; [
+        magit
+        pdf-tools
+        dracula-theme
+        vterm
+      ];
   };
 }
