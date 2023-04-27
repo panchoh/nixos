@@ -49,7 +49,7 @@
       };
 
       monospace = {
-        package = pkgs.iosevka-bin.override { variant = ""; };
+        package = pkgs.iosevka-bin.override { variant = "sgr-iosevka-term"; };
         name = "Iosevka Term";
       };
 
@@ -100,6 +100,7 @@
 
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
     (iosevka-bin.override { variant = "slab"; })
+    iosevka-bin
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
