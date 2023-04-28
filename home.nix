@@ -492,9 +492,9 @@
 
   home.activation = {
     DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      if [[ ! -d "$XDG_CONFIG_HOME"/emacs ]]; then
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "$XDG_CONFIG_HOME/emacs"
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "$XDG_CONFIG_HOME/doom"
+      if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
+        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
+        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
       fi
     '';
   };
