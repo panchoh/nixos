@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nix run github:nix-community/disko -- --mode zap_create_mount disko-config.nix
