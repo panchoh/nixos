@@ -73,3 +73,8 @@ https://stackoverflow.com/questions/62230166/configuring-iosevka-for-nix
 # the version of this flake used to build the system
   nix.registry.activeconfig.flake = self;
   environment.etc."nix/path/activeconfig".source = self;
+
+* EasyEffects
+** https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
+** https://en.wikipedia.org/wiki/EasyEffects
+** https://www.reddit.com/r/NixOS/comments/10c3s93/homemanager_nixos_module_or_best_practice_for/
