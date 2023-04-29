@@ -78,3 +78,12 @@ https://stackoverflow.com/questions/62230166/configuring-iosevka-for-nix
 ** https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
 ** https://en.wikipedia.org/wiki/EasyEffects
 ** https://www.reddit.com/r/NixOS/comments/10c3s93/homemanager_nixos_module_or_best_practice_for/
+
+
+* Doom
+** https://github.com/NixOS/nixpkgs/blob/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/development/compilers/rust/cargo-auditable-cargo-wrapper.nix
+** https://raw.githubusercontent.com/NixOS/nixpkgs/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/top-level/all-packages.nix
+*** callPackage
+
+* NUR
+https://nur.nix-community.org/repos/rycee/
