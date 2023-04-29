@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +20,7 @@
   outputs = {
     self,
     nixpkgs,
+    nix-index-database,
     nixos-hardware,
     disko,
     home-manager,
@@ -29,8 +32,10 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     hm-modules = [
+      nix-index-database.hmModules.nix-index
       stylix.homeManagerModules.stylix
       hyprland.homeManagerModules.default
+      {programs.nix-index.enable = true;}
       ./home.nix
     ];
   in {
@@ -44,6 +49,7 @@
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit nixpkgs;};
       modules = [
+        nix-index-database.nixosModules.nix-index
         nixos-hardware.nixosModules.intel-nuc-8i7beh
         disko.nixosModules.disko
         ./disko-config.nix
@@ -51,6 +57,7 @@
         hyprland.nixosModules.default
         {programs.hyprland.enable = true;}
         ./configuration.nix
+        {programs.command-not-found.enable = false;}
         home-manager.nixosModules.home-manager
         {
           home-manager = {
