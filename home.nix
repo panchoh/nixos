@@ -85,6 +85,8 @@
     wl-clipboard
     wev
 
+    comma
+
     alejandra
     emacs-all-the-icons-fonts
     python311Packages.grip
