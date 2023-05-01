@@ -483,6 +483,7 @@
         editorconfig
         sqlite3
         emacsql
+        emacsql-sqlite
         emacsql-sqlite-module
         # FIXME for emacs 29
         emacsql-sqlite-builtin
