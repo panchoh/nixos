@@ -39,17 +39,17 @@
 
     fonts = {
       serif = {
-        package = pkgs.iosevka-bin.override { variant = "etoile"; };
+        package = pkgs.iosevka-bin.override {variant = "etoile";};
         name = "Iosevka Etoile";
       };
 
       sansSerif = {
-        package = pkgs.iosevka-bin.override { variant = "aile"; };
+        package = pkgs.iosevka-bin.override {variant = "aile";};
         name = "Iosevka Aile";
       };
 
       monospace = {
-        package = pkgs.iosevka-bin.override { variant = "sgr-iosevka-term"; };
+        package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
         name = "Iosevka Term";
       };
 
@@ -100,8 +100,8 @@
     shellcheck
     nodejs_20
 
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
-    (iosevka-bin.override { variant = "slab"; })
+    (nerdfonts.override {fonts = ["Iosevka"];})
+    (iosevka-bin.override {variant = "slab";})
     iosevka-bin
   ];
 
@@ -476,7 +476,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs.override {withPgtk = true;};
+    package = pkgs.emacsUnstablePgtk;
     extraPackages = epkgs:
       with epkgs; [
         dracula-theme
@@ -485,7 +485,7 @@
         emacsql
         emacsql-sqlite-module
         # FIXME for emacs 29
-        # emacsql-sqlite-builtin
+        emacsql-sqlite-builtin
         magit
         pdf-tools
         vterm
