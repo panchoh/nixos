@@ -69,6 +69,7 @@ https://github.com/bbigras/nix-config/
 https://github.com/terlar/emacs-config/blob/main/flake.nix
 https://git.sr.ht/~bwolf/dotfiles/tree/master/item/flake.nix
 https://www.reddit.com/r/NixOS/comments/uzcfjz/trouble_with_emacs_overlay
+https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my-flake/11987
 
 * stylix
 ** https://github.com/danth/stylix/pull/23 dualiy hm nixos
