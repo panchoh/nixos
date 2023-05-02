@@ -33,6 +33,7 @@
 https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
 
 * emacs
+https://codeberg.org/nosewings/emacs-init/src/branch/main/flake.nixfs
 https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
 https://nixos.org/manual/nixos/stable/#sec-customising-packages
 ** (emacs.override { withPgtk = true; };
