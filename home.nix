@@ -103,6 +103,8 @@
     (nerdfonts.override {fonts = ["Iosevka"];})
     (iosevka-bin.override {variant = "slab";})
     iosevka-bin
+
+    telegram-desktop
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
