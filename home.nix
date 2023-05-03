@@ -99,6 +99,8 @@
     shfmt
     shellcheck
     nodejs_20
+    sqlite
+    python3
 
     (nerdfonts.override {fonts = ["Iosevka"];})
     (iosevka-bin.override {variant = "slab";})
@@ -483,6 +485,8 @@
       with epkgs; [
         dracula-theme
         editorconfig
+        code-review
+        forge
         sqlite3
         emacsql
         emacsql-sqlite
