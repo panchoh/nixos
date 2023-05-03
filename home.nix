@@ -73,8 +73,6 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    fd
-    ripgrep
     pavucontrol
     fuzzel
     swaylock
@@ -88,6 +86,17 @@
     comma
 
     alejandra
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    binutils
+    editorconfig-core-c
+    fd
+    gcc
+    git
+    gnutls
+    (ripgrep.override {withPCRE2 = true;})
+    pinentry_emacs
+    zstd
+
     emacs-all-the-icons-fonts
     python311Packages.grip
     go
@@ -481,22 +490,7 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacsUnstablePgtk;
-    extraPackages = epkgs:
-      with epkgs; [
-        dracula-theme
-        editorconfig
-        code-review
-        forge
-        sqlite3
-        emacsql
-        emacsql-sqlite
-        emacsql-sqlite-module
-        # FIXME for emacs 29
-        emacsql-sqlite-builtin
-        magit
-        pdf-tools
-        vterm
-      ];
+    extraPackages = epkgs: [epkgs.vterm];
   };
 
   home.activation = {
