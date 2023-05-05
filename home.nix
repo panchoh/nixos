@@ -112,7 +112,7 @@
     sqlite
     python3
 
-    (nerdfonts.override {fonts = ["Iosevka"];})
+    (nerdfonts.override {fonts = ["IosevkaTerm"];})
     (iosevka-bin.override {variant = "slab";})
     iosevka-bin
 
