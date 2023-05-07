@@ -14,6 +14,7 @@
 - [ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
 - [ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
 - [ ] xe's https://github.com/Xe/nixos-configs
+- [ ] https://github.com/hyprwm/Hyprland/pull/870#issuecomment-1319448768
 - [ ] https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix
 - [ ] hyprland https://github.com/davmedeiros/dotfiles/blob/main/hyprland/.config/hypr/hyprland.conf
 - [ ] https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix#enroll-beta
