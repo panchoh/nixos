@@ -83,7 +83,7 @@
     wl-clipboard
     wev
 
-    comma
+    # comma
 
     alejandra
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
