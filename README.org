@@ -98,6 +98,7 @@ https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my
 *** https://github.com/NixOS/nixpkgs/blob/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/development/compilers/rust/cargo-auditable-cargo-wrapper.nix
 *** https://raw.githubusercontent.com/NixOS/nixpkgs/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/top-level/all-packages.nix
 **** callPackage
+** https://www.damiengonot.com/notes/computer-science/tools/text-editors/emacs/doom-emacs
 
 * NUR
 https://nur.nix-community.org/repos/rycee/
