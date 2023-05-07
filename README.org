@@ -99,6 +99,7 @@ https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my
 *** https://raw.githubusercontent.com/NixOS/nixpkgs/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/top-level/all-packages.nix
 **** callPackage
 ** https://www.damiengonot.com/notes/computer-science/tools/text-editors/emacs/doom-emacs
+** https://github.com/emacs-openai/chatgpt y dall-e
 
 * NUR
 https://nur.nix-community.org/repos/rycee/
