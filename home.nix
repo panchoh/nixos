@@ -111,6 +111,7 @@
     nodejs_20
     sqlite
     python3
+    pipenv
 
     (nerdfonts.override {fonts = ["IosevkaTerm"];})
     (iosevka-bin.override {variant = "slab";})
