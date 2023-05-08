@@ -37,7 +37,7 @@
   networking.hostName = "helium";
 
   networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = true;
+  networking.interfaces.eth0.useDHCP = true;
   networking.useNetworkd = true;
   networking.search = ["home"];
 
