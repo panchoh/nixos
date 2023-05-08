@@ -494,6 +494,8 @@
     extraPackages = epkgs: [epkgs.vterm];
   };
 
+  programs.direnv.enable = true;
+
   home.activation = {
     DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
       if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
