@@ -32,14 +32,47 @@
   # system.autoUpgrade.flags = [ "--update-input" "nixpkgs" "--commit-lock-file" ];
   powerManagement.cpuFreqGovernor = "performance";
 
-  networking.usePredictableInterfaceNames = false;
-  networking.enableIPv6 = false;
-  networking.hostName = "helium";
+  networking = {
+    hostName = "helium";
+    useDHCP = false;
+  };
 
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
-  networking.useNetworkd = true;
-  networking.search = ["home"];
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "10-mv0" = {
+        netdevConfig = {
+          Name = "mv0";
+          Kind = "macvlan";
+          MACAddress = "1c:69:7a:02:8d:23";
+        };
+        macvlanConfig = {
+          Mode = "bridge";
+        };
+      };
+    };
+    networks = {
+      "20-eno1" = {
+        matchConfig.Name = "eno1";
+        macvlan = ["mv0"];
+        networkConfig = {
+          LinkLocalAddressing = "no";
+        };
+      };
+      "30-mv0" = {
+        matchConfig.Name = "mv0";
+        networkConfig = {
+          DHCP = "ipv4";
+          IPForward = true;
+          LinkLocalAddressing = "no";
+          LLMNR = false;
+        };
+        dhcpV4Config = {
+          UseDomains = true;
+        };
+      };
+    };
+  };
 
   time.timeZone = "Europe/Madrid";
 
