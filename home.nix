@@ -84,6 +84,8 @@
     wev
 
     btop
+    usbtop
+
     # comma
 
     alejandra
