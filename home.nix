@@ -83,6 +83,7 @@
     wl-clipboard
     wev
 
+    btop
     # comma
 
     alejandra
