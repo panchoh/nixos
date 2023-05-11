@@ -492,13 +492,14 @@
     commandLineArgs = ["--incognito"];
   };
 
+  programs.direnv.enable = true;
+
   programs.emacs = {
     enable = true;
     package = pkgs.emacsUnstablePgtk;
     extraPackages = epkgs: [epkgs.vterm];
   };
 
-  programs.direnv.enable = true;
 
   home.activation = {
     DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
