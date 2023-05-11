@@ -416,6 +416,9 @@
     loginShellInit = ''
       [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ] && exec ${pkgs.hyprland}/bin/Hyprland &>~/.Wsession.errors
     '';
+    shellAliases = {
+      e = "emacsclient --no-wait --reuse-frame --alternate-editor=nvim";
+    };
   };
   programs.starship.enable = true;
   programs.exa = {
