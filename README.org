@@ -113,3 +113,6 @@ https://discourse.nixos.org/t/how-to-use-overlays-in-a-flake-with-flake-parts/24
 
 * hyprland on nVidia
 https://www.reddit.com/r/NixOS/comments/137j18j/need_guide_on_installing_hyprland/
+
+* direnv
+https://github.com/znewman01/dotfiles/blob/master/.envrc
