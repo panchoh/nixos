@@ -500,6 +500,10 @@
     extraPackages = epkgs: [epkgs.vterm];
   };
 
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   home.activation = {
     DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
