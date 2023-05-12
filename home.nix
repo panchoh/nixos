@@ -110,6 +110,7 @@
     gomodifytags
     gotests
     gore
+    jq
     shfmt
     shellcheck
     nodejs_20
