@@ -123,6 +123,9 @@
     iosevka-bin
 
     telegram-desktop
+
+    bb
+    # bsdgames # provides wtf, but conflicts with fish shell
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
