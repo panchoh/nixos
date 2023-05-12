@@ -106,6 +106,7 @@
     go
     gotools
     gopls
+    gofumpt
     gomodifytags
     gotests
     gore
