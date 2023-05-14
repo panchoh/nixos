@@ -3,7 +3,14 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  bsdgames-custom = pkgs.bsdgames.overrideAttrs (oldAttrs: {
+    postInstall = oldAttrs.postInstall or "" + ''
+      mv $out/bin/fish $out/bin/gofish
+    '';
+  });
+in
+{
   programs.home-manager.enable = true;
 
   home = {
@@ -126,6 +133,7 @@
 
     bb
     # bsdgames # provides wtf, but conflicts with fish shell
+    bsdgames-custom
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
