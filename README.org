@@ -1,8 +1,13 @@
 #+title: README
 
 * TODO
+* Documentation
+** https://nixos.org/manual/nixpkgs/
+** https://ryantm.github.io/nixpkgs/
+** https://ryantm.github.io/nixpkgs/functions/library/attrsets/
 * Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 * dotfiles to explore
+- [ ] https://github.com/ryantm/dotfiles
 - [ ] https://github.com/znewman01/dotfiles
 - [ ] https://github.com/srid/nixos-config/blob/master/flake.nix
 - [ ] https://git.sr.ht/~bwolf/dotfiles/tree/master/item/flake.nix
