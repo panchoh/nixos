@@ -4,11 +4,18 @@
   lib,
   ...
 }: let
-  bsdgames-custom = pkgs.bsdgames.overrideAttrs (oldAttrs: {
-    postInstall = oldAttrs.postInstall or "" + ''
-      mv $out/bin/fish $out/bin/gofish
+  bsdgames-custom = pkgs.stdenv.mkDerivation {
+    pname = "bsdgames-custom";
+    version = pkgs.bsdgames.version;
+    src = pkgs.bsdgames;
+
+    installPhase = ''
+      mkdir -p $out
+      cp -a ${pkgs.bsdgames}/. $out/
+      chmod +w $out/bin
+      mv -f $out/bin/fish $out/bin/gofish
     '';
-  });
+  };
 in
 {
   programs.home-manager.enable = true;
