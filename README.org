@@ -58,6 +58,9 @@ in {
   ]
 #+end_src
 
+** Notable dotfiles
+- https://github.com/jwiegley/dot-emacs/blob/master/init.org
+
 ** configuration.nix
 #+begin_src nix
 # TOTEST
