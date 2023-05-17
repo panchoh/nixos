@@ -246,7 +246,10 @@
 
   services.openssh = {
     enable = true;
-    settings.passwordAuthentication = false;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
   };
 
   services.resolved.enable = true;
