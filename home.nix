@@ -114,7 +114,7 @@ in
     (ripgrep.override {withPCRE2 = true;})
     pinentry_emacs
     zstd
-
+    tmux
     emacs-all-the-icons-fonts
     python311Packages.grip
     go
