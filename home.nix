@@ -534,8 +534,7 @@ in
       if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
         $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
         $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-        echo ${config.programs.emacs.finalPackage.outPath} > /home/pancho/MYEMACS.txt
-        EMACS="${config.programs.emacs.finalPackage.outPath}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
+        EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
       fi
     '';
   };
