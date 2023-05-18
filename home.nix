@@ -97,6 +97,7 @@ in
     wl-clipboard
     wev
     pciutils
+    usbutils
     btop
     usbtop
 
