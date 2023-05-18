@@ -16,8 +16,7 @@
       mv -f $out/bin/fish $out/bin/gofish
     '';
   };
-in
-{
+in {
   programs.home-manager.enable = true;
 
   home = {
@@ -104,7 +103,7 @@ in
     # comma
 
     alejandra
-    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    (aspellWithDicts (ds: with ds; [en en-computers en-science]))
     binutils
     editorconfig-core-c
     fd
