@@ -1,5 +1,47 @@
 #+title: README
 
+* Bootstrapping Process
+** Obtain a bootable NixOS iso image from https://nixos.org/download.html#nixos-iso.
+The ~Minimal ISO image~ does the job and is smaller, thus takes less to download. But anyone will do.
+** Write it verbatim to a usb thumbdrive
+** Boot your system with it
+** Wipe the drive clean
+#+begin_src shell
+blkdiscard -f /dev/nvme0n1
+#+end_src
+** Clone this flake
+#+begin_src shell
+rm -rf /etc/nixos
+git clone https://github.com/panchoh/nixos.git /etc/nixos
+#+end_src
+** Manage filesystems with Disko
+#+begin_src shell
+cd /etc/nixos
+bin/activate-disko
+#+end_src
+** Bootstrap NixOS
+CAVEAT EMPTOR: it takes a few minutes.
+#+begin_src shell
+nixos-install --flake /etc/nixos#helium
+#+end_src
+** Reboot
+#+begin_src shell
+reboot
+#+end_src
+** Login and change the password
+#+begin_src shell
+passwd
+#+end_src
+** Finish setting up (Home Manager)
+#+begin_src shell
+sudo nixos-rebuild switch
+#+end_src
+** Reboot
+#+begin_src shell
+reboot
+#+end_src
+** Enjoy!
+
 * TODO
 * Documentation
 ** https://nixos.org/manual/nixpkgs/
