@@ -96,7 +96,7 @@ in
     slurp
     wl-clipboard
     wev
-
+    pciutils
     btop
     usbtop
 
