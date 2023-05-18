@@ -186,6 +186,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ];
   };
+  services.getty.autologinUser = "pancho";
 
   nix = {
     registry.nixpkgs.flake = nixpkgs;
