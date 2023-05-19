@@ -106,6 +106,7 @@ in {
     (aspellWithDicts (ds: with ds; [en en-computers en-science]))
     binutils
     editorconfig-core-c
+    file
     fd
     gcc
     git
