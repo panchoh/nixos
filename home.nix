@@ -118,13 +118,15 @@ in {
     tmux
     emacs-all-the-icons-fonts
     python311Packages.grip
-    go
+
+    # Go utils
     gotools
     gopls
     gofumpt
     gomodifytags
     gotests
     gore
+
     jq
     shfmt
     shellcheck
@@ -146,6 +148,11 @@ in {
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
+
+  programs.go = {
+    enable = true;
+    goBin = ".local/bin.go";
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
