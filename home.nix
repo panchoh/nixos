@@ -137,6 +137,7 @@ in {
     (iosevka-bin.override {variant = "slab";})
     iosevka-bin
 
+    google-chrome
     telegram-desktop
 
     bb
