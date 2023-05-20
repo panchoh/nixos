@@ -145,9 +145,17 @@ in {
     bb
     # bsdgames # provides wtf, but conflicts with fish shell
     bsdgames-custom
+
+    tessen
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
+
+  programs.password-store = {
+    enable = true;
+    package = pkgs.gopass;
+    settings = {PASSWORD_STORE_DIR = "${config.xdg.dataHome}/gopass/stores/root";};
+  };
 
   programs.go = {
     enable = true;
