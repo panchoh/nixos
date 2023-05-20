@@ -452,6 +452,7 @@ in {
     icons = true;
   };
   programs.bat.enable = true;
+  programs.fzf.enable = true;
 
   programs.git = {
     enable = true;
