@@ -146,6 +146,7 @@ in {
     bb
     # bsdgames # provides wtf, but conflicts with fish shell
     bsdgames-custom
+    sl
 
     tessen
   ];
