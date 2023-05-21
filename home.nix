@@ -111,6 +111,7 @@ in {
     gcc
     git
     tig
+    gti
     gnutls
     (ripgrep.override {withPCRE2 = true;})
     pinentry_emacs
