@@ -149,6 +149,8 @@ in {
     sl
 
     tessen
+
+    mangohud
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
