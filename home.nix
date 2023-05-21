@@ -151,6 +151,7 @@ in {
     tessen
 
     mangohud
+    intel-gpu-tools
   ];
 
   # home.extraOutputsToInstall = []; # FIXME

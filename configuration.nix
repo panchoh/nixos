@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
+  lib,
   pkgs,
   nixpkgs,
   ...
@@ -264,6 +265,13 @@
   # networking.firewall.enable = false;
 
   services.fail2ban.enable = true;
+
+  security.wrappers.intel_gpu_top = {
+    source = "${lib.getBin pkgs.intel-gpu-tools}/bin/intel_gpu_top";
+    owner = "root";
+    group = "root";
+    capabilities = "cap_perfmon+ep";
+  };
 
   system.stateVersion = "22.11";
 }
