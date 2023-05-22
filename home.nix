@@ -90,7 +90,6 @@ in {
     fuzzel
     swaylock
     swayidle
-    mako
     grim
     slurp
     wl-clipboard
@@ -450,6 +449,8 @@ in {
       };
     };
   };
+
+  services.mako.enable = true;
 
   programs.bash.enable = true;
 
