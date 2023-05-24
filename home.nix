@@ -127,6 +127,7 @@ in {
     gotests
     gore
     delve
+    gdlv
 
     jq
     shfmt
