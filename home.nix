@@ -126,6 +126,7 @@ in {
     gomodifytags
     gotests
     gore
+    delve
 
     jq
     shfmt
