@@ -98,6 +98,7 @@ in {
     usbutils
     btop
     usbtop
+    psmisc
 
     # comma
 
