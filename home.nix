@@ -280,7 +280,7 @@ in {
 
       bind = SUPER, Return, exec, ${pkgs.foot}/bin/foot
       bind = SUPER, Slash, exec, chromium
-      bind = SUPER, X, exec, emacs
+      bind = SUPER, X, exec, ${config.programs.emacs.finalPackage}/bin/emacsclient --no-wait --reuse-frame --alternate-editor="${pkgs.foot}/bin/foot -e nvim"
       bind = SUPER SHIFT, Slash, exec, google-chrome-stable
       bind = SUPER SHIFT, Q, killactive,
       bind = SUPER SHIFT, E, exit,
