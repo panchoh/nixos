@@ -179,6 +179,8 @@ emacs29-git/site-list-aot.md
 +    (setq native-compile-prune-cache t)
 +
 
+** Study https://github.com/nix-community/nix-doom-emacs/blob/master/default.nix
+
 * NUR
 https://nur.nix-community.org/repos/rycee/
 
