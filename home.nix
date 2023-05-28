@@ -122,6 +122,7 @@ in {
 
     # Go utils
     gotools
+    go-tools
     gopls
     gofumpt
     gomodifytags
