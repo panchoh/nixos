@@ -195,3 +195,10 @@ https://www.reddit.com/r/NixOS/comments/137j18j/need_guide_on_installing_hyprlan
 
 * direnv
 https://github.com/znewman01/dotfiles/blob/master/.envrc
+* OCR to clipboard
+https://www.reddit.com/r/NixOS/comments/13uboa6/text_from_image_to_clipboard_nix_tip/ (check for one-liner by balsoft)
+#+begin_src nix
+...
+grim -g "$(slurp)" - | tesseract - - | wl-copy -
+...
+#+end_src
