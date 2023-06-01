@@ -558,7 +558,7 @@ in {
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsUnstablePgtk;
+    package = pkgs.emacs-unstable-pgtk;
     extraPackages = epkgs: [epkgs.vterm];
   };
 
