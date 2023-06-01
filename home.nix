@@ -105,6 +105,7 @@ in {
     alejandra
     (aspellWithDicts (ds: with ds; [en en-computers en-science]))
     binutils
+    duf
     editorconfig-core-c
     file
     fd
