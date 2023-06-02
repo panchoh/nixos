@@ -492,6 +492,7 @@ in {
     };
   };
 
+  programs.aria2.enable = true;
   programs.yt-dlp = {
     enable = true;
     settings = {
