@@ -44,6 +44,7 @@ reboot
 
 * TODO
 * Documentation
+** https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
 ** https://nixos.org/manual/nixpkgs/
 ** https://ryantm.github.io/nixpkgs/
 ** https://ryantm.github.io/nixpkgs/functions/library/attrsets/
