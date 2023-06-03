@@ -148,6 +148,7 @@ in {
 
     google-chrome
     telegram-desktop
+    discord
 
     bb
     # bsdgames # provides wtf, but conflicts with fish shell
