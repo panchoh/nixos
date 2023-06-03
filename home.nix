@@ -448,8 +448,8 @@ in {
     settings = {
       main = {
         include = "${pkgs.foot.themes}/share/foot/themes/dracula";
-        font = "IosevkaTerm NFM:weight=Light:size=16";
-        font-bold = "IosevkaTerm NFM:weight=Regular:size=16";
+        font = "IosevkaTerm NFM Light:size=16";
+        font-bold = "IosevkaTerm NFM:size=16";
         dpi-aware = false;
       };
       mouse = {
