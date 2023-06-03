@@ -22,7 +22,7 @@ in {
   home = {
     username = "pancho";
     homeDirectory = "/home/pancho";
-    stateVersion = "22.11";
+    stateVersion = "23.11";
   };
 
   stylix = {
