@@ -51,6 +51,7 @@ reboot
 ** https://ryantm.github.io/nixpkgs/functions/library/attrsets/
 * Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 * dotfiles to explore
+- [ ] https://github.com/meppu/nix-config
 - [ ] https://github.com/matklad/config/blob/master/hosts/default.nix
 - [ ] https://github.com/mitchellh/nixos-config
 - [ ] https://github.com/Kranzes/nix-config
