@@ -53,6 +53,13 @@ reboot
 ** https://nixos.org/manual/nixpkgs/
 ** https://ryantm.github.io/nixpkgs/
 ** https://ryantm.github.io/nixpkgs/functions/library/attrsets/
+
+* Home Manager
+** Activating Home Manager independently of NixOS
+#+begin_src shell
+nix run /etc/nixos#homeConfigurations.$USER.activationPackage
+#+end_src
+
 * Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 * dotfiles to explore
 - [ ] https://github.com/Shawn8901/nix-configuration
