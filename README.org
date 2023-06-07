@@ -220,8 +220,6 @@ https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
 *** stylix
 **** https://github.com/danth/stylix/pull/23 duality hm nixos
 
-*** https://github.com/nix-community/comma
-
 *** NixOS Generators
 https://github.com/nix-community/nixos-generators
 

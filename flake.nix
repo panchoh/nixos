@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nix-index-database.url = "github:Mic92/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +21,6 @@
   outputs = {
     self,
     nixpkgs,
-    nix-index-database,
     nixos-hardware,
     disko,
     home-manager,
@@ -40,10 +37,8 @@
       config = {allowUnfree = true;};
     };
     hm-modules = [
-      nix-index-database.hmModules.nix-index
       stylix.homeManagerModules.stylix
       hyprland.homeManagerModules.default
-      {programs.nix-index.enable = true;}
       ./home.nix
     ];
   in {

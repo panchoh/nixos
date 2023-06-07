@@ -102,8 +102,6 @@ in {
     usbtop
     psmisc
 
-    # comma
-
     alejandra
     (aspellWithDicts (ds: with ds; [en en-computers en-science]))
     binutils
