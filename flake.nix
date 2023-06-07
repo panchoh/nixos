@@ -13,9 +13,6 @@
     stylix.inputs.home-manager.follows = "home-manager";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    # emacs-overlay.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs = {
@@ -26,14 +23,12 @@
     home-manager,
     stylix,
     hyprland,
-    emacs-overlay,
   } @ inputs: let
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [emacs-overlay.overlay];
       config = {allowUnfree = true;};
     };
     hm-modules = [
@@ -60,7 +55,6 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
-          nixpkgs.overlays = [emacs-overlay.overlay];
           programs = {
             hyprland.enable = true;
             command-not-found.enable = false;
