@@ -1,67 +1,101 @@
 #+title: README
 
-* Bootstrapping Process
-** Obtain a bootable NixOS iso image from https://nixos.org/download.html#nixos-iso.
-The ~Minimal ISO image~ does the job and is smaller, thus takes less to download. But anyone will do.
-** Write it verbatim to a usb thumbdrive
-** Boot your system with it
-** Wipe the drive clean
-#+begin_src shell
+* My Flaky NixOS Config
+** Bootstrapping Process
+1. Obtain a bootable NixOS iso image from https://nixos.org/download.html#nixos-iso.
+
+    The ~Minimal ISO image~ does the job and is smaller, thus taking less time to download.  But anyone will do.
+
+1. Write it verbatim to a usb thumbdrive
+
+1. Boot your system with it
+
+1. Wipe the drive clean
+ #+begin_src shell
 blkdiscard -f /dev/nvme0n1
 #+end_src
-** Clone this flake
-#+begin_src shell
+
+1. Clone this flake
+ #+begin_src shell
 rm -rf /etc/nixos
 git clone https://github.com/panchoh/nixos.git /etc/nixos
 #+end_src
-** Manage filesystems with Disko
-#+begin_src shell
+
+1. Manage filesystems with Disko
+ #+begin_src shell
 cd /etc/nixos
 bin/activate-disko
 #+end_src
-** Bootstrap NixOS
-CAVEAT EMPTOR: it takes a few minutes.
-#+begin_src shell
+
+1. Bootstrap NixOS
+
+ *CAVEAT EMPTOR*: it takes a few minutes.
+ #+begin_src shell
 nixos-install --flake /etc/nixos#helium
 #+end_src
-** Reboot
-#+begin_src shell
+
+1. Reboot
+ #+begin_src shell
 reboot
 #+end_src
-** Login and change the password
-#+begin_src shell
+
+1. Login and change the password
+ #+begin_src shell
 passwd
 #+end_src
-** Drop the channel
-#+begin_src shell
+
+1. Drop the channel
+ #+begin_src shell
 sudo nix-channel --remove nixos
 #+end_src
-** Finish setting up (Home Manager)
-#+begin_src shell
+
+1. Finish setting up
+
+ Home Manager is not activated by ~nixos-install~ for some reason.
+ #+begin_src shell
 sudo nixos-rebuild switch
 #+end_src
-** Reboot
-#+begin_src shell
+
+1. Reboot
+ #+begin_src shell
 reboot
 #+end_src
-** Enjoy!
 
-* TODO
-* Documentation
-** https://thiscute.world/en/posts/nixos-and-flake-basics/
-** https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
-** https://nixos.org/manual/nixpkgs/
-** https://ryantm.github.io/nixpkgs/
-** https://ryantm.github.io/nixpkgs/functions/library/attrsets/
+1. Enjoy!
 
-* Home Manager
-** Activating Home Manager independently of NixOS
-#+begin_src shell
-nix run /etc/nixos#homeConfigurations.$USER.activationPackage
+** Commit Style
+Adhere to Semantic Commit Messages
+https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
+https://www.conventionalcommits.org/en/v1.0.0/
+
+** Useful Pointers
+*** Flakes
+https://thiscute.world/en/posts/nixos-and-flake-basics/
+
+*** Tips
+https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
+
+*** Nixpkgs
+https://nixos.org/manual/nixos/stable/#sec-customising-packages
+
+*** Nix Registry
+- https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
+- https://discourse.nixos.org/t/how-to-pin-nix-registry-nixpkgs-to-release-channel/14883/6
+- https://discourse.nixos.org/t/using-flakes-in-home-manager-module-especially-for-unfree-packages/21476
+- https://discourse.nixos.org/t/local-flake-based-nix-search-nix-run-and-nix-shell/13433/13
+- https://github.com/tejing1/nixos-config/blob/11424383bed8eff2d5399f638cc5d1ef732425dc/nixosConfigurations/tejingdesk/registry.nix#L27-L29
+#+begin_src nix
+# the version of this flake used to build the system
+  nix.registry.activeconfig.flake = self;
+  environment.etc."nix/path/activeconfig".source = self;
 #+end_src
 
-* Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
-* dotfiles to explore
+** dotfiles to Explore
+- [ ] https://github.com/jwiegley/dot-emacs/blob/master/init.org
+- [ ] https://github.com/robbert-vdh/dotfiles/blob/master/user/emacs/.config/doom/config.org
+- [ ] https://codeberg.org/nosewings/emacs-init/src/branch/main/flake.nix
+- [ ] https://nixos.wiki/wiki/Comparison_of_NixOS_setups
+- [ ] https://nixos.wiki/wiki/Configuration_Collection
 - [ ] https://github.com/idlip/d-nix
 - [ ] https://github.com/Shawn8901/nix-configuration
 - [ ] https://github.com/privatevoid-net/depot/blob/master/hosts/nixos.nix
@@ -92,135 +126,128 @@ nix run /etc/nixos#homeConfigurations.$USER.activationPackage
 - [ ] https://github.com/dwarfmaster/home-nix/blob/master/flake.nix
 - [ ] https://github.com/Kranex/nixos-config/blob/master/flake.nix
 
-* https://nixos.wiki/wiki/Comparison_of_NixOS_setups
-* https://nixos.wiki/wiki/Configuration_Collection
+** Emacs
+*** Doom
+**** CheatSheet
+- https://www.damiengonot.com/notes/computer-science/tools/text-editors/emacs/doom-emacs
 
-* foot
-** https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
+**** Tip by @nilp0inter on how to ensure that the doom init script has git available
+- ~callPackage~
+- https://github.com/NixOS/nixpkgs/blob/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/development/compilers/rust/cargo-auditable-cargo-wrapper.nix
+- https://raw.githubusercontent.com/NixOS/nixpkgs/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/top-level/all-packages.nix
 
-* swap
-https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
+**** Install ChatGPT
+- https://github.com/emacs-openai/chatgpt
 
-* emacs
-https://codeberg.org/nosewings/emacs-init/src/branch/main/flake.nixfs
-https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
-https://nixos.org/manual/nixos/stable/#sec-customising-packages
-** (emacs.override { withPgtk = true; };
-** configuration.nix
+**** ~doomPrivateDir~
+- https://github.com/nix-community/nix-doom-emacs/issues/297
+- https://github.com/nix-community/nix-doom-emacs/blob/master/default.nix
+
+**** Seen on AUR/emacs29-git
+~emacs29-git/site-list-aot.md~
+#+begin_quote
+# ON-DEMAND COMPILATION OF SITE-LISP AND LOCAL PACKAGES
+
+To compile all site-lisp on demand (repos/AUR packages, ELPA, MELPA, whatever), add
+
+ (setq native-comp-deferred-compilation t)
+
+to your `.emacs` file.
+
+Or search the option in the editor's GUI configuration, set it
+to true and save your `.emacs` file to add it to the file's
+`custom-set-variables` array automatically.
+
+As emacs-git changes its version everytime you compile a new
+binary, new eln files are generated for that particular binary
+and old versions will accumulate over time. To keep the eln-cache
+tidy, add this to your `.emacs` file:
+
+    (setq native-compile-prune-cache t)
+#+end_quote
+
+**** To Review
+- https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806/8
+- https://github.com/danth/stylix/pull/77 emacs 29+ alpha-background
+
+*** Direct Simple Override
+#+begin_src nix
+environment.systemPackages = [
+  (pkgs.emacs.override {withPgtk = true;});
+];
+#+end_src
+
+*** Global Override
+#+begin_src nix
+nixpkgs.config.packageOverrides = pkgs: {
+  emacs = pkgs.emacs.override {withPgtk = true;};
+};
+#+end_src
+
+*** Global Override with Packages
 #+begin_src nix
 {...}: let
   emacsWithPgtk = pkgs.emacs.override {withPgtk = true;};
   emacsWithPackages = (pkgs.emacsPackagesFor emacsWithPgtk).emacsWithPackages;
   customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [magit pdf-tools vterm dracula-theme]);
 in {
-  ...
+  # ...
     packages = with pkgs; [
     customEmacs
     emacs-all-the-icons-fonts
-  ]
+  ];
+}
 #+end_src
 
-** Notable dotfiles
-- https://github.com/jwiegley/dot-emacs/blob/master/init.org
-- https://github.com/robbert-vdh/dotfiles/blob/master/user/emacs/.config/doom/config.org
+*** Iosevka
+- https://stackoverflow.com/questions/62230166/configuring-iosevka-for-nix
 
-** configuration.nix
-#+begin_src nix
-# TOTEST
-# https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806/8
+*** Using Nix Community’s Emacs Overlay
+- https://github.com/bbigras/nix-config/
+- https://github.com/terlar/emacs-config/blob/main/flake.nix
+- https://git.sr.ht/~bwolf/dotfiles/tree/master/item/flake.nix
+- https://www.reddit.com/r/NixOS/comments/uzcfjz/trouble_with_emacs_overlay
+- https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my-flake/11987
 
-nixpkgs.config.packageOverrides = pkgs: {
-  emacs = pkgs.emacs.override { withPgtk = true; };
-};
-#+end_src
-
-** Iosevka
-https://stackoverflow.com/questions/62230166/configuring-iosevka-for-nix
-
-** Using community's emacs overlay
-https://github.com/bbigras/nix-config/
-https://github.com/terlar/emacs-config/blob/main/flake.nix
-https://git.sr.ht/~bwolf/dotfiles/tree/master/item/flake.nix
-https://www.reddit.com/r/NixOS/comments/uzcfjz/trouble_with_emacs_overlay
-https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my-flake/11987
-
-* stylix
-** https://github.com/danth/stylix/pull/23 dualiy hm nixos
-
-* https://github.com/nix-community/nixos-generators
-
-* nix registry
-** https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
-** https://discourse.nixos.org/t/how-to-pin-nix-registry-nixpkgs-to-release-channel/14883/6
-** https://discourse.nixos.org/t/using-flakes-in-home-manager-module-especially-for-unfree-packages/21476
-** https://discourse.nixos.org/t/local-flake-based-nix-search-nix-run-and-nix-shell/13433/13
-** https://github.com/tejing1/nixos-config/blob/11424383bed8eff2d5399f638cc5d1ef732425dc/nixosConfigurations/tejingdesk/registry.nix#L27-L29
-# the version of this flake used to build the system
-  nix.registry.activeconfig.flake = self;
-  environment.etc."nix/path/activeconfig".source = self;
-
-* EasyEffects
-** https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
-** https://en.wikipedia.org/wiki/EasyEffects
-** https://www.reddit.com/r/NixOS/comments/10c3s93/homemanager_nixos_module_or_best_practice_for/
+** Things to Explore/Implement
+*** foot
+**** https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
 
 
-* Doom
-** Tip by nilp0inter on how to ensure that the doom init script has git available
-*** https://github.com/NixOS/nixpkgs/blob/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/development/compilers/rust/cargo-auditable-cargo-wrapper.nix
-*** https://raw.githubusercontent.com/NixOS/nixpkgs/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/top-level/all-packages.nix
-**** callPackage
-** https://www.damiengonot.com/notes/computer-science/tools/text-editors/emacs/doom-emacs
-** https://github.com/emacs-openai/chatgpt y dall-e
-** https://github.com/nix-community/nix-doom-emacs/issues/297
+*** swap
+https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
 
-** Seen on AUR/emacs29-git
-emacs29-git/site-list-aot.md
-@@ -0,0 +1,20 @@
-+# ON-DEMAND COMPILATION OF SITE-LISP AND LOCAL PACKAGES
-+
-+To compile all site-lisp on demand (repos/AUR packages, ELPA, MELPA,
-+ whatever), add
-+
-+    (setq native-comp-deferred-compilation t)
-+
-+to your `.emacs` file.
-+
-+Or search the option in the editor's GUI configuration, set it
-+to true and save your `.emacs` file to add it to the file's
-+`custom-set-variables` array automatically.
-+
-+As emacs-git changes its version everytime you compile a new
-+binary, new eln files are generated for that particular binary
-+and old versions will accumulate over time. To keep the eln-cache
-+tidy, add this to your `.emacs` file:
-+
-+    (setq native-compile-prune-cache t)
-+
+*** stylix
+**** https://github.com/danth/stylix/pull/23 duality hm nixos
 
-** Study https://github.com/nix-community/nix-doom-emacs/blob/master/default.nix
+*** https://github.com/nix-community/comma
 
-* NUR
+*** NixOS Generators
+https://github.com/nix-community/nixos-generators
+
+*** EasyEffects
+**** https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
+**** https://en.wikipedia.org/wiki/EasyEffects
+**** https://www.reddit.com/r/NixOS/comments/10c3s93/homemanager_nixos_module_or_best_practice_for/
+
+
+*** NUR
 https://nur.nix-community.org/repos/rycee/
 
-* https://github.com/nix-community/comma
-
-* Overlays with flake-parts
+*** Overlays with flake-parts
 https://discourse.nixos.org/t/how-to-use-overlays-in-a-flake-with-flake-parts/24308/4
 
-* hyprland on nVidia
+*** hyprland on nVidia
 https://www.reddit.com/r/NixOS/comments/137j18j/need_guide_on_installing_hyprland/
 
-* direnv
+*** direnv
 https://github.com/znewman01/dotfiles/blob/master/.envrc
 
-* List of non-legacy software
+*** List of non-legacy software
 https://nolegacy.codeberg.page/software/
 
-* OCR to clipboard
+*** OCR to clipboard
 https://www.reddit.com/r/NixOS/comments/13uboa6/text_from_image_to_clipboard_nix_tip/ (check for one-liner by balsoft)
-#+begin_src nix
-...
+#+begin_src shell
 grim -g "$(slurp)" - | tesseract - - | wl-copy -
-...
 #+end_src
