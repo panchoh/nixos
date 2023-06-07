@@ -493,7 +493,12 @@ in {
         defaultBranch = "main";
       };
     };
-    delta.enable = true;
+    delta = {
+      enable = true;
+      options = {
+        side-by-side = true;
+      };
+    };
   };
 
   programs.aria2.enable = true;
