@@ -32,6 +32,10 @@ reboot
 #+begin_src shell
 passwd
 #+end_src
+** Drop the channel
+#+begin_src shell
+sudo nix-channel --remove nixos
+#+end_src
 ** Finish setting up (Home Manager)
 #+begin_src shell
 sudo nixos-rebuild switch
