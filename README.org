@@ -62,6 +62,7 @@ nix run /etc/nixos#homeConfigurations.$USER.activationPackage
 
 * Adhere to https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 * dotfiles to explore
+- [ ] https://github.com/idlip/d-nix
 - [ ] https://github.com/Shawn8901/nix-configuration
 - [ ] https://github.com/privatevoid-net/depot/blob/master/hosts/nixos.nix
 - [ ] https://github.com/meppu/nix-config
