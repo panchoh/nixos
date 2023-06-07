@@ -101,6 +101,7 @@ in {
     btop
     usbtop
     psmisc
+    lm_sensors
 
     alejandra
     (aspellWithDicts (ds: with ds; [en en-computers en-science]))
