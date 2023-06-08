@@ -111,8 +111,9 @@ in {
     file
     fd
     gcc
-    git
+    gitg
     tig
+    gource
     gti
     gnutls
     (ripgrep.override {withPCRE2 = true;})
@@ -499,6 +500,11 @@ in {
         side-by-side = true;
       };
     };
+  };
+
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "ssh";
   };
 
   programs.aria2.enable = true;
