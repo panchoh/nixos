@@ -102,6 +102,7 @@ in {
     usbtop
     psmisc
     lm_sensors
+    dogdns
 
     alejandra
     (aspellWithDicts (ds: with ds; [en en-computers en-science]))
