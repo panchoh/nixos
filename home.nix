@@ -156,6 +156,7 @@ in {
     # bsdgames # provides wtf, but conflicts with fish shell
     bsdgames-custom
     sl
+    neofetch
 
     tessen
 
