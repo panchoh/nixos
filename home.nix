@@ -496,6 +496,7 @@ in {
       init = {
         defaultBranch = "main";
       };
+      merge.conflictStyle = "zdiff3";
     };
     delta = {
       enable = true;
