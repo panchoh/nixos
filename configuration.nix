@@ -272,6 +272,16 @@
     group = "root";
     capabilities = "cap_perfmon+ep";
   };
+  security.doas.enable = true;
+  security.doas.extraRules = [
+    {
+      groups = ["wheel"];
+      persist = true;
+      keepEnv = true;
+    }
+  ];
+  security.sudo.enable = false;
+  security.sudo.execWheelOnly = true;
 
   system.stateVersion = "23.05";
 }
