@@ -91,6 +91,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://heinicke.xyz/nixos/
 - [ ] https://github.com/jwiegley/dot-emacs/blob/master/init.org
 - [ ] https://github.com/robbert-vdh/dotfiles/blob/master/user/emacs/.config/doom/config.org
 - [ ] https://codeberg.org/nosewings/emacs-init/src/branch/main/flake.nix
