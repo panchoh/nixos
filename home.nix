@@ -102,6 +102,7 @@ in {
     usbtop
     psmisc
     lm_sensors
+    ldns
     dogdns
 
     alejandra
