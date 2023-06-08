@@ -96,6 +96,7 @@ in {
     slurp
     wl-clipboard
     wev
+    vlc
     pciutils
     usbutils
     btop
