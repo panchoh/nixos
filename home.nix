@@ -502,6 +502,10 @@ in {
         side-by-side = true;
       };
     };
+    signing = {
+      key = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
+      signByDefault = true;
+    };
   };
 
   programs.gh = {
