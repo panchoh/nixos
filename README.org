@@ -65,18 +65,18 @@ reboot
 
 ** Commit Style
 Adhere to Semantic Commit Messages
-https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
-https://www.conventionalcommits.org/en/v1.0.0/
+- https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
+- https://www.conventionalcommits.org/en/v1.0.0/
 
 ** Useful Pointers
 *** Flakes
-https://thiscute.world/en/posts/nixos-and-flake-basics/
+- https://thiscute.world/en/posts/nixos-and-flake-basics/
 
 *** Tips
-https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
+- https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
 
 *** Nixpkgs
-https://nixos.org/manual/nixos/stable/#sec-customising-packages
+- https://nixos.org/manual/nixos/stable/#sec-customising-packages
 
 *** Nix Registry
 - https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
@@ -211,41 +211,40 @@ in {
 
 ** Things to Explore/Implement
 *** foot
-**** https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
-
+- https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
 
 *** swap
-https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
+- https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
 
 *** stylix
-**** https://github.com/danth/stylix/pull/23 duality hm nixos
+- https://github.com/danth/stylix/pull/23 duality hm nixos
 
 *** NixOS Generators
-https://github.com/nix-community/nixos-generators
+- https://github.com/nix-community/nixos-generators
 
 *** EasyEffects
-**** https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
-**** https://en.wikipedia.org/wiki/EasyEffects
-**** https://www.reddit.com/r/NixOS/comments/10c3s93/homemanager_nixos_module_or_best_practice_for/
+- https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
+- https://en.wikipedia.org/wiki/EasyEffects
+- https://www.reddit.com/r/NixOS/comments/10c3s93/homemanager_nixos_module_or_best_practice_for/
 
 
 *** NUR
-https://nur.nix-community.org/repos/rycee/
+- https://nur.nix-community.org/repos/rycee/
 
 *** Overlays with flake-parts
-https://discourse.nixos.org/t/how-to-use-overlays-in-a-flake-with-flake-parts/24308/4
+- https://discourse.nixos.org/t/how-to-use-overlays-in-a-flake-with-flake-parts/24308/4
 
 *** hyprland on nVidia
-https://www.reddit.com/r/NixOS/comments/137j18j/need_guide_on_installing_hyprland/
+- https://www.reddit.com/r/NixOS/comments/137j18j/need_guide_on_installing_hyprland/
 
 *** direnv
-https://github.com/znewman01/dotfiles/blob/master/.envrc
+- https://github.com/znewman01/dotfiles/blob/master/.envrc
 
 *** List of non-legacy software
-https://nolegacy.codeberg.page/software/
+- https://nolegacy.codeberg.page/software/
 
 *** OCR to clipboard
-https://www.reddit.com/r/NixOS/comments/13uboa6/text_from_image_to_clipboard_nix_tip/ (check for one-liner by balsoft)
+- https://www.reddit.com/r/NixOS/comments/13uboa6/text_from_image_to_clipboard_nix_tip/ (check for one-liner by balsoft)
 #+begin_src shell
 grim -g "$(slurp)" - | tesseract - - | wl-copy -
 #+end_src
