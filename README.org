@@ -6,62 +6,62 @@
 
     The ~Minimal ISO image~ does the job and is smaller, thus taking less time to download.  But anyone will do.
 
-1. Write it verbatim to a usb thumbdrive
+2. Write it verbatim to a usb thumbdrive
 
-1. Boot your system with it
+3. Boot your system with it
 
-1. Wipe the drive clean
+4. Wipe the drive clean
  #+begin_src shell
 blkdiscard -f /dev/nvme0n1
 #+end_src
 
-1. Clone this flake
+5. Clone this flake
  #+begin_src shell
 rm -rf /etc/nixos
 git clone https://github.com/panchoh/nixos.git /etc/nixos
 #+end_src
 
-1. Manage filesystems with Disko
+6. Manage filesystems with Disko
  #+begin_src shell
 cd /etc/nixos
 bin/activate-disko
 #+end_src
 
-1. Bootstrap NixOS
+7. Bootstrap NixOS
 
  *CAVEAT EMPTOR*: it takes a few minutes.
  #+begin_src shell
 nixos-install --flake /etc/nixos#helium
 #+end_src
 
-1. Reboot
+8. Reboot
  #+begin_src shell
 reboot
 #+end_src
 
-1. Login and change the password
+9. Login and change the password
  #+begin_src shell
 passwd
 #+end_src
 
-1. Drop the channel
+10. Drop the channel
  #+begin_src shell
 sudo nix-channel --remove nixos
 #+end_src
 
-1. Finish setting up
+11. Finish setting up
 
  Home Manager is not activated by ~nixos-install~ for some reason.
  #+begin_src shell
 sudo nixos-rebuild switch
 #+end_src
 
-1. Reboot
+12. Reboot
  #+begin_src shell
 reboot
 #+end_src
 
-1. Enjoy!
+13. Enjoy!
 
 ** Commit Style
 Adhere to Semantic Commit Messages
