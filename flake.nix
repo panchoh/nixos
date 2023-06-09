@@ -27,20 +27,15 @@
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {allowUnfree = true;};
-    };
     hm-modules = [
       stylix.homeManagerModules.stylix
       hyprland.homeManagerModules.default
       ./home.nix
     ];
   in {
-    formatter.${system} = pkgs.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
       modules = hm-modules;
     };
 
