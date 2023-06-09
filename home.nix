@@ -102,6 +102,7 @@ in {
     btop
     usbtop
     psmisc
+    smartmontools
     lm_sensors
     ldns
     dogdns
