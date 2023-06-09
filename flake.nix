@@ -36,6 +36,10 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       modules = hm-modules;
     };
 
