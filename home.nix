@@ -119,7 +119,6 @@ in {
     gource
     gti
     gnutls
-    (ripgrep.override {withPCRE2 = true;})
     pinentry_emacs
     zstd
     tmux
@@ -587,6 +586,11 @@ in {
   };
 
   programs.imv.enable = true;
+
+  programs.ripgrep = {
+    enable = true;
+    package = pkgs.ripgrep.override {withPCRE2 = true;};
+  };
 
   programs.vscode.enable = true;
 
