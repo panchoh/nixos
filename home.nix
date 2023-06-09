@@ -586,6 +586,8 @@ in {
     nix-direnv.enable = true;
   };
 
+  programs.imv.enable = true;
+
   programs.vscode.enable = true;
 
   programs.emacs = {
