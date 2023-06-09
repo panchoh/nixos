@@ -574,6 +574,11 @@ in {
     };
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = [pkgs.obs-studio-plugins.wlrobs];
+  };
+
   programs.firefox.enable = true;
 
   programs.chromium = {
