@@ -152,6 +152,7 @@ in {
     google-chrome
     telegram-desktop
     discord
+    nheko
 
     bb
     # bsdgames # provides wtf, but conflicts with fish shell
