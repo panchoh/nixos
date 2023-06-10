@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  flakeAttrs ? null,
   ...
 }: let
   bsdgames-custom = pkgs.stdenv.mkDerivation {
@@ -20,8 +21,8 @@ in {
   programs.home-manager.enable = true;
 
   home = {
-    username = "pancho";
-    homeDirectory = "/home/pancho";
+    username = flakeAttrs.userName or "alice";
+    homeDirectory = "/home/${flakeAttrs.userName or "alice"}";
     stateVersion = "23.11";
   };
 
@@ -493,8 +494,8 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "pancho horrillo";
-    userEmail = "pancho@pancho.name";
+    userName = flakeAttrs.userDesc or "Alice Q. User";
+    userEmail = flakeAttrs.userEmail or "alice@example.org";
     extraConfig = {
       init = {
         defaultBranch = "main";

@@ -174,9 +174,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.pancho = {
+  users.users.${flakeAttrs.userName or "alice"} = {
     isNormalUser = true;
-    description = "pancho horrillo";
+    description = flakeAttrs.userDesc or "Alice Q. User";
     extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [

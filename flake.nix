@@ -27,7 +27,12 @@
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
-    flakeAttrs.hostName = host;
+    flakeAttrs = {
+      userName = user;
+      userDesc = "pancho horrillo";
+      userEmail = "pancho@pancho.name";
+      hostName = host;
+    };
     hm-modules = [
       stylix.homeManagerModules.stylix
       hyprland.homeManagerModules.default
@@ -37,6 +42,7 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+      extraSpecialArgs = {inherit flakeAttrs;};
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -61,6 +67,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${user} = {...}: {imports = hm-modules;};
+            extraSpecialArgs = {inherit flakeAttrs;};
           };
         }
       ];
