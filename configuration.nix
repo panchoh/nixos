@@ -220,8 +220,6 @@
     wget
   ];
 
-  # FIXME: add this via HM
-  # xdg.portal.wlr.enable = true;
   programs.command-not-found.enable = false;
   programs.mtr.enable = true;
   programs.neovim = {
