@@ -188,7 +188,17 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ];
   };
-  services.getty.autologinUser = "pancho";
+
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${lib.getBin pkgs.hyprland}/bin/Hyprland &>~/.Wsession.errors";
+        user = flakeAttrs.userName or "alice";
+      };
+      default_session = initial_session;
+    };
+  };
 
   nix = {
     registry.nixpkgs.flake = nixpkgs;

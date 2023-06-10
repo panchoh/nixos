@@ -471,9 +471,6 @@ in {
 
   programs.fish = {
     enable = true;
-    loginShellInit = ''
-      [ -z "$DISPLAY" -a "$XDG_VTNR" = 1 ] && exec ${config.wayland.windowManager.hyprland.package}/bin/Hyprland &>~/.Wsession.errors
-    '';
     shellAliases = {
       e = "emacsclient --no-wait --reuse-frame --alternate-editor=nvim";
     };
