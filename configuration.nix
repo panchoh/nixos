@@ -179,9 +179,6 @@
     description = flakeAttrs.userDesc or "Alice Q. User";
     extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
-    packages = with pkgs; [
-      # (nerdfonts.override {fonts = ["Iosevka"];})
-    ];
     initialPassword = "password";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZMOJffWIhs9I71atUuzjfDBRTkKml/0sCewKBIGNo pancho@krypton"
