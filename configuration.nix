@@ -284,7 +284,6 @@
     {
       groups = ["wheel"];
       persist = true;
-      keepEnv = true;
     }
   ];
   security.sudo.enable = false;
