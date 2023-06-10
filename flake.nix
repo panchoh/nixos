@@ -27,6 +27,7 @@
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
+    flakeAttrs.hostName = host;
     hm-modules = [
       stylix.homeManagerModules.stylix
       hyprland.homeManagerModules.default
@@ -44,7 +45,7 @@
     };
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit nixpkgs;};
+      specialArgs = {inherit nixpkgs flakeAttrs;};
       modules = [
         nixos-hardware.nixosModules.intel-nuc-8i7beh
         disko.nixosModules.disko

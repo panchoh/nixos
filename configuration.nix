@@ -6,6 +6,7 @@
   lib,
   pkgs,
   nixpkgs,
+  flakeAttrs ? null,
   ...
 }: {
   imports = [
@@ -34,7 +35,7 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   networking = {
-    hostName = "helium";
+    hostName = flakeAttrs.hostName or "nixos";
     useDHCP = false;
   };
 
