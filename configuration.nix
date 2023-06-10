@@ -292,5 +292,7 @@
   security.sudo.enable = false;
   security.sudo.execWheelOnly = true;
 
+  services.fstrim.enable = true;
+
   system.stateVersion = "23.05";
 }
