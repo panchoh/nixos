@@ -220,6 +220,7 @@ in {
 
 *** swap
 - https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
+- https://www.reddit.com/r/NixOS/comments/145dd8k/anyone_using_zram_in_2305/
 
 *** stylix
 - https://github.com/danth/stylix/pull/23 duality hm nixos
@@ -252,3 +253,9 @@ in {
 #+begin_src shell
 grim -g "$(slurp)" - | tesseract - - | wl-copy -
 #+end_src
+
+*** Hardening
+- https://nixos.wiki/wiki/Security
+- https://nixos.wiki/wiki/Systemd_Hardening
+- https://nixos.org/manual/nix/stable/installation/nix-security.html
+- https://xeiaso.net/blog/paranoid-nixos-2021-07-18
