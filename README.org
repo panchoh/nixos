@@ -91,6 +91,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/mrkuz/nixos
 - [ ] https://github.com/jonringer/nixpkgs-config
 - [ ] https://github.com/baitinq/nixos-config
 - [ ] https://gitlab.com/maxbaroi/nixos-config/
