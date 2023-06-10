@@ -89,6 +89,7 @@ in {
   xdg.userDirs.download = "${config.home.homeDirectory}/incoming";
 
   home.packages = with pkgs; [
+    home-manager
     pavucontrol
     fuzzel
     swaylock
