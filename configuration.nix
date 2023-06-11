@@ -10,6 +10,7 @@
   disko,
   stylix,
   hyprland,
+  home-manager,
   attrs ? null,
   ...
 } @ inputs: {
@@ -21,6 +22,16 @@
     ./disko-config.nix
     stylix.nixosModules.stylix
     hyprland.nixosModules.default
+    home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        verbose = true;
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = {inherit stylix hyprland attrs;};
+        users.${attrs.userName} = {...}: {imports = [./home.nix];};
+      };
+    }
   ];
 
   boot.loader.timeout = 0;
