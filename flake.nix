@@ -23,7 +23,7 @@
     home-manager,
     stylix,
     hyprland,
-  } @ attrs: let
+  } @ inputs: let
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
