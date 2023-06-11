@@ -23,6 +23,9 @@ in {
   home = {
     username = flakeAttrs.userName or "alice";
     homeDirectory = "/home/${flakeAttrs.userName or "alice"}";
+    sessionVariables = {
+      PATH = "$PATH:$HOME/.config/emacs/bin";
+    };
     stateVersion = "23.11";
   };
 
