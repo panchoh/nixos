@@ -32,9 +32,8 @@
       map (attrs: {
         name = attrs.hostName;
         value = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit nixpkgs nixos-hardware disko hyprland attrs;};
+          specialArgs = {inherit nixpkgs nixos-hardware disko stylix hyprland attrs;};
           modules = [
-            stylix.nixosModules.stylix
             hyprland.nixosModules.default
             ./configuration.nix
             home-manager.nixosModules.home-manager
@@ -43,10 +42,9 @@
                 verbose = true;
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = {inherit attrs;};
+                extraSpecialArgs = {inherit stylix attrs;};
                 users.${attrs.userName} = {...}: {
                   imports = [
-                    stylix.homeManagerModules.stylix
                     hyprland.homeManagerModules.default
                     ./home.nix
                   ];

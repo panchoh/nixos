@@ -2,9 +2,14 @@
   config,
   pkgs,
   lib,
+  stylix,
   attrs ? null,
   ...
 } @ inputs: {
+  imports = [
+    stylix.homeManagerModules.stylix
+  ];
+
   home = {
     stateVersion = "23.11";
     username = attrs.userName or "alice";

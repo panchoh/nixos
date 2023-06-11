@@ -8,6 +8,7 @@
   nixpkgs,
   nixos-hardware,
   disko,
+  stylix,
   hyprland,
   attrs ? null,
   ...
@@ -18,6 +19,7 @@
     nixos-hardware.nixosModules.intel-nuc-8i7beh
     disko.nixosModules.disko
     ./disko-config.nix
+    stylix.nixosModules.stylix
   ];
 
   boot.loader.timeout = 0;
