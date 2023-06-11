@@ -255,6 +255,9 @@ in {
 grim -g "$(slurp)" - | tesseract - - | wl-copy -
 #+end_src
 
+*** Sway (maybe applies to Hyprland)
+- https://github.com/alebastr/sway-systemd/blob/main/src/session.sh
+
 *** Hardening
 - https://nixos.wiki/wiki/Security
 - https://nixos.wiki/wiki/Systemd_Hardening
