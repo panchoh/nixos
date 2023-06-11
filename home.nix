@@ -23,7 +23,6 @@
         fi
       '';
     };
-    # extraOutputsToInstall = []; # FIXME
     packages = with pkgs; [
       home-manager
 
