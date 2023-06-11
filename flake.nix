@@ -32,7 +32,9 @@
       map (attrs: {
         name = attrs.hostName;
         value = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit nixpkgs nixos-hardware disko stylix hyprland home-manager attrs;};
+          specialArgs = {
+            inherit nixpkgs nixos-hardware disko stylix hyprland home-manager attrs;
+          };
           modules = [./configuration.nix];
         };
       }) (

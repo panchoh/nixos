@@ -28,8 +28,12 @@
         verbose = true;
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit stylix hyprland attrs;};
-        users.${attrs.userName} = {...}: {imports = [./home.nix];};
+        extraSpecialArgs = {
+          inherit stylix hyprland attrs;
+        };
+        users.${attrs.userName} = {...}: {
+          imports = [./home.nix];
+        };
       };
     }
   ];
