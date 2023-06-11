@@ -4,30 +4,338 @@
   lib,
   flakeAttrs ? null,
   ...
-} @ inputs: let
-  bsdgames-custom = pkgs.stdenv.mkDerivation {
-    pname = "bsdgames-custom";
-    version = pkgs.bsdgames.version;
-    src = pkgs.bsdgames;
-
-    installPhase = ''
-      mkdir -p $out
-      cp -a ${pkgs.bsdgames}/. $out/
-      chmod +w $out/bin
-      mv -f $out/bin/fish $out/bin/gofish
-    '';
-  };
-in {
+} @ inputs: {
   programs.home-manager.enable = true;
 
   home = {
+    stateVersion = "23.11";
     username = flakeAttrs.userName or "alice";
     homeDirectory = "/home/${flakeAttrs.userName or "alice"}";
     sessionVariables = {
       PATH = "$PATH:$HOME/.config/emacs/bin";
     };
-    stateVersion = "23.11";
+    activation = {
+      DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
+          $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
+          $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
+          PATH=${pkgs.git}/bin:$PATH EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
+        fi
+      '';
+    };
+    # extraOutputsToInstall = []; # FIXME
+    packages = with pkgs; [
+      home-manager
+
+      psmisc
+      pciutils
+      usbutils
+      usbtop
+      btop
+      smartmontools
+      lm_sensors
+      ldns
+      dogdns
+
+      (nerdfonts.override {fonts = ["IosevkaTerm"];})
+      (iosevka-bin.override {variant = "slab";})
+      iosevka-bin
+
+      pavucontrol
+
+      fuzzel
+      swaylock
+      swayidle
+      grim
+      slurp
+      wl-clipboard
+      wev
+
+      vlc
+
+      alejandra
+      (aspellWithDicts (ds: with ds; [en en-computers en-science]))
+      binutils
+      duf
+      editorconfig-core-c
+      file
+      fd
+      gcc
+      gitg
+      tig
+      gource
+      gti
+      gnutls
+      zstd
+      tmux
+      pinentry_emacs
+      emacs-all-the-icons-fonts
+      python311Packages.grip
+
+      jq
+      shfmt
+      shellcheck
+      nodejs_20
+      sqlite
+      python3
+      pipenv
+
+      gotools
+      go-tools
+      gopls
+      gofumpt
+      gomodifytags
+      gotests
+      gore
+      delve
+      gdlv
+
+      google-chrome
+      telegram-desktop
+      discord
+      nheko
+      tessen
+
+      mangohud
+      intel-gpu-tools
+
+      # FIXME: Hack until Doom Emacs can handle alejandra directly
+      (stdenv.mkDerivation {
+        name = "alejandra-posing-as-nixfmt";
+        buildInputs = [alejandra];
+        phases = ["installPhase"];
+        installPhase = ''
+          mkdir -p $out/bin
+          cat <<EOF > $out/bin/nixfmt
+          #!/bin/sh
+          exec ${alejandra}/bin/alejandra --quiet "\$@"
+          EOF
+          chmod +x $out/bin/nixfmt
+        '';
+      })
+
+      bb
+      # bsdgames # provides wtf, but conflicts with fish shell
+      # FIXME: PR with the current BSD Games, which fixes this an more
+      (stdenv.mkDerivation {
+        pname = "bsdgames-custom";
+        version = pkgs.bsdgames.version;
+        src = pkgs.bsdgames;
+        installPhase = ''
+          mkdir -p $out
+          cp -a ${pkgs.bsdgames}/. $out/
+          chmod +w $out/bin
+          mv -f $out/bin/fish $out/bin/gofish
+        '';
+      })
+      sl
+      neofetch
+      hyperrogue
+    ];
   };
+
+  programs.password-store = {
+    enable = true;
+    package = pkgs.gopass;
+    settings = {PASSWORD_STORE_DIR = "${config.xdg.dataHome}/gopass/stores/root";};
+  };
+
+  programs.go = {
+    enable = true;
+    goBin = ".local/bin.go";
+  };
+
+  xdg = {
+    enable = true;
+    userDirs.download = "${config.home.homeDirectory}/incoming";
+    configFile."fuzzel/fuzzel.ini" = {
+      enable = true;
+      text = ''
+        [main]
+        font = Iosevka:size=16:weight=ExtraLight
+        terminal = ${pkgs.foot}/bin/foot -e
+
+        # https://raw.githubusercontent.com/dracula/fuzzel/main/fuzzel.ini
+        [colors]
+        background=282a36dd
+        text=f8f8f2ff
+        match=8be9fdff
+        selection-match=8be9fdff
+        selection=44475add
+        selection-text=f8f8f2ff
+        border=bd93f9ff
+      '';
+    };
+  };
+
+  stylix.targets.foot.enable = false;
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        include = "${pkgs.foot.themes}/share/foot/themes/dracula";
+        font = "IosevkaTerm NFM Light:size=16";
+        font-bold = "IosevkaTerm NFM:size=16";
+        dpi-aware = false;
+      };
+      mouse = {
+        hide-when-typing = true;
+      };
+    };
+  };
+
+  programs.bash.enable = true;
+
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      e = "emacsclient --no-wait --reuse-frame --alternate-editor=nvim";
+    };
+  };
+  programs.starship.enable = true;
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    extraOptions = [
+      "--group-directories-first"
+      "--header"
+    ];
+    icons = true;
+  };
+  programs.bat.enable = true;
+  programs.fzf.enable = true;
+  programs.zoxide.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = flakeAttrs.userDesc or "Alice Q. User";
+    userEmail = flakeAttrs.userEmail or "alice@example.org";
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+      merge.conflictStyle = "zdiff3";
+    };
+    delta = {
+      enable = true;
+      options = {
+        side-by-side = true;
+      };
+    };
+    signing = {
+      key = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
+      signByDefault = true;
+    };
+  };
+
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "ssh";
+  };
+
+  programs.aria2.enable = true;
+  programs.yt-dlp = {
+    enable = true;
+    settings = {
+      embed-thumbnail = true;
+      embed-subs = true;
+      sub-langs = "all";
+      downloader = "aria2c";
+      downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
+    };
+  };
+
+  services.mako.enable = true;
+
+  programs.imv.enable = true;
+
+  programs.mpv = {
+    enable = true;
+    bindings = {
+      WHEEL_UP = "seek 10";
+      WHEEL_DOWN = "seek -10";
+      "Alt+0" = "set window-scale 0.5";
+    };
+    defaultProfiles = ["gpu-hq"];
+    profiles = {
+      fast = {
+        vo = "vdpau";
+      };
+      "protocol.dvd" = {
+        profile-desc = "profile for dvd:// streams";
+        alang = "en";
+      };
+    };
+    scripts = [pkgs.mpvScripts.mpris];
+    config = {
+      fullscreen = true;
+      sub-auto = "fuzzy";
+      # HDR https://github.com/mpv-player/mpv/issues/4285#issuecomment-290113472
+      # tone-mapping="reinhard";
+      # target-brightness = "120";
+
+      # vo = "dmabuf-wayland";
+      vo = "gpu-next";
+      gpu-api = "vulkan";
+      # gpu-context = "wayland";
+      # gpu-context = "displayvk";
+      gpu-context = "waylandvk";
+
+      # hwdec = "vaapi";
+
+      # https://github.com/mpv-player/mpv/issues/8981
+      hdr-compute-peak = false;
+
+      vd-lavc-dr = false;
+
+      # audio-device = "alsa/iec958:CARD=MM1,DEV=0";
+      # audio-device = "alsa/hdmi:CARD=PCH,DEV=0";
+      # audio-device = "alsa/iec958:CARD=X,DEV=0";
+    };
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = [pkgs.obs-studio-plugins.wlrobs];
+  };
+
+  programs.firefox.enable = true;
+
+  programs.chromium = {
+    enable = true;
+    commandLineArgs = ["--incognito"];
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
+
+  programs.ripgrep = {
+    enable = true;
+    package = pkgs.ripgrep.override {withPCRE2 = true;};
+  };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+    extraPackages = epkgs: [epkgs.vterm];
+  };
+
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+    startWithUserSession = "graphical";
+  };
+
+  programs.vscode.enable = true;
 
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
@@ -87,119 +395,9 @@ in {
     };
   };
 
-  xdg.userDirs.download = "${config.home.homeDirectory}/incoming";
-
-  home.packages = with pkgs; [
-    home-manager
-    pavucontrol
-    fuzzel
-    swaylock
-    swayidle
-    grim
-    slurp
-    wl-clipboard
-    wev
-    vlc
-    pciutils
-    usbutils
-    btop
-    usbtop
-    psmisc
-    smartmontools
-    lm_sensors
-    ldns
-    dogdns
-
-    alejandra
-    (aspellWithDicts (ds: with ds; [en en-computers en-science]))
-    binutils
-    duf
-    editorconfig-core-c
-    file
-    fd
-    gcc
-    gitg
-    tig
-    gource
-    gti
-    gnutls
-    pinentry_emacs
-    zstd
-    tmux
-    emacs-all-the-icons-fonts
-    python311Packages.grip
-
-    # Go utils
-    gotools
-    go-tools
-    gopls
-    gofumpt
-    gomodifytags
-    gotests
-    gore
-    delve
-    gdlv
-
-    jq
-    shfmt
-    shellcheck
-    nodejs_20
-    sqlite
-    python3
-    pipenv
-
-    (nerdfonts.override {fonts = ["IosevkaTerm"];})
-    (iosevka-bin.override {variant = "slab";})
-    iosevka-bin
-
-    google-chrome
-    telegram-desktop
-    discord
-    nheko
-
-    bb
-    # bsdgames # provides wtf, but conflicts with fish shell
-    bsdgames-custom
-    hyperrogue
-    sl
-    neofetch
-
-    tessen
-
-    mangohud
-    intel-gpu-tools
-
-    # FIXME: Hack until Doom Emacs can handle alejandra directly
-    (stdenv.mkDerivation {
-      name = "alejandra-posing-as-nixfmt";
-      buildInputs = [alejandra];
-      phases = ["installPhase"];
-      installPhase = ''
-        mkdir -p $out/bin
-        cat <<EOF > $out/bin/nixfmt
-        #!/bin/sh
-        exec ${alejandra}/bin/alejandra --quiet "\$@"
-        EOF
-        chmod +x $out/bin/nixfmt
-      '';
-    })
-  ];
-
-  # home.extraOutputsToInstall = []; # FIXME
-
-  programs.password-store = {
-    enable = true;
-    package = pkgs.gopass;
-    settings = {PASSWORD_STORE_DIR = "${config.xdg.dataHome}/gopass/stores/root";};
-  };
-
-  programs.go = {
-    enable = true;
-    goBin = ".local/bin.go";
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
+    recommendedEnvironment = true;
     extraConfig = ''
       monitor=,preferred,auto,auto
       monitor=DP-1, 3840x1600@60, 0x0, 1, bitdepth, 10
@@ -442,206 +640,6 @@ in {
       bindl = , XF86AudioPlay, exec, playerctl play-pause
       bindl = , XF86AudioNext, exec, playerctl next
       bindl = , XF86AudioPrev, exec, playerctl previous
-    '';
-    recommendedEnvironment = true;
-  };
-
-  xdg.enable = true;
-  xdg.configFile."fuzzel/fuzzel.ini" = {
-    enable = true;
-    text = ''
-      [main]
-      font = Iosevka:size=16:weight=ExtraLight
-      terminal = ${pkgs.foot}/bin/foot -e
-
-      # https://raw.githubusercontent.com/dracula/fuzzel/main/fuzzel.ini
-      [colors]
-      background=282a36dd
-      text=f8f8f2ff
-      match=8be9fdff
-      selection-match=8be9fdff
-      selection=44475add
-      selection-text=f8f8f2ff
-      border=bd93f9ff
-    '';
-  };
-
-  stylix.targets.foot.enable = false;
-  programs.foot = {
-    enable = true;
-    settings = {
-      main = {
-        include = "${pkgs.foot.themes}/share/foot/themes/dracula";
-        font = "IosevkaTerm NFM Light:size=16";
-        font-bold = "IosevkaTerm NFM:size=16";
-        dpi-aware = false;
-      };
-      mouse = {
-        hide-when-typing = true;
-      };
-    };
-  };
-
-  services.mako.enable = true;
-
-  programs.bash.enable = true;
-
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      e = "emacsclient --no-wait --reuse-frame --alternate-editor=nvim";
-    };
-  };
-  programs.starship.enable = true;
-  programs.exa = {
-    enable = true;
-    enableAliases = true;
-    extraOptions = [
-      "--group-directories-first"
-      "--header"
-    ];
-    icons = true;
-  };
-  programs.bat.enable = true;
-  programs.fzf.enable = true;
-  programs.zoxide.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = flakeAttrs.userDesc or "Alice Q. User";
-    userEmail = flakeAttrs.userEmail or "alice@example.org";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      merge.conflictStyle = "zdiff3";
-    };
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = true;
-      };
-    };
-    signing = {
-      key = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
-      signByDefault = true;
-    };
-  };
-
-  programs.gh = {
-    enable = true;
-    settings.git_protocol = "ssh";
-  };
-
-  programs.aria2.enable = true;
-  programs.yt-dlp = {
-    enable = true;
-    settings = {
-      embed-thumbnail = true;
-      embed-subs = true;
-      sub-langs = "all";
-      downloader = "aria2c";
-      downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
-    };
-  };
-
-  programs.mpv = {
-    enable = true;
-    bindings = {
-      WHEEL_UP = "seek 10";
-      WHEEL_DOWN = "seek -10";
-      "Alt+0" = "set window-scale 0.5";
-    };
-    defaultProfiles = ["gpu-hq"];
-    profiles = {
-      fast = {
-        vo = "vdpau";
-      };
-      "protocol.dvd" = {
-        profile-desc = "profile for dvd:// streams";
-        alang = "en";
-      };
-    };
-    scripts = [pkgs.mpvScripts.mpris];
-    config = {
-      fullscreen = true;
-      sub-auto = "fuzzy";
-      # HDR https://github.com/mpv-player/mpv/issues/4285
-      #tone-mapping=reinhard
-
-      #####:vo=dmabuf-wayland
-      #####:vo=gpu-next
-      vo = "gpu-next";
-      gpu-api = "vulkan";
-      gpu-context = "waylandvk";
-      #gpu-context=wayland
-      #gpu-context=displayvk
-
-      #hwdec=vaapi
-
-      # https://github.com/mpv-player/mpv/issues/8981
-      hdr-compute-peak = false;
-
-      vd-lavc-dr = false;
-
-      #audio-device=alsa/iec958:CARD=MM1,DEV=0
-      #audio-device=alsa/hdmi:CARD=PCH,DEV=0
-      #audio-device=alsa/iec958:CARD=X,DEV=0
-    };
-  };
-
-  programs.obs-studio = {
-    enable = true;
-    plugins = [pkgs.obs-studio-plugins.wlrobs];
-  };
-
-  programs.firefox.enable = true;
-
-  programs.chromium = {
-    enable = true;
-    commandLineArgs = ["--incognito"];
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.gpg.enable = true;
-  services.gpg-agent = {
-    enable = true;
-    defaultCacheTtl = 1800;
-    enableSshSupport = true;
-  };
-
-  programs.imv.enable = true;
-
-  programs.ripgrep = {
-    enable = true;
-    package = pkgs.ripgrep.override {withPCRE2 = true;};
-  };
-
-  programs.vscode.enable = true;
-
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs: [epkgs.vterm];
-  };
-
-  services.emacs = {
-    enable = true;
-    defaultEditor = true;
-    startWithUserSession = "graphical";
-  };
-
-  home.activation = {
-    DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-        PATH=${pkgs.git}/bin:$PATH EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
-      fi
     '';
   };
 }
