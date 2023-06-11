@@ -51,7 +51,7 @@
     };
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit nixpkgs flakeAttrs;};
+      specialArgs = {inherit nixpkgs hyprland flakeAttrs;};
       modules = [
         nixos-hardware.nixosModules.intel-nuc-8i7beh
         disko.nixosModules.disko

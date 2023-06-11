@@ -6,6 +6,7 @@
   lib,
   pkgs,
   nixpkgs,
+  hyprland,
   flakeAttrs ? null,
   ...
 } @ inputs: {
@@ -190,7 +191,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${lib.getBin pkgs.hyprland}/bin/Hyprland &>~/.Wsession.errors";
+        command = "${lib.getBin hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/Hyprland &>~/.Wsession.errors";
         user = flakeAttrs.userName or "alice";
       };
       default_session = initial_session;
