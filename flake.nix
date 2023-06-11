@@ -49,6 +49,7 @@
             verbose = true;
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = {inherit attrs;};
             users.${attrs.userName} = {...}: {
               imports = [
                 stylix.homeManagerModules.stylix
@@ -56,7 +57,6 @@
                 ./home.nix
               ];
             };
-            extraSpecialArgs = {inherit attrs;};
           };
         }
       ];
