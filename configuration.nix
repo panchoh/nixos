@@ -143,19 +143,18 @@
     useXkbConfig = true;
   };
 
-  # TTY
-  #fonts.fonts = with pkgs; [ meslo-lgs-nf iosevka ];
-  #services.kmscon =
-  #{
-  #  enable = true;
-  #  hwRender = true;
-  #    #font-name=MesloLGS NF
-  #  extraConfig =
-  #  ''
-  #    font-name=Iosevka
-  #    font-size=20
-  #  '';
-  #};
+  services.kmscon = {
+    enable = true;
+    hwRender = true;
+    autologinUser = attrs.userName or "alice";
+    extraOptions = "--xkb-layout=us --xkb-variant=altgr-intl";
+    fonts = [
+      {
+        name = "IosevkaTerm NFM Light,"; # commas save lives!
+        package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
+      }
+    ];
+  };
 
   services.fwupd.enable = true;
 

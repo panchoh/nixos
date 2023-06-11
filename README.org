@@ -267,3 +267,9 @@ grim -g "$(slurp)" - | tesseract - - | wl-copy -
 
 *** nixos-anywhere
 - https://numtide.com/blog/nixos-anywhere-intro/
+
+*** kmscon
+- https://discourse.nixos.org/t/removing-persistent-boot-messages-for-a-silent-boot/14835/8
+- https://wiki.archlinux.org/title/KMSCON
+- https://www.mankier.com/1/kmscon
+- https://github.com/Aetf/kmscon
