@@ -34,7 +34,6 @@
         value = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit nixpkgs nixos-hardware disko stylix hyprland attrs;};
           modules = [
-            hyprland.nixosModules.default
             ./configuration.nix
             home-manager.nixosModules.home-manager
             {
@@ -42,10 +41,9 @@
                 verbose = true;
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = {inherit stylix attrs;};
+                extraSpecialArgs = {inherit stylix hyprland attrs;};
                 users.${attrs.userName} = {...}: {
                   imports = [
-                    hyprland.homeManagerModules.default
                     ./home.nix
                   ];
                 };

@@ -3,11 +3,13 @@
   pkgs,
   lib,
   stylix,
+  hyprland,
   attrs ? null,
   ...
 } @ inputs: {
   imports = [
     stylix.homeManagerModules.stylix
+    hyprland.homeManagerModules.default
   ];
 
   home = {

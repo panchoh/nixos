@@ -20,6 +20,7 @@
     disko.nixosModules.disko
     ./disko-config.nix
     stylix.nixosModules.stylix
+    hyprland.nixosModules.default
   ];
 
   boot.loader.timeout = 0;
