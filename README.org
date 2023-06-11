@@ -264,3 +264,6 @@ grim -g "$(slurp)" - | tesseract - - | wl-copy -
 - https://nixos.wiki/wiki/Systemd_Hardening
 - https://nixos.org/manual/nix/stable/installation/nix-security.html
 - https://xeiaso.net/blog/paranoid-nixos-2021-07-18
+
+*** nixos-anywhere
+- https://numtide.com/blog/nixos-anywhere-intro/
