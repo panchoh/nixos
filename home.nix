@@ -4,7 +4,7 @@
   lib,
   flakeAttrs ? null,
   ...
-}: let
+} @ inputs: let
   bsdgames-custom = pkgs.stdenv.mkDerivation {
     pname = "bsdgames-custom";
     version = pkgs.bsdgames.version;
