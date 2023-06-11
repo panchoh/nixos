@@ -24,11 +24,10 @@
     stylix,
     hyprland,
   } @ inputs: let
-    user = "pancho";
     host = "helium";
     system = "x86_64-linux";
     attrs = {
-      userName = user;
+      userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
       hostName = host;
@@ -36,7 +35,7 @@
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.${attrs.userName} = home-manager.lib.homeManagerConfiguration {
       extraSpecialArgs = {inherit attrs;};
       pkgs = import nixpkgs {
         inherit system;
@@ -64,7 +63,7 @@
             verbose = true;
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.${user} = {...}: {
+            users.${attrs.userName} = {...}: {
               imports = [
                 stylix.homeManagerModules.stylix
                 hyprland.homeManagerModules.default
