@@ -170,6 +170,21 @@ in {
 
     mangohud
     intel-gpu-tools
+
+    # FIXME: Hack until Doom Emacs can handle alejandra directly
+    (stdenv.mkDerivation {
+      name = "alejandra-posing-as-nixfmt";
+      buildInputs = [alejandra];
+      phases = ["installPhase"];
+      installPhase = ''
+        mkdir -p $out/bin
+        cat <<EOF > $out/bin/nixfmt
+        #!/bin/sh
+        exec ${alejandra}/bin/alejandra --quiet "\$@"
+        EOF
+        chmod +x $out/bin/nixfmt
+      '';
+    })
   ];
 
   # home.extraOutputsToInstall = []; # FIXME
