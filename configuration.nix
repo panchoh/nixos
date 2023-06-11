@@ -6,6 +6,7 @@
   lib,
   pkgs,
   nixpkgs,
+  nixos-hardware,
   hyprland,
   attrs ? null,
   ...
@@ -13,6 +14,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    nixos-hardware.nixosModules.intel-nuc-8i7beh
   ];
 
   boot.loader.timeout = 0;
