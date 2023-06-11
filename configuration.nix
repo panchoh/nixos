@@ -38,6 +38,13 @@
     }
   ];
 
+  stylix = {
+    homeManagerIntegration.followSystem = false;
+    homeManagerIntegration.autoImport = false;
+    # Either image or base16Scheme is required
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+  };
+
   boot.loader.timeout = 0;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "keep";
@@ -189,13 +196,6 @@
   #     };
   #   };
   # };
-
-  stylix = {
-    homeManagerIntegration.followSystem = false;
-    homeManagerIntegration.autoImport = false;
-    # Either image or base16Scheme is required
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${attrs.userName or "alice"} = {
