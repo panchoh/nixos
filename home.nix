@@ -350,6 +350,8 @@
     startWithUserSession = "graphical";
   };
 
+  programs.texlive.enable = true;
+
   programs.vscode.enable = true;
 
   stylix = {
