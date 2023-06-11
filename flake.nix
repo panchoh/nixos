@@ -27,7 +27,7 @@
     user = "pancho";
     host = "helium";
     system = "x86_64-linux";
-    flakeAttrs = {
+    attrs = {
       userName = user;
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
@@ -37,7 +37,7 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = {inherit flakeAttrs;};
+      extraSpecialArgs = {inherit attrs;};
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -50,7 +50,7 @@
     };
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit nixpkgs hyprland flakeAttrs;};
+      specialArgs = {inherit nixpkgs hyprland attrs;};
       modules = [
         nixos-hardware.nixosModules.intel-nuc-8i7beh
         disko.nixosModules.disko
@@ -71,7 +71,7 @@
                 ./home.nix
               ];
             };
-            extraSpecialArgs = {inherit flakeAttrs;};
+            extraSpecialArgs = {inherit attrs;};
           };
         }
       ];

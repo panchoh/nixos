@@ -2,15 +2,15 @@
   config,
   pkgs,
   lib,
-  flakeAttrs ? null,
+  attrs ? null,
   ...
 } @ inputs: {
   programs.home-manager.enable = true;
 
   home = {
     stateVersion = "23.11";
-    username = flakeAttrs.userName or "alice";
-    homeDirectory = "/home/${flakeAttrs.userName or "alice"}";
+    username = attrs.userName or "alice";
+    homeDirectory = "/home/${attrs.userName or "alice"}";
     sessionVariables = {
       PATH = "$PATH:$HOME/.config/emacs/bin";
     };
@@ -207,8 +207,8 @@
 
   programs.git = {
     enable = true;
-    userName = flakeAttrs.userDesc or "Alice Q. User";
-    userEmail = flakeAttrs.userEmail or "alice@example.org";
+    userName = attrs.userDesc or "Alice Q. User";
+    userEmail = attrs.userEmail or "alice@example.org";
     extraConfig = {
       init = {
         defaultBranch = "main";

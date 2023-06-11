@@ -7,7 +7,7 @@
   pkgs,
   nixpkgs,
   hyprland,
-  flakeAttrs ? null,
+  attrs ? null,
   ...
 } @ inputs: {
   imports = [
@@ -36,7 +36,7 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   networking = {
-    hostName = flakeAttrs.hostName or "nixos";
+    hostName = attrs.hostName or "nixos";
     useDHCP = false;
   };
 
@@ -175,9 +175,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${flakeAttrs.userName or "alice"} = {
+  users.users.${attrs.userName or "alice"} = {
     isNormalUser = true;
-    description = flakeAttrs.userDesc or "Alice Q. User";
+    description = attrs.userDesc or "Alice Q. User";
     extraGroups = ["wheel" "libvirtd" "docker" "audio"];
     shell = pkgs.fish;
     initialPassword = "password";
@@ -192,7 +192,7 @@
     settings = rec {
       initial_session = {
         command = "${lib.getBin hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/Hyprland &>~/.Wsession.errors";
-        user = flakeAttrs.userName or "alice";
+        user = attrs.userName or "alice";
       };
       default_session = initial_session;
     };
