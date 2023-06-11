@@ -31,9 +31,7 @@
         extraSpecialArgs = {
           inherit stylix hyprland attrs;
         };
-        users.${attrs.userName} = {...}: {
-          imports = [./home.nix];
-        };
+        users.${attrs.userName or "alice"} = import ./home.nix;
       };
     }
   ];
