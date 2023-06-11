@@ -30,6 +30,7 @@
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
       hostName = "helium";
+      macvlanAddress = "1c:69:7a:02:8d:23";
     };
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

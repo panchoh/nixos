@@ -47,7 +47,7 @@
         netdevConfig = {
           Name = "mv0";
           Kind = "macvlan";
-          MACAddress = "1c:69:7a:02:8d:23";
+          MACAddress = attrs.macvlanAddress or "de:ad:be:ef:42:01";
         };
         macvlanConfig = {
           Mode = "bridge";
