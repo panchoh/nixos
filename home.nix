@@ -19,6 +19,7 @@
     sessionVariables = {
       PATH = "$PATH:$HOME/.config/emacs/bin";
     };
+
     activation = {
       DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
         if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
@@ -28,6 +29,7 @@
         fi
       '';
     };
+
     packages = with pkgs; [
       psmisc
       pciutils
