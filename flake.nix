@@ -34,19 +34,6 @@
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    homeConfigurations.${attrs.userName} = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = {inherit attrs;};
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      modules = [
-        stylix.homeManagerModules.stylix
-        hyprland.homeManagerModules.default
-        ./home.nix
-      ];
-    };
-
     nixosConfigurations.${attrs.hostName} = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit nixpkgs hyprland attrs;};
       modules = [

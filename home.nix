@@ -5,8 +5,6 @@
   attrs ? null,
   ...
 } @ inputs: {
-  programs.home-manager.enable = true;
-
   home = {
     stateVersion = "23.11";
     username = attrs.userName or "alice";
@@ -24,8 +22,6 @@
       '';
     };
     packages = with pkgs; [
-      home-manager
-
       psmisc
       pciutils
       usbutils
