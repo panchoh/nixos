@@ -36,6 +36,8 @@
     }
   ];
 
+  system.stateVersion = "23.05";
+
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
@@ -312,6 +314,4 @@
   security.sudo.execWheelOnly = true;
 
   services.fstrim.enable = true;
-
-  system.stateVersion = "23.05";
 }
