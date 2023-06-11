@@ -61,7 +61,6 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
-          programs.hyprland.enable = true;
           home-manager = {
             verbose = true;
             useGlobalPkgs = true;
