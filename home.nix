@@ -321,6 +321,7 @@
   programs.ripgrep = {
     enable = true;
     package = pkgs.ripgrep.override {withPCRE2 = true;};
+    arguments = ["--no-config"];
   };
 
   programs.emacs = {
