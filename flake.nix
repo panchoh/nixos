@@ -25,42 +25,59 @@
     hyprland,
   } @ inputs: let
     system = "x86_64-linux";
-    attrs = {
-      userName = "pancho";
-      userDesc = "pancho horrillo";
-      userEmail = "pancho@pancho.name";
-      hostName = "helium";
-      macvlanAddress = "1c:69:7a:02:8d:23";
-    };
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    nixosConfigurations.${attrs.hostName} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit nixpkgs hyprland attrs;};
-      modules = [
-        nixos-hardware.nixosModules.intel-nuc-8i7beh
-        disko.nixosModules.disko
-        ./disko-config.nix
-        stylix.nixosModules.stylix
-        hyprland.nixosModules.default
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            verbose = true;
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {inherit attrs;};
-            users.${attrs.userName} = {...}: {
-              imports = [
-                stylix.homeManagerModules.stylix
-                hyprland.homeManagerModules.default
-                ./home.nix
-              ];
-            };
+    nixosConfigurations = builtins.listToAttrs (
+      map (attrs: {
+        name = attrs.hostName;
+        value = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit nixpkgs hyprland attrs;};
+          modules = [
+            nixos-hardware.nixosModules.intel-nuc-8i7beh
+            disko.nixosModules.disko
+            ./disko-config.nix
+            stylix.nixosModules.stylix
+            hyprland.nixosModules.default
+            ./configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                verbose = true;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {inherit attrs;};
+                users.${attrs.userName} = {...}: {
+                  imports = [
+                    stylix.homeManagerModules.stylix
+                    hyprland.homeManagerModules.default
+                    ./home.nix
+                  ];
+                };
+              };
+            }
+          ];
+        };
+      }) (
+        let
+          commonAttrs = {
+            userName = "pancho";
+            userDesc = "pancho horrillo";
+            userEmail = "pancho@pancho.name";
           };
-        }
-      ];
-    };
+        in [
+          (commonAttrs
+            // {
+              hostName = "helium";
+              macvlanAddress = "1c:69:7a:02:8d:23";
+            })
+          (commonAttrs
+            // {
+              hostName = "krypton";
+              macvlanAddress = "1c:69:7a:05:b5:98";
+            })
+        ]
+      )
+    );
   };
 }
