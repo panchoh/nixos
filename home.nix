@@ -87,8 +87,6 @@ in {
     };
   };
 
-  fonts.fontconfig.enable = true;
-
   xdg.userDirs.download = "${config.home.homeDirectory}/incoming";
 
   home.packages = with pkgs; [
