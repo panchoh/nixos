@@ -33,11 +33,6 @@
       userEmail = "pancho@pancho.name";
       hostName = host;
     };
-    hm-modules = [
-      stylix.homeManagerModules.stylix
-      hyprland.homeManagerModules.default
-      ./home.nix
-    ];
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
@@ -47,7 +42,11 @@
         inherit system;
         config.allowUnfree = true;
       };
-      modules = hm-modules;
+      modules = [
+        stylix.homeManagerModules.stylix
+        hyprland.homeManagerModules.default
+        ./home.nix
+      ];
     };
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
@@ -65,7 +64,13 @@
             verbose = true;
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.${user} = {...}: {imports = hm-modules;};
+            users.${user} = {...}: {
+              imports = [
+                stylix.homeManagerModules.stylix
+                hyprland.homeManagerModules.default
+                ./home.nix
+              ];
+            };
             extraSpecialArgs = {inherit flakeAttrs;};
           };
         }
