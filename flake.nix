@@ -24,13 +24,12 @@
     stylix,
     hyprland,
   } @ inputs: let
-    host = "helium";
     system = "x86_64-linux";
     attrs = {
       userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
-      hostName = host;
+      hostName = "helium";
     };
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -48,7 +47,7 @@
       ];
     };
 
-    nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${attrs.hostName} = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit nixpkgs hyprland attrs;};
       modules = [
         nixos-hardware.nixosModules.intel-nuc-8i7beh
