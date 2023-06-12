@@ -270,6 +270,7 @@
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 
+  programs.ssh.startAgent = true;
   programs.mosh.enable = true;
   services.openssh = {
     enable = true;
