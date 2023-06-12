@@ -268,6 +268,10 @@ grim -g "$(slurp)" - | tesseract - - | wl-copy -
 *** nixos-anywhere
 - https://numtide.com/blog/nixos-anywhere-intro/
 
+*** console
+- https://discourse.nixos.org/t/need-help-setting-tty-font/16295/5
+- https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/config/console.nix
+
 *** kmscon
 - https://discourse.nixos.org/t/removing-persistent-boot-messages-for-a-silent-boot/14835/8
 - https://wiki.archlinux.org/title/KMSCON

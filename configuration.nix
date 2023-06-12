@@ -146,8 +146,8 @@
 
   console = {
     earlySetup = true;
-    font = "ter-powerline-v24b";
-    packages = with pkgs; [terminus_font powerline-fonts];
+    font = "ter-powerline-v24n";
+    packages = [pkgs.powerline-fonts];
     useXkbConfig = true;
   };
 
