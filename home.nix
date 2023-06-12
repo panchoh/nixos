@@ -72,7 +72,6 @@
       gnutls
       zstd
       tmux
-      pinentry_emacs
       emacs-all-the-icons-fonts
       python311Packages.grip
 
@@ -325,11 +324,16 @@
     nix-direnv.enable = true;
   };
 
-  programs.gpg.enable = true;
+  programs.gpg = {
+    enable = true;
+    homedir = "${config.xdg.dataHome}/gnupg";
+  };
+
   services.gpg-agent = {
     enable = true;
-    defaultCacheTtl = 1800;
-    enableSshSupport = true;
+    defaultCacheTtl = 1;
+    enableSshSupport = false;
+    pinentryFlavor = "gtk2";
   };
 
   programs.ripgrep = {
