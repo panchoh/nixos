@@ -74,6 +74,7 @@
       tmux
       emacs-all-the-icons-fonts
       python311Packages.grip
+      meld
 
       jq
       shfmt
