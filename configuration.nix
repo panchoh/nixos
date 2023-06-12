@@ -43,6 +43,7 @@
     homeManagerIntegration.autoImport = false;
     # Either image or base16Scheme is required
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    fonts.sizes.terminal = 16;
   };
 
   boot.loader.timeout = 0;
