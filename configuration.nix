@@ -257,7 +257,6 @@
   };
   environment.variables.EDITOR = "nvim";
 
-  programs.mosh.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -275,6 +274,7 @@
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 
+  programs.mosh.enable = true;
   services.openssh = {
     enable = true;
     settings = {
