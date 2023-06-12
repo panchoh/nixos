@@ -136,6 +136,13 @@
     LC_TIME = "en_DK.UTF-8";
   };
 
+  services.xserver = {
+    xkbModel = "pc105";
+    layout = "us,us";
+    xkbVariant = "altgr-intl,dvorak-alt-intl";
+    xkbOptions = "compose:sclk,grp:shifts_toggle";
+  };
+
   console = {
     earlySetup = true;
     font = "ter-powerline-v24b";
@@ -157,15 +164,6 @@
   };
 
   services.fwupd.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkbModel = "hhk";
-    layout = "us,us";
-    xkbVariant = "altgr-intl,dvorak-alt-intl";
-    xkbOptions = "compose:sclk,grp:shifts_toggle";
-    # videoDrivers = [ "intel" ];
-  };
 
   # FIXME Enable CUPS to print documents.
   # services.printing.enable = true;
