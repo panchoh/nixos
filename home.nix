@@ -100,6 +100,8 @@
       nheko
       tessen
 
+      transmission-gtk
+
       mangohud
       intel-gpu-tools
 
