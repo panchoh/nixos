@@ -400,11 +400,6 @@
         package = pkgs.openmoji-color;
       };
 
-      # emoji = {
-      #   package = pkgs.noto-fonts-emoji;
-      #   name = "Noto Color Emoji";
-      # };
-
       sizes = {
         terminal = 16;
         desktop = 14;
