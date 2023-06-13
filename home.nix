@@ -32,6 +32,7 @@
 
     packages = with pkgs; [
       psmisc
+      sysstat
       pciutils
       usbutils
       usbtop
