@@ -26,32 +26,32 @@
   } @ inputs: let
     makeHost = {
       hostName,
-      macvlanAddress,
+      macvlanAddr,
       system,
     }: {
       userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
-      inherit hostName macvlanAddress system;
+      inherit hostName macvlanAddr system;
     };
 
     hosts = [
       (makeHost
         {
           hostName = "helium";
-          macvlanAddress = "1c:69:7a:02:8d:23";
+          macvlanAddr = "1c:69:7a:02:8d:23";
           system = "x86_64-linux";
         })
       (makeHost
         {
           hostName = "krypton";
-          macvlanAddress = "1c:69:7a:05:b5:98";
+          macvlanAddr = "1c:69:7a:05:b5:98";
           system = "x86_64-linux";
         })
       (makeHost
         {
           hostName = "neon";
-          macvlanAddress = "dc:a6:32:b1:ae:1d";
+          macvlanAddr = "dc:a6:32:b1:ae:1d";
           system = "aarch64-linux";
         })
     ];
