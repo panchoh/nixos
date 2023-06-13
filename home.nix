@@ -46,6 +46,7 @@
       iosevka-bin
 
       pavucontrol
+      playerctl
 
       fuzzel
       swaylock
