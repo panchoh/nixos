@@ -24,7 +24,7 @@
     stylix,
     hyprland,
   } @ inputs: let
-    makeHost = {
+    makeBox = {
       hostName,
       macvlanAddr,
       system,
@@ -35,20 +35,20 @@
       inherit hostName macvlanAddr system;
     };
 
-    hosts = [
-      (makeHost
+    boxen = [
+      (makeBox
         {
           hostName = "helium";
           macvlanAddr = "1c:69:7a:02:8d:23";
           system = "x86_64-linux";
         })
-      (makeHost
+      (makeBox
         {
           hostName = "krypton";
           macvlanAddr = "1c:69:7a:05:b5:98";
           system = "x86_64-linux";
         })
-      (makeHost
+      (makeBox
         {
           hostName = "neon";
           macvlanAddr = "dc:a6:32:b1:ae:1d";
@@ -56,25 +56,25 @@
         })
     ];
   in {
-    formatter = builtins.listToAttrs (map (host: {
-        name = host.system;
-        value = nixpkgs.legacyPackages.${host.system}.alejandra;
+    formatter = builtins.listToAttrs (map (box: {
+        name = box.system;
+        value = nixpkgs.legacyPackages.${box.system}.alejandra;
       })
-      hosts);
+      boxen);
 
     nixosConfigurations = builtins.listToAttrs (
-      map (host: {
-        name = host.hostName;
+      map (box: {
+        name = box.hostName;
         value = nixpkgs.lib.nixosSystem {
-          system = host.system;
+          system = box.system;
           specialArgs = {
-            attrs = host;
+            attrs = box;
             inherit nixpkgs nixos-hardware disko stylix hyprland home-manager;
           };
           modules = [./configuration.nix];
         };
       })
-      hosts
+      boxen
     );
   };
 }
