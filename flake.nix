@@ -24,39 +24,51 @@
     stylix,
     hyprland,
   } @ inputs: let
-    system = "x86_64-linux";
+    commonAttrs = {
+      userName = "pancho";
+      userDesc = "pancho horrillo";
+      userEmail = "pancho@pancho.name";
+    };
+    hosts = [
+      (commonAttrs
+        // {
+          hostName = "helium";
+          macvlanAddress = "1c:69:7a:02:8d:23";
+          system = "x86_64-linux";
+        })
+      (commonAttrs
+        // {
+          hostName = "krypton";
+          macvlanAddress = "1c:69:7a:05:b5:98";
+          system = "x86_64-linux";
+        })
+      (commonAttrs
+        // {
+          hostName = "neon";
+          macvlanAddress = "dc:a6:32:b1:ae:1d";
+          system = "aarch64-linux";
+        })
+    ];
   in {
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter = builtins.listToAttrs (map (host: {
+        name = host.system;
+        value = nixpkgs.legacyPackages.${host.system}.alejandra;
+      })
+      hosts);
 
     nixosConfigurations = builtins.listToAttrs (
-      map (attrs: {
-        name = attrs.hostName;
+      map (host: {
+        name = host.hostName;
         value = nixpkgs.lib.nixosSystem {
+          system = host.system;
           specialArgs = {
-            inherit nixpkgs nixos-hardware disko stylix hyprland home-manager attrs;
+            attrs = host;
+            inherit nixpkgs nixos-hardware disko stylix hyprland home-manager;
           };
           modules = [./configuration.nix];
         };
-      }) (
-        let
-          commonAttrs = {
-            userName = "pancho";
-            userDesc = "pancho horrillo";
-            userEmail = "pancho@pancho.name";
-          };
-        in [
-          (commonAttrs
-            // {
-              hostName = "helium";
-              macvlanAddress = "1c:69:7a:02:8d:23";
-            })
-          (commonAttrs
-            // {
-              hostName = "krypton";
-              macvlanAddress = "1c:69:7a:05:b5:98";
-            })
-        ]
-      )
+      })
+      hosts
     );
   };
 }
