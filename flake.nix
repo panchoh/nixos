@@ -24,26 +24,32 @@
     stylix,
     hyprland,
   } @ inputs: let
-    commonAttrs = {
+    makeHost = {
+      hostName,
+      macvlanAddress,
+      system,
+    }: {
       userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
+      inherit hostName macvlanAddress system;
     };
+
     hosts = [
-      (commonAttrs
-        // {
+      (makeHost
+        {
           hostName = "helium";
           macvlanAddress = "1c:69:7a:02:8d:23";
           system = "x86_64-linux";
         })
-      (commonAttrs
-        // {
+      (makeHost
+        {
           hostName = "krypton";
           macvlanAddress = "1c:69:7a:05:b5:98";
           system = "x86_64-linux";
         })
-      (commonAttrs
-        // {
+      (makeHost
+        {
           hostName = "neon";
           macvlanAddress = "dc:a6:32:b1:ae:1d";
           system = "aarch64-linux";
