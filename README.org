@@ -1,10 +1,8 @@
 #+title: README
 
 * My Flaky NixOS Config
-** Bootstrapping Process
-1. Obtain a bootable NixOS iso image from https://nixos.org/download.html#nixos-iso.
-
-   The ~Minimal ISO image~ does the job and is smaller, thus taking less time to download.  But anyone will do.
+** Bootstrapping
+1. Obtain a [[https://nixos.org/download.html#nixos-iso][bootable NixOS iso image]]
 
 2. Write it verbatim to a usb thumbdrive
 
@@ -12,26 +10,25 @@
 
 4. Wipe the drive clean
    #+begin_src shell
-   blkdiscard -f /dev/nvme0n1
+   sudo blkdiscard -f /dev/nvme0n1
    #+end_src
 
 5. Clone this flake
    #+begin_src shell
-   rm -rf /etc/nixos
-   git clone https://github.com/panchoh/nixos.git /etc/nixos
+   git clone https://github.com/panchoh/nixos.git
    #+end_src
 
 6. Manage filesystems with Disko
    #+begin_src shell
-   cd /etc/nixos
-   bin/activate-disko
+   cd nixos
+   sudo bin/activate-disko
    #+end_src
 
 7. Bootstrap NixOS
 
    *CAVEAT EMPTOR*: it takes a few minutes.
    #+begin_src shell
-   nixos-install --flake /etc/nixos#helium
+   sudo nixos-install --verbose --no-root-password --no-channel-copy --flake github:panchoh/nixos#krypton
    #+end_src
 
 8. Reboot
@@ -39,21 +36,22 @@
    reboot
    #+end_src
 
-9. Login and change the password
+9. Change the password
    #+begin_src shell
    passwd
    #+end_src
 
 10. Drop the channel
     #+begin_src shell
-    sudo nix-channel --remove nixos
+    doas nix-channel --remove nixos
     #+end_src
 
 11. Finish setting up
 
     Home Manager is not activated by ~nixos-install~ for some reason.
     #+begin_src shell
-    sudo nixos-rebuild switch
+    rm -rf ~/.config/{fish,hypr}
+    doas nixos-rebuild switch --verbose
     #+end_src
 
 12. Reboot
