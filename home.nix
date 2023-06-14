@@ -16,9 +16,14 @@
     stateVersion = "23.11";
     username = attrs.userName or "alice";
     homeDirectory = "/home/${attrs.userName or "alice"}";
-    sessionVariables = {
-      PATH = "$PATH:$HOME/.config/emacs/bin";
-    };
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.local/bin.go"
+      "${config.xdg.configHome}/emacs/bin"
+    ];
+    # sessionVariables = {
+    #   foo = "bar";
+    # };
 
     activation = {
       DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
