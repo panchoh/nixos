@@ -99,6 +99,7 @@
           DHCP = "ipv4";
           IPForward = true;
           LinkLocalAddressing = "no";
+          DNSSECNegativeTrustAnchors = "lemd wifi";
         };
         dhcpV4Config = {
           UseDomains = true;
