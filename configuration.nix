@@ -91,6 +91,7 @@
         networkConfig = {
           LinkLocalAddressing = "no";
         };
+        linkConfig.RequiredForOnline = "no";
       };
       "30-mv0" = {
         matchConfig.Name = "mv0";
