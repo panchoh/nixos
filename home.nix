@@ -46,6 +46,8 @@
       lm_sensors
       ldns
       dogdns
+      nmap
+      mtr-gui
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
