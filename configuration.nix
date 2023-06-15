@@ -64,7 +64,6 @@
   # system.autoUpgrade.allowReboot = true;
   # system.autoUpgrade.flake = "github:panchoh/nixos-flake-sandbox";
   # system.autoUpgrade.flags = [ "--update-input" "nixpkgs" "--commit-lock-file" ];
-  powerManagement.cpuFreqGovernor = "performance";
 
   networking = {
     hostName = attrs.hostName or "nixos";
