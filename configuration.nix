@@ -99,7 +99,6 @@
           DHCP = "ipv4";
           IPForward = true;
           LinkLocalAddressing = "no";
-          LLMNR = false;
         };
         dhcpV4Config = {
           UseDomains = true;
