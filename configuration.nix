@@ -166,8 +166,10 @@
 
   services.fwupd.enable = true;
 
-  # FIXME Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.hplip];
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
