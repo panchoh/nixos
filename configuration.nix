@@ -280,9 +280,11 @@
     };
   };
 
-  services.resolved.enable = true;
-  services.resolved.llmnr = "false";
-  #services.resolved.domains = ["home"];
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    llmnr = "false";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
