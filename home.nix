@@ -50,6 +50,7 @@
       dogdns
       nmap
       mtr-gui
+      moreutils
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
