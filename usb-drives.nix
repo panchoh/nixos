@@ -3,6 +3,17 @@
   pkgs,
   ...
 }: {
+  services.udev.packages = [
+    (pkgs.writeTextFile rec {
+      name = "99-usb-drives.rules";
+      destination = "/etc/udev/rules.d/${name}";
+      text = ''
+        ACTION=="add", KERNEL=="sd?", SUBSYSTEMS=="usb", ENV{ID_FS_LABEL}!="", RUN+="${pkgs.coreutils}/bin/mkdir -p '/media/%E{ID_FS_LABEL}'"
+        ACTION=="remove", KERNEL=="sd?", SUBSYSTEMS=="usb", ENV{ID_FS_LABEL}!="", RUN+="${pkgs.coreutils}/bin/rmdir --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
+      '';
+    })
+  ];
+
   fileSystems = builtins.listToAttrs (
     map (label: {
       name = "/media/${label}";
