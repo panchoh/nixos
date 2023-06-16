@@ -18,6 +18,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.intel-nuc-8i7beh
+    ./usb-drives.nix
     disko.nixosModules.disko
     ./disko-config.nix
     stylix.nixosModules.stylix
