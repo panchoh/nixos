@@ -45,6 +45,7 @@
       usbtop
       btop
       smartmontools
+      hdparm
       lm_sensors
       ldns
       dogdns
