@@ -53,6 +53,7 @@
       nmap
       mtr-gui
       moreutils
+      hwloc
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
