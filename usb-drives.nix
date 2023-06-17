@@ -20,7 +20,7 @@
       value = {
         device = "/dev/disk/by-label/${label}";
         fsType = "btrfs";
-        options = ["noauto" "users" "noatime"];
+        options = ["noauto" "users" "noexec" "nosuid" "nodev" "noatime"];
       };
     })
     [
