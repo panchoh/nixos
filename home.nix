@@ -217,6 +217,7 @@
     enableAliases = true;
     extraOptions = [
       "--group-directories-first"
+      "--group"
       "--header"
     ];
     icons = true;
