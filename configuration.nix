@@ -111,16 +111,22 @@
 
   time.timeZone = "Europe/Madrid";
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-ocl
-      intel-compute-runtime
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+  hardware = {
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-ocl
+        intel-compute-runtime
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
 
   i18n = {
