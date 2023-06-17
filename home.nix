@@ -46,6 +46,7 @@
       btop
       smartmontools
       hdparm
+      nvme-cli
       lm_sensors
       ldns
       dogdns
