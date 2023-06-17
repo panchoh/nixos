@@ -75,6 +75,10 @@
       inkscape
       zoom-us
 
+      qmk
+      qmk_hid
+      keymapviz
+
       alejandra
       (aspellWithDicts (ds: with ds; [en en-computers en-science]))
       binutils

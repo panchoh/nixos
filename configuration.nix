@@ -112,6 +112,7 @@
   time.timeZone = "Europe/Madrid";
 
   hardware = {
+    keyboard.qmk.enable = true;
     logitech.wireless = {
       enable = true;
       enableGraphical = true;
