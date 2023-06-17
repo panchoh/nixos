@@ -75,6 +75,7 @@
       mkvtoolnix
       gimp
       inkscape
+      audacity
       zoom-us
 
       qmk
