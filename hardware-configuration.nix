@@ -24,6 +24,12 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
+  fileSystems."/srv/media" = {
+    device = "/dev/disk/by-label/media";
+    fsType = "btrfs";
+    options = ["nofail" "noexec" "nosuid" "nodev" "noatime" "compress=zstd:1"];
+  };
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
