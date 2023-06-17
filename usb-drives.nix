@@ -8,8 +8,27 @@
       name = "99-usb-drives.rules";
       destination = "/etc/udev/rules.d/${name}";
       text = ''
-        ACTION=="add", KERNEL=="sd?", SUBSYSTEMS=="usb", ENV{ID_FS_LABEL}!="", RUN+="${pkgs.coreutils}/bin/mkdir -p '/media/%E{ID_FS_LABEL}'"
-        ACTION=="remove", KERNEL=="sd?", SUBSYSTEMS=="usb", ENV{ID_FS_LABEL}!="", RUN+="${pkgs.coreutils}/bin/rmdir --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
+        # Create /media/<label> dir upon connection of USB drives
+        ACTION=="add",                       \
+          KERNEL=="sd[a-z]",                 \
+          SUBSYSTEM=="block",                \
+          ENV{ID_USB_DRIVER}=="usb-storage", \
+          ENV{ID_FS_LABEL}!="",              \
+          RUN+="${pkgs.coreutils}/bin/mkdir -p '/media/%E{ID_FS_LABEL}'"
+
+        # Remove /media/<label> dir upon disconnection of USB drives
+        ACTION=="remove",                    \
+          KERNEL=="sd[a-z]",                 \
+          SUBSYSTEM=="block",                \
+          ENV{ID_USB_DRIVER}=="usb-storage", \
+          ENV{ID_FS_LABEL}!="",              \
+          RUN+="${pkgs.coreutils}/bin/rmdir --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
+
+        # Allow direct access to usb block devices to the members of the storage group
+        KERNEL=="sd[a-z]*",                  \
+          SUBSYSTEM=="block",                \
+          ENV{ID_USB_DRIVER}=="usb-storage", \
+          GROUP="storage"
       '';
     })
   ];

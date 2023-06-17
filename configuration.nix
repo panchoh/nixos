@@ -199,6 +199,8 @@
   # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.mutableUsers = false;
+  users.groups."storage".members = [attrs.userName or "alice"];
   users.users.${attrs.userName or "alice"} = {
     isNormalUser = true;
     description = attrs.userDesc or "Alice Q. User";
