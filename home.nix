@@ -70,6 +70,7 @@
       wl-clipboard
       wev
 
+      graphviz
       vlc
       mkvtoolnix
       gimp
