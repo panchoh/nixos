@@ -129,6 +129,8 @@
       mangohud
       intel-gpu-tools
 
+      neovide
+
       # FIXME: Hack until Doom Emacs can handle alejandra directly
       (stdenv.mkDerivation {
         name = "alejandra-posing-as-nixfmt";
