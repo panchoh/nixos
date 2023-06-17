@@ -76,6 +76,7 @@
       gimp
       inkscape
       audacity
+      picard
       zoom-us
 
       qmk
