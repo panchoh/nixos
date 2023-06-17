@@ -70,6 +70,10 @@
       wev
 
       vlc
+      mkvtoolnix
+      gimp
+      inkscape
+      zoom-us
 
       alejandra
       (aspellWithDicts (ds: with ds; [en en-computers en-science]))
