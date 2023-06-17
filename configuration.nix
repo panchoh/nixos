@@ -233,7 +233,7 @@
       options = "--delete-older-than 7d";
     };
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes repl-flake
     '';
   };
 
