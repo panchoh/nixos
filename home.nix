@@ -370,6 +370,42 @@
     pinentryFlavor = "gtk2";
   };
 
+  programs.ssh = {
+    enable = true;
+    controlMaster = "no";
+    controlPersist = "yes";
+    serverAliveInterval = 60;
+    extraConfig = ''
+      AddKeysToAgent       yes
+      ExitOnForwardFailure yes
+      HostKeyAlgorithms    ssh-ed25519
+      IdentitiesOnly       yes
+      IdentityFile         ~/.ssh/keys.d/id_ed25519-%r@%h
+      SendEnv              LC_*
+      VisualHostKey        yes
+    '';
+    matchBlocks = {
+      "ubuntu* k8s-*" = lib.hm.dag.entryBefore ["*.vm"] {
+        user = "sysadmin";
+        identityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
+        extraOptions = {
+          GlobalKnownHostsFile = "/dev/null";
+          UserKnownHostsFile = "/dev/null";
+          StrictHostKeyChecking = "no";
+        };
+      };
+      "*.vm" = lib.hm.dag.entryAnywhere {
+        extraOptions = {
+          GlobalKnownHostsFile = "/dev/null";
+          UserKnownHostsFile = "/dev/null";
+          StrictHostKeyChecking = "no";
+        };
+        identityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
+        proxyCommand = "${pkgs.libressl}/bin/nc ( string replace .vm '' %h ) %p";
+      };
+    };
+  };
+
   programs.ripgrep = {
     enable = true;
     package = pkgs.ripgrep.override {withPCRE2 = true;};
