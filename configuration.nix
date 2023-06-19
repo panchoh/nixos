@@ -172,6 +172,12 @@
     ];
   };
 
+  services.locate = {
+    enable = true;
+    locate = pkgs.plocate;
+    localuser = null;
+  };
+
   services.fwupd.enable = true;
 
   services.printing = {
