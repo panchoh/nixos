@@ -293,6 +293,7 @@
   programs.mosh.enable = true;
   services.openssh = {
     enable = true;
+    startWhenNeeded = true;
     hostKeys = [
       {
         path = "/etc/ssh/ssh_host_ed25519_key";
