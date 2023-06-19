@@ -47,6 +47,7 @@
       smartmontools
       hdparm
       nvme-cli
+      sg3_utils
       lm_sensors
       ldns
       dogdns
@@ -70,6 +71,7 @@
       wl-clipboard
       wev
 
+      v4l-utils
       graphviz
       vlc
       mkvtoolnix
