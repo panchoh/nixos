@@ -76,6 +76,7 @@
       graphviz
       vlc
       mkvtoolnix
+      evince
       gimp
       inkscape
       audacity
