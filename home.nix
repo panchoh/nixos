@@ -55,6 +55,7 @@
       mtr-gui
       moreutils
       hwloc
+      b3sum
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
