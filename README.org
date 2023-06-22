@@ -72,6 +72,10 @@ Adhere to Semantic Commit Messages
 
 *** Tips
 - https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
+- https://www.reddit.com/r/NixOS/comments/14fveyk/where_do_flakes_install_files_binaries_to/
+#+begin_src nix
+  nix store gc
+#+end_src
 
 *** Nixpkgs
 - https://nixos.org/manual/nixos/stable/#sec-customising-packages
