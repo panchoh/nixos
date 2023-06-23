@@ -518,7 +518,7 @@
           kb_options = compose:sclk,grp:shifts_toggle
       }
 
-      device:PFU_Limited_HHKB-Classic" {
+      device:PFU_Limited_HHKB-Classic {
           kb_model = hhk
           kb_layout = us,us
           kb_variant = altgr-intl,dvorak-alt-intl
