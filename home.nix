@@ -510,6 +510,14 @@
           sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
       }
 
+      device:keychron-keychron-q10 {
+          kb_model = pc105
+          kb_layout = us,us
+          kb_variant = altgr-intl,dvorak-alt-intl
+          #kb_options = compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock
+          kb_options = compose:sclk,grp:shifts_toggle
+      }
+
       device:keychron-keychron-q8 {
           kb_model = pc105
           kb_layout = us,us
