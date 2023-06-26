@@ -146,6 +146,8 @@
     };
   };
 
+  services.physlock.enable = true;
+
   services.xserver = {
     xkbModel = "pc105";
     layout = "us,us";
