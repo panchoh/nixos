@@ -424,6 +424,13 @@
     enable = true;
     defaultEditor = true;
     startWithUserSession = "graphical";
+    client = {
+      enable = true;
+      arguments = [
+        "--reuse-frame"
+        "--alternate-editor=nvim"
+      ];
+    };
   };
 
   programs.texlive.enable = true;
