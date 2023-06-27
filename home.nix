@@ -723,7 +723,8 @@
       bindm = SUPER, mouse:273, resizewindow
 
       # Start fuzzel opens fuzzel on first press, closes it on second
-      bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
+      # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
+      bind = SUPER, D, exec, fuzzel
 
       # Handle notifications
       bind = SUPER, N, exec, makoctl dismiss
