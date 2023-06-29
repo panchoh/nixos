@@ -71,6 +71,7 @@
       slurp
       wl-clipboard
       wev
+      xkeyboard_config
 
       v4l-utils
       graphviz
