@@ -496,19 +496,12 @@
     enable = true;
     recommendedEnvironment = true;
     extraConfig = ''
-      monitor=,preferred,auto,auto
-      monitor=DP-1, 3840x1600@60, 0x0, 1, bitdepth, 10
+      monitor=, preferred, auto, auto, bitdepth, 10
       exec-once = ${pkgs.foot}/bin/foot
       exec-once = swayidle -w timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
       env = XCURSOR_SIZE,24
 
       input {
-          kb_layout = us
-          kb_variant =
-          kb_model =
-          kb_options =
-          kb_rules =
-
           follow_mouse = 1
 
           touchpad {
@@ -522,24 +515,24 @@
           kb_model = pc105
           kb_layout = us,us
           kb_variant = altgr-intl,dvorak-alt-intl
-          #kb_options = compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock
-          kb_options = compose:sclk,grp:shifts_toggle
+          kb_options = lv3:ralt_switch_multikey,grp:caps_toggle
+          # Shift-Alt: compose
+          # Caps: group switch
+          # Shift-Caps: Ye'Olde Caps
       }
 
       device:keychron-keychron-q8 {
           kb_model = pc105
           kb_layout = us,us
           kb_variant = altgr-intl,dvorak-alt-intl
-          #kb_options = compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock
-          kb_options = compose:sclk,grp:shifts_toggle
+          kb_options = lv3:ralt_switch_multikey,grp:caps_toggle
       }
 
       device:PFU_Limited_HHKB-Classic {
           kb_model = hhk
           kb_layout = us,us
           kb_variant = altgr-intl,dvorak-alt-intl
-          #kb_options = compose:sclk,grp:caps_toggle,grp_led:caps,shift:both_capslock
-          kb_options compose:sclk,grp:shifts_toggle
+          kb_options = lv3:ralt_switch_multikey,grp:caps_toggle
       }
 
       general {
@@ -549,7 +542,7 @@
           col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
           col.inactive_border = rgba(595959aa)
 
-          layout = dwindle
+          # layout = dwindle
           layout = master
 
           cursor_inactive_timeout = 5
