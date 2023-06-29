@@ -515,7 +515,7 @@
           kb_model = pc105
           kb_layout = us,us
           kb_variant = altgr-intl,dvorak-alt-intl
-          kb_options = lv3:ralt_switch_multikey,grp:caps_toggle
+          kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
           # Shift-Alt: compose
           # Caps: group switch
           # Shift-Caps: Ye'Olde Caps
@@ -608,7 +608,9 @@
       bind = SUPER, X, exec, ${config.programs.emacs.finalPackage}/bin/emacsclient --no-wait --reuse-frame --alternate-editor="${pkgs.foot}/bin/foot -e nvim"
       bind = SUPER SHIFT, Slash, exec, google-chrome-stable
       bind = SUPER SHIFT, Q, killactive,
-      bind = SUPER SHIFT, E, exit,
+      bind = , Terminate_Server, exit,
+      bind = , terminate_server, exit,
+      # bind = CONTROL ALT, BackSpace, exit,
       bind = SUPER SHIFT, SPACE, togglefloating,
       bind = SUPER, SPACE, focusurgentorlast,
       bind = SUPER, P, pseudo, # dwindle
