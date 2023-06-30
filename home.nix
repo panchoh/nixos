@@ -232,8 +232,20 @@
     };
   };
   programs.starship.enable = true;
-  programs.exa = {
+  programs.lsd = {
     enable = true;
+    enableAliases = true;
+    settings = {
+      date = "relative";
+      header = true;
+      ignore-globs = [
+        ".git"
+        ".hg"
+      ];
+    };
+  };
+  programs.exa = {
+    enable = false;
     enableAliases = true;
     extraOptions = [
       "--group-directories-first"
