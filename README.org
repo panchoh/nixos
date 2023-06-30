@@ -93,6 +93,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/NotAShelf/nyx/tree/system-module
 - [ ] https://gitea.krutonium.ca/Krutonium/NixOS/src/branch/master/flake.nix
 - [ ] https://github.com/kloenk/nix
 - [ ] https://github.com/dlip/nixconfig-starter/blob/main/flake.nix
