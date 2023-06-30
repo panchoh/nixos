@@ -229,6 +229,8 @@
     ];
   };
 
+  programs.hyprland.enable = true;
+
   services.greetd = {
     enable = true;
     settings = rec {
