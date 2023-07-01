@@ -8,45 +8,57 @@
 
 3. Boot your system with it
 
-4. Wipe the drive clean
+4. Clean the boot entries
+   #+begin_src shell
+   for i in {0..15}; do sudo efibootmgr -B -b 000$(printf "%X" $i); done
+   #+end_src
+
+5. Wipe the drive clean
    #+begin_src shell
    sudo blkdiscard -f /dev/nvme0n1
    #+end_src
 
-5. Clone this flake
+6. Clone this flake
    #+begin_src shell
    git clone https://github.com/panchoh/nixos.git
    #+end_src
 
-6. Manage filesystems with Disko
+7. Manage filesystems with Disko
    #+begin_src shell
    cd nixos
    sudo bin/activate-disko
    #+end_src
 
-7. Bootstrap NixOS
+8. Bootstrap NixOS
 
    *CAVEAT EMPTOR*: it takes a few minutes.
    #+begin_src shell
    sudo nixos-install --verbose --no-root-password --no-channel-copy --flake github:panchoh/nixos#krypton
    #+end_src
 
-8. Reboot
+9. Move flake to target system
+   #+begin_src shell
+   mkdir -p /mnt/home/pancho/sandbox/panchoh
+   mv -iv ~/nixos /mnt/home/pancho/sandbox/panchoh
+   cd /mnt/etc/nixos && ln -s /home/pancho/sandbox/panchoh/nixos/flake.nix
+   #+end_src
+
+10. Reboot
    #+begin_src shell
    reboot
    #+end_src
 
-9. Change the password
+11. Change the password
    #+begin_src shell
    passwd
    #+end_src
 
-10. Drop the channel
+12. Drop the channel
     #+begin_src shell
     doas nix-channel --remove nixos
     #+end_src
 
-11. Finish setting up
+13. Finish setting up
 
     Home Manager is not activated by ~nixos-install~ for some reason.
     #+begin_src shell
@@ -54,12 +66,12 @@
     doas nixos-rebuild switch --verbose
     #+end_src
 
-12. Reboot
+14. Reboot
     #+begin_src shell
     reboot
     #+end_src
 
-13. Enjoy!
+15. Enjoy!
 
 ** Commit Style
 Adhere to Semantic Commit Messages
