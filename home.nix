@@ -38,6 +38,7 @@
     };
 
     packages = with pkgs; [
+      efibootmgr
       psmisc
       sysstat
       pciutils
