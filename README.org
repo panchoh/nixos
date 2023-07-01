@@ -79,6 +79,9 @@ Adhere to Semantic Commit Messages
 - https://www.conventionalcommits.org/en/v1.0.0/
 
 ** Useful Pointers
+*** Overview (mindmap)
+- https://coggle.it/diagram/Y9k9VVmUw-1okyFh/t/nix
+
 *** Flakes
 - https://thiscute.world/en/posts/nixos-and-flake-basics/
 
