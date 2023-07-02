@@ -40,6 +40,7 @@
     packages = with pkgs; [
       efibootmgr
       gptfdisk
+      parted
       psmisc
       sysstat
       pciutils
