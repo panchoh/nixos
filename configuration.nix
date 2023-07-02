@@ -316,14 +316,25 @@
     llmnr = "false";
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedTCPPorts = [51413];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    51413
+  ];
 
   services.fail2ban.enable = true;
+
+  services.caddy = {
+    # acmeCA = "https://acme-v02.api.letsencrypt.org/directory"; # while in development
+    enable = false;
+    email = "pancho@pancho.name";
+    logFormat = nixpkgs.lib.mkForce "level INFO";
+    virtualHosts."canalplus.pancho.name".extraConfig = ''
+      log
+      root * /srv/http
+      file_server /FF2E6E41-1FE8-4515-82D1-56D5C49EB2B5/* browse
+    '';
+  };
 
   security.wrappers.intel_gpu_top = {
     source = "${lib.getBin pkgs.intel-gpu-tools}/bin/intel_gpu_top";
