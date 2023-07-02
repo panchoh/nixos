@@ -109,6 +109,7 @@
       python311Packages.grip
       meld
 
+      bc
       jq
       shfmt
       shellcheck
