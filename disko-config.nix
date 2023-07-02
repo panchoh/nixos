@@ -21,6 +21,7 @@ in {
           content = {
             type = "filesystem";
             format = "vfat";
+            extraArgs = ["-F32"];
             mountpoint = "/boot";
           };
         }
