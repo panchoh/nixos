@@ -9,35 +9,32 @@ in {
     type = "disk";
     device = "/dev/nvme0n1";
     content = {
-      type = "table";
-      format = "gpt";
-      partitions = [
-        {
-          name = "ESP";
-          start = "1MiB";
-          end = "512MiB";
-          fs-type = "fat32";
-          bootable = true;
+      type = "gpt";
+      partitions = {
+        ESP = {
+          priority = 1;
+          label = "ESP";
+          type = "ef00";
+          size = "512M";
           content = {
             type = "filesystem";
             format = "vfat";
             extraArgs = ["-F32"];
             mountpoint = "/boot";
           };
-        }
-        {
-          name = "swap";
-          start = "512MiB";
-          end = "4GiB";
+        };
+        swap = {
+          label = "swap";
+          type = "8200";
+          size = "4G";
           content = {
             type = "swap";
             # randomEncryption = true;
           };
-        }
-        {
-          name = "root";
-          start = "4GiB";
-          end = "100%";
+        };
+        root = {
+          label = "root";
+          size = "100%";
           content = {
             type = "btrfs";
             extraArgs = ["-f"]; # Override existing partition
@@ -68,8 +65,8 @@ in {
               };
             };
           };
-        }
-      ];
+        };
+      };
     };
   };
 }
