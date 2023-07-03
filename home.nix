@@ -392,6 +392,8 @@
     pinentryFlavor = "gtk2";
   };
 
+  services.ssh-agent.enable = true;
+
   programs.ssh = {
     enable = true;
     controlMaster = "no";
