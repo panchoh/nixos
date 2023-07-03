@@ -369,7 +369,10 @@
 
   programs.chromium = {
     enable = true;
-    commandLineArgs = ["--incognito"];
+    commandLineArgs = [
+      "--incognito"
+      "--ozone-platform=wayland"
+    ];
   };
 
   programs.direnv = {
