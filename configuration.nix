@@ -335,6 +335,8 @@
     '';
   };
 
+  services.pcscd.enable = true;
+
   security.wrappers.intel_gpu_top = {
     source = "${lib.getBin pkgs.intel-gpu-tools}/bin/intel_gpu_top";
     owner = "root";
