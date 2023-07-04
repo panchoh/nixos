@@ -175,6 +175,7 @@
           mv -f $out/bin/fish $out/bin/gofish
         '';
       })
+      crawl
       sl
       neofetch
       hyperrogue
