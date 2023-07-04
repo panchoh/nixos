@@ -64,6 +64,7 @@
       (iosevka-bin.override {variant = "slab";})
       iosevka-bin
 
+      qastools
       pavucontrol
       playerctl
       helvum
