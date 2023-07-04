@@ -110,6 +110,7 @@
       python311Packages.grip
       meld
 
+      bvi
       bc
       jq
       shfmt
