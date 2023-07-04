@@ -93,6 +93,8 @@
       qmk_hid
       keymapviz
 
+      yubioath-flutter
+
       alejandra
       (aspellWithDicts (ds: with ds; [en en-computers en-science]))
       binutils
