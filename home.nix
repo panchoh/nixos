@@ -66,6 +66,7 @@
 
       pavucontrol
       playerctl
+      helvum
 
       fuzzel
       swaylock
