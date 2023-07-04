@@ -141,6 +141,7 @@
       mangohud
       intel-gpu-tools
 
+      lapce
       neovide
 
       # FIXME: Hack until Doom Emacs can handle alejandra directly
