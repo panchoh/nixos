@@ -232,7 +232,11 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      e = "emacsclient --no-wait --reuse-frame --alternate-editor=nvim";
+      e = "${
+        lib.getBin config.programs.emacs.finalPackage
+      }/bin/emacsclient --no-wait --reuse-frame --alternate-editor=${
+        lib.getBin pkgs.neovim
+      }/bin/nvim";
     };
   };
   programs.starship.enable = true;
@@ -442,9 +446,24 @@
     extraPackages = epkgs: [epkgs.vterm];
   };
 
+  home.sessionVariables = {
+    EDITOR = lib.getBin (
+      pkgs.writeShellScript "editor" ''
+        exec ${
+          lib.getBin config.programs.emacs.finalPackage
+        }/bin/emacsclient \
+          --reuse-frame   \
+          --alternate-editor=${
+          lib.getBin pkgs.neovim
+        }/bin/nvim        \
+        "''${@:---create-frame}"
+      ''
+    );
+  };
+
   services.emacs = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false;
     startWithUserSession = "graphical";
     client = {
       enable = true;
@@ -626,7 +645,7 @@
 
       bind = SUPER, Return, exec, ${pkgs.foot}/bin/foot
       bind = SUPER, Slash, exec, chromium
-      bind = SUPER, X, exec, ${config.programs.emacs.finalPackage}/bin/emacsclient --no-wait --reuse-frame --alternate-editor="${pkgs.foot}/bin/foot -e nvim"
+      bind = SUPER, X, exec, ${lib.getBin config.programs.emacs.finalPackage}/bin/emacsclient --no-wait --reuse-frame --alternate-editor='${lib.getBin pkgs.foot}/bin/foot -e ${lib.getBin pkgs.neovim}/bin/nvim'
       bind = SUPER SHIFT, Slash, exec, google-chrome-stable
       bind = SUPER SHIFT, Q, killactive,
       bind = , Terminate_Server, exit,
