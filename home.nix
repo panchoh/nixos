@@ -93,6 +93,7 @@
       qmk_hid
       keymapviz
 
+      yubico-piv-tool
       yubioath-flutter
 
       alejandra
