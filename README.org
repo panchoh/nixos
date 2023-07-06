@@ -88,6 +88,7 @@ Adhere to Semantic Commit Messages
 - https://nix.dev/tutorials/first-steps/nix-language
 
 *** Tips
+- https://pavluk.org/blog/2023/05/30/nix_packaging.html
 - https://discourse.nixos.org/t/tips-tricks-for-nixos-desktop/28488
 - https://www.reddit.com/r/NixOS/comments/14fveyk/where_do_flakes_install_files_binaries_to/
 #+begin_src nix
