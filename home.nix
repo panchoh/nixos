@@ -56,6 +56,7 @@
       dogdns
       nmap
       mtr-gui
+      speedtest-go
       moreutils
       hwloc
       b3sum
