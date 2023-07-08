@@ -141,6 +141,8 @@
       delve
       gdlv
 
+      ccls
+
       google-chrome
       telegram-desktop
       discord
