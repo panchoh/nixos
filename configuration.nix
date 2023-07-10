@@ -148,6 +148,8 @@
 
   services.physlock.enable = true;
 
+  services.dbus.implementation = "broker";
+
   services.xserver = {
     xkbModel = "pc105";
     layout = "us,us";
