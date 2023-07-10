@@ -60,6 +60,8 @@
       moreutils
       hwloc
       b3sum
+      unzip
+      zip
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
