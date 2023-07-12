@@ -275,6 +275,9 @@
     vimAlias = true;
     defaultEditor = true;
     configure = {
+      customRC = ''
+        set mouse=
+      '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [vim-nix];
       };
