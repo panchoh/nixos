@@ -62,6 +62,8 @@
       b3sum
       unzip
       zip
+      man-pages
+      man-pages-posix
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
