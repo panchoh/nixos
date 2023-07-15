@@ -142,7 +142,7 @@
       LC_NUMERIC = "en_US.UTF-8";
       LC_PAPER = "en_DK.UTF-8";
       LC_TELEPHONE = "en_DK.UTF-8";
-      LC_TIME = "en_DK.UTF-8";
+      LC_TIME = "en_DK.UTF-8"; # yes, that means ISO-8601 ;-)
     };
   };
 
