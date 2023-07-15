@@ -64,6 +64,7 @@
       zip
       man-pages
       man-pages-posix
+      ipcalc
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
