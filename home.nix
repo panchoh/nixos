@@ -198,6 +198,9 @@
     ];
   };
 
+  # Reload system services when changing configs
+  systemd.user.startServices = "sd-switch";
+
   programs.password-store = {
     enable = true;
     package = pkgs.gopass;
