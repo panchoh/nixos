@@ -154,6 +154,8 @@
       nheko
       tessen
 
+      virt-manager
+
       transmission-gtk
 
       mangohud
