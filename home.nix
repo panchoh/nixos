@@ -66,6 +66,9 @@
       man-pages-posix
       ipcalc
 
+      pam_u2f
+      pamtester
+
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
       iosevka-bin

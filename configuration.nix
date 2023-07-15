@@ -358,5 +358,12 @@
   security.sudo.enable = false;
   security.sudo.execWheelOnly = true;
 
+  # security.pam.u2f.enable = true;
+  security.pam.services = {
+    login.u2fAuth = true;
+    doas.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+
   services.fstrim.enable = true;
 }
