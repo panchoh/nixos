@@ -111,6 +111,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/MattSturgeon/nix_config
 - [ ] https://github.com/angristan/nixos-config/blob/master/configuration.nix
 - [ ] https://gist.github.com/jhillyerd/d2a2f4ee99dfefe7f1a672a643e6edc3
 - [ ] https://github.com/NotAShelf/nyx/tree/system-module
