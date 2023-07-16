@@ -382,6 +382,10 @@
         keep-open = true;
         volume-max = "150";
       };
+      "extension.mp4" = {
+        keep-open = true;
+        volume-max = "150";
+      };
       "extension.gif" = {
         osc = "no";
         loop-file = true;
