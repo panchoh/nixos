@@ -69,6 +69,11 @@
       pam_u2f
       pamtester
 
+      opensc
+      pcsctools
+      ccid
+      scmccid
+
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
       iosevka-bin
