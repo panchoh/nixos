@@ -111,6 +111,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/woojiq/nixos-config/
 - [ ] https://github.com/SomeGuyNamedMy/users/blob/master/flake.nix
 - [ ] https://github.com/dagss/nixpkgs/blob/master/pkgs/tools/security/opensc-dnie-wrapper/default.nix
 - [ ] https://git.bicompact.space/hazel/etc/commit/c4e01962f7175158060d5765c14bf404590e2a00
