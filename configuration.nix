@@ -10,6 +10,8 @@
   disko,
   stylix,
   hyprland,
+  hyprland-contrib,
+  hyprpicker,
   home-manager,
   attrs ? null,
   ...
@@ -31,7 +33,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
-          inherit stylix hyprland attrs;
+          inherit stylix hyprland hyprland-contrib hyprpicker attrs;
         };
         users.${attrs.userName or "alice"} = import ./home.nix;
       };

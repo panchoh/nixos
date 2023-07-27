@@ -4,6 +4,7 @@
   lib,
   stylix,
   hyprland,
+  hyprland-contrib,
   attrs ? null,
   ...
 } @ inputs: {
@@ -102,6 +103,9 @@
       audacity
       picard
       zoom-us
+
+      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+      inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
 
       qmk
       qmk_hid
@@ -753,6 +757,16 @@
       # Handle notifications
       bind = SUPER,       N, exec, ${lib.getBin pkgs.mako}/bin/makoctl dismiss
       bind = SUPER SHIFT, N, exec, ${lib.getBin pkgs.mako}/bin/makoctl dismiss -a
+
+      # Screenshots
+      # bind = SUPER,       P, exec, grimblast save active
+      # bind = SUPER SHIFT, P, exec, grimblast save area
+      # bind = SUPER ALT,   P, exec, grimblast save output
+      # bind = SUPER CTRL,  P, exec, grimblast save screen
+      bind =      , Print, exec, grimblast save active
+      bind = SHIFT, Print, exec, grimblast save area
+      bind = ALT,   Print, exec, grimblast save output
+      bind = CTRL,  Print, exec, grimblast save screen
 
       # Multimedia
       bindl =      , XF86AudioMute,        exec, wpctl set-mute        @DEFAULT_AUDIO_SINK@   toggle
