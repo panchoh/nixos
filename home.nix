@@ -249,15 +249,12 @@
     };
   };
 
-  stylix.targets.foot.enable = false;
   programs.foot = {
     enable = true;
     settings = {
       main = {
-        include = "${pkgs.foot.themes}/share/foot/themes/dracula";
-        font = "IosevkaTerm NFM Light:size=16";
-        font-bold = "IosevkaTerm NFM:size=16";
-        dpi-aware = false;
+        font = lib.mkForce "IosevkaTerm NFM Light:size=16";
+        font-bold = lib.mkForce "IosevkaTerm NFM:size=16";
       };
       mouse = {
         hide-when-typing = true;
