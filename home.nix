@@ -169,6 +169,7 @@
       virt-manager
 
       transmission-gtk
+      wormhole-william
 
       mangohud
       intel-gpu-tools
