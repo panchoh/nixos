@@ -84,7 +84,6 @@
       playerctl
       helvum
 
-      fuzzel
       swaylock
       swayidle
       grim
@@ -229,23 +228,16 @@
   xdg = {
     enable = true;
     userDirs.download = "${config.home.homeDirectory}/incoming";
-    configFile."fuzzel/fuzzel.ini" = {
-      enable = true;
-      text = ''
-        [main]
-        font = Iosevka:size=16:weight=ExtraLight
-        terminal = ${pkgs.foot}/bin/foot -e
+  };
 
-        # https://raw.githubusercontent.com/dracula/fuzzel/main/fuzzel.ini
-        [colors]
-        background=282a36dd
-        text=f8f8f2ff
-        match=8be9fdff
-        selection-match=8be9fdff
-        selection=44475add
-        selection-text=f8f8f2ff
-        border=bd93f9ff
-      '';
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        font = lib.mkForce "Iosevka:size=20:weight=ExtraLight";
+        layer = "overlay";
+        terminal = "${pkgs.foot}/bin/foot -e";
+      };
     };
   };
 
