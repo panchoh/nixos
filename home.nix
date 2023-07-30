@@ -101,6 +101,7 @@
       inkscape
       audacity
       picard
+      youtube-tui
       zoom-us
 
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
