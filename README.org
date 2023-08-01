@@ -97,6 +97,7 @@ Adhere to Semantic Commit Messages
 
 *** Nixpkgs
 - https://nixos.org/manual/nixos/stable/#sec-customising-packages
+- https://nixos.wiki/wiki/Nixpkgs/Create_and_debug_packages
 
 *** Nix Registry
 - https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
