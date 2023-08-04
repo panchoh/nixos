@@ -111,6 +111,7 @@
       qmk_hid
       keymapviz
 
+      pwgen
       yubico-piv-tool
       yubikey-manager
       yubikey-manager-qt
