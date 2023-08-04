@@ -126,6 +126,7 @@
       editorconfig-core-c
       file
       fd
+      fdupes
       gcc
       gitg
       tig
