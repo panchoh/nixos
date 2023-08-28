@@ -206,8 +206,8 @@
   # handled by stylix
   # https://github.com/danth/stylix/blob/master/stylix/nixos/fonts.nix
   # fonts = {
-  #   # enableDefaultFonts = true;
-  #   fonts = with pkgs; [iosevka-bin openmoji-color];
+  #   # enableDefaultPackages = true;
+  #   packages = with pkgs; [iosevka-bin openmoji-color];
   #   fontconfig = {
   #     defaultFonts = {
   #       serif = ["Iosevka Etoile"];
