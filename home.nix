@@ -306,6 +306,18 @@
     settings = {
       date = "relative";
       header = true;
+      blocks = [
+        "permission"
+        "links"
+        # "inode"
+        "user"
+        "group"
+        "context"
+        "size"
+        "date"
+        "name"
+        # "git"
+      ];
       ignore-globs = [
         ".git"
         ".hg"
