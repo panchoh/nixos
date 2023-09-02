@@ -385,6 +385,7 @@
     enable = true;
     scripts = [pkgs.mpvScripts.mpris];
     bindings = {
+      ENTER = "playlist-next force";
       WHEEL_UP = "seek 10";
       WHEEL_DOWN = "seek -10";
       "Alt+0" = "set window-scale 0.5";
