@@ -11,7 +11,8 @@
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
-    hyprland.url = "github:hyprwm/Hyprland?rev=ae69b9a2fa559d869f4e9c61ddf24e152d97df2f";
+    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland?rev=ae69b9a2fa559d869f4e9c61ddf24e152d97df2f";
     # https://wiki.hyprland.org/Nix/Cachix/
     #hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland-contrib.url = "github:hyprwm/contrib";
