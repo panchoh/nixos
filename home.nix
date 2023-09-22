@@ -170,6 +170,8 @@
 
       virt-manager
 
+      popcorntime
+
       transmission-gtk
       wormhole-william
 
