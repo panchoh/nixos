@@ -10,7 +10,6 @@
 } @ inputs: {
   imports = [
     stylix.homeManagerModules.stylix
-    hyprland.homeManagerModules.default
   ];
 
   home = {
@@ -613,7 +612,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    recommendedEnvironment = true;
     extraConfig = ''
       monitor=, preferred, auto, auto, bitdepth, 10
       exec-once = ${lib.getBin pkgs.foot}/bin/foot
