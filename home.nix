@@ -122,6 +122,7 @@
       alejandra
       (aspellWithDicts (ds: with ds; [en en-computers en-science]))
       binutils
+      dua
       duf
       editorconfig-core-c
       file
