@@ -323,7 +323,7 @@
       ];
     };
   };
-  programs.exa = {
+  programs.eza = {
     enable = false;
     enableAliases = true;
     extraOptions = [
