@@ -340,6 +340,11 @@
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
 
+  programs.yazi = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   programs.git = {
     enable = true;
     userName = attrs.userDesc or "Alice Q. User";
