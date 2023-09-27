@@ -5,11 +5,13 @@
   stylix,
   hyprland,
   hyprland-contrib,
+  autofirma-nix,
   attrs ? null,
   ...
 } @ inputs: {
   imports = [
     stylix.homeManagerModules.stylix
+    autofirma-nix.homeManagerModules.default
   ];
 
   home = {
@@ -453,7 +455,30 @@
     plugins = [pkgs.obs-studio-plugins.wlrobs];
   };
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox.override (args: {
+      extraPolicies = {
+        SecurityDevices = {
+          "OpenSC PKCS11" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+        };
+      };
+    });
+    profiles.myprofile = {
+      id = 0;
+    };
+  };
+
+  programs.autofirma = {
+    enable = true;
+    firefoxIntegration = {
+      profiles = {
+        myprofile = {
+          enable = true;
+        };
+      };
+    };
+  };
 
   programs.chromium = {
     enable = true;

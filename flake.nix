@@ -19,6 +19,8 @@
     hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
     hyprpicker.url = "github:hyprwm/hyprpicker";
     hyprpicker.inputs.nixpkgs.follows = "nixpkgs";
+    autofirma-nix.url = "github:nilp0inter/autofirma-nix";
+    autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -31,6 +33,7 @@
     hyprland,
     hyprland-contrib,
     hyprpicker,
+    autofirma-nix,
   } @ inputs: let
     makeBox = {
       hostName,
@@ -77,7 +80,7 @@
           system = box.system;
           specialArgs = {
             attrs = box;
-            inherit nixpkgs nixos-hardware disko stylix hyprland hyprland-contrib hyprpicker home-manager;
+            inherit nixpkgs nixos-hardware disko stylix hyprland hyprland-contrib hyprpicker autofirma-nix home-manager;
           };
           modules = [./configuration.nix];
         };

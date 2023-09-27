@@ -12,6 +12,7 @@
   hyprland,
   hyprland-contrib,
   hyprpicker,
+  autofirma-nix,
   home-manager,
   attrs ? null,
   ...
@@ -33,7 +34,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
-          inherit stylix hyprland hyprland-contrib hyprpicker attrs;
+          inherit stylix hyprland hyprland-contrib hyprpicker autofirma-nix attrs;
         };
         users.${attrs.userName or "alice"} = import ./home.nix;
       };
