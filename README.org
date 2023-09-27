@@ -112,6 +112,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
 - [ ] https://github.com/spikespaz/dotfiles/tree/master hyprland flake and more!
 - [ ] https://github.com/adtya/nixos-config virt-manager goodness and more!
 - [ ] https://github.com/woojiq/nixos-config/
