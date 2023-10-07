@@ -76,6 +76,8 @@
       ccid
       scmccid
 
+      openssl
+
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
       iosevka-bin
