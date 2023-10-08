@@ -459,27 +459,36 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox.override (args: {
+    package = pkgs.firefox.override {
+      cfg.smartcardSupport = true;
       extraPolicies = {
-        SecurityDevices = {
-          "OpenSC PKCS11" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+        # https://mozilla.github.io/policy-templates
+        DNSOverHTTPS.Enabled = 0;
+        DontCheckDefaultBrowser = true;
+        Homepage.StartPage = "none";
+        NewTabPage = false;
+        OfferToSaveLogins = false;
+        OfferToSaveLoginsDefault = false;
+        OverrideFirstRunPage = "";
+        Preferences = {
+          "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
+          "browser.sessionstore.resume_from_crash" = false;
+          "dom.security.https_only_mode" = true;
+          "dom.security.https_only_mode_ever_enabled" = true;
         };
       };
-    });
-    profiles.myprofile = {
-      id = 0;
     };
+    profiles.default.id = 0;
   };
 
   programs.autofirma = {
     enable = true;
-    firefoxIntegration = {
-      profiles = {
-        myprofile = {
-          enable = true;
-        };
-      };
-    };
+    firefoxIntegration.profiles.default.enable = true;
+  };
+
+  programs.configuradorfnmt = {
+    enable = true;
+    firefoxIntegration.profiles.default.enable = true;
   };
 
   programs.chromium = {
