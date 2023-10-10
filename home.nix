@@ -741,9 +741,11 @@
       }
 
       # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
+      # https://github.com/hyprwm/Hyprland/issues/3073
       misc {
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
+          focus_on_activate = true;
       }
 
       # https://github.com/hyprwm/Hyprland/pull/352/files
