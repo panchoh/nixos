@@ -312,3 +312,13 @@ grim -g "$(slurp)" - | tesseract - - | wl-copy -
 - https://wiki.archlinux.org/title/KMSCON
 - https://www.mankier.com/1/kmscon
 - https://github.com/Aetf/kmscon
+
+*** lib.getExe
+trace: warning: getExe: Package "bat-0.23.0" does not have the =meta.mainProgram=
+attribute. We'll assume that the main program has the same name for now, but
+this behavior is deprecated, because it leads to surprising errors when the
+assumption does not hold. If the package has a main program, please set
+=meta.mainProgram= in its definition to make this warning go away.
+Otherwise, if the package does not have a main program,
+or if you don't control its definition, specify the full path to the program,
+such as ~"${lib.getBin foo}/bin/bar"~.
