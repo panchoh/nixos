@@ -151,22 +151,6 @@
         "type": "github"
       }
     },
-    "base16-xresources": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1696726575,
-        "narHash": "sha256-btDlG5hF+CRM4NWJ7dRwQJYy0GTAYsg9B56kJ9uUeUk=",
-        "owner": "tinted-theming",
-        "repo": "base16-xresources",
-        "rev": "98d029dbb19fbc7e8c3e3b3fba0d4f946b5da760",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-xresources",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -266,11 +250,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1697127995,
-        "narHash": "sha256-da9pd4ZTs4JzSgjj0sriX3e97vsZ9LcP3ciZq4An2EY=",
+        "lastModified": 1697151905,
+        "narHash": "sha256-sfuiRn7D5D2NzDkXXN/DUUcs2d1ddlf3VmzDBzDO2Tk=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "e4bcd2e2da3136fb55886c4f02dd4a01099e687b",
+        "rev": "3a61350286de842c7f1566c38e2b42821080ddf4",
         "type": "github"
       },
       "original": {
@@ -432,7 +416,6 @@
         "base16-kitty": "base16-kitty",
         "base16-tmux": "base16-tmux",
         "base16-vim": "base16-vim",
-        "base16-xresources": "base16-xresources",
         "flake-compat": "flake-compat",
         "home-manager": [
           "home-manager"
@@ -442,11 +425,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697035228,
-        "narHash": "sha256-SrC/o+2gfxAt3q5PTXMrsQNSnMMpuelFftM0r5qo74U=",
+        "lastModified": 1697137415,
+        "narHash": "sha256-4UYrd87l3sWgGB0xRS7RLwKm+kRgUaVZ4H0WX6eC+eA=",
         "owner": "airradda",
         "repo": "stylix",
-        "rev": "d578529f49021f31280429549f01ca0f68a64efc",
+        "rev": "23b37d19dbbe003011fb1c23cb35a18213609938",
         "type": "github"
       },
       "original": {
