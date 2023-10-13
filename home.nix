@@ -132,6 +132,8 @@
       file
       fd
       fdupes
+      rdfind
+      rmlint
       gcc
       gitg
       tig
