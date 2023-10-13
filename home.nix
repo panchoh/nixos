@@ -145,6 +145,7 @@
       emacs-all-the-icons-fonts
       python311Packages.grip
       meld
+      nil
 
       bvi
       bc
