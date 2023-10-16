@@ -178,6 +178,7 @@
 
       virt-manager
       cdrkit
+      cloud-utils
 
       popcorntime
 
