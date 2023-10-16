@@ -135,6 +135,7 @@
       rdfind
       rmlint
       gcc
+      gnumake
       gitg
       tig
       gource
