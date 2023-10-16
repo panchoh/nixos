@@ -176,6 +176,7 @@
       tessen
 
       virt-manager
+      cdrkit
 
       popcorntime
 
