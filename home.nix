@@ -397,7 +397,14 @@
 
   services.mako.enable = true;
 
-  programs.imv.enable = true;
+  programs.imv = {
+    enable = true;
+    settings = {
+      binds."<Shift+Delete>" = ''
+        exec rm "$imv_current_file"; close
+      '';
+    };
+  };
 
   programs.mpv = {
     enable = true;
