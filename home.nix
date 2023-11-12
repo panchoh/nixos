@@ -397,6 +397,8 @@
 
   services.mako.enable = true;
 
+  programs.k9s.enable = true;
+
   programs.imv = {
     enable = true;
     settings = {
