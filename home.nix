@@ -108,7 +108,8 @@
       zoom-us
 
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-      inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+      # FIXME: broken, GLES3/gl32.h: No such file or directory
+      # inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
 
       qmk
       qmk_hid
