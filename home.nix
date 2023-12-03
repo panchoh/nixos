@@ -529,11 +529,9 @@
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1;
-    enableSshSupport = false;
+    enableSshSupport = true;
     pinentryFlavor = "gtk2";
   };
-
-  services.ssh-agent.enable = true;
 
   programs.ssh = {
     enable = true;
