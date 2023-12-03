@@ -478,24 +478,24 @@
     enable = true;
     package = pkgs.firefox.override {
       cfg.smartcardSupport = true;
-      extraPolicies = {
-        # https://mozilla.github.io/policy-templates
-        DNSOverHTTPS.Enabled = 0;
-        DontCheckDefaultBrowser = true;
-        Homepage.StartPage = "none";
-        NewTabPage = false;
-        OfferToSaveLogins = false;
-        OfferToSaveLoginsDefault = false;
-        OverrideFirstRunPage = "";
-        Preferences = {
-          "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
-          "browser.sessionstore.resume_from_crash" = false;
-          "dom.security.https_only_mode" = true;
-          "dom.security.https_only_mode_ever_enabled" = true;
-        };
-      };
     };
     profiles.default.id = 0;
+    policies = {
+      # https://mozilla.github.io/policy-templates
+      DNSOverHTTPS.Enabled = 0;
+      DontCheckDefaultBrowser = true;
+      Homepage.StartPage = "none";
+      NewTabPage = false;
+      OfferToSaveLogins = false;
+      OfferToSaveLoginsDefault = false;
+      OverrideFirstRunPage = "";
+      Preferences = {
+        "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
+        "browser.sessionstore.resume_from_crash" = false;
+        "dom.security.https_only_mode" = true;
+        "dom.security.https_only_mode_ever_enabled" = true;
+      };
+    };
   };
 
   programs.autofirma = {
