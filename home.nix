@@ -544,7 +544,12 @@
       ExitOnForwardFailure yes
       HostKeyAlgorithms    ssh-ed25519
       IdentitiesOnly       yes
-      IdentityFile         ~/.ssh/keys.d/id_ed25519-%r@%h
+      # IdentityFile         ~/.ssh/keys.d/id_ed25519-%r@%h
+      IdentityFile         ~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h
+      IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h
+      IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h
+      IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h
+      IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h
       SendEnv              LC_*
       VisualHostKey        yes
     '';
