@@ -3,8 +3,6 @@
   pkgs,
   lib,
   stylix,
-  hyprland,
-  hyprland-contrib,
   autofirma-nix,
   attrs ? null,
   ...
@@ -107,9 +105,8 @@
       youtube-tui
       zoom-us
 
-      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-      # FIXME: broken, GLES3/gl32.h: No such file or directory
-      # inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+      grimblast
+      hyprpicker
 
       qmk
       qmk_hid

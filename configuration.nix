@@ -9,9 +9,6 @@
   nixos-hardware,
   disko,
   stylix,
-  hyprland,
-  hyprland-contrib,
-  hyprpicker,
   autofirma-nix,
   home-manager,
   attrs ? null,
@@ -26,7 +23,6 @@
     disko.nixosModules.default
     ./disko-config.nix
     stylix.nixosModules.stylix
-    hyprland.nixosModules.default
     home-manager.nixosModules.home-manager
     {
       home-manager = {
@@ -34,7 +30,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
-          inherit stylix hyprland hyprland-contrib hyprpicker autofirma-nix attrs;
+          inherit stylix autofirma-nix attrs;
         };
         users.${attrs.userName or "alice"} = import ./home.nix;
       };
@@ -240,7 +236,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${lib.getBin hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/Hyprland &>~/.Wsession.errors";
+        command = "${lib.getBin pkgs.hyprland}/bin/Hyprland &>~/.Wsession.errors";
         user = attrs.userName or "alice";
       };
       default_session = initial_session;
@@ -251,12 +247,6 @@
     registry.nixpkgs.flake = nixpkgs;
     settings = {
       auto-optimise-store = true;
-      substituters = [
-        "https://hyprland.cachix.org"
-      ];
-      trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      ];
     };
     gc = {
       automatic = true;

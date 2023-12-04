@@ -11,14 +11,6 @@
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
-    hyprland.url = "github:hyprwm/Hyprland";
-    # hyprland.url = "github:hyprwm/Hyprland?rev=ae69b9a2fa559d869f4e9c61ddf24e152d97df2f";
-    # https://wiki.hyprland.org/Nix/Cachix/
-    #hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland-contrib.url = "github:hyprwm/contrib";
-    hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-    hyprpicker.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.url = "github:nilp0inter/autofirma-nix";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -30,9 +22,6 @@
     disko,
     home-manager,
     stylix,
-    hyprland,
-    hyprland-contrib,
-    hyprpicker,
     autofirma-nix,
   } @ inputs: let
     makeBox = {
@@ -80,7 +69,7 @@
           system = box.system;
           specialArgs = {
             attrs = box;
-            inherit nixpkgs nixos-hardware disko stylix hyprland hyprland-contrib hyprpicker autofirma-nix home-manager;
+            inherit nixpkgs nixos-hardware disko stylix autofirma-nix home-manager;
           };
           modules = [./configuration.nix];
         };
