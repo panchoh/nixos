@@ -23,7 +23,7 @@
     disko.nixosModules.default
     ./disko-config.nix
     stylix.nixosModules.stylix
-    home-manager.nixosModules.home-manager
+    home-manager.nixosModules.default
     {
       home-manager = {
         verbose = true;
