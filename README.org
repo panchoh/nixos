@@ -112,6 +112,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/librephoenix/nixos-config including Doom Emacs config
 - [ ] https://github.com/drduh/YubiKey-Guide#nixos password generation
 - [ ] https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
 - [ ] https://github.com/spikespaz/dotfiles/tree/master hyprland flake and more!
