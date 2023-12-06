@@ -12,218 +12,216 @@
     autofirma-nix.homeManagerModules.default
   ];
 
-  home = {
-    stateVersion = "23.11";
-    username = attrs.userName or "alice";
-    homeDirectory = "/home/${attrs.userName or "alice"}";
-    sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/.local/bin.go"
-      "${config.xdg.configHome}/emacs/bin"
-    ];
-    # sessionVariables = {
-    #   foo = "bar";
-    # };
+  home.stateVersion = "23.11";
+  home.username = attrs.userName or "alice";
+  home.homeDirectory = "/home/${attrs.userName or "alice"}";
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.local/bin.go"
+    "${config.xdg.configHome}/emacs/bin"
+  ];
+  # home.sessionVariables = {
+  #   foo = "bar";
+  # };
 
-    activation = {
-      DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
-          $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
-        fi
-        if [[ ! -d "${config.xdg.configHome}"/doom ]]; then
-          $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-          # PATH="${pkgs.git}/bin:$PATH" EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
-        fi
-      '';
-    };
-
-    packages = with pkgs; [
-      efibootmgr
-      gptfdisk
-      parted
-      psmisc
-      sysstat
-      pciutils
-      usbutils
-      usbtop
-      btop
-      smartmontools
-      hdparm
-      nvme-cli
-      sg3_utils
-      lm_sensors
-      ldns
-      dogdns
-      nmap
-      mtr-gui
-      speedtest-go
-      moreutils
-      hwloc
-      b3sum
-      unzip
-      zip
-      man-pages
-      man-pages-posix
-      ipcalc
-
-      pam_u2f
-      pamtester
-
-      opensc
-      pcsctools
-      ccid
-      scmccid
-
-      openssl
-
-      (nerdfonts.override {fonts = ["IosevkaTerm"];})
-      (iosevka-bin.override {variant = "slab";})
-      iosevka-bin
-
-      qastools
-      pavucontrol
-      playerctl
-      helvum
-
-      swaylock
-      swayidle
-      grim
-      slurp
-      wl-clipboard
-      wev
-      xkeyboard_config
-
-      v4l-utils
-      graphviz
-      vlc
-      mkvtoolnix
-      evince
-      gimp
-      inkscape
-      audacity
-      picard
-      youtube-tui
-      zoom-us
-
-      grimblast
-      hyprpicker
-
-      qmk
-      qmk_hid
-      keymapviz
-
-      pwgen
-      yubico-piv-tool
-      yubikey-manager
-      yubikey-manager-qt
-      yubikey-personalization
-      yubikey-personalization-gui
-      yubikey-touch-detector
-      yubioath-flutter
-
-      alejandra
-      (aspellWithDicts (ds: with ds; [en en-computers en-science]))
-      binutils
-      dua
-      duf
-      editorconfig-core-c
-      file
-      fd
-      fdupes
-      rdfind
-      rmlint
-      gcc
-      gnumake
-      gitg
-      tig
-      gource
-      gti
-      gnutls
-      zstd
-      tmux
-      emacs-all-the-icons-fonts
-      python311Packages.grip
-      meld
-      nil
-
-      bvi
-      bc
-      jq
-      shfmt
-      shellcheck
-      nodejs_20
-      sqlite
-      python3
-      pipenv
-
-      gotools
-      go-tools
-      gopls
-      gofumpt
-      gomodifytags
-      gotests
-      gore
-      delve
-      gdlv
-
-      ccls
-
-      google-chrome
-      telegram-desktop
-      discord
-      nheko
-      tessen
-
-      virt-manager
-      cdrkit
-      cloud-utils
-
-      popcorntime
-
-      transmission-gtk
-      wormhole-william
-
-      mangohud
-      intel-gpu-tools
-
-      lapce
-      neovide
-
-      # FIXME: Hack until Doom Emacs can handle alejandra directly
-      (stdenv.mkDerivation {
-        name = "alejandra-posing-as-nixfmt";
-        buildInputs = [alejandra];
-        phases = ["installPhase"];
-        installPhase = ''
-          mkdir -p $out/bin
-          cat <<EOF > $out/bin/nixfmt
-          #!/bin/sh
-          exec ${alejandra}/bin/alejandra --quiet "\$@"
-          EOF
-          chmod +x $out/bin/nixfmt
-        '';
-      })
-
-      bb
-      # bsdgames # provides wtf, but conflicts with fish shell
-      # FIXME: PR with the current BSD Games, which fixes this an more
-      (stdenv.mkDerivation {
-        pname = "bsdgames-custom";
-        version = pkgs.bsdgames.version;
-        src = pkgs.bsdgames;
-        installPhase = ''
-          mkdir -p $out
-          cp -a ${pkgs.bsdgames}/. $out/
-          chmod +w $out/bin
-          mv -f $out/bin/fish $out/bin/gofish
-        '';
-      })
-      crawl
-      sl
-      neofetch
-      hyperrogue
-    ];
+  home.activation = {
+    DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
+        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
+      fi
+      if [[ ! -d "${config.xdg.configHome}"/doom ]]; then
+        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
+        # PATH="${pkgs.git}/bin:$PATH" EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
+      fi
+    '';
   };
+
+  home.packages = with pkgs; [
+    efibootmgr
+    gptfdisk
+    parted
+    psmisc
+    sysstat
+    pciutils
+    usbutils
+    usbtop
+    btop
+    smartmontools
+    hdparm
+    nvme-cli
+    sg3_utils
+    lm_sensors
+    ldns
+    dogdns
+    nmap
+    mtr-gui
+    speedtest-go
+    moreutils
+    hwloc
+    b3sum
+    unzip
+    zip
+    man-pages
+    man-pages-posix
+    ipcalc
+
+    pam_u2f
+    pamtester
+
+    opensc
+    pcsctools
+    ccid
+    scmccid
+
+    openssl
+
+    (nerdfonts.override {fonts = ["IosevkaTerm"];})
+    (iosevka-bin.override {variant = "slab";})
+    iosevka-bin
+
+    qastools
+    pavucontrol
+    playerctl
+    helvum
+
+    swaylock
+    swayidle
+    grim
+    slurp
+    wl-clipboard
+    wev
+    xkeyboard_config
+
+    v4l-utils
+    graphviz
+    vlc
+    mkvtoolnix
+    evince
+    gimp
+    inkscape
+    audacity
+    picard
+    youtube-tui
+    zoom-us
+
+    grimblast
+    hyprpicker
+
+    qmk
+    qmk_hid
+    keymapviz
+
+    pwgen
+    yubico-piv-tool
+    yubikey-manager
+    yubikey-manager-qt
+    yubikey-personalization
+    yubikey-personalization-gui
+    yubikey-touch-detector
+    yubioath-flutter
+
+    alejandra
+    (aspellWithDicts (ds: with ds; [en en-computers en-science]))
+    binutils
+    dua
+    duf
+    editorconfig-core-c
+    file
+    fd
+    fdupes
+    rdfind
+    rmlint
+    gcc
+    gnumake
+    gitg
+    tig
+    gource
+    gti
+    gnutls
+    zstd
+    tmux
+    emacs-all-the-icons-fonts
+    python311Packages.grip
+    meld
+    nil
+
+    bvi
+    bc
+    jq
+    shfmt
+    shellcheck
+    nodejs_20
+    sqlite
+    python3
+    pipenv
+
+    gotools
+    go-tools
+    gopls
+    gofumpt
+    gomodifytags
+    gotests
+    gore
+    delve
+    gdlv
+
+    ccls
+
+    google-chrome
+    telegram-desktop
+    discord
+    nheko
+    tessen
+
+    virt-manager
+    cdrkit
+    cloud-utils
+
+    popcorntime
+
+    transmission-gtk
+    wormhole-william
+
+    mangohud
+    intel-gpu-tools
+
+    lapce
+    neovide
+
+    # FIXME: Hack until Doom Emacs can handle alejandra directly
+    (stdenv.mkDerivation {
+      name = "alejandra-posing-as-nixfmt";
+      buildInputs = [alejandra];
+      phases = ["installPhase"];
+      installPhase = ''
+        mkdir -p $out/bin
+        cat <<EOF > $out/bin/nixfmt
+        #!/bin/sh
+        exec ${alejandra}/bin/alejandra --quiet "\$@"
+        EOF
+        chmod +x $out/bin/nixfmt
+      '';
+    })
+
+    bb
+    # bsdgames # provides wtf, but conflicts with fish shell
+    # FIXME: PR with the current BSD Games, which fixes this an more
+    (stdenv.mkDerivation {
+      pname = "bsdgames-custom";
+      version = pkgs.bsdgames.version;
+      src = pkgs.bsdgames;
+      installPhase = ''
+        mkdir -p $out
+        cp -a ${pkgs.bsdgames}/. $out/
+        chmod +w $out/bin
+        mv -f $out/bin/fish $out/bin/gofish
+      '';
+    })
+    crawl
+    sl
+    neofetch
+    hyperrogue
+  ];
 
   # Reload system services when changing configs
   systemd.user.startServices = "sd-switch";
