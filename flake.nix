@@ -67,10 +67,7 @@
         name = box.hostName;
         value = nixpkgs.lib.nixosSystem {
           system = box.system;
-          specialArgs = {
-            attrs = box;
-            inherit nixpkgs nixos-hardware disko stylix autofirma-nix home-manager;
-          };
+          specialArgs = inputs // {attrs = box;};
           modules = [./configuration.nix];
         };
       })
