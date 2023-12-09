@@ -147,7 +147,6 @@
 
     bvi
     bc
-    jq
     shfmt
     shellcheck
     nodejs_20
@@ -346,6 +345,7 @@
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.thefuck.enable = true;
+  programs.jq.enable = true;
 
   programs.yazi = {
     enable = true;
