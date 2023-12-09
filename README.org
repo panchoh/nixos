@@ -112,6 +112,8 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/Misterio77/nix-starter-configs
+- [ ] https://github.com/ryan4yin/nix-config/tree/i3-kickstarter
 - [ ] https://github.com/librephoenix/nixos-config including Doom Emacs config
 - [ ] https://github.com/drduh/YubiKey-Guide#nixos password generation
 - [ ] https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
