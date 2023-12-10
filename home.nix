@@ -89,6 +89,7 @@
     grim
     slurp
     wl-clipboard
+    wlrctl
     wev
     xkeyboard_config
 
