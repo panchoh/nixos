@@ -180,7 +180,6 @@
     transmission-gtk
     wormhole-william
 
-    mangohud
     intel-gpu-tools
 
     lapce
@@ -406,6 +405,8 @@
   };
 
   services.playerctld.enable = true;
+
+  programs.mangohud.enable = true;
 
   programs.mpv = {
     enable = true;
