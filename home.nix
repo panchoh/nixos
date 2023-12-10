@@ -408,6 +408,11 @@
 
   programs.mangohud.enable = true;
 
+  programs.man = {
+    enable = true;
+    generateCaches = true;
+  };
+
   programs.mpv = {
     enable = true;
     scripts = [pkgs.mpvScripts.mpris];
