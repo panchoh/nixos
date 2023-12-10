@@ -139,7 +139,6 @@
     gti
     gnutls
     zstd
-    tmux
     emacs-all-the-icons-fonts
     python311Packages.grip
     meld
@@ -293,6 +292,8 @@
       };
     };
   };
+
+  programs.tmux.enable = true;
 
   programs.bash.enable = true;
 
