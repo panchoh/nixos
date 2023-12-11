@@ -66,7 +66,7 @@
       map (box: {
         name = box.hostName;
         value = nixpkgs.lib.nixosSystem {
-          system = box.system;
+          inherit (box) system;
           specialArgs = inputs // {attrs = box;};
           modules = [./configuration.nix];
         };
