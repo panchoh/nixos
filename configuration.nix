@@ -168,9 +168,11 @@
     hwRender = true;
     autologinUser = attrs.userName or "alice";
     extraOptions = "--xkb-layout=us --xkb-variant=altgr-intl";
-    fonts = [
+    # TODO: report issue upstream (single font requires trailing comma)
+    fonts = lib.mkBefore [
       {
-        name = "IosevkaTerm NFM Light,"; # commas save lives!
+        # name = "IosevkaTerm NFM Light,"; # commas save lives!
+        name = "IosevkaTerm NFM Light";
         package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
       }
     ];
