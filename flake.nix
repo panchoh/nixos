@@ -45,7 +45,7 @@
       (makeBox
         {
           hostName = "krypton";
-          macvlanAddr = "1c:69:7a:05:b5:98";
+          macvlanAddr = "1c:69:7a:06:76:c0";
           system = "x86_64-linux";
         })
       (makeBox
