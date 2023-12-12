@@ -149,11 +149,11 @@
 
   services.dbus.implementation = "broker";
 
-  services.xserver = {
-    xkbModel = "pc105";
+  services.xserver.xkb = {
+    model = "pc105";
     layout = "us,us";
-    xkbVariant = "altgr-intl,dvorak-alt-intl";
-    xkbOptions = "compose:sclk,grp:shifts_toggle";
+    variant = "altgr-intl,dvorak-alt-intl";
+    options = "compose:sclk,grp:shifts_toggle";
   };
 
   console = {
