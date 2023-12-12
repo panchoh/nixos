@@ -95,6 +95,7 @@
 
     v4l-utils
     graphviz
+    ffmpeg
     vlc
     mkvtoolnix
     evince
