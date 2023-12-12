@@ -272,6 +272,7 @@
 
   programs.command-not-found.enable = false;
   programs.mtr.enable = true;
+  programs.nano.enable = false;
   programs.neovim = {
     enable = true;
     viAlias = true;
