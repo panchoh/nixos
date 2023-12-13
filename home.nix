@@ -140,7 +140,6 @@
     gti
     gnutls
     zstd
-    emacs-all-the-icons-fonts
     python311Packages.grip
     meld
     nil
