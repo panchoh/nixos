@@ -120,10 +120,11 @@
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
+        # https://nixos.wiki/wiki/Accelerated_Video_Playback
         intel-ocl
         intel-compute-runtime
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        intel-media-driver
+        intel-vaapi-driver
         vaapiVdpau
         libvdpau-va-gl
       ];
