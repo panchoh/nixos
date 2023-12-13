@@ -45,7 +45,6 @@
     pciutils
     usbutils
     usbtop
-    btop
     smartmontools
     hdparm
     nvme-cli
@@ -224,6 +223,15 @@
 
   # Reload system services when changing configs
   systemd.user.startServices = "sd-switch";
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      # https://github.com/aristocratos/btop#configurability
+      vim_keys = true;
+      color_theme = "dracula";
+    };
+  };
 
   programs.password-store = {
     enable = true;
