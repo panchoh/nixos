@@ -18,11 +18,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixos-hardware,
-    disko,
-    home-manager,
-    stylix,
-    autofirma-nix,
+    ...
   } @ inputs: let
     makeBox = {
       hostName,
