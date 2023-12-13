@@ -112,6 +112,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/TLATER/dotfiles/blob/master/nixos-config/yui/default.nix
 - [ ] https://github.com/chvp/nixos-config/
 - [ ] https://github.com/midchildan/dotfiles/blob/main/nix/home/modules/emacs.nix Doom Emacs config
 - [ ] https://github.com/Misterio77/nix-starter-configs
