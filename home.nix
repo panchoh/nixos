@@ -308,7 +308,14 @@
       }/bin/nvim";
     };
   };
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      hostname = {
+        ssh_only = false;
+      };
+    };
+  };
   programs.lsd = {
     enable = true;
     enableAliases = true;
