@@ -314,6 +314,9 @@
       hostname = {
         ssh_only = false;
       };
+      golang = {
+        symbol = " ";
+      };
     };
   };
   programs.lsd = {
