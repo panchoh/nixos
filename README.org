@@ -40,7 +40,7 @@
    #+begin_src shell
    mkdir -p /mnt/home/pancho/sandbox/panchoh
    mv -iv ~/nixos /mnt/home/pancho/sandbox/panchoh
-   cd /mnt/etc/nixos && ln -s /home/pancho/sandbox/panchoh/nixos/flake.nix
+   sudo mkdir /mnt/etc/nixos && cd /mnt/etc/nixos && sudo ln -s /home/pancho/sandbox/panchoh/nixos/flake.nix
    #+end_src
 
 10. Reboot
@@ -57,7 +57,6 @@
 
     Home Manager is not activated by ~nixos-install~ for some reason.
     #+begin_src shell
-    rm -rf ~/.config/{fish,hypr}
     doas nixos-rebuild switch --verbose
     #+end_src
 
