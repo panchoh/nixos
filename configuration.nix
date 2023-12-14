@@ -248,6 +248,7 @@
   };
 
   nix = {
+    channel.enable = false;
     registry.nixpkgs.flake = nixpkgs;
     settings = {
       auto-optimise-store = true;

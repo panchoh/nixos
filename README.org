@@ -53,12 +53,7 @@
    passwd
    #+end_src
 
-12. Drop the channel
-    #+begin_src shell
-    doas nix-channel --remove nixos
-    #+end_src
-
-13. Finish setting up
+12. Finish setting up
 
     Home Manager is not activated by ~nixos-install~ for some reason.
     #+begin_src shell
@@ -66,12 +61,12 @@
     doas nixos-rebuild switch --verbose
     #+end_src
 
-14. Reboot
+13. Reboot
     #+begin_src shell
     reboot
     #+end_src
 
-15. Enjoy!
+14. Enjoy!
 
 ** Commit Style
 Adhere to Semantic Commit Messages
