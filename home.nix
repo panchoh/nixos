@@ -611,11 +611,11 @@
 
   programs.ssh = {
     enable = true;
+    addKeysToAgent = "yes";
     controlMaster = "no";
     controlPersist = "yes";
     serverAliveInterval = 60;
     extraConfig = ''
-      AddKeysToAgent       yes
       ExitOnForwardFailure yes
       HostKeyAlgorithms    ssh-ed25519
       IdentitiesOnly       yes
