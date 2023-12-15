@@ -240,7 +240,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${lib.getBin pkgs.hyprland}/bin/Hyprland &>~/.Wsession.errors";
+        command = "${lib.getExe pkgs.hyprland} &>~/.Wsession.errors";
         user = attrs.userName or "alice";
       };
       default_session = initial_session;
@@ -350,7 +350,7 @@
   services.pcscd.enable = true;
 
   security.wrappers.intel_gpu_top = {
-    source = "${lib.getBin pkgs.intel-gpu-tools}/bin/intel_gpu_top";
+    source = lib.getExe' pkgs.intel-gpu-tools "intel_gpu_top";
     owner = "root";
     group = "root";
     capabilities = "cap_perfmon+ep";

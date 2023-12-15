@@ -27,11 +27,11 @@
   home.activation = {
     DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
       if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
+        $DRY_RUN_CMD ${lib.getExe pkgs.git} clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
       fi
       if [[ ! -d "${config.xdg.configHome}"/doom ]]; then
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-        # PATH="${pkgs.git}/bin:$PATH" EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
+        $DRY_RUN_CMD ${lib.getExe pkgs.git} clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
+        # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
       fi
     '';
   };
@@ -194,7 +194,7 @@
         mkdir -p $out/bin
         cat <<EOF > $out/bin/nixfmt
         #!/bin/sh
-        exec ${alejandra}/bin/alejandra --quiet "\$@"
+        exec ${lib.getExe alejandra} --quiet "\$@"
         EOF
         chmod +x $out/bin/nixfmt
       '';
@@ -283,7 +283,7 @@
       main = {
         font = lib.mkForce "Iosevka:size=20:weight=ExtraLight";
         layer = "overlay";
-        terminal = "${pkgs.foot}/bin/foot -e";
+        terminal = lib.getExe pkgs.foot;
       };
     };
   };
@@ -309,10 +309,8 @@
     enable = true;
     shellAliases = {
       e = "${
-        lib.getBin config.programs.emacs.finalPackage
-      }/bin/emacsclient --no-wait --reuse-frame --alternate-editor=${
-        lib.getBin pkgs.neovim
-      }/bin/nvim";
+        lib.getExe' config.programs.emacs.finalPackage "emacsclient"
+      } --no-wait --reuse-frame --alternate-editor=${lib.getExe pkgs.neovim}";
     };
   };
   programs.starship = {
@@ -667,13 +665,9 @@
   home.sessionVariables = {
     EDITOR = lib.getBin (
       pkgs.writeShellScript "editor" ''
-        exec ${
-          lib.getBin config.programs.emacs.finalPackage
-        }/bin/emacsclient \
-          --reuse-frame   \
-          --alternate-editor=${
-          lib.getBin pkgs.neovim
-        }/bin/nvim        \
+        exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"}  \
+          --reuse-frame                                                       \
+          --alternate-editor=${lib.getExe pkgs.neovim}                        \
         "''${@:---create-frame}"
       ''
     );
@@ -754,8 +748,8 @@
     enable = true;
     extraConfig = ''
       monitor=, preferred, auto, auto, bitdepth, 10
-      exec-once = ${lib.getBin pkgs.foot}/bin/foot
-      exec-once = ${lib.getBin pkgs.swayidle}/bin/swayidle -w timeout 300 '${lib.getBin config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off' resume '${lib.getBin config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on'
+      exec-once = ${lib.getExe pkgs.foot}
+      exec-once = ${lib.getExe pkgs.swayidle} -w timeout 300 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on'
       env = XCURSOR_SIZE,24
 
       input {
@@ -850,11 +844,11 @@
           allow_workspace_cycles = true
       }
 
-      bind = SUPER, Return, exec, ${lib.getBin pkgs.foot}/bin/foot
-      bind = SUPER, X, exec, ${lib.getBin config.programs.emacs.finalPackage}/bin/emacsclient --no-wait --reuse-frame --alternate-editor='${lib.getBin pkgs.foot}/bin/foot -e ${lib.getBin pkgs.neovim}/bin/nvim'
-      # bind = SUPER, Slash, exec, ${lib.getBin config.programs.chromium.package}/bin/chromium
+      bind = SUPER, Return, exec, ${lib.getExe pkgs.foot}
+      bind = SUPER, X, exec, ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"} --no-wait --reuse-frame --alternate-editor='${lib.getExe pkgs.foot} ${lib.getExe pkgs.neovim}'
+      # bind = SUPER, Slash, exec, ${lib.getExe config.programs.chromium.package}
       bind = SUPER, Slash, exec, chromium
-      bind = SUPER SHIFT, Slash, exec, ${lib.getBin pkgs.google-chrome}/bin/google-chrome-stable
+      bind = SUPER SHIFT, Slash, exec, ${lib.getExe pkgs.google-chrome}
 
       # bind = , Terminate_Server, exit,
       # bind = , terminate_server, exit,
@@ -927,11 +921,11 @@
 
       # Start fuzzel opens fuzzel on first press, closes it on second
       # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
-      bind = SUPER, D, exec, ${lib.getBin pkgs.fuzzel}/bin/fuzzel
+      bind = SUPER, D, exec, ${lib.getExe pkgs.fuzzel}
 
       # Handle notifications
-      bind = SUPER,       N, exec, ${lib.getBin pkgs.mako}/bin/makoctl dismiss
-      bind = SUPER SHIFT, N, exec, ${lib.getBin pkgs.mako}/bin/makoctl dismiss -a
+      bind = SUPER,       N, exec, ${lib.getExe' pkgs.mako "makoctl"} dismiss
+      bind = SUPER SHIFT, N, exec, ${lib.getExe' pkgs.mako "makoctl"} dismiss -a
 
       # Screenshots
       # bind = SUPER,       P, exec, grimblast save active
