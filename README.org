@@ -252,6 +252,9 @@ in {
 - https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my-flake/11987
 
 ** Things to Explore/Implement
+*** Flake framework
+- https://snowfall.org/
+
 *** foot
 - https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
 
