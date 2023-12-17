@@ -254,6 +254,7 @@ in {
 ** Things to Explore/Implement
 *** NixOS Modules
 - https://github.com/Gabriella439/nixos-in-production/blob/main/manuscript/Modules.md
+- https://nixos.wiki/wiki/NixOS_modules
 
 *** Flake framework
 - https://snowfall.org/
