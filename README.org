@@ -166,7 +166,7 @@ Adhere to Semantic Commit Messages
 - [ ] https://guekka.github.io/nixos-server-1/
 - [ ] https://codeberg.org/imMaturana/dotfiles/src/branch/main/flake.nix
 - [ ] https://github.com/dwarfmaster/home-nix/blob/master/flake.nix
-- [ ] https://github.com/Kranex/nixos-config/blob/master/flake.nix
+- [ ] https://github.com/olistrik/nixos-config Nix is love. Nix is life.
 
 ** Emacs
 *** Doom
