@@ -252,6 +252,9 @@ in {
 - https://discourse.nixos.org/t/how-to-apply-an-overlay-defined-in-one-flake-in-my-flake/11987
 
 ** Things to Explore/Implement
+*** NixOS Modules
+- https://github.com/Gabriella439/nixos-in-production/blob/main/manuscript/Modules.md
+
 *** Flake framework
 - https://snowfall.org/
 
