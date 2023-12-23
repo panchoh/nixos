@@ -166,7 +166,6 @@
 
     ccls
 
-    google-chrome
     telegram-desktop
     discord
     nheko
@@ -587,6 +586,13 @@
     ];
   };
 
+  programs.google-chrome = {
+    enable = true;
+    commandLineArgs = [
+      "--ozone-platform=wayland"
+    ];
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -849,9 +855,8 @@
 
       bind = SUPER, Return, exec, ${lib.getExe pkgs.foot}
       bind = SUPER, X, exec, ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"} --no-wait --reuse-frame --alternate-editor='${lib.getExe pkgs.foot} ${lib.getExe pkgs.neovim}'
-      # bind = SUPER, Slash, exec, ${lib.getExe config.programs.chromium.package}
-      bind = SUPER, Slash, exec, chromium
-      bind = SUPER SHIFT, Slash, exec, ${lib.getExe pkgs.google-chrome}
+      bind = SUPER,       Slash, exec, chromium
+      bind = SUPER SHIFT, Slash, exec, google-chrome-stable
 
       # bind = , Terminate_Server, exit,
       # bind = , terminate_server, exit,
