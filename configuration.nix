@@ -235,12 +235,13 @@
   };
 
   programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
 
   services.greetd = {
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${lib.getExe pkgs.hyprland} &>~/.Wsession.errors";
+        command = "${lib.getExe config.programs.hyprland.finalPackage} &>~/.Wsession.errors";
         user = attrs.userName or "alice";
       };
       default_session = initial_session;

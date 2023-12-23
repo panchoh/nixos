@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  osConfig,
   stylix,
   autofirma-nix,
   attrs ? null,
@@ -746,6 +747,8 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = osConfig.programs.hyprland.finalPackage;
+    xwayland.enable = osConfig.programs.hyprland.xwayland.enable;
     extraConfig = ''
       monitor=, preferred, auto, auto, bitdepth, 10
       exec-once = ${lib.getExe pkgs.foot}
