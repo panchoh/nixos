@@ -107,6 +107,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://gitlab.com/hmajid2301/dotfiles/
 - [ ] https://gitlab.com/steveej/infra/
 - [ ] https://github.com/TLATER/dotfiles/blob/master/nixos-config/yui/default.nix
 - [ ] https://github.com/chvp/nixos-config/
