@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   lib,
@@ -15,7 +12,6 @@
   ...
 } @ inputs: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.intel-nuc-8i7beh
     ./usb-misc.nix
@@ -193,7 +189,6 @@
     drivers = [pkgs.hplip];
   };
 
-  # Enable sound with pipewire.
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -203,21 +198,6 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
-
-  # handled by stylix
-  # https://github.com/danth/stylix/blob/master/stylix/nixos/fonts.nix
-  # fonts = {
-  #   # enableDefaultPackages = true;
-  #   packages = with pkgs; [iosevka-bin openmoji-color];
-  #   fontconfig = {
-  #     defaultFonts = {
-  #       serif = ["Iosevka Etoile"];
-  #       sansSerif = ["Iosevka Aile"];
-  #       monospace = ["Iosevka Term"];
-  #       emoji = ["OpenMoji Color"];
-  #     };
-  #   };
-  # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.mutableUsers = false;
@@ -265,11 +245,8 @@
     '';
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
     wget
@@ -303,7 +280,6 @@
   };
 
   virtualisation.libvirtd.enable = true;
-  #virtualisation.docker.enable = true; # FIXME
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 
