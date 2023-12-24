@@ -611,7 +611,7 @@
     enable = true;
     defaultCacheTtl = 1;
     enableSshSupport = true;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "gnome3";
   };
 
   programs.ssh = {

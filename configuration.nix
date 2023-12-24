@@ -164,6 +164,7 @@
   services.physlock.enable = true;
 
   services.dbus.implementation = "broker";
+  services.dbus.packages = [pkgs.gcr]; # for pinentry-gnome3
 
   services.xserver.xkb = {
     model = "pc105";
