@@ -698,6 +698,8 @@
   programs.vscode.enable = true;
 
   stylix = {
+    targets.kde.enable = false;
+
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
     image = pkgs.fetchurl {
