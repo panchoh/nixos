@@ -120,7 +120,7 @@
     yubikey-personalization
     yubikey-personalization-gui
     yubikey-touch-detector
-    yubioath-flutter
+    # yubioath-flutter
 
     alejandra
     (aspellWithDicts (ds: with ds; [en en-computers en-science]))
