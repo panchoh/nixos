@@ -369,4 +369,37 @@
   };
 
   services.fstrim.enable = true;
+
+  programs.chromium = {
+    # Seen on stylix and nixpkgs:
+    # This enables policies without installing the browser. Policies take up a
+    # negligible amount of space, so it's reasonable to have this always on.
+    # https://chromeenterprise.google/policies/
+    enable = true;
+    extraOpts = {
+      "AutofillAddressEnabled" = false;
+      "AutofillCreditCardEnabled" = false;
+      "BackgroundModeEnabled" = false;
+      "BlockExternalExtensions" = true;
+      "BookmarkBarEnabled" = false;
+      "BrowserAddPersonEnabled" = false;
+      # "BrowserGuestModeEnforced" = true;
+      "BrowserLabsEnabled" = false;
+      "BrowserSignin" = 0;
+      # "DnsOverHttpsMode" = "secure";
+      "EditBookmarksEnabled" = false;
+      "EnableMediaRouter" = false;
+      "HideWebStoreIcon" = true;
+      "PasswordManagerEnabled" = false;
+      "PromptForDownloadLocation" = false;
+      "ShowAppsShortcutInBookmarkBar" = false;
+      "SpellcheckEnabled" = false;
+      "SpellcheckLanguage" = ["en-US"];
+      "SpellCheckServiceEnabled" = false;
+      "ShowCastIconInToolbar" = false;
+      "SyncDisabled" = true;
+      "SystemFeaturesDisableMode" = "hidden";
+      "SystemFeaturesDisableList" = ["camera"];
+    };
+  };
 }
