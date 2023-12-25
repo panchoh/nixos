@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   services.udev.packages = [
@@ -14,7 +15,7 @@
           SUBSYSTEM=="block",                \
           ENV{ID_USB_DRIVER}=="usb-storage", \
           ENV{ID_FS_LABEL}!="",              \
-          RUN+="${pkgs.coreutils}/bin/mkdir -p '/media/%E{ID_FS_LABEL}'"
+          RUN+="${lib.getExe' pkgs.coreutils "mkdir"} -p '/media/%E{ID_FS_LABEL}'"
 
         # Remove /media/<label> dir upon disconnection of USB drives
         ACTION=="remove",                    \
@@ -22,7 +23,7 @@
           SUBSYSTEM=="block",                \
           ENV{ID_USB_DRIVER}=="usb-storage", \
           ENV{ID_FS_LABEL}!="",              \
-          RUN+="${pkgs.coreutils}/bin/rmdir --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
+          RUN+="${lib.getExe' pkgs.coreutils "rmdir"} --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
 
         # Allow direct access to usb block devices to the members of the storage group
         KERNEL=="sd[a-z]*",                  \
