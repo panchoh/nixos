@@ -50,6 +50,12 @@
           macvlanAddr = "dc:a6:32:b1:ae:1d";
           system = "aarch64-linux";
         })
+      (makeBox
+        {
+          hostName = "magnesium";
+          macvlanAddr = "00:2b:67:11:27:06";
+          system = "x86_64-linux";
+        })
     ];
   in {
     formatter = builtins.listToAttrs (map (box: {
