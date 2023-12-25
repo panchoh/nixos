@@ -144,6 +144,8 @@
     python311Packages.grip
     meld
     nil
+    vbindiff
+    diffoscope
 
     bvi
     bc
