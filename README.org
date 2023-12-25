@@ -80,6 +80,8 @@ Adhere to Semantic Commit Messages
 - https://thiscute.world/en/posts/nixos-and-flake-basics/
 - https://nixos-and-flakes.thiscute.world/
 - https://nix.dev/tutorials/first-steps/nix-language
+- https://ayats.org/blog/no-flake-utils/
+- https://flake.parts/
 
 *** Tips
 - https://pavluk.org/blog/2023/05/30/nix_packaging.html
