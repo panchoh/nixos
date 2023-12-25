@@ -68,6 +68,7 @@
     hostName = attrs.hostName or "nixos";
     useDHCP = false;
     enableIPv6 = false;
+    wireless.iwd.enable = true;
   };
 
   systemd.network = {
@@ -85,8 +86,23 @@
       };
     };
     networks = {
-      "20-eno1" = {
-        matchConfig.Name = "eno1";
+      "10-wl" = {
+        matchConfig.Name = "wl*";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = "no";
+          DNSSECNegativeTrustAnchors = "lemd wifi";
+          IgnoreCarrierLoss = "3s";
+          # DefaultRouteOnDevice = true;
+        };
+        linkConfig.RequiredForOnline = "no";
+        dhcpV4Config = {
+          UseDomains = true;
+          RouteMetric = 600;
+        };
+      };
+      "20-en" = {
+        matchConfig.Name = "en*";
         macvlan = ["mv0"];
         networkConfig = {
           LinkLocalAddressing = "no";
@@ -103,6 +119,7 @@
         };
         dhcpV4Config = {
           UseDomains = true;
+          RouteMetric = 100;
         };
       };
     };
