@@ -808,6 +808,13 @@
           kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
       }
 
+      device:at-translated-set-2-keyboard {
+          kb_model = thinkpad
+          kb_layout = us,us
+          kb_variant = altgr-intl,dvorak-alt-intl
+          kb_options = lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps
+      }
+
       general {
           gaps_in = 5
           gaps_out = 20
