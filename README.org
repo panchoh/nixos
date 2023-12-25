@@ -159,6 +159,7 @@ Adhere to Semantic Commit Messages
 - [ ] https://git.sr.ht/~glorifiedgluer/monorepo
 - [ ] https://github.com/tejing1/nixos-config/
 - [ ] https://github.com/MatthewCroughan/nixcfg/blob/master/modules/profiles/sway.nix
+- [ ] https://codeberg.org/totoroot/dotfiles/
 - [ ] https://github.com/hlissner/dotfiles/blob/master/flake.nix
 - [ ] xe's https://github.com/Xe/nixos-configs
 - [ ] https://codeberg.org/JustineSmithies/hyprland-dotfiles
