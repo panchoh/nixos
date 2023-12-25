@@ -366,6 +366,14 @@
   programs.thefuck.enable = true;
   programs.jq.enable = true;
 
+  programs.lf = {
+    enable = true;
+    settings = {
+      icons = true;
+      sixel = true;
+    };
+  };
+
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
