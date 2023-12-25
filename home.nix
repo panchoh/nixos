@@ -975,6 +975,10 @@
       bindl =      , XF86AudioPlay,        exec, playerctl play-pause
       bindl =      , XF86AudioNext,        exec, playerctl next
 
+      # Radios management
+      # https://github.com/dwlocks/scripts-tools-config/blob/master/etc/rfkill-toggle
+      bindl =      , XF86WLAN,             exec, sh -c '[[ "$(< /sys/class/rfkill/rfkill0/state)" == "1" ]] && rfkill block all || rfkill unblock all'
+
       # Move/resize windows with SUPER + LMB/RMB and dragging
       bindm = SUPER, mouse:272, movewindow
       bindm = SUPER, mouse:273, resizewindow
