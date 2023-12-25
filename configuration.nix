@@ -67,6 +67,7 @@
   networking = {
     hostName = attrs.hostName or "nixos";
     useDHCP = false;
+    enableIPv6 = false;
   };
 
   systemd.network = {
