@@ -305,7 +305,19 @@
     };
   };
 
-  programs.tmux.enable = true;
+  programs.tmux = {
+    enable = true;
+    aggressiveResize = true;
+    clock24 = true;
+    mouse = true;
+    terminal = "tmux-256color";
+    sensibleOnTop = false;
+    escapeTime = 0;
+    extraConfig = ''
+      set -g focus-events on
+      set -g status-interval 5
+    '';
+  };
 
   programs.bash.enable = true;
 
@@ -363,7 +375,13 @@
     icons = true;
   };
   programs.bat.enable = true;
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    tmux = {
+      enableShellIntegration = true;
+      shellIntegrationOptions = ["-d 40%"];
+    };
+  };
   programs.zoxide.enable = true;
   programs.thefuck.enable = true;
   programs.jq.enable = true;
