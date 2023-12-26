@@ -143,8 +143,8 @@
     zstd
     python311Packages.grip
     meld
-    nil
     deadnix
+    nil # TODO: nix lsp server, to the doom module!
     vbindiff
     diffoscope
 
