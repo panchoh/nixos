@@ -368,6 +368,8 @@
     {
       groups = ["wheel"];
       persist = true;
+      # keepEnv = true;
+      setEnv = ["LOCALE_ARCHIVE" "NIXOS_INSTALL_BOOTLOADER"];
     }
   ];
   security.sudo.enable = false;
