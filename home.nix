@@ -87,6 +87,7 @@
     swaylock
     swayidle
     grim
+    satty # TODO: also configure hyprland keybinding
     slurp
     wl-clipboard
     wlrctl
