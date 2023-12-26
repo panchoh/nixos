@@ -268,6 +268,7 @@ in {
 
 *** foot
 - https://codeberg.org/dnkl/foot/issues/628#issuecomment-283074
+- https://ersei.net/en/blog/its-nixin-time
 
 *** swap
 - https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323
