@@ -144,6 +144,7 @@
     python311Packages.grip
     meld
     nil
+    deadnix
     vbindiff
     diffoscope
 
