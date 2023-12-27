@@ -709,6 +709,7 @@
         "''${@:---create-frame}"
       ''
     );
+    MOZ_USE_XINPUT2 = "1";
   };
 
   services.emacs = {
