@@ -109,9 +109,11 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/flake.nix?ref_type=heads NUC8, XPS13
 - [ ] https://github.com/rohand2290/sb2-nixos-config/blob/main/home.nix example usage of nixvim
 - [ ] https://gitlab.com/hmajid2301/dotfiles/
 - [ ] https://gitlab.com/steveej/infra/
+- [ ] https://github.com/TLATER/dotfiles/blob/master/home-config/config/graphical-applications/firefox.nix nur, tridactyl
 - [ ] https://github.com/TLATER/dotfiles/blob/master/nixos-config/yui/default.nix
 - [ ] https://github.com/chvp/nixos-config/
 - [ ] https://github.com/midchildan/dotfiles/blob/main/nix/home/modules/emacs.nix Doom Emacs config
@@ -279,6 +281,8 @@ in {
 
 *** NixOS Generators
 - https://github.com/nix-community/nixos-generators
+- https://www.reddit.com/r/NixOS/comments/y1xo2u/how_to_create_an_iso_with_my_config_files/?rdt=44430
+- https://nixos.wiki/wiki/Creating_a_NixOS_live_CD
 
 *** EasyEffects
 - https://nix-community.github.io/home-manager/options.html#opt-services.easyeffects.enable
