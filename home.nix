@@ -526,6 +526,8 @@
   };
 
   # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
+  # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
+  # https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/modules/home/apps/firefox/default.nix?ref_type=heads
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {
