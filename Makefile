@@ -29,4 +29,7 @@ gc-all: wipe-nixos-history wipe-home-manager-history gc
 clean-firefox:
 	rm -rf ~/.afirma ~/.java ~/.mozilla
 
-pristine: gc-all clean-firefox
+clean-chromium:
+	rm -rf ~/.config/chromium ~/.cache/chromium
+
+pristine: gc-all clean-firefox clean-chromium
