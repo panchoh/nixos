@@ -6,6 +6,14 @@
   ...
 }: let
   cfg = config.hm.hyprland;
+
+  foot = lib.getExe pkgs.foot;
+  swayidle = lib.getExe pkgs.swayidle;
+  hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+  emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
+  neovim = lib.getExe pkgs.neovim;
+  fuzzel = lib.getExe pkgs.fuzzel;
+  makoctl = lib.getExe' pkgs.mako "makoctl";
 in {
   options.hm.hyprland = {
     enable = lib.mkEnableOption "hyprland";
@@ -17,8 +25,8 @@ in {
     xwayland.enable = osConfig.programs.hyprland.xwayland.enable;
     extraConfig = ''
       monitor=, preferred, auto, auto, bitdepth, 10
-      exec-once = ${lib.getExe pkgs.foot}
-      exec-once = ${lib.getExe pkgs.swayidle} -w timeout 300 '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off' resume '${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on'
+      exec-once = ${foot}
+      exec-once = ${swayidle} -w timeout 300 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'
       env = XCURSOR_SIZE,24
 
       input {
@@ -120,8 +128,8 @@ in {
           allow_workspace_cycles = true
       }
 
-      bind = SUPER, Return, exec, ${lib.getExe pkgs.foot}
-      bind = SUPER, X, exec, ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"} --no-wait --reuse-frame --alternate-editor='${lib.getExe pkgs.foot} ${lib.getExe pkgs.neovim}'
+      bind = SUPER, Return, exec, ${foot}
+      bind = SUPER, X, exec, ${emacsclient} --no-wait --reuse-frame --alternate-editor='${foot} ${neovim}'
       bind = SUPER,       Slash, exec, chromium
       bind = SUPER SHIFT, Slash, exec, google-chrome-stable
 
@@ -196,11 +204,11 @@ in {
 
       # Start fuzzel opens fuzzel on first press, closes it on second
       # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
-      bind = SUPER, D, exec, ${lib.getExe pkgs.fuzzel}
+      bind = SUPER, D, exec, ${fuzzel}
 
       # Handle notifications
-      bind = SUPER,       N, exec, ${lib.getExe' pkgs.mako "makoctl"} dismiss
-      bind = SUPER SHIFT, N, exec, ${lib.getExe' pkgs.mako "makoctl"} dismiss -a
+      bind = SUPER,       N, exec, ${makoctl} dismiss
+      bind = SUPER SHIFT, N, exec, ${makoctl} dismiss -a
 
       # Screenshots
       # bind = SUPER,       P, exec, grimblast save active
