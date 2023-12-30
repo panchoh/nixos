@@ -26,7 +26,7 @@
     ./modules/programs/chrome.nix
     ./modules/traits/chromium.nix
     ./modules/traits/chrome.nix
-    stylix.nixosModules.stylix
+    ./modules/traits/stylix.nix
     home-manager.nixosModules.default
     {
       home-manager = {
@@ -44,13 +44,7 @@
 
   system.stateVersion = "23.11";
 
-  stylix = {
-    homeManagerIntegration.followSystem = false;
-    homeManagerIntegration.autoImport = false;
-    # Either image or base16Scheme is required
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-    fonts.sizes.terminal = 16;
-  };
+  traits.stylix.enable = true;
 
   boot.loader.timeout = 0;
   boot.loader.systemd-boot.enable = true;
