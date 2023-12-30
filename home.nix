@@ -13,6 +13,8 @@
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
     ./modules/hm/stylix.nix
+    ./modules/hm/chromium.nix
+    ./modules/hm/chrome.nix
   ];
 
   home.stateVersion = "23.11";
@@ -613,21 +615,8 @@
     firefoxIntegration.profiles.default.enable = true;
   };
 
-  programs.chromium = {
-    enable = true;
-    package = pkgs.ungoogled-chromium;
-    commandLineArgs = [
-      "--incognito"
-      "--ozone-platform=wayland"
-    ];
-  };
-
-  programs.google-chrome = {
-    enable = true;
-    commandLineArgs = [
-      "--ozone-platform=wayland"
-    ];
-  };
+  hm.chromium.enable = true;
+  hm.chrome.enable = true;
 
   programs.direnv = {
     enable = true;
