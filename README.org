@@ -189,6 +189,10 @@ Adhere to Semantic Commit Messages
 - https://github.com/NixOS/nixpkgs/blob/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/development/compilers/rust/cargo-auditable-cargo-wrapper.nix
 - https://raw.githubusercontent.com/NixOS/nixpkgs/d450afc911598812d54cbac7e384a2bf4724f9ce/pkgs/top-level/all-packages.nix
 
+**** TODO Install GitHub Copilot
+- https://robert.kra.hn/posts/2023-02-22-copilot-emacs-setup/
+- https://github.com/zerolfx/copilot.el/commit/653fe7b12990b5b7a050971bed4579022ce4b4f8
+
 **** Install ChatGPT
 - https://github.com/emacs-openai/chatgpt
 
