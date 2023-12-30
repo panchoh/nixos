@@ -67,6 +67,7 @@
 
     pam_u2f
     pamtester
+    libfido2
 
     opensc
     pcsctools
