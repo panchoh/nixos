@@ -383,6 +383,7 @@
   security.sudo.execWheelOnly = true;
 
   # security.pam.u2f.enable = true;
+  # security.pam.u2f.cue = true;
   security.pam.services = {
     login.u2fAuth = true;
     doas.u2fAuth = true;
