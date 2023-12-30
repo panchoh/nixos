@@ -76,20 +76,7 @@
         value = nixpkgs.lib.nixosSystem {
           inherit (box) system;
           specialArgs = inputs // {attrs = box;};
-          modules = [
-            ({
-              pkgs,
-              modulesPath,
-              ...
-            }: {
-              disabledModules = [(modulesPath + "/programs/chromium.nix")];
-              imports = [
-                ./modules/programs/chromium.nix
-                ./modules/programs/chrome.nix
-              ];
-            })
-            ./configuration.nix
-          ];
+          modules = [./configuration.nix];
         };
       })
       boxen

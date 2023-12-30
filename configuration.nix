@@ -8,6 +8,7 @@
   stylix,
   autofirma-nix,
   home-manager,
+  modulesPath,
   attrs ? null,
   ...
 } @ inputs: {
@@ -19,6 +20,10 @@
     ./media-drive.nix
     disko.nixosModules.default
     ./disko-config.nix
+
+    {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
+    ./modules/programs/chromium.nix
+    ./modules/programs/chrome.nix
     ./modules/traits/chromium.nix
     ./modules/traits/chrome.nix
     stylix.nixosModules.stylix
