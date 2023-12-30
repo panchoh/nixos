@@ -11,7 +11,7 @@
   modulesPath,
   attrs ? null,
   ...
-} @ inputs: {
+}: {
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.intel-nuc-8i7beh

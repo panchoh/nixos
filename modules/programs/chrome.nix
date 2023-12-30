@@ -6,7 +6,7 @@
 with lib; let
   cfg = config.programs.chrome;
 
-  defaultProfile = filterAttrs (k: v: v != null) {
+  defaultProfile = filterAttrs (_k: v: v != null) {
     HomepageLocation = cfg.homepageLocation;
     DefaultSearchProviderEnabled = cfg.defaultSearchProviderEnabled;
     DefaultSearchProviderSearchURL = cfg.defaultSearchProviderSearchURL;

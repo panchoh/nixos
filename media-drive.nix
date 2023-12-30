@@ -1,4 +1,4 @@
-{config, ...}: {
+{ ...}: {
   fileSystems."/srv/media" = {
     device = "/dev/disk/by-label/media";
     fsType = "btrfs";

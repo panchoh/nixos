@@ -7,7 +7,7 @@
   autofirma-nix,
   attrs ? null,
   ...
-} @ inputs: {
+}: {
   imports = [
     stylix.homeManagerModules.stylix
     autofirma-nix.homeManagerModules.default
