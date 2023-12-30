@@ -57,12 +57,20 @@
           system = "x86_64-linux";
         })
     ];
+
+    inherit (builtins) listToAttrs;
+    inherit (nixpkgs.lib.lists) unique;
+    inherit (nixpkgs.lib.attrsets) catAttrs;
   in {
-    formatter = builtins.listToAttrs (map (box: {
-        name = box.system;
-        value = nixpkgs.legacyPackages.${box.system}.alejandra;
-      })
-      boxen);
+    formatter = (
+      listToAttrs (map (system: {
+          name = system;
+          value = nixpkgs.legacyPackages.${system}.alejandra;
+        })
+        (unique (catAttrs "system" boxen)))
+      # Alt.:
+      # (unique (map (box: box.system) boxen)))
+    );
 
     nixosConfigurations = builtins.listToAttrs (
       map (box: {
