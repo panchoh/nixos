@@ -58,9 +58,7 @@
         })
     ];
 
-    inherit (builtins) listToAttrs;
-    inherit (nixpkgs.lib.lists) unique;
-    inherit (nixpkgs.lib.attrsets) catAttrs;
+    inherit (nixpkgs.lib) listToAttrs unique catAttrs;
   in {
     formatter = (
       listToAttrs (map (system: {
