@@ -25,10 +25,10 @@
       macvlanAddr,
       system,
     }: {
+      inherit hostName macvlanAddr system;
       userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
-      inherit hostName macvlanAddr system;
     };
 
     boxen = [
