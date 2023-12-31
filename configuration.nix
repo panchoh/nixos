@@ -5,9 +5,6 @@
   nixpkgs,
   nixos-hardware,
   disko,
-  stylix,
-  autofirma-nix,
-  home-manager,
   modulesPath,
   attrs ? null,
   ...
@@ -27,24 +24,14 @@
     ./modules/traits/chromium.nix
     ./modules/traits/chrome.nix
     ./modules/traits/stylix.nix
-    home-manager.nixosModules.default
-    {
-      home-manager = {
-        backupFileExtension = "backup";
-        verbose = true;
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = {
-          inherit stylix autofirma-nix attrs;
-        };
-        users.${attrs.userName or "alice"} = import ./home.nix;
-      };
-    }
+    ./modules/traits/home-manager.nix
   ];
 
   system.stateVersion = "23.11";
 
   traits.stylix.enable = true;
+
+  traits.home-manager.enable = true;
 
   boot.loader.timeout = 0;
   boot.loader.systemd-boot.enable = true;
