@@ -110,6 +110,10 @@ Adhere to Semantic Commit Messages
   environment.etc."nix/path/activeconfig".source = self;
 #+end_src
 
+*** Wrapping packages
+- https://nixos.wiki/wiki/Wrappers_vs._Dotfiles
+- https://nixos.wiki/wiki/Nix_Cookbook#Wrapping_packages
+
 ** dotfiles to Explore
 - [ ] https://github.com/dustinlyons/nixos-config/
 - [ ] https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/flake.nix?ref_type=heads NUC8, XPS13
