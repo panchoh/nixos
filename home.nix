@@ -15,6 +15,7 @@
     ./modules/hm/firefox.nix
     ./modules/hm/mpv.nix
     ./modules/hm/virt-manager.nix
+    ./modules/hm/openvi.nix
   ];
 
   home.stateVersion = "23.11";
@@ -488,6 +489,8 @@
       ];
     };
   };
+
+  hm.openvi.enable = true;
 
   programs.texlive.enable = true;
 
