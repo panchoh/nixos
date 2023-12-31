@@ -114,6 +114,10 @@ Adhere to Semantic Commit Messages
 - https://nixos.wiki/wiki/Wrappers_vs._Dotfiles
 - https://nixos.wiki/wiki/Nix_Cookbook#Wrapping_packages
 
+*** Home Manager
+- Creating dotfiles that are proper files, not symlinks
+  https://github.com/nix-community/home-manager/issues/3090#issuecomment-1835357162
+
 ** dotfiles to Explore
 - [ ] https://rgoulter.com/blog/posts/programming/2022-02-20-using-home-manager-to-manage-symlinks-to-dotfiles.html
 - [ ] https://github.com/dustinlyons/nixos-config/
