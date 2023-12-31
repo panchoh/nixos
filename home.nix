@@ -2,8 +2,6 @@
   config,
   pkgs,
   lib,
-  stylix,
-  autofirma-nix,
   attrs ? null,
   ...
 }: {
