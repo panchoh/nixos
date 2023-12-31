@@ -111,6 +111,7 @@ Adhere to Semantic Commit Messages
 #+end_src
 
 ** dotfiles to Explore
+- [ ] https://github.com/dustinlyons/nixos-config/
 - [ ] https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/flake.nix?ref_type=heads NUC8, XPS13
 - [ ] https://github.com/rohand2290/sb2-nixos-config/blob/main/home.nix example usage of nixvim
 - [ ] https://gitlab.com/hmajid2301/dotfiles/
