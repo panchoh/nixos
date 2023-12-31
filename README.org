@@ -115,6 +115,7 @@ Adhere to Semantic Commit Messages
 - https://nixos.wiki/wiki/Nix_Cookbook#Wrapping_packages
 
 ** dotfiles to Explore
+- [ ] https://rgoulter.com/blog/posts/programming/2022-02-20-using-home-manager-to-manage-symlinks-to-dotfiles.html
 - [ ] https://github.com/dustinlyons/nixos-config/
 - [ ] https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/flake.nix?ref_type=heads NUC8, XPS13
 - [ ] https://github.com/rohand2290/sb2-nixos-config/blob/main/home.nix example usage of nixvim
