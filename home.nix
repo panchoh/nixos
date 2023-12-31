@@ -20,8 +20,6 @@
   ];
 
   home.stateVersion = "23.11";
-  home.username = attrs.userName or "alice";
-  home.homeDirectory = "/home/${attrs.userName or "alice"}";
   home.sessionPath = [
     "$HOME/.local/bin"
     "$HOME/.local/bin.go"
