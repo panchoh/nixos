@@ -132,6 +132,7 @@
     binutils
     dua
     duf
+    du-dust
     editorconfig-core-c
     file
     fd
