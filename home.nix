@@ -16,6 +16,7 @@
     ./modules/hm/mpv.nix
     ./modules/hm/virt-manager.nix
     ./modules/hm/openvi.nix
+    ./modules/hm/gopass.nix
   ];
 
   home.stateVersion = "23.11";
@@ -238,11 +239,7 @@
     };
   };
 
-  programs.password-store = {
-    enable = true;
-    package = pkgs.gopass;
-    settings = {PASSWORD_STORE_DIR = "${config.xdg.dataHome}/gopass/stores/root";};
-  };
+  hm.gopass.enable = true;
 
   programs.go = {
     enable = true;
