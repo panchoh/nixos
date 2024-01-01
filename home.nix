@@ -17,6 +17,7 @@
     ./modules/hm/virt-manager.nix
     ./modules/hm/openvi.nix
     ./modules/hm/gopass.nix
+    ./modules/hm/mdb.nix
   ];
 
   home.stateVersion = "23.11";
@@ -489,6 +490,8 @@
   };
 
   hm.openvi.enable = true;
+
+  hm.mdb.enable = true;
 
   programs.texlive.enable = true;
 
