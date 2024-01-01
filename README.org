@@ -208,6 +208,9 @@ Adhere to Semantic Commit Messages
 **** Install ChatGPT
 - https://github.com/emacs-openai/chatgpt
 
+**** TODO Install marksman
+https://github.com/artempyanykh/marksman
+
 **** ~doomPrivateDir~
 - https://github.com/nix-community/nix-doom-emacs/issues/297
 - https://github.com/nix-community/nix-doom-emacs/blob/master/default.nix
