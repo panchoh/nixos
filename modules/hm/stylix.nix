@@ -66,7 +66,7 @@ in {
       sizes = {
         desktop = 10;
         applications = 12;
-        terminal = 16;
+        terminal = 14;
       };
     };
   };
