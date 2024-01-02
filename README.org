@@ -285,6 +285,8 @@ in {
 *** NixOS Modules
 - https://github.com/Gabriella439/nixos-in-production/blob/main/manuscript/Modules.md
 - https://nixos.wiki/wiki/NixOS_modules
+- https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md
+  - https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md#part-1-1
 
 *** Flake framework
 - https://snowfall.org/
