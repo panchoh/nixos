@@ -239,6 +239,7 @@
 
   services.greetd = {
     enable = true;
+    restart = true;
     settings = rec {
       default_session = initial_session;
       initial_session = {
