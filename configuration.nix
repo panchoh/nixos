@@ -240,11 +240,11 @@
   services.greetd = {
     enable = true;
     settings = rec {
+      default_session = initial_session;
       initial_session = {
         command = "${lib.getExe config.programs.hyprland.finalPackage} &>~/.Wsession.errors";
         user = attrs.userName or "alice";
       };
-      default_session = initial_session;
     };
   };
 
