@@ -43,6 +43,13 @@
           ATTRS{product}=="C505e HD Webcam", \
           ATTR{index}=="0",                  \
           RUN+="${pkgs.v4l-utils}/bin/v4l2-ctl -d '$devnode' --set-ctrl=power_line_frequency=1"
+
+        # Shokz OpenComm2 UC
+        SUBSYSTEM=="usb",                    \
+          ATTRS{idVendor}=="3511",           \
+          ATTRS{idProduct}=="2b1e",          \
+          DRIVER=="usbhid",                  \
+          ATTR{authorized}="0"
       '';
     })
   ];
