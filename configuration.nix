@@ -23,6 +23,7 @@
     ./modules/programs/chrome.nix
     ./modules/traits/chromium.nix
     ./modules/traits/chrome.nix
+    ./modules/traits/autofirma.nix
     ./modules/traits/stylix.nix
     ./modules/traits/home-manager.nix
   ];
@@ -374,6 +375,7 @@
 
   services.fstrim.enable = true;
 
+  traits.autofirma.enable = true;
   traits.chromium.enable = true;
   traits.chrome.enable = true;
 }
