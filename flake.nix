@@ -15,10 +15,7 @@
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    nixpkgs,
-    ...
-  } @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     makeBox = {
       hostName,
       macvlanAddr,
