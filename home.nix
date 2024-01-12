@@ -18,29 +18,10 @@
     ./modules/hm/openvi.nix
     ./modules/hm/gopass.nix
     ./modules/hm/mdb.nix
+    ./modules/hm/emacs.nix
   ];
 
   home.stateVersion = "23.11";
-  home.sessionPath = [
-    "$HOME/.local/bin"
-    "$HOME/.local/bin.go"
-    "${config.xdg.configHome}/emacs/bin"
-  ];
-  # home.sessionVariables = {
-  #   foo = "bar";
-  # };
-
-  home.activation = {
-    DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
-        $DRY_RUN_CMD ${lib.getExe pkgs.git} clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
-      fi
-      if [[ ! -d "${config.xdg.configHome}"/doom ]]; then
-        $DRY_RUN_CMD ${lib.getExe pkgs.git} clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-        # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
-      fi
-    '';
-  };
 
   home.packages = with pkgs; [
     efibootmgr
@@ -128,51 +109,26 @@
     yubikey-touch-detector
     yubioath-flutter
 
-    alejandra
-    (aspellWithDicts (ds: with ds; [en en-computers en-science]))
     binutils
     dua
     duf
     du-dust
-    editorconfig-core-c
     file
-    fd
     fdupes
     rdfind
     rmlint
-    gcc
-    gnumake
     gitg
     tig
     gource
     gti
     gnutls
     zstd
-    python311Packages.grip
     meld
-    deadnix
-    nil # TODO: nix lsp server, to the doom module!
     vbindiff
     diffoscope
 
     bvi
     bc
-    shfmt
-    shellcheck
-    nodejs_20
-    sqlite
-    python3
-    pipenv
-
-    gotools
-    go-tools
-    gopls
-    gofumpt
-    gomodifytags
-    gotests
-    gore
-    delve
-    gdlv
 
     ccls
 
@@ -193,21 +149,6 @@
 
     lapce
     neovide
-
-    # FIXME: Hack until Doom Emacs can handle alejandra directly
-    (stdenv.mkDerivation {
-      name = "alejandra-posing-as-nixfmt";
-      buildInputs = [alejandra];
-      phases = ["installPhase"];
-      installPhase = ''
-        mkdir -p $out/bin
-        cat <<EOF > $out/bin/nixfmt
-        #!/bin/sh
-        exec ${lib.getExe alejandra} --quiet "\$@"
-        EOF
-        chmod +x $out/bin/nixfmt
-      '';
-    })
 
     bb
     # bsdgames # provides wtf, but conflicts with fish shell
@@ -242,11 +183,6 @@
   };
 
   hm.gopass.enable = true;
-
-  programs.go = {
-    enable = true;
-    goBin = ".local/bin.go";
-  };
 
   xdg = {
     enable = true;
@@ -442,52 +378,13 @@
   hm.chromium.enable = true;
   hm.chrome.enable = true;
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
   hm.gnupg.enable = true;
 
   hm.openssh.enable = true;
 
-  programs.ripgrep = {
-    enable = true;
-    package = pkgs.ripgrep.override {withPCRE2 = true;};
-    arguments = ["--no-config"];
-  };
-
   programs.helix.enable = true;
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs: [epkgs.vterm];
-  };
-
-  home.sessionVariables = {
-    EDITOR = lib.getBin (
-      pkgs.writeShellScript "editor" ''
-        exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"}  \
-          --reuse-frame                                                       \
-          --alternate-editor=${lib.getExe pkgs.neovim}                        \
-        "''${@:---create-frame}"
-      ''
-    );
-  };
-
-  services.emacs = {
-    enable = true;
-    defaultEditor = false;
-    startWithUserSession = "graphical";
-    client = {
-      enable = true;
-      arguments = [
-        "--reuse-frame"
-        "--alternate-editor=nvim"
-      ];
-    };
-  };
+  hm.emacs.enable = true;
 
   hm.openvi.enable = true;
 
