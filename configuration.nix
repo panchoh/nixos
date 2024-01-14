@@ -30,6 +30,7 @@
   system.stateVersion = "23.11";
 
   traits.usb-drives.enable = true;
+  traits.usb-misc.enable = true;
 
   traits.stylix.enable = true;
 
