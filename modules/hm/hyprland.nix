@@ -7,7 +7,7 @@
 }: let
   cfg = config.hm.hyprland;
 
-  foot = lib.getExe config.programs.foot.package;
+  foot = lib.getExe' config.programs.foot.package "footclient";
   swayidle = lib.getExe pkgs.swayidle;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
