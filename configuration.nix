@@ -31,6 +31,7 @@
 
   traits.usb-drives.enable = true;
   traits.usb-misc.enable = true;
+  traits.media-drive.enable = true;
 
   traits.stylix.enable = true;
 
