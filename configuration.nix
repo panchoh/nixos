@@ -349,6 +349,7 @@
   };
 
   services.pcscd.enable = true;
+  services.udev.packages = [pkgs.yubikey-personalization];
 
   security.wrappers.intel_gpu_top = {
     source = lib.getExe' pkgs.intel-gpu-tools "intel_gpu_top";
