@@ -29,6 +29,8 @@
 
   system.stateVersion = "23.11";
 
+  traits.usb-drives.enable = true;
+
   traits.stylix.enable = true;
 
   traits.home-manager.enable = true;

@@ -1,89 +1,96 @@
 {
+  config,
   pkgs,
   lib,
   ...
-}: {
-  services.udev.packages = [
-    (pkgs.writeTextFile rec {
-      name = "99-usb-drives.rules";
-      destination = "/etc/udev/rules.d/${name}";
-      text = ''
-        # Create /media/<label> dir upon connection of USB drives
-        ACTION=="add",                       \
-          KERNEL=="sd[a-z]",                 \
-          SUBSYSTEM=="block",                \
-          ENV{ID_USB_DRIVER}=="usb-storage", \
-          ENV{ID_FS_LABEL}!="",              \
-          RUN+="${lib.getExe' pkgs.coreutils "mkdir"} -p '/media/%E{ID_FS_LABEL}'"
+}: let
+  cfg = config.traits.usb-drives;
+in {
+  options.traits.usb-drives.enable = lib.mkEnableOption "usb drives";
 
-        # Remove /media/<label> dir upon disconnection of USB drives
-        ACTION=="remove",                    \
-          KERNEL=="sd[a-z]",                 \
-          SUBSYSTEM=="block",                \
-          ENV{ID_USB_DRIVER}=="usb-storage", \
-          ENV{ID_FS_LABEL}!="",              \
-          RUN+="${lib.getExe' pkgs.coreutils "rmdir"} --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
+  config = lib.mkIf cfg.enable {
+    services.udev.packages = [
+      (pkgs.writeTextFile rec {
+        name = "99-usb-drives.rules";
+        destination = "/etc/udev/rules.d/${name}";
+        text = ''
+          # Create /media/<label> dir upon connection of USB drives
+          ACTION=="add",                       \
+            KERNEL=="sd[a-z]",                 \
+            SUBSYSTEM=="block",                \
+            ENV{ID_USB_DRIVER}=="usb-storage", \
+            ENV{ID_FS_LABEL}!="",              \
+            RUN+="${lib.getExe' pkgs.coreutils "mkdir"} -p '/media/%E{ID_FS_LABEL}'"
 
-        # Allow direct access to usb block devices to the members of the storage group
-        KERNEL=="sd[a-z]*",                  \
-          SUBSYSTEM=="block",                \
-          ENV{ID_USB_DRIVER}=="usb-storage", \
-          GROUP="storage"
-      '';
-    })
-  ];
+          # Remove /media/<label> dir upon disconnection of USB drives
+          ACTION=="remove",                    \
+            KERNEL=="sd[a-z]",                 \
+            SUBSYSTEM=="block",                \
+            ENV{ID_USB_DRIVER}=="usb-storage", \
+            ENV{ID_FS_LABEL}!="",              \
+            RUN+="${lib.getExe' pkgs.coreutils "rmdir"} --ignore-fail-on-non-empty '/media/%E{ID_FS_LABEL}'"
 
-  fileSystems = builtins.listToAttrs (
-    map (label: {
-      name = "/media/${label}";
-      value = {
-        device = "/dev/disk/by-label/${label}";
-        fsType = "btrfs";
-        options = ["noauto" "users" "noexec" "nosuid" "nodev" "noatime"];
-      };
-    })
-    [
-      # My Passport Drives
-      "onyx"
-      "graphite"
-      "gold"
+          # Allow direct access to usb block devices to the members of the storage group
+          KERNEL=="sd[a-z]*",                  \
+            SUBSYSTEM=="block",                \
+            ENV{ID_USB_DRIVER}=="usb-storage", \
+            GROUP="storage"
+        '';
+      })
+    ];
 
-      "goo"
-      "blue"
-      "white"
+    fileSystems = builtins.listToAttrs (
+      map (label: {
+        name = "/media/${label}";
+        value = {
+          device = "/dev/disk/by-label/${label}";
+          fsType = "btrfs";
+          options = ["noauto" "users" "noexec" "nosuid" "nodev" "noatime"];
+        };
+      })
+      [
+        # My Passport Drives
+        "onyx"
+        "graphite"
+        "gold"
 
-      # Red is dead, babe.  Red is dead.
-      "orange"
-      "yellow"
+        "goo"
+        "blue"
+        "white"
 
-      # Black stack
-      "tesseract"
-      "void"
-      "monolith"
+        # Red is dead, babe.  Red is dead.
+        "orange"
+        "yellow"
 
-      # My Passport Ultra Drives
-      ## Silver
-      "uru"
-      "quicksilver"
-      "silver"
+        # Black stack
+        "tesseract"
+        "void"
+        "monolith"
 
-      ## Blue
-      "neon"
-      "cobalt"
-      "copper"
+        # My Passport Ultra Drives
+        ## Silver
+        "uru"
+        "quicksilver"
+        "silver"
 
-      ## Silver
-      "lithium"
-      "sodium"
-      "kalium"
+        ## Blue
+        "neon"
+        "cobalt"
+        "copper"
 
-      "backup"
+        ## Silver
+        "lithium"
+        "sodium"
+        "kalium"
 
-      # 2022-08-20T15:57:56 CEST
-      # Zeroed.
-      # Seems to have trouble spinning up, maybe some connector issue.
-      # I think is best not to use it anymore.
-      # "black"
-    ]
-  );
+        "backup"
+
+        # 2022-08-20T15:57:56 CEST
+        # Zeroed.
+        # Seems to have trouble spinning up, maybe some connector issue.
+        # I think is best not to use it anymore.
+        # "black"
+      ]
+    );
+  };
 }
