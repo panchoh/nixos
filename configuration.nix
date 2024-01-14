@@ -12,8 +12,7 @@
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.intel-nuc-8i7beh
-    ./usb-misc.nix
-    ./usb-drives.nix
+    ./modules/traits/usb
     ./media-drive.nix
     disko.nixosModules.default
     ./disko-config.nix
