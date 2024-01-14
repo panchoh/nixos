@@ -13,6 +13,7 @@
     ./modules/hm/chromium.nix
     ./modules/hm/chrome.nix
     ./modules/hm/firefox.nix
+    ./modules/hm/btop.nix
     ./modules/hm/mpv.nix
     ./modules/hm/virt-manager.nix
     ./modules/hm/openvi.nix
@@ -173,14 +174,7 @@
   # Reload system services when changing configs
   systemd.user.startServices = "sd-switch";
 
-  programs.btop = {
-    enable = true;
-    settings = {
-      # https://github.com/aristocratos/btop#configurability
-      vim_keys = true;
-      color_theme = "dracula";
-    };
-  };
+  hm.btop.enable = true;
 
   hm.gopass.enable = true;
 
