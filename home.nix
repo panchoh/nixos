@@ -192,7 +192,7 @@
       main = {
         font = lib.mkForce "Iosevka:size=20:weight=ExtraLight";
         layer = "overlay";
-        terminal = lib.getExe pkgs.foot;
+        terminal = lib.getExe config.programs.foot.package;
       };
     };
   };
