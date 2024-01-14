@@ -14,6 +14,7 @@
     ./modules/hm/chrome.nix
     ./modules/hm/firefox.nix
     ./modules/hm/btop.nix
+    ./modules/hm/yt-dlp.nix
     ./modules/hm/mpv.nix
     ./modules/hm/virt-manager.nix
     ./modules/hm/openvi.nix
@@ -330,17 +331,7 @@
     settings.git_protocol = "ssh";
   };
 
-  programs.aria2.enable = true;
-  programs.yt-dlp = {
-    enable = true;
-    settings = {
-      embed-thumbnail = true;
-      embed-subs = true;
-      sub-langs = "all";
-      downloader = "aria2c";
-      downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
-    };
-  };
+  hm.yt-dlp.enable = true;
 
   services.mako.enable = true;
 
