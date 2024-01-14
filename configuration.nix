@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.intel-nuc-8i7beh
     ./modules/traits/usb
-    ./media-drive.nix
+    ./modules/traits/media-drive.nix
     disko.nixosModules.default
     ./disko-config.nix
 
