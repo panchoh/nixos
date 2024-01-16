@@ -273,6 +273,9 @@
   environment.systemPackages = with pkgs; [
     git
     wget
+    # fix pcscd
+    # https://github.com/NixOS/nixpkgs/issues/280826
+    pcscliteWithPolkit.out
   ];
 
   programs.command-not-found.enable = false;
