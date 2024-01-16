@@ -81,6 +81,7 @@
     wlrctl
     wev
     xkeyboard_config
+    libxkbcommon # for xkbcli interactive-wayland
 
     v4l-utils
     graphviz
