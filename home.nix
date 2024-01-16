@@ -105,7 +105,6 @@
     pwgen
     yubico-piv-tool
     yubikey-manager
-    yubikey-manager-qt
     yubikey-personalization
     yubikey-personalization-gui
     yubikey-touch-detector
