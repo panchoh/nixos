@@ -10,6 +10,7 @@
     nix-index-database.hmModules.nix-index
     ./modules/hm/hyprland.nix
     ./modules/hm/fuzzel.nix
+    ./modules/hm/foot.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
     ./modules/hm/stylix.nix
@@ -191,18 +192,7 @@
 
   hm.fuzzel.enable = true;
 
-  programs.foot = {
-    enable = true;
-    settings = {
-      main = {
-        font = lib.mkForce "IosevkaTerm NFM Light:size=14";
-        font-bold = lib.mkForce "IosevkaTerm NFM:size=14";
-      };
-      mouse = {
-        hide-when-typing = true;
-      };
-    };
-  };
+  hm.foot.enable = true;
 
   programs.tmux = {
     enable = true;
