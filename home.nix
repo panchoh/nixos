@@ -64,17 +64,6 @@
     pavucontrol
     helvum
 
-    swaylock
-    swayidle
-    grim
-    satty # TODO: also configure hyprland keybinding
-    slurp
-    wl-clipboard
-    wlrctl
-    wev
-    xkeyboard_config
-    libxkbcommon # for xkbcli interactive-wayland
-
     v4l-utils
     graphviz
     ffmpeg
@@ -87,9 +76,6 @@
     picard
     youtube-tui
     zoom-us
-
-    grimblast
-    hyprpicker
 
     qmk
     qmk_hid
