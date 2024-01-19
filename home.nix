@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./modules/hm/stylix.nix
+    ./modules/hm/iosevka.nix
     ./modules/hm/virt-manager.nix
     ./modules/hm/hyprland.nix
     ./modules/hm/fuzzel.nix
@@ -59,10 +60,6 @@
     man-pages
     man-pages-posix
     ipcalc
-
-    (nerdfonts.override {fonts = ["IosevkaTerm"];})
-    (iosevka-bin.override {variant = "slab";})
-    iosevka-bin
 
     qastools
     pavucontrol
@@ -161,6 +158,7 @@
   };
 
   hm.stylix.enable = true;
+  hm.iosevka.enable = true;
   hm.virt-manager.enable = true;
   hm.hyprland.enable = true;
   hm.fuzzel.enable = true;
