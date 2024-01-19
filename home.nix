@@ -2,10 +2,12 @@
   config,
   pkgs,
   lib,
+  nix-index-database,
   attrs ? null,
   ...
 }: {
   imports = [
+    nix-index-database.hmModules.nix-index
     ./modules/hm/hyprland.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
@@ -350,6 +352,9 @@
     enable = true;
     generateCaches = true;
   };
+
+  programs.nix-index.enable = true;
+  programs.nix-index-database.comma.enable = true;
 
   hm.mpv.enable = true;
 

@@ -2,6 +2,7 @@
   config,
   lib,
   home-manager,
+  nix-index-database,
   stylix,
   autofirma-nix,
   attrs ? null,
@@ -22,7 +23,7 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        inherit stylix autofirma-nix attrs;
+        inherit nix-index-database stylix autofirma-nix attrs;
       };
       users.${attrs.userName or "alice"} = import ../../home.nix;
     };
