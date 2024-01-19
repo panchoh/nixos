@@ -9,6 +9,7 @@
   imports = [
     nix-index-database.hmModules.nix-index
     ./modules/hm/hyprland.nix
+    ./modules/hm/fuzzel.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
     ./modules/hm/stylix.nix
@@ -188,16 +189,7 @@
 
   hm.virt-manager.enable = true;
 
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = lib.mkForce "Iosevka:size=20:weight=ExtraLight";
-        layer = "overlay";
-        terminal = lib.getExe config.programs.foot.package;
-      };
-    };
-  };
+  hm.fuzzel.enable = true;
 
   programs.foot = {
     enable = true;
