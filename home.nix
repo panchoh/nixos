@@ -1,11 +1,10 @@
 {
   config,
   pkgs,
-  nix-index-database,
   ...
 }: {
   imports = [
-    nix-index-database.hmModules.nix-index
+    ./modules/hm/comma.nix
     ./modules/hm/hyprland.nix
     ./modules/hm/fuzzel.nix
     ./modules/hm/foot.nix
@@ -178,8 +177,7 @@
     enable = true;
     generateCaches = true;
   };
-  programs.nix-index.enable = true;
-  programs.nix-index-database.comma.enable = true;
+  hm.comma.enable = true;
   hm.openvi.enable = true;
   hm.emacs.enable = true;
   programs.helix.enable = true;
