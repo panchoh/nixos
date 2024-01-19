@@ -170,6 +170,8 @@
   services.dbus.implementation = "broker";
   services.dbus.packages = [pkgs.gcr]; # for pinentry-gnome3
 
+  services.upower.enable = true;
+
   services.xserver.xkb = {
     model = "pc105";
     layout = "us,us";
