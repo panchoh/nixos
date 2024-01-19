@@ -1,6 +1,7 @@
-{config, ...}: {
+{...}: {
   imports = [
     ./modules/hm/systemd.nix
+    ./modules/hm/xdg.nix
     ./modules/hm/stylix.nix
     ./modules/hm/iosevka.nix
     ./modules/hm/virt-manager.nix
@@ -33,12 +34,8 @@
 
   home.stateVersion = "23.11";
 
-  xdg = {
-    enable = true;
-    userDirs.download = "${config.home.homeDirectory}/incoming";
-  };
-
   hm.systemd.enable = true;
+  hm.xdg.enable = true;
   hm.stylix.enable = true;
   hm.iosevka.enable = true;
   hm.virt-manager.enable = true;
