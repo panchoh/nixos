@@ -4,30 +4,30 @@
   ...
 }: {
   imports = [
-    ./modules/hm/comma.nix
+    ./modules/hm/stylix.nix
+    ./modules/hm/virt-manager.nix
     ./modules/hm/hyprland.nix
     ./modules/hm/fuzzel.nix
     ./modules/hm/foot.nix
     ./modules/hm/tmux.nix
+    ./modules/hm/gopass.nix
     ./modules/hm/fish.nix
     ./modules/hm/git.nix
+    ./modules/hm/btop.nix
+    ./modules/hm/comma.nix
+    ./modules/hm/mdb.nix
+    ./modules/hm/openvi.nix
+    ./modules/hm/emacs.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
     ./modules/hm/yubikey.nix
-    ./modules/hm/stylix.nix
+    ./modules/hm/firefox.nix
     ./modules/hm/chromium.nix
     ./modules/hm/chrome.nix
-    ./modules/hm/firefox.nix
-    ./modules/hm/btop.nix
+    ./modules/hm/imv.nix
     ./modules/hm/yt-dlp.nix
     ./modules/hm/mpv.nix
-    ./modules/hm/imv.nix
     ./modules/hm/obs-studio.nix
-    ./modules/hm/virt-manager.nix
-    ./modules/hm/openvi.nix
-    ./modules/hm/gopass.nix
-    ./modules/hm/mdb.nix
-    ./modules/hm/emacs.nix
   ];
 
   home.stateVersion = "23.11";
@@ -161,7 +161,6 @@
   };
 
   hm.stylix.enable = true;
-  hm.mdb.enable = true;
   hm.virt-manager.enable = true;
   hm.hyprland.enable = true;
   hm.fuzzel.enable = true;
@@ -178,15 +177,16 @@
     generateCaches = true;
   };
   hm.comma.enable = true;
+  hm.mdb.enable = true;
   hm.openvi.enable = true;
   hm.emacs.enable = true;
   programs.helix.enable = true;
   programs.vscode.enable = true;
   programs.texlive.enable = true;
   programs.k9s.enable = true;
+  hm.openssh.enable = true;
   hm.gnupg.enable = true;
   hm.yubikey.enable = true;
-  hm.openssh.enable = true;
   hm.firefox.enable = true;
   hm.chromium.enable = true;
   hm.chrome.enable = true;
