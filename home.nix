@@ -15,6 +15,7 @@
     ./modules/hm/fish.nix
     ./modules/hm/git.nix
     ./modules/hm/btop.nix
+    ./modules/hm/man.nix
     ./modules/hm/comma.nix
     ./modules/hm/mdb.nix
     ./modules/hm/openvi.nix
@@ -57,8 +58,6 @@
     b3sum
     unzip
     zip
-    man-pages
-    man-pages-posix
     ipcalc
 
     qastools
@@ -170,10 +169,7 @@
   hm.fish.enable = true;
   hm.git.enable = true;
   hm.btop.enable = true;
-  programs.man = {
-    enable = true;
-    generateCaches = true;
-  };
+  hm.man.enable = true;
   hm.comma.enable = true;
   hm.mdb.enable = true;
   hm.openvi.enable = true;
