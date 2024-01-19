@@ -13,6 +13,7 @@
     ./modules/hm/foot.nix
     ./modules/hm/tmux.nix
     ./modules/hm/fish.nix
+    ./modules/hm/git.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
     ./modules/hm/stylix.nix
@@ -125,17 +126,9 @@
     fdupes
     rdfind
     rmlint
-    gitg
-    tig
-    gource
-    gti
     gnutls
     zstd
-    meld
-    vbindiff
-    diffoscope
 
-    bvi
     bc
 
     ccls
@@ -202,32 +195,7 @@
 
   hm.fish.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = attrs.userDesc or "Alice Q. User";
-    userEmail = attrs.userEmail or "alice@example.org";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      merge.conflictStyle = "zdiff3";
-    };
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = true;
-      };
-    };
-    signing = {
-      key = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
-      signByDefault = true;
-    };
-  };
-
-  programs.gh = {
-    enable = true;
-    settings.git_protocol = "ssh";
-  };
+  hm.git.enable = true;
 
   hm.yt-dlp.enable = true;
 
