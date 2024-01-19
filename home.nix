@@ -192,14 +192,13 @@
       main = {
         font = lib.mkForce "Iosevka:size=20:weight=ExtraLight";
         layer = "overlay";
-        terminal = lib.getExe' config.programs.foot.package "footclient";
+        terminal = lib.getExe config.programs.foot.package;
       };
     };
   };
 
   programs.foot = {
     enable = true;
-    server.enable = true;
     settings = {
       main = {
         font = lib.mkForce "IosevkaTerm NFM Light:size=14";
