@@ -30,6 +30,7 @@
     ./modules/hm/yt-dlp.nix
     ./modules/hm/mpv.nix
     ./modules/hm/obs-studio.nix
+    ./modules/hm/games.nix
   ];
 
   home.stateVersion = "23.11";
@@ -113,25 +114,6 @@
 
     lapce
     neovide
-
-    bb
-    # bsdgames # provides wtf, but conflicts with fish shell
-    # FIXME: PR with the current BSD Games, which fixes this an more
-    (stdenv.mkDerivation {
-      pname = "bsdgames-custom";
-      version = pkgs.bsdgames.version;
-      src = pkgs.bsdgames;
-      installPhase = ''
-        mkdir -p $out
-        cp -a ${pkgs.bsdgames}/. $out/
-        chmod +w $out/bin
-        mv -f $out/bin/fish $out/bin/gofish
-      '';
-    })
-    crawl
-    sl
-    neofetch
-    hyperrogue
   ];
 
   # Reload system services when changing configs
@@ -174,4 +156,5 @@
   hm.yt-dlp.enable = true;
   hm.mpv.enable = true;
   hm.obs-studio.enable = true;
+  hm.games.enable = true;
 }
