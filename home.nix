@@ -23,6 +23,7 @@
     ./modules/hm/btop.nix
     ./modules/hm/yt-dlp.nix
     ./modules/hm/mpv.nix
+    ./modules/hm/imv.nix
     ./modules/hm/virt-manager.nix
     ./modules/hm/openvi.nix
     ./modules/hm/gopass.nix
@@ -203,14 +204,7 @@
 
   programs.k9s.enable = true;
 
-  programs.imv = {
-    enable = true;
-    settings = {
-      binds."<Shift+Delete>" = ''
-        exec rm "$imv_current_file"; close
-      '';
-    };
-  };
+  hm.imv.enable = true;
 
   programs.man = {
     enable = true;
