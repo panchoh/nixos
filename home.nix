@@ -16,6 +16,7 @@
     ./modules/hm/git.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
+    ./modules/hm/yubikey.nix
     ./modules/hm/stylix.nix
     ./modules/hm/chromium.nix
     ./modules/hm/chrome.nix
@@ -62,17 +63,6 @@
     man-pages-posix
     ipcalc
 
-    pam_u2f
-    pamtester
-    libfido2
-
-    opensc
-    pcsctools
-    ccid
-    scmccid
-
-    openssl
-
     (nerdfonts.override {fonts = ["IosevkaTerm"];})
     (iosevka-bin.override {variant = "slab";})
     iosevka-bin
@@ -111,14 +101,6 @@
     qmk
     qmk_hid
     keymapviz
-
-    pwgen
-    yubico-piv-tool
-    yubikey-manager
-    yubikey-personalization
-    yubikey-personalization-gui
-    yubikey-touch-detector
-    yubioath-flutter
 
     binutils
     dua
@@ -225,6 +207,7 @@
   hm.chrome.enable = true;
 
   hm.gnupg.enable = true;
+  hm.yubikey.enable = true;
 
   hm.openssh.enable = true;
 
