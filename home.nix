@@ -11,6 +11,7 @@
     ./modules/hm/hyprland.nix
     ./modules/hm/fuzzel.nix
     ./modules/hm/foot.nix
+    ./modules/hm/tmux.nix
     ./modules/hm/openssh.nix
     ./modules/hm/gnupg.nix
     ./modules/hm/stylix.nix
@@ -194,19 +195,7 @@
 
   hm.foot.enable = true;
 
-  programs.tmux = {
-    enable = true;
-    aggressiveResize = true;
-    clock24 = true;
-    mouse = true;
-    terminal = "tmux-256color";
-    sensibleOnTop = false;
-    escapeTime = 0;
-    extraConfig = ''
-      set -g focus-events on
-      set -g status-interval 5
-    '';
-  };
+  hm.tmux.enable = true;
 
   programs.bash.enable = true;
 
