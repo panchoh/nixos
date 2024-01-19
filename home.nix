@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./modules/hm/stylix.nix
     ./modules/hm/iosevka.nix
@@ -31,90 +27,10 @@
     ./modules/hm/mpv.nix
     ./modules/hm/obs-studio.nix
     ./modules/hm/games.nix
+    ./modules/hm/misc.nix
   ];
 
   home.stateVersion = "23.11";
-
-  home.packages = with pkgs; [
-    efibootmgr
-    gptfdisk
-    parted
-    psmisc
-    sysstat
-    pciutils
-    usbutils
-    usbtop
-    smartmontools
-    hdparm
-    nvme-cli
-    sg3_utils
-    lm_sensors
-    ldns
-    dogdns
-    nmap
-    mtr-gui
-    speedtest-go
-    moreutils
-    hwloc
-    b3sum
-    unzip
-    zip
-    ipcalc
-
-    qastools
-    pavucontrol
-    helvum
-
-    v4l-utils
-    graphviz
-    ffmpeg
-    vlc
-    mkvtoolnix
-    evince
-    gimp
-    inkscape
-    audacity
-    picard
-    youtube-tui
-    zoom-us
-
-    qmk
-    qmk_hid
-    keymapviz
-
-    binutils
-    dua
-    duf
-    du-dust
-    file
-    fdupes
-    rdfind
-    rmlint
-    gnutls
-    zstd
-
-    bc
-
-    ccls
-
-    telegram-desktop
-    discord
-    nheko
-    tessen
-
-    cdrkit
-    cloud-utils
-
-    popcorntime
-
-    transmission-gtk
-    wormhole-william
-
-    intel-gpu-tools
-
-    lapce
-    neovide
-  ];
 
   # Reload system services when changing configs
   systemd.user.startServices = "sd-switch";
@@ -157,4 +73,5 @@
   hm.mpv.enable = true;
   hm.obs-studio.enable = true;
   hm.games.enable = true;
+  hm.misc.enable = true;
 }
