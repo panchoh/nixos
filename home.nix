@@ -1,9 +1,7 @@
 {
   config,
   pkgs,
-  lib,
   nix-index-database,
-  attrs ? null,
   ...
 }: {
   imports = [
