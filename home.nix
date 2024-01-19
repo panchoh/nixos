@@ -24,6 +24,7 @@
     ./modules/hm/yt-dlp.nix
     ./modules/hm/mpv.nix
     ./modules/hm/imv.nix
+    ./modules/hm/obs-studio.nix
     ./modules/hm/virt-manager.nix
     ./modules/hm/openvi.nix
     ./modules/hm/gopass.nix
@@ -216,10 +217,7 @@
 
   hm.mpv.enable = true;
 
-  programs.obs-studio = {
-    enable = true;
-    plugins = [pkgs.obs-studio-plugins.wlrobs];
-  };
+  hm.obs-studio.enable = true;
 
   hm.firefox.enable = true;
 
