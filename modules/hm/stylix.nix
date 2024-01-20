@@ -3,6 +3,7 @@
   lib,
   pkgs,
   stylix,
+  osConfig,
   ...
 }: let
   cfg = config.hm.stylix;
@@ -65,8 +66,8 @@ in {
 
       sizes = {
         desktop = 10;
-        applications = 12;
-        terminal = 14;
+        applications = osConfig.traits.font.applications;
+        terminal = osConfig.traits.font.terminal;
       };
     };
   };

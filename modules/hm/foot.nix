@@ -1,9 +1,11 @@
 {
   config,
   lib,
+  osConfig,
   ...
 }: let
   cfg = config.hm.foot;
+  size = toString osConfig.traits.font.terminal;
 in {
   options.hm.foot.enable = lib.mkEnableOption "foot";
 
@@ -11,8 +13,8 @@ in {
     enable = true;
     settings = {
       main = {
-        font = lib.mkForce "IosevkaTerm NFM Light:size=14";
-        font-bold = lib.mkForce "IosevkaTerm NFM:size=14";
+        font = lib.mkForce "IosevkaTerm NFM Light:size=${size}";
+        font-bold = lib.mkForce "IosevkaTerm NFM:size=${size}";
       };
       mouse = {
         hide-when-typing = true;

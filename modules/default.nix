@@ -41,6 +41,7 @@
     ./traits/chromium.nix
     ./traits/chrome.nix
 
+    ./traits/font.nix
     ./traits/stylix.nix
     ./traits/home-manager.nix
   ];
