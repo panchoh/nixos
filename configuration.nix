@@ -6,6 +6,7 @@
   nixos-hardware,
   disko,
   modulesPath,
+  attrs ? null,
   ...
 }: {
   imports = [
@@ -52,7 +53,7 @@
 
   traits.usb-drives.enable = true;
   traits.usb-misc.enable = true;
-  traits.media-drive.enable = true;
+  traits.media-drive.enable = !attrs.isLaptop or false;
 
   traits.stylix.enable = true;
 

@@ -19,7 +19,7 @@ in {
       hostName = attrs.hostName or "nixos";
       useDHCP = false;
       enableIPv6 = false;
-      wireless.iwd.enable = true;
+      wireless.iwd.enable = attrs.isLaptop or false;
       firewall.allowedTCPPorts = [
         51413 # transmission-gtk
       ];

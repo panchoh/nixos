@@ -2,9 +2,14 @@
   config,
   lib,
   pkgs,
+  attrs ? null,
   ...
 }: let
   cfg = config.traits.epb;
+  policy =
+    if attrs.isLaptop or false
+    then "--turbo-enable 0 power"
+    else "performance";
 in {
   options.traits.epb.enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)";
 
@@ -21,7 +26,7 @@ in {
         Type = "oneshot";
         RemainAfterExit = true;
         ExecStartPre = "${lib.getExe' pkgs.kmod "modprobe"} msr";
-        ExecStart = "${lib.getExe' pkgs.linuxPackages_latest.x86_energy_perf_policy "x86_energy_perf_policy"} performance";
+        ExecStart = "${lib.getExe' pkgs.linuxPackages_latest.x86_energy_perf_policy "x86_energy_perf_policy"} ${policy}";
         ExecStartPost = "${lib.getExe' pkgs.kmod "modprobe"} -r msr";
       };
     };
