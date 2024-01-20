@@ -26,7 +26,6 @@ in {
       ldns
       dogdns
       nmap
-      mtr-gui
       speedtest-go
       moreutils
       hwloc

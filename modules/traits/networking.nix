@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   attrs ? null,
   ...
 }: let
@@ -9,7 +10,10 @@ in {
   options.traits.networking.enable = lib.mkEnableOption "networking";
 
   config = lib.mkIf cfg.enable {
-    programs.mtr.enable = true;
+    programs = {
+      mtr.enable = true;
+      mtr.package = pkgs.mtr-gui;
+    };
 
     networking = {
       hostName = attrs.hostName or "nixos";
