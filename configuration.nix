@@ -27,6 +27,7 @@
     ./modules/traits/hyprland.nix
     ./modules/traits/greetd.nix
     ./modules/traits/nix.nix
+    ./modules/traits/editor.nix
     ./modules/traits/locate.nix
     ./modules/traits/user.nix
     ./modules/traits/printing.nix
@@ -105,22 +106,8 @@
 
   programs.command-not-found.enable = false;
   programs.mtr.enable = true;
-  programs.nano.enable = false;
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-    configure = {
-      customRC = ''
-        set mouse=
-      '';
-      packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [vim-nix];
-      };
-    };
-  };
-  environment.variables.EDITOR = "nvim";
+
+  traits.editor.enable = true;
 
   programs.fish = {
     enable = true;
