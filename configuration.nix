@@ -118,12 +118,6 @@
 
   traits.ssh.enable = true;
 
-  services.resolved = {
-    enable = true;
-    dnssec = "true";
-    llmnr = "false";
-  };
-
   networking.firewall.allowedTCPPorts = [
     80
     443

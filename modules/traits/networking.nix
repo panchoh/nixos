@@ -18,6 +18,12 @@ in {
       wireless.iwd.enable = true;
     };
 
+    services.resolved = {
+      enable = true;
+      dnssec = "true";
+      llmnr = "false";
+    };
+
     systemd.network = {
       enable = true;
       netdevs = {
