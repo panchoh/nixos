@@ -21,6 +21,7 @@
     ./modules/traits/autoupgrade.nix
     ./modules/traits/networking.nix
     ./modules/traits/hardware.nix
+    ./modules/traits/i18n.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -52,14 +53,7 @@
 
   traits.hardware.enable = true;
 
-  i18n = {
-    extraLocaleSettings = {
-      LC_MEASUREMENT = "en_DK.UTF-8"; # m, not in
-      LC_MONETARY = "en_IE.UTF-8"; # €, not $
-      LC_PAPER = "en_DK.UTF-8"; # DIN A4, not legal
-      LC_TIME = "en_DK.UTF-8"; # yes, that means ISO-8601 ;-)
-    };
-  };
+  traits.i18n.enable = true;
 
   # https://docs.kernel.org/admin-guide/pm/intel_epb.html
   # https://bbs.archlinux.org/viewtopic.php?id=270199
