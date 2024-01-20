@@ -118,12 +118,6 @@
 
   traits.ssh.enable = true;
 
-  networking.firewall.allowedTCPPorts = [
-    51413
-  ];
-
-  services.fail2ban.enable = true;
-
   traits.caddy.enable = false;
 
   traits.doas.enable = true;

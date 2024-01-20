@@ -16,12 +16,18 @@ in {
       useDHCP = false;
       enableIPv6 = false;
       wireless.iwd.enable = true;
+      firewall.allowedTCPPorts = [
+        51413 # transmission-gtk
+      ];
     };
 
-    services.resolved = {
-      enable = true;
-      dnssec = "true";
-      llmnr = "false";
+    services = {
+      fail2ban.enable = true;
+      resolved = {
+        enable = true;
+        dnssec = "true";
+        llmnr = "false";
+      };
     };
 
     systemd.network = {
