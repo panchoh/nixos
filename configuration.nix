@@ -34,6 +34,7 @@
     ./modules/traits/printing.nix
     ./modules/traits/sound.nix
     ./modules/traits/ssh.nix
+    ./modules/traits/caddy.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -119,24 +120,12 @@
   traits.ssh.enable = true;
 
   networking.firewall.allowedTCPPorts = [
-    80
-    443
     51413
   ];
 
   services.fail2ban.enable = true;
 
-  services.caddy = {
-    # acmeCA = "https://acme-v02.api.letsencrypt.org/directory"; # while in development
-    enable = false;
-    email = "pancho@pancho.name";
-    logFormat = nixpkgs.lib.mkForce "level INFO";
-    virtualHosts."canalplus.pancho.name".extraConfig = ''
-      log
-      root * /srv/http
-      file_server /FF2E6E41-1FE8-4515-82D1-56D5C49EB2B5/* browse
-    '';
-  };
+  traits.caddy.enable = false;
 
   services.pcscd.enable = true;
   services.udev.packages = [pkgs.yubikey-personalization];
