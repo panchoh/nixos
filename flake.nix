@@ -64,8 +64,6 @@
           value = nixpkgs.legacyPackages.${system}.alejandra;
         })
         (unique (catAttrs "system" boxen)))
-      # Alt.:
-      # (unique (map (box: box.system) boxen)))
     );
 
     nixosConfigurations = builtins.listToAttrs (
