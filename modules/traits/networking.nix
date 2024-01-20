@@ -9,6 +9,8 @@ in {
   options.traits.networking.enable = lib.mkEnableOption "networking";
 
   config = lib.mkIf cfg.enable {
+    programs.mtr.enable = true;
+
     networking = {
       hostName = attrs.hostName or "nixos";
       useDHCP = false;

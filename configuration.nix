@@ -106,7 +106,6 @@
   ];
 
   programs.command-not-found.enable = false;
-  programs.mtr.enable = true;
 
   traits.editor.enable = true;
 
