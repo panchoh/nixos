@@ -1,0 +1,34 @@
+{
+  imports = [
+    ./systemd.nix
+    ./xdg.nix
+    ./stylix.nix
+    ./iosevka.nix
+    ./virt-manager.nix
+    ./hyprland.nix
+    ./fuzzel.nix
+    ./foot.nix
+    ./tmux.nix
+    ./gopass.nix
+    ./fish.nix
+    ./git.nix
+    ./btop.nix
+    ./man.nix
+    ./comma.nix
+    ./mdb.nix
+    ./openvi.nix
+    ./emacs.nix
+    ./openssh.nix
+    ./gnupg.nix
+    ./yubikey.nix
+    ./firefox.nix
+    ./chromium.nix
+    ./chrome.nix
+    ./imv.nix
+    ./yt-dlp.nix
+    ./mpv.nix
+    ./obs-studio.nix
+    ./games.nix
+    ./misc.nix
+  ];
+}

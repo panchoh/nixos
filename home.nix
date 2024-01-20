@@ -1,36 +1,5 @@
-{...}: {
-  imports = [
-    ./modules/hm/systemd.nix
-    ./modules/hm/xdg.nix
-    ./modules/hm/stylix.nix
-    ./modules/hm/iosevka.nix
-    ./modules/hm/virt-manager.nix
-    ./modules/hm/hyprland.nix
-    ./modules/hm/fuzzel.nix
-    ./modules/hm/foot.nix
-    ./modules/hm/tmux.nix
-    ./modules/hm/gopass.nix
-    ./modules/hm/fish.nix
-    ./modules/hm/git.nix
-    ./modules/hm/btop.nix
-    ./modules/hm/man.nix
-    ./modules/hm/comma.nix
-    ./modules/hm/mdb.nix
-    ./modules/hm/openvi.nix
-    ./modules/hm/emacs.nix
-    ./modules/hm/openssh.nix
-    ./modules/hm/gnupg.nix
-    ./modules/hm/yubikey.nix
-    ./modules/hm/firefox.nix
-    ./modules/hm/chromium.nix
-    ./modules/hm/chrome.nix
-    ./modules/hm/imv.nix
-    ./modules/hm/yt-dlp.nix
-    ./modules/hm/mpv.nix
-    ./modules/hm/obs-studio.nix
-    ./modules/hm/games.nix
-    ./modules/hm/misc.nix
-  ];
+{
+  imports = [./modules/hm/all-modules.nix];
 
   home.stateVersion = "23.11";
 
