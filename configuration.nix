@@ -29,6 +29,7 @@
     ./modules/traits/locate.nix
     ./modules/traits/user.nix
     ./modules/traits/printing.nix
+    ./modules/traits/sound.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -81,15 +82,7 @@
 
   traits.printing.enable = true;
 
-  sound.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-  };
+  traits.sound.enable = true;
 
   traits.user.enable = true;
 
