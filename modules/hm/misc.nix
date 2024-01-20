@@ -23,16 +23,18 @@ in {
       nvme-cli
       sg3_utils
       lm_sensors
+
       ldns
       dogdns
       nmap
       speedtest-go
+      ipcalc
+
       moreutils
       hwloc
       b3sum
       unzip
       zip
-      ipcalc
 
       qastools
       pavucontrol
