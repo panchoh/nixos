@@ -18,6 +18,7 @@
     ./disko-config.nix
 
     ./modules/traits/boot.nix
+    ./modules/traits/autoupgrade.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -41,10 +42,7 @@
 
   traits.boot.enable = true;
 
-  # system.autoUpgrade.enable = true;
-  # system.autoUpgrade.allowReboot = true;
-  # system.autoUpgrade.flake = "github:panchoh/nixos-flake-sandbox";
-  # system.autoUpgrade.flags = [ "--update-input" "nixpkgs" "--commit-lock-file" ];
+  traits.autoupgrade.enable = false;
 
   networking = {
     hostName = attrs.hostName or "nixos";
