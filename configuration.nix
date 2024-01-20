@@ -28,6 +28,7 @@
     ./modules/traits/greetd.nix
     ./modules/traits/locate.nix
     ./modules/traits/user.nix
+    ./modules/traits/printing.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -78,10 +79,7 @@
 
   services.fwupd.enable = true;
 
-  services.printing = {
-    enable = true;
-    drivers = [pkgs.hplip];
-  };
+  traits.printing.enable = true;
 
   sound.enable = true;
   security.rtkit.enable = true;
