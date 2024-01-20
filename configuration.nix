@@ -26,6 +26,7 @@
     ./modules/traits/console.nix
     ./modules/traits/kmscon.nix
     ./modules/traits/greetd.nix
+    ./modules/traits/locate.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -72,11 +73,7 @@
 
   traits.kmscon.enable = true;
 
-  services.locate = {
-    enable = true;
-    package = pkgs.plocate;
-    localuser = null;
-  };
+  traits.locate.enable = true;
 
   services.fwupd.enable = true;
 
