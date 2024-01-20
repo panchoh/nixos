@@ -20,6 +20,7 @@
     ./modules/traits/boot.nix
     ./modules/traits/autoupgrade.nix
     ./modules/traits/networking.nix
+    ./modules/traits/hardware.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -49,25 +50,7 @@
 
   time.timeZone = "Europe/Madrid";
 
-  hardware = {
-    keyboard.qmk.enable = true;
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
-    };
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        # https://nixos.wiki/wiki/Accelerated_Video_Playback
-        intel-ocl
-        intel-compute-runtime
-        intel-media-driver
-        intel-vaapi-driver
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-  };
+  traits.hardware.enable = true;
 
   i18n = {
     extraLocaleSettings = {
