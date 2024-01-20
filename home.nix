@@ -13,7 +13,6 @@
   services.mako.enable = true;
   hm.foot.enable = true;
   hm.tmux.enable = true;
-  hm.gopass.enable = true;
   programs.bash.enable = true;
   hm.fish.enable = true;
   hm.git.enable = true;
@@ -30,6 +29,7 @@
   hm.openssh.enable = true;
   hm.gnupg.enable = true;
   hm.yubikey.enable = true;
+  hm.gopass.enable = true;
   hm.firefox.enable = true;
   hm.chromium.enable = true;
   hm.chrome.enable = true;

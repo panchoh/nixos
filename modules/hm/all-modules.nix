@@ -9,7 +9,6 @@
     ./fuzzel.nix
     ./foot.nix
     ./tmux.nix
-    ./gopass.nix
     ./fish.nix
     ./git.nix
     ./btop.nix
@@ -21,6 +20,7 @@
     ./openssh.nix
     ./gnupg.nix
     ./yubikey.nix
+    ./gopass.nix
     ./firefox.nix
     ./chromium.nix
     ./chrome.nix
