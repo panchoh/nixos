@@ -36,6 +36,7 @@
     ./modules/traits/ssh.nix
     ./modules/traits/caddy.nix
     ./modules/traits/doas.nix
+    ./modules/traits/yubikey.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -103,9 +104,6 @@
   environment.systemPackages = with pkgs; [
     git
     wget
-    # fix pcscd
-    # https://github.com/NixOS/nixpkgs/issues/280826
-    pcscliteWithPolkit.out
   ];
 
   programs.command-not-found.enable = false;
@@ -128,18 +126,9 @@
 
   traits.caddy.enable = false;
 
-  services.pcscd.enable = true;
-  services.udev.packages = [pkgs.yubikey-personalization];
-
   traits.doas.enable = true;
 
-  # security.pam.u2f.enable = true;
-  # security.pam.u2f.cue = true;
-  security.pam.services = {
-    login.u2fAuth = true;
-    doas.u2fAuth = true;
-    sudo.u2fAuth = true;
-  };
+  traits.yubikey.enable = true;
 
   services.fstrim.enable = true;
 
