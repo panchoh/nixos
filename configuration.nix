@@ -69,7 +69,7 @@
     model = "pc105";
     layout = "us,us";
     variant = "altgr-intl,dvorak-alt-intl";
-    options = "compose:sclk,grp:shifts_toggle";
+    options = "lv3:ralt_switch_multikey,grp:caps_toggle";
   };
 
   console = {
