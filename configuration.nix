@@ -35,6 +35,7 @@
     ./modules/traits/sound.nix
     ./modules/traits/ssh.nix
     ./modules/traits/caddy.nix
+    ./modules/traits/doas.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -130,17 +131,7 @@
   services.pcscd.enable = true;
   services.udev.packages = [pkgs.yubikey-personalization];
 
-  security.doas.enable = true;
-  security.doas.extraRules = [
-    {
-      groups = ["wheel"];
-      persist = true;
-      # keepEnv = true;
-      setEnv = ["LOCALE_ARCHIVE" "NIXOS_INSTALL_BOOTLOADER"];
-    }
-  ];
-  security.sudo.enable = false;
-  security.sudo.execWheelOnly = true;
+  traits.doas.enable = true;
 
   # security.pam.u2f.enable = true;
   # security.pam.u2f.cue = true;
