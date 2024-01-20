@@ -1,5 +1,5 @@
 {
-  description = "Port of archify to NixOS + flakes + Home Manager.";
+  description = "Nix is love.  Nix is life.  Nix is also… snow.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
