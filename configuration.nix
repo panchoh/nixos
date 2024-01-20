@@ -25,6 +25,7 @@
     ./modules/traits/epb.nix
     ./modules/traits/console.nix
     ./modules/traits/kmscon.nix
+    ./modules/traits/greetd.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -113,17 +114,7 @@
   programs.hyprland.xwayland.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
-  services.greetd = {
-    enable = true;
-    restart = true;
-    settings = rec {
-      default_session = initial_session;
-      initial_session = {
-        command = "${lib.getExe config.programs.hyprland.finalPackage} &>~/.Wsession.errors";
-        user = attrs.userName or "alice";
-      };
-    };
-  };
+  traits.greetd.enable = true;
 
   nix = {
     channel.enable = false;
