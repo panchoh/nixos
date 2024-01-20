@@ -1,5 +1,5 @@
 {
-  imports = [./modules/hm/all-modules.nix];
+  imports = [./modules/hm];
 
   home.stateVersion = "23.11";
 
