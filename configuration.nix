@@ -6,7 +6,6 @@
   nixos-hardware,
   disko,
   modulesPath,
-  attrs ? null,
   ...
 }: {
   imports = [
@@ -25,6 +24,7 @@
     ./modules/traits/epb.nix
     ./modules/traits/console.nix
     ./modules/traits/kmscon.nix
+    ./modules/traits/hyprland.nix
     ./modules/traits/greetd.nix
     ./modules/traits/locate.nix
     ./modules/traits/user.nix
@@ -95,9 +95,7 @@
 
   traits.user.enable = true;
 
-  programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  traits.hyprland.enable = true;
 
   traits.greetd.enable = true;
 
