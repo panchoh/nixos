@@ -33,6 +33,7 @@
     ./modules/traits/user.nix
     ./modules/traits/printing.nix
     ./modules/traits/sound.nix
+    ./modules/traits/ssh.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -115,21 +116,7 @@
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
 
-  programs.mosh.enable = true;
-  services.openssh = {
-    enable = true;
-    startWhenNeeded = true;
-    hostKeys = [
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
-    ];
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-    };
-  };
+  traits.ssh.enable = true;
 
   services.resolved = {
     enable = true;
