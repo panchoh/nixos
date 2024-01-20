@@ -24,6 +24,7 @@
     ./modules/traits/i18n.nix
     ./modules/traits/epb.nix
     ./modules/traits/console.nix
+    ./modules/traits/kmscon.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -68,20 +69,7 @@
 
   traits.console.enable = true;
 
-  services.kmscon = {
-    enable = true;
-    hwRender = true;
-    autologinUser = attrs.userName or "alice";
-    extraOptions = "--xkb-layout=us --xkb-variant=altgr-intl";
-    # TODO: report issue upstream (single font requires trailing comma)
-    fonts = lib.mkBefore [
-      {
-        # name = "IosevkaTerm NFM Light,"; # commas save lives!
-        name = "IosevkaTerm NFM Light";
-        package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
-      }
-    ];
-  };
+  traits.kmscon.enable = true;
 
   services.locate = {
     enable = true;

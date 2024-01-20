@@ -1,0 +1,28 @@
+{
+  config,
+  lib,
+  pkgs,
+  attrs ? null,
+  ...
+}: let
+  cfg = config.traits.kmscon;
+in {
+  options.traits.kmscon.enable = lib.mkEnableOption "kmscon";
+
+  config = lib.mkIf cfg.enable {
+    services.kmscon = {
+      enable = true;
+      hwRender = true;
+      autologinUser = attrs.userName or "alice";
+      extraOptions = "--xkb-layout=us --xkb-variant=altgr-intl";
+      # TODO: report issue upstream (single font requires trailing comma)
+      fonts = lib.mkBefore [
+        {
+          # name = "IosevkaTerm NFM Light,"; # commas save lives!
+          name = "IosevkaTerm NFM Light";
+          package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
+        }
+      ];
+    };
+  };
+}
