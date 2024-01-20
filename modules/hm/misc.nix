@@ -31,6 +31,7 @@ in {
       ipcalc
 
       moreutils
+      yq-go
       hwloc
       b3sum
       unzip
