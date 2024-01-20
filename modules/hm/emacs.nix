@@ -48,6 +48,7 @@ in {
       # clang # conflits with gcc, TODO: decide which one to set here
       gcc
       gnumake
+      ccls
 
       gotools
       go-tools

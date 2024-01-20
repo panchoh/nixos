@@ -69,8 +69,6 @@ in {
 
       bc
 
-      ccls
-
       telegram-desktop
       discord
       nheko
