@@ -17,6 +17,8 @@
     disko.nixosModules.default
     ./disko-config.nix
 
+    ./modules/traits/boot.nix
+
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
     ./modules/programs/chrome.nix
@@ -37,19 +39,7 @@
 
   traits.home-manager.enable = true;
 
-  boot.loader.timeout = 0;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.consoleMode = "keep";
-  boot.loader.systemd-boot.memtest86.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = ["quiet" "loglevel=3" "systemd.show_status=auto" "udev.log_level=3"];
-  boot.initrd.kernelModules = ["i915" "btrfs"];
-  boot.initrd.verbose = false;
-  boot.initrd.systemd.enable = true;
-  boot.consoleLogLevel = 0;
-  boot.plymouth.enable = true;
+  traits.boot.enable = true;
 
   # system.autoUpgrade.enable = true;
   # system.autoUpgrade.allowReboot = true;
