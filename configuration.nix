@@ -28,6 +28,7 @@
     ./modules/traits/greetd.nix
     ./modules/traits/nix.nix
     ./modules/traits/editor.nix
+    ./modules/traits/fish.nix
     ./modules/traits/locate.nix
     ./modules/traits/user.nix
     ./modules/traits/printing.nix
@@ -109,13 +110,7 @@
 
   traits.editor.enable = true;
 
-  programs.fish = {
-    enable = true;
-    useBabelfish = true;
-    interactiveShellInit = ''
-      set -g fish_greeting
-    '';
-  };
+  traits.fish.enable = true;
 
   virtualisation.libvirtd.enable = true;
   virtualisation.podman.enable = true;
