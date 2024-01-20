@@ -23,6 +23,7 @@
     ./modules/traits/hardware.nix
     ./modules/traits/i18n.nix
     ./modules/traits/epb.nix
+    ./modules/traits/console.nix
 
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./modules/programs/chromium.nix
@@ -65,19 +66,7 @@
 
   services.upower.enable = true;
 
-  services.xserver.xkb = {
-    model = "pc105";
-    layout = "us,us";
-    variant = "altgr-intl,dvorak-alt-intl";
-    options = "lv3:ralt_switch_multikey,grp:caps_toggle";
-  };
-
-  console = {
-    earlySetup = true;
-    font = "ter-powerline-v24n";
-    packages = [pkgs.powerline-fonts];
-    useXkbConfig = true;
-  };
+  traits.console.enable = true;
 
   services.kmscon = {
     enable = true;
