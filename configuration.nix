@@ -26,6 +26,7 @@
     ./modules/traits/kmscon.nix
     ./modules/traits/hyprland.nix
     ./modules/traits/greetd.nix
+    ./modules/traits/nix.nix
     ./modules/traits/locate.nix
     ./modules/traits/user.nix
     ./modules/traits/printing.nix
@@ -90,20 +91,7 @@
 
   traits.greetd.enable = true;
 
-  nix = {
-    channel.enable = false;
-    registry.nixpkgs.flake = nixpkgs;
-    settings = {
-      auto-optimise-store = true;
-      use-xdg-base-directories = true;
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
-    };
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 7d";
-    };
-  };
+  traits.nix.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
