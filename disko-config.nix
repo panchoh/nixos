@@ -3,6 +3,7 @@
     "compress=zstd:1"
     "noatime"
     "autodefrag"
+    "X-fstrim.notrim"
   ];
 in {
   disko.devices.disk.nvm0en1 = {
