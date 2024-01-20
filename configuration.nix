@@ -1,53 +1,9 @@
 {
-  config,
-  lib,
   pkgs,
-  nixpkgs,
-  nixos-hardware,
-  disko,
-  modulesPath,
   attrs ? null,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-    nixos-hardware.nixosModules.intel-nuc-8i7beh
-    ./modules/traits/usb
-    ./modules/traits/media-drive.nix
-    disko.nixosModules.default
-    ./disko-config.nix
-
-    ./modules/traits/boot.nix
-    ./modules/traits/autoupgrade.nix
-    ./modules/traits/networking.nix
-    ./modules/traits/hardware.nix
-    ./modules/traits/i18n.nix
-    ./modules/traits/epb.nix
-    ./modules/traits/console.nix
-    ./modules/traits/kmscon.nix
-    ./modules/traits/hyprland.nix
-    ./modules/traits/greetd.nix
-    ./modules/traits/nix.nix
-    ./modules/traits/editor.nix
-    ./modules/traits/fish.nix
-    ./modules/traits/locate.nix
-    ./modules/traits/user.nix
-    ./modules/traits/printing.nix
-    ./modules/traits/sound.nix
-    ./modules/traits/ssh.nix
-    ./modules/traits/caddy.nix
-    ./modules/traits/doas.nix
-    ./modules/traits/yubikey.nix
-
-    {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
-    ./modules/programs/chromium.nix
-    ./modules/programs/chrome.nix
-    ./modules/traits/chromium.nix
-    ./modules/traits/chrome.nix
-    ./modules/traits/autofirma.nix
-    ./modules/traits/stylix.nix
-    ./modules/traits/home-manager.nix
-  ];
+  imports = [./modules];
 
   system.stateVersion = "23.11";
 
