@@ -60,12 +60,17 @@
     doas nixos-rebuild switch --verbose
     #+end_src
 
-13. Reboot
+13. Optimise the storage just this once
+   #+begin_src shell
+    nix store optimise --verbose
+   #+end_src
+
+14. Reboot
     #+begin_src shell
     reboot
     #+end_src
 
-14. Enjoy!
+15. Enjoy!
 
 ** Commit Style
 Adhere to Semantic Commit Messages
