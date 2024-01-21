@@ -9,6 +9,7 @@ in {
   options.traits.boot.enable = lib.mkEnableOption "boot";
 
   config.boot = lib.mkIf cfg.enable {
+    tmp.useTmpfs = true;
     loader = {
       efi.canTouchEfiVariables = true;
       timeout = 0;
