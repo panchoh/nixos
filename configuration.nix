@@ -43,6 +43,7 @@
   programs.command-not-found.enable = false;
   traits.editor.enable = true;
   traits.fish.enable = true;
+  programs.iotop.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
