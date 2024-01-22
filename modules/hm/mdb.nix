@@ -45,6 +45,19 @@ in {
             done
           '';
         })
+
+        (pkgs.writeShellApplication {
+          name = "normalize";
+          runtimeInputs = with pkgs; [
+            coreutils
+            findutils
+          ];
+          text = ''
+            chown --recursive ${config.home.username}:users .
+            find . -type d -exec chmod 2755 {} +
+            find . -type f -exec chmod 644 {} +
+          '';
+        })
       ];
     };
   };
