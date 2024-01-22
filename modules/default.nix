@@ -25,6 +25,7 @@
     ./traits/nix.nix
     ./traits/editor.nix
     ./traits/fish.nix
+    ./traits/iotop-c.nix
     ./traits/locate.nix
     ./traits/user.nix
     ./traits/printing.nix
