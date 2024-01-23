@@ -45,7 +45,7 @@ in {
         value = {
           device = "/dev/disk/by-label/${label}";
           fsType = "btrfs";
-          options = ["noauto" "users" "noexec" "nosuid" "nodev" "noatime" "X-fstrim.notrim"];
+          options = ["noauto" "users" "noexec" "nosuid" "nodev" "noatime" "nodiscard" "X-fstrim.notrim"];
         };
       })
       [
