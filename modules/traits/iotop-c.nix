@@ -12,7 +12,7 @@ in {
     security.wrappers.iotop-c = {
       owner = "root";
       group = "root";
-      capabilities = "cap_net_admin+eip";
+      capabilities = "cap_net_admin+p";
       source = lib.getExe' pkgs.iotop-c "iotop-c";
     };
   };
