@@ -126,6 +126,7 @@ Adhere to Semantic Commit Messages
   https://github.com/nix-community/home-manager/issues/3090#issuecomment-1835357162
 
 ** dotfiles to Explore
+- [ ] https://github.com/pmarreck/nix_machine_configs kernel.task_delayacct
 - [ ] https://github.com/PaulGrandperrin/nix-systems
 - [ ] https://github.com/pyrotelekinetic/figura
 - [ ] https://rgoulter.com/blog/posts/programming/2022-02-20-using-home-manager-to-manage-symlinks-to-dotfiles.html
