@@ -7,9 +7,7 @@
 
   system.stateVersion = "23.11";
 
-  environment.systemPackages = with pkgs; [
-    git
-  ];
+  environment.systemPackages = [pkgs.git];
 
   traits.usb-drives.enable = true;
   traits.usb-misc.enable = true;
