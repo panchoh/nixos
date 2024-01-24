@@ -30,6 +30,7 @@ in {
       speedtest-go
       ipcalc
 
+      curl
       wget
 
       moreutils
