@@ -30,6 +30,8 @@ in {
       speedtest-go
       ipcalc
 
+      wget
+
       moreutils
       yq-go
       hwloc
