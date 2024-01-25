@@ -5,6 +5,8 @@
   ...
 }: let
   cfg = config.hm.emacs;
+  emacsCfgDir = "${config.xdg.configHome}/emacs";
+  doomCfgDir = "${config.xdg.configHome}/doom";
 in {
   options.hm.emacs = {
     enable = lib.mkEnableOption "emacs";
@@ -18,13 +20,17 @@ in {
     ];
 
     home.activation = {
-      DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
-          run ${lib.getExe pkgs.git} clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
+      cloneDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        if [[ ! -d "${emacsCfgDir}" ]]; then
+          verboseEcho Cloning Doom Emacs
+          PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
         fi
-        if [[ ! -d "${config.xdg.configHome}"/doom ]]; then
-          run ${lib.getExe pkgs.git} clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-          # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" run "${config.xdg.configHome}"/emacs/bin/doom sync
+        mkdir --parents "${doomCfgDir}"
+        rmdir --ignore-fail-on-non-empty "${doomCfgDir}"
+        if [[ ! -d "${doomCfgDir}" ]]; then
+          verboseEcho Cloning Doom Emacs config
+          PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG git@github.com:panchoh/dotconfig-doom.git "${doomCfgDir}"
+          # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" run "${emacsCfgDir}"/bin/doom sync
         fi
       '';
     };
