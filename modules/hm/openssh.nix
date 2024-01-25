@@ -12,6 +12,7 @@ in {
 
   config.programs.ssh = lib.mkIf cfg.enable {
     enable = true;
+    package = pkgs.openssh;
     addKeysToAgent = "yes";
     controlMaster = "no";
     controlPersist = "yes";

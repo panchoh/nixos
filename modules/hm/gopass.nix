@@ -5,22 +5,26 @@
   ...
 }: let
   cfg = config.hm.gopass;
+  passwordStoreDir = "${config.xdg.dataHome}/gopass/stores/root";
 in {
   options.hm.gopass = {
     enable = lib.mkEnableOption "gopass";
-
-    storeDir = lib.mkOption {
-      type = lib.types.uniq lib.types.str;
-      default = "${config.xdg.dataHome}/gopass/stores/root";
-    };
   };
 
   config = lib.mkIf cfg.enable {
     home = {
       activation = {
-        configEditor = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        configGopassEditor = lib.hm.dag.entryAfter ["writeBoundary"] ''
           verboseEcho Configuring gopass editor
-          run ${lib.getExe pkgs.gopass} config edit.editor ${lib.getExe pkgs.openvi}
+          PATH="${config.home.path}/bin:$PATH" run gopass config edit.editor ${lib.getExe pkgs.openvi}
+        '';
+        cloneGopassStore = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          mkdir --parents "${passwordStoreDir}"
+          rmdir --ignore-fail-on-non-empty "${passwordStoreDir}"
+          if [[ ! -d "${passwordStoreDir}" ]]; then
+            verboseEcho Cloning gopass-store
+            PATH="${config.home.path}/bin:$PATH" run gopass clone --check-keys=false git@github.com:panchoh/gopass-store.git
+          fi
         '';
       };
     };
@@ -29,7 +33,7 @@ in {
       enable = true;
       package = pkgs.gopass;
       settings = {
-        PASSWORD_STORE_DIR = "${cfg.storeDir}";
+        PASSWORD_STORE_DIR = "${passwordStoreDir}";
       };
     };
   };
