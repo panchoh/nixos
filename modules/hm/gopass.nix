@@ -6,8 +6,13 @@
 }: let
   cfg = config.hm.gopass;
 in {
-  options = {
-    hm.gopass.enable = lib.mkEnableOption "gopass";
+  options.hm.gopass = {
+    enable = lib.mkEnableOption "gopass";
+
+    storeDir = lib.mkOption {
+      type = lib.types.uniq lib.types.str;
+      default = "${config.xdg.dataHome}/gopass/stores/root";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -23,7 +28,9 @@ in {
     programs.password-store = {
       enable = true;
       package = pkgs.gopass;
-      settings = {PASSWORD_STORE_DIR = "${config.xdg.dataHome}/gopass/stores/root";};
+      settings = {
+        PASSWORD_STORE_DIR = "${cfg.storeDir}";
+      };
     };
   };
 }
