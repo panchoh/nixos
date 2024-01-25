@@ -20,11 +20,11 @@ in {
     home.activation = {
       DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
         if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
-          $DRY_RUN_CMD ${lib.getExe pkgs.git} clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
+          run ${lib.getExe pkgs.git} clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
         fi
         if [[ ! -d "${config.xdg.configHome}"/doom ]]; then
-          $DRY_RUN_CMD ${lib.getExe pkgs.git} clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
-          # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync
+          run ${lib.getExe pkgs.git} clone $VERBOSE_ARG https://github.com/panchoh/dotconfig-doom.git "${config.xdg.configHome}"/doom
+          # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" run "${config.xdg.configHome}"/emacs/bin/doom sync
         fi
       '';
     };

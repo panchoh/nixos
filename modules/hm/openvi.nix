@@ -14,8 +14,8 @@ in {
     home = {
       activation = {
         addDotExrc = lib.hm.dag.entryAfter ["writeBoundary"] ''
-          [[ ! -z "$VERBOSE_ARG" ]] && echo Setting up .exrc
-          $DRY_RUN_CMD echo set verbose showmode number tabstop=2 shiftwidth=2 expandtab > $HOME/.exrc
+          verboseEcho Setting up .exrc
+          run echo set verbose showmode number tabstop=2 shiftwidth=2 expandtab > $HOME/.exrc
         '';
       };
       packages = [pkgs.openvi];

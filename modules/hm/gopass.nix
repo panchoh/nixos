@@ -14,8 +14,8 @@ in {
     home = {
       activation = {
         configEditor = lib.hm.dag.entryAfter ["writeBoundary"] ''
-          [[ ! -z "$VERBOSE_ARG" ]] && echo Configuring gopass editor
-          $DRY_RUN_CMD ${lib.getExe pkgs.gopass} config edit.editor ${lib.getExe pkgs.openvi}
+          verboseEcho Configuring gopass editor
+          run ${lib.getExe pkgs.gopass} config edit.editor ${lib.getExe pkgs.openvi}
         '';
       };
     };
