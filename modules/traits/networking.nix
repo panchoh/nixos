@@ -36,6 +36,7 @@ in {
 
     systemd.network = {
       enable = true;
+      wait-online.anyInterface = attrs.isLaptop or false;
       netdevs = {
         "10-mv0" = {
           netdevConfig = {
