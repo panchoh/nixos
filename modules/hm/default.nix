@@ -8,8 +8,10 @@
     ./virt-manager.nix
     ./hyprland.nix
     ./fuzzel.nix
+    ./mako.nix
     ./foot.nix
     ./tmux.nix
+    ./bash.nix
     ./fish.nix
     ./git.nix
     ./btop.nix
@@ -18,6 +20,10 @@
     ./mdb.nix
     ./openvi.nix
     ./emacs.nix
+    ./helix.nix
+    ./vscode.nix
+    ./texlive.nix
+    ./k9s.nix
     ./openssh.nix
     ./gnupg.nix
     ./yubikey.nix
