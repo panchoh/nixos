@@ -1,11 +1,14 @@
 {
   config,
   lib,
+  attrs ? null,
   ...
 }: let
   cfg = config.traits.media-drive;
 in {
-  options.traits.media-drive.enable = lib.mkEnableOption "big media drive";
+  options.traits.media-drive = {
+    enable = lib.mkEnableOption "big media drive" // {default = !attrs.isLaptop or false;};
+  };
 
   config = lib.mkIf cfg.enable {
     fileSystems."/srv/media" = {

@@ -10,7 +10,7 @@ in {
   imports = [stylix.nixosModules.stylix];
 
   options.traits.stylix = {
-    enable = lib.mkEnableOption "Stylix";
+    enable = lib.mkEnableOption "Stylix" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

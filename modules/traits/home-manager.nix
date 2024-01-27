@@ -13,10 +13,17 @@ in {
   imports = [home-manager.nixosModules.default];
 
   options.traits.home-manager = {
-    enable = lib.mkEnableOption "Home Manager";
+    enable = lib.mkEnableOption "Home Manager" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = attrs.userName != "";
+        message = "userName not defined.";
+      }
+    ];
+
     home-manager = {
       backupFileExtension = "backup";
       verbose = true;

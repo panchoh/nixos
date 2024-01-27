@@ -9,7 +9,9 @@ with lib; let
 in {
   imports = [autofirma-nix.nixosModules.default];
 
-  options.traits.autofirma.enable = mkEnableOption "autofirma";
+  options.traits.autofirma = {
+    enable = mkEnableOption "autofirma" // {default = true;};
+  };
 
   config = mkIf cfg.enable {
     programs.autofirma.fixJavaCerts = true;

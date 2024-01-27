@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.greetd;
 in {
-  options.traits.greetd.enable = lib.mkEnableOption "greetd";
+  options.traits.greetd = {
+    enable = lib.mkEnableOption "greetd" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     services.greetd = {

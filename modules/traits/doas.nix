@@ -5,7 +5,9 @@
 }: let
   cfg = config.traits.doas;
 in {
-  options.traits.doas.enable = lib.mkEnableOption "doas";
+  options.traits.doas = {
+    enable = lib.mkEnableOption "doas" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     security = {

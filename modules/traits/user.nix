@@ -7,11 +7,21 @@
 }: let
   cfg = config.traits.user;
 in {
-  options.traits.user.enable = lib.mkEnableOption "user";
+  options.traits.user = {
+    enable = lib.mkEnableOption "user" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = attrs.userName != "";
+        message = "userName not defined";
+      }
+    ];
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     # users.mutableUsers = false;
+    # TODO: set ssh keys elsewhere (attrs?)
     users.groups."storage".members = [attrs.userName or "alice"];
     users.users.${attrs.userName or "alice"} = {
       isNormalUser = true;

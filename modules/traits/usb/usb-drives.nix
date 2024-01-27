@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.usb-drives;
 in {
-  options.traits.usb-drives.enable = lib.mkEnableOption "usb drives";
+  options.traits.usb-drives = {
+    enable = lib.mkEnableOption "usb drives" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     services.udev.packages = [

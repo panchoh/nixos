@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.boot;
 in {
-  options.traits.boot.enable = lib.mkEnableOption "boot";
+  options.traits.boot = {
+    enable = lib.mkEnableOption "boot" // {default = true;};
+  };
 
   config.boot = lib.mkIf cfg.enable {
     tmp.useTmpfs = true;

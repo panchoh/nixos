@@ -5,7 +5,9 @@
 }: let
   cfg = config.traits.fish;
 in {
-  options.traits.fish.enable = lib.mkEnableOption "fish";
+  options.traits.fish = {
+    enable = lib.mkEnableOption "fish" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     programs.fish = {

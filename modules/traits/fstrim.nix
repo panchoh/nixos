@@ -6,7 +6,7 @@
   cfg = config.traits.fstrim;
 in {
   options.traits.fstrim = {
-    enable = lib.mkEnableOption "fstrim";
+    enable = lib.mkEnableOption "fstrim" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

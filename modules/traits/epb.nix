@@ -11,7 +11,9 @@
     then "--turbo-enable 0 power"
     else "performance";
 in {
-  options.traits.epb.enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)";
+  options.traits.epb = {
+    enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     # https://docs.kernel.org/admin-guide/pm/intel_epb.html

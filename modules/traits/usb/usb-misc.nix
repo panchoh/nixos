@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.usb-misc;
 in {
-  options.traits.usb-misc.enable = lib.mkEnableOption "misc usb devices";
+  options.traits.usb-misc = {
+    enable = lib.mkEnableOption "misc usb devices" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     services.udev.packages = [

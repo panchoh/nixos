@@ -7,7 +7,9 @@
 }: let
   cfg = config.traits.kmscon;
 in {
-  options.traits.kmscon.enable = lib.mkEnableOption "kmscon";
+  options.traits.kmscon = {
+    enable = lib.mkEnableOption "kmscon" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     services.kmscon = {

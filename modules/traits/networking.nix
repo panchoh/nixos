@@ -7,7 +7,9 @@
 }: let
   cfg = config.traits.networking;
 in {
-  options.traits.networking.enable = lib.mkEnableOption "networking";
+  options.traits.networking = {
+    enable = lib.mkEnableOption "networking" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     programs = {

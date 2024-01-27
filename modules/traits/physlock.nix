@@ -6,7 +6,7 @@
   cfg = config.traits.physlock;
 in {
   options.traits.physlock = {
-    enable = lib.mkEnableOption "physlock";
+    enable = lib.mkEnableOption "physlock" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

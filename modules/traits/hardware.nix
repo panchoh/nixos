@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.hardware;
 in {
-  options.traits.hardware.enable = lib.mkEnableOption "hardware";
+  options.traits.hardware = {
+    enable = lib.mkEnableOption "hardware" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     hardware = {

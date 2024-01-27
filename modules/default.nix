@@ -15,7 +15,7 @@
     ./traits/system-packages.nix
     ./traits/state-version.nix
     ./traits/boot.nix
-    ./traits/autoupgrade.nix
+    ./traits/auto-upgrade.nix
     ./traits/networking.nix
     ./traits/time-zone.nix
     ./traits/hardware.nix

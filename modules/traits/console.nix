@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.console;
 in {
-  options.traits.console.enable = lib.mkEnableOption "console";
+  options.traits.console = {
+    enable = lib.mkEnableOption "console" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     services.xserver.xkb = {

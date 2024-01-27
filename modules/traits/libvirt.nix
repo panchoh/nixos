@@ -6,7 +6,7 @@
   cfg = config.traits.libvirt;
 in {
   options.traits.libvirt = {
-    enable = lib.mkEnableOption "libvirt";
+    enable = lib.mkEnableOption "libvirt" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

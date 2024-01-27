@@ -6,7 +6,9 @@
 }: let
   cfg = config.traits.caddy;
 in {
-  options.traits.caddy.enable = lib.mkEnableOption "caddy";
+  options.traits.caddy = {
+    enable = lib.mkEnableOption "caddy" // {default = false;};
+  };
 
   config = lib.mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
