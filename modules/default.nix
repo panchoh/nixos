@@ -12,6 +12,7 @@
     disko.nixosModules.default
     ../disko-config.nix
 
+    ./traits/state-version.nix
     ./traits/boot.nix
     ./traits/autoupgrade.nix
     ./traits/networking.nix

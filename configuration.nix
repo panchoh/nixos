@@ -5,8 +5,6 @@
 }: {
   imports = [./modules];
 
-  system.stateVersion = "23.11";
-
   environment.systemPackages = [pkgs.git];
 
   traits.usb-drives.enable = true;

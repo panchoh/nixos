@@ -22,9 +22,10 @@
       hostName,
       macvlanAddr,
       system,
+      stateVersion ? "23.11",
       isLaptop ? false,
     }: {
-      inherit hostName macvlanAddr system isLaptop;
+      inherit hostName macvlanAddr system stateVersion isLaptop;
       userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
@@ -48,6 +49,7 @@
           hostName = "neon";
           macvlanAddr = "dc:a6:32:b1:ae:1d";
           system = "aarch64-linux";
+          stateVersion = "23.05";
         })
       (makeBox
         {

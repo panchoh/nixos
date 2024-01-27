@@ -1,8 +1,6 @@
 {
   imports = [./modules/hm];
 
-  home.stateVersion = "23.11";
-
   hm.systemd.enable = true;
   hm.xdg.enable = true;
   hm.stylix.enable = true;

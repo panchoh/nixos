@@ -1,5 +1,6 @@
 {
   imports = [
+    ./state-version.nix
     ./systemd.nix
     ./xdg.nix
     ./stylix.nix
