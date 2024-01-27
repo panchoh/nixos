@@ -5,7 +5,7 @@
 }: let
   cfg = config.hm.imv;
 in {
-  options.hm.imv.enable = lib.mkEnableOption "imv";
+  options.hm.imv.enable = lib.mkEnableOption "imv" // {default = true;};
 
   config.programs.imv = lib.mkIf cfg.enable {
     enable = true;

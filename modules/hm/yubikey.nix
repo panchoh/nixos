@@ -6,7 +6,7 @@
 }: let
   cfg = config.hm.yubikey;
 in {
-  options.hm.yubikey.enable = lib.mkEnableOption "yubikey";
+  options.hm.yubikey.enable = lib.mkEnableOption "yubikey" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

@@ -7,7 +7,7 @@
   cfg = config.hm.chromium;
 in {
   options.hm.chromium = {
-    enable = lib.mkEnableOption "Chromium";
+    enable = lib.mkEnableOption "Chromium" // {default = true;};
   };
 
   config.programs.chromium = lib.mkIf cfg.enable {

@@ -7,7 +7,7 @@
   cfg = config.hm.mpv;
 in {
   options.hm.mpv = {
-    enable = lib.mkEnableOption "mpv";
+    enable = lib.mkEnableOption "mpv" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

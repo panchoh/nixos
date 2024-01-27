@@ -13,7 +13,7 @@ in {
   ];
 
   options.hm.stylix = {
-    enable = lib.mkEnableOption "stylix";
+    enable = lib.mkEnableOption "stylix" // {default = true;};
   };
 
   config.stylix = lib.mkIf cfg.enable {

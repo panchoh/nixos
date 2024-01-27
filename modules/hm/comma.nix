@@ -10,7 +10,7 @@ in {
     nix-index-database.hmModules.nix-index
   ];
 
-  options.hm.comma.enable = lib.mkEnableOption "comma";
+  options.hm.comma.enable = lib.mkEnableOption "comma" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     programs.nix-index.enable = true;

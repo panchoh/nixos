@@ -6,7 +6,7 @@
 }: let
   cfg = config.hm.iosevka;
 in {
-  options.hm.iosevka.enable = lib.mkEnableOption "iosevka";
+  options.hm.iosevka.enable = lib.mkEnableOption "iosevka" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

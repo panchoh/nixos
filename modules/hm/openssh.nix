@@ -7,7 +7,7 @@
   cfg = config.hm.openssh;
 in {
   options.hm.openssh = {
-    enable = lib.mkEnableOption "openssh";
+    enable = lib.mkEnableOption "openssh" // {default = true;};
   };
 
   config.programs.ssh = lib.mkIf cfg.enable {

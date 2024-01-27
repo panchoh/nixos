@@ -16,7 +16,7 @@
   makoctl = lib.getExe' pkgs.mako "makoctl";
 in {
   options.hm.hyprland = {
-    enable = lib.mkEnableOption "hyprland";
+    enable = lib.mkEnableOption "hyprland" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

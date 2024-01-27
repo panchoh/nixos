@@ -6,7 +6,7 @@
   cfg = config.hm.yt-dlp;
 in {
   options = {
-    hm.yt-dlp.enable = lib.mkEnableOption "btop";
+    hm.yt-dlp.enable = lib.mkEnableOption "btop" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

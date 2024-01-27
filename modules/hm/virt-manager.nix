@@ -7,7 +7,7 @@
   cfg = config.hm.virt-manager;
 in {
   options.hm.virt-manager = {
-    enable = lib.mkEnableOption "virt-manager";
+    enable = lib.mkEnableOption "virt-manager" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

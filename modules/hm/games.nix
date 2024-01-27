@@ -6,7 +6,7 @@
 }: let
   cfg = config.hm.games;
 in {
-  options.hm.games.enable = lib.mkEnableOption "games";
+  options.hm.games.enable = lib.mkEnableOption "games" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

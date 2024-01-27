@@ -12,7 +12,7 @@ in {
   ];
 
   options.hm.firefox = {
-    enable = lib.mkEnableOption "Firefox";
+    enable = lib.mkEnableOption "Firefox" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

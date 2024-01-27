@@ -7,7 +7,7 @@
 }: let
   cfg = config.hm.git;
 in {
-  options.hm.git.enable = lib.mkEnableOption "git";
+  options.hm.git.enable = lib.mkEnableOption "git" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

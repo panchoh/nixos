@@ -6,7 +6,7 @@
 }: let
   cfg = config.hm.fish;
 in {
-  options.hm.fish.enable = lib.mkEnableOption "fish";
+  options.hm.fish.enable = lib.mkEnableOption "fish" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     programs.fish = {

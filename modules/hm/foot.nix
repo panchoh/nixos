@@ -7,7 +7,7 @@
   cfg = config.hm.foot;
   size = toString osConfig.traits.font.terminal;
 in {
-  options.hm.foot.enable = lib.mkEnableOption "foot";
+  options.hm.foot.enable = lib.mkEnableOption "foot" // {default = true;};
 
   config.programs.foot = lib.mkIf cfg.enable {
     enable = true;

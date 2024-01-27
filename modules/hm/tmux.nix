@@ -5,7 +5,7 @@
 }: let
   cfg = config.hm.tmux;
 in {
-  options.hm.tmux.enable = lib.mkEnableOption "tmux";
+  options.hm.tmux.enable = lib.mkEnableOption "tmux" // {default = true;};
 
   config.programs.tmux = lib.mkIf cfg.enable {
     enable = true;

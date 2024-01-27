@@ -8,7 +8,7 @@
   passwordStoreDir = "${config.xdg.dataHome}/gopass/stores/root";
 in {
   options.hm.gopass = {
-    enable = lib.mkEnableOption "gopass";
+    enable = lib.mkEnableOption "gopass" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

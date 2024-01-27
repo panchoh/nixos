@@ -6,7 +6,7 @@
   cfg = config.hm.btop;
 in {
   options = {
-    hm.btop.enable = lib.mkEnableOption "btop";
+    hm.btop.enable = lib.mkEnableOption "btop" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

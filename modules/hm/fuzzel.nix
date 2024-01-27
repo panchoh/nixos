@@ -5,7 +5,7 @@
 }: let
   cfg = config.hm.fuzzel;
 in {
-  options.hm.fuzzel.enable = lib.mkEnableOption "fuzzel";
+  options.hm.fuzzel.enable = lib.mkEnableOption "fuzzel" // {default = true;};
 
   config.programs.fuzzel = lib.mkIf cfg.enable {
     enable = true;

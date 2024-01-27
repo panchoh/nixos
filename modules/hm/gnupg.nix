@@ -6,7 +6,7 @@
   cfg = config.hm.gnupg;
 in {
   options.hm.gnupg = {
-    enable = lib.mkEnableOption "gnupg";
+    enable = lib.mkEnableOption "gnupg" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

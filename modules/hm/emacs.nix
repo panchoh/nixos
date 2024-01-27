@@ -9,7 +9,7 @@
   doomCfgDir = "${config.xdg.configHome}/doom";
 in {
   options.hm.emacs = {
-    enable = lib.mkEnableOption "emacs";
+    enable = lib.mkEnableOption "emacs" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {
