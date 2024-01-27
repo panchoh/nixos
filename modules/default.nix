@@ -17,18 +17,28 @@
     ./traits/boot.nix
     ./traits/autoupgrade.nix
     ./traits/networking.nix
+    ./traits/time-zone.nix
     ./traits/hardware.nix
     ./traits/i18n.nix
     ./traits/epb.nix
+    ./traits/fstrim.nix
+    ./traits/physlock.nix
+    ./traits/dbus.nix
+    ./traits/upower.nix
     ./traits/console.nix
     ./traits/kmscon.nix
     ./traits/hyprland.nix
     ./traits/greetd.nix
     ./traits/nix.nix
+    ./traits/allow-unfree.nix
+    ./traits/command-not-found.nix
     ./traits/editor.nix
     ./traits/fish.nix
     ./traits/iotop-c.nix
     ./traits/locate.nix
+    ./traits/fwupd.nix
+    ./traits/libvirt.nix
+    ./traits/podman.nix
     ./traits/user.nix
     ./traits/printing.nix
     ./traits/sound.nix
