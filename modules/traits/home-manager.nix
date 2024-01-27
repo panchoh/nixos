@@ -25,7 +25,7 @@ in {
       extraSpecialArgs = {
         inherit nix-index-database stylix autofirma-nix attrs;
       };
-      users.${attrs.userName or "alice"} = import ../../home.nix;
+      users.${attrs.userName or "alice"} = import ../hm;
     };
   };
 }
