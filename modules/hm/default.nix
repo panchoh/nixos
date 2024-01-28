@@ -24,7 +24,7 @@
     ./vscode.nix
     ./texlive.nix
     ./k9s.nix
-    ./openssh.nix
+    ./ssh.nix
     ./gnupg.nix
     ./yubikey.nix
     ./gopass.nix
