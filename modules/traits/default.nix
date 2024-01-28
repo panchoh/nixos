@@ -1,7 +1,6 @@
 {
   nixos-hardware,
   disko,
-  modulesPath,
   ...
 }: {
   imports = [
@@ -47,9 +46,6 @@
     ./yubikey
     ./autofirma
 
-    {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
-    ../programs/chromium.nix
-    ../programs/chrome.nix
     ./chromium
     ./chrome
 

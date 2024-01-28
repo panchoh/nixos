@@ -1,10 +1,16 @@
 {
   config,
   lib,
+  modulesPath,
   ...
 }: let
   cfg = config.traits.chromium;
 in {
+  imports = [
+    {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
+    ./chromium.nix
+  ];
+
   options.traits.chromium = {
     enable = lib.mkEnableOption "chromium" // {default = true;};
   };
