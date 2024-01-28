@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  attrs ? null,
   ...
 }: let
   cfg = config.traits.time-zone;
@@ -10,6 +11,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    time.timeZone = "Europe/Madrid";
+    time.timeZone = attrs.timeZone;
   };
 }

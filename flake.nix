@@ -23,9 +23,10 @@
       macvlanAddr,
       system,
       stateVersion ? "23.11",
+      timeZone ? "Europe/Madrid",
       isLaptop ? false,
     }: {
-      inherit hostName macvlanAddr system stateVersion isLaptop;
+      inherit hostName macvlanAddr system stateVersion timeZone isLaptop;
       userName = "pancho";
       userDesc = "pancho horrillo";
       userEmail = "pancho@pancho.name";
