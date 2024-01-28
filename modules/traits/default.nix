@@ -34,7 +34,6 @@
     ./command-not-found
     ./editor
     ./fish
-    ./iotop-c
     ./locate
     ./fwupd
     ./libvirt

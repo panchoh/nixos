@@ -18,6 +18,7 @@ in {
       pciutils
       usbutils
       usbtop
+      iotop-c
       smartmontools
       hdparm
       nvme-cli
