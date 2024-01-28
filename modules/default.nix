@@ -10,7 +10,7 @@
     ./traits/usb
     ./traits/media-drive.nix
     disko.nixosModules.default
-    ../disko-config.nix
+    ./traits/disko-config.nix
 
     ./traits/system-packages.nix
     ./traits/state-version.nix
