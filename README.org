@@ -104,6 +104,8 @@ Adhere to Semantic Commit Messages
 - https://ryantm.github.io/nixpkgs/builders/trivial-builders/#trivial-builder-writeShellApplication
 - https://discourse.nixos.org/t/differences-between-nix-channels/13998
 - https://nixos.wiki/wiki/Glossary
+- RFC 140: ~pkgs/by-name~
+  https://discourse.nixos.org/t/ci-will-soon-enforce-pkgs-by-name-for-new-packages/38098/3
 
 *** Nix Registry
 - https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
