@@ -69,7 +69,7 @@
         value = nixpkgs.lib.nixosSystem {
           inherit (box) system;
           specialArgs = inputs // {attrs = box;};
-          modules = [./modules];
+          modules = [./modules/traits];
         };
       })
       boxen
