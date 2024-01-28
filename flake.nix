@@ -1,5 +1,5 @@
 {
-  description = "Nix is love.  Nix is life.  Nix is also… snow.";
+  description = "Nix is love.  Nix is life.  But Nix is also… snow.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
