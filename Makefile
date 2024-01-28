@@ -9,6 +9,12 @@ bump:
 nixos-rebuild-switch:
 	doas nixos-rebuild switch --verbose --show-trace
 
+nixos-rebuild-test:
+	doas nixos-rebuild test --verbose --show-trace
+
+nixos-rebuild-build:
+	doas nixos-rebuild switch --verbose --show-trace
+
 list-nixos-history:
 	nix profile history --profile /nix/var/nix/profiles/system
 
