@@ -32,7 +32,7 @@ in {
       extraSpecialArgs = {
         inherit nix-index-database stylix autofirma-nix attrs;
       };
-      users.${attrs.userName or "alice"} = import ../../hm;
+      users.${attrs.userName or "alice"} = import ../default-hm.nix;
     };
   };
 }
