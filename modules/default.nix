@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../hardware-configuration.nix
+    ./traits/hardware-configuration.nix
     nixos-hardware.nixosModules.intel-nuc-8i7beh
     ./traits/usb
     ./traits/media-drive.nix
