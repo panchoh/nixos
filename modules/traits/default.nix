@@ -1,15 +1,10 @@
-{
-  nixos-hardware,
-  disko,
-  ...
-}: {
+{nixos-hardware, ...}: {
   imports = [
     ./hardware-configuration
     nixos-hardware.nixosModules.intel-nuc-8i7beh
     ./usb
     ./media-drive
-    disko.nixosModules.default
-    ./disko-config
+    ./disko
 
     ./system-packages
     ./state-version
