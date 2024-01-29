@@ -87,6 +87,15 @@ in {
 
       tealdeer.enable = true;
 
+      # https://dystroy.org/broot/
+      # TODO: explore the tool and configure verbs et al.
+      broot = {
+        enable = true;
+        settings = {
+          modal = true;
+        };
+      };
+
       lf = {
         enable = true;
         settings = {
