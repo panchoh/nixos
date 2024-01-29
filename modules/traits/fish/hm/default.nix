@@ -61,12 +61,21 @@ in {
       eza = {
         enable = false;
         enableAliases = true;
+        git = true;
+        icons = true;
         extraOptions = [
+          "--binary"
+          # "--context"
+          "--git-repos-no-status"
           "--group-directories-first"
           "--group"
+          "--extended"
           "--header"
+          # "--inode"
+          "--links"
+          "--mounts"
+          "--time-style=relative"
         ];
-        icons = true;
       };
 
       bat.enable = true;
