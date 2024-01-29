@@ -39,21 +39,26 @@ in {
         settings = {
           date = "relative";
           header = true;
+          indicators = true;
+          sorting.dir-grouping = "first";
+          # TODO: check when the new release hits the store
+          # literal = true;
+          total-size = false;
+          ignore-globs = [
+            ".git"
+            ".hg"
+          ];
           blocks = [
             "permission"
             "links"
             # "inode"
             "user"
             "group"
-            "context"
+            # "context"
             "size"
             "date"
+            "git"
             "name"
-            # "git"
-          ];
-          ignore-globs = [
-            ".git"
-            ".hg"
           ];
         };
       };
