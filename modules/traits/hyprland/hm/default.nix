@@ -34,6 +34,7 @@ in {
       libxkbcommon # for xkbcli interactive-wayland
     ];
 
+    # TODO: migrate to native nix structure and be done with hardcoded paths
     wayland.windowManager.hyprland = {
       enable = true;
       package = osConfig.programs.hyprland.finalPackage;
