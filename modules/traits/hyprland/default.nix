@@ -6,7 +6,7 @@
 }: let
   cfg = config.traits.hyprland;
 in {
-  options.traits.hyprland.enable = lib.mkEnableOption "hyprland";
+  options.traits.hyprland.enable = lib.mkEnableOption "hyprland" // {default = true;};
 
   config = lib.mkIf cfg.enable {
     programs.hyprland.enable = true;
