@@ -5,7 +5,7 @@
     ./media-drive
     ./disko
 
-    ./system-packages
+    ./git
     ./state-version
     ./boot
     ./auto-upgrade

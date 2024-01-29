@@ -7,7 +7,9 @@
 }: let
   cfg = config.hm.git;
 in {
-  options.hm.git.enable = lib.mkEnableOption "git" // {default = true;};
+  options.hm.git = {
+    enable = lib.mkEnableOption "git" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -37,6 +39,7 @@ in {
           side-by-side = true;
         };
       };
+      # TODO: move this to makeBox @ flake.nix
       signing = {
         key = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
         signByDefault = true;

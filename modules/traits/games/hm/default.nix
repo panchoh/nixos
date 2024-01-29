@@ -6,11 +6,17 @@
 }: let
   cfg = config.hm.games;
 in {
-  options.hm.games.enable = lib.mkEnableOption "games" // {default = true;};
+  options.hm.games = {
+    enable = lib.mkEnableOption "games" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       bb
+      crawl
+      sl
+      neofetch
+      hyperrogue
       # bsdgames # provides wtf, but conflicts with fish shell
       # FIXME: PR with the current BSD Games, which fixes this an more
       (stdenv.mkDerivation {
@@ -24,10 +30,6 @@ in {
           mv -f $out/bin/fish $out/bin/gofish
         '';
       })
-      crawl
-      sl
-      neofetch
-      hyperrogue
     ];
   };
 }

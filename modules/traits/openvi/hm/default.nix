@@ -12,13 +12,13 @@ in {
 
   config = lib.mkIf cfg.enable {
     home = {
+      packages = [pkgs.openvi];
       activation = {
-        addDotExrc = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        addOviDotExrc = lib.hm.dag.entryAfter ["writeBoundary"] ''
           verboseEcho Setting up .exrc
           run echo set verbose showmode number tabstop=2 shiftwidth=2 expandtab > $HOME/.exrc
         '';
       };
-      packages = [pkgs.openvi];
     };
   };
 }

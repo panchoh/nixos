@@ -6,7 +6,9 @@
 }: let
   cfg = config.hm.man;
 in {
-  options.hm.man.enable = lib.mkEnableOption "man" // {default = true;};
+  options.hm.man = {
+    enable = lib.mkEnableOption "man" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

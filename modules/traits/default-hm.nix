@@ -5,7 +5,7 @@
     ./xdg/hm
     ./stylix/hm
     ./iosevka/hm
-    ./virt-manager/hm
+    ./libvirt/hm
     ./hyprland/hm
     ./fuzzel/hm
     ./mako/hm

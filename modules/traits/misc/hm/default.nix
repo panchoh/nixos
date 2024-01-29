@@ -6,7 +6,9 @@
 }: let
   cfg = config.hm.misc;
 in {
-  options.hm.misc.enable = lib.mkEnableOption "misc" // {default = true;};
+  options.hm.misc = {
+    enable = lib.mkEnableOption "misc" // {default = true;};
+  };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
