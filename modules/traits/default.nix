@@ -1,50 +1,11 @@
-{
-  imports = [
-    ./hardware-configuration
-    ./usb
-    ./media-drive
-    ./disko
-
-    ./git
-    ./state-version
-    ./boot
-    ./auto-upgrade
-    ./networking
-    ./time-zone
-    ./hardware
-    ./i18n
-    ./epb
-    ./fstrim
-    ./physlock
-    ./dbus
-    ./upower
-    ./console
-    ./kmscon
-    ./hyprland
-    ./greetd
-    ./nix
-    ./allow-unfree
-    ./command-not-found
-    ./editor
-    ./fish
-    ./locate
-    ./fwupd
-    ./libvirt
-    ./podman
-    ./user
-    ./printing
-    ./sound
-    ./ssh
-    ./caddy
-    ./doas
-    ./yubikey
-    ./autofirma
-
-    ./chromium
-    ./chrome
-
-    ./font
-    ./stylix
-    ./home-manager
-  ];
+{lib, ...}: {
+  imports = builtins.filter (path: builtins.pathExists path) (
+    map (name: ./. + "/${name}/default.nix")
+    (
+      lib.attrNames (
+        lib.filterAttrs (name: type: type == "directory")
+        (builtins.readDir ./.)
+      )
+    )
+  );
 }
