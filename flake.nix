@@ -17,7 +17,11 @@
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     makeBox = {
       hostName ? "nixos",
       hostType ? null,
@@ -60,6 +64,26 @@
 
     inherit (nixpkgs.lib) listToAttrs unique catAttrs;
   in {
+    lib = {
+      getImports = optionalSegment: let
+        inherit (nixpkgs.lib) attrNames filterAttrs;
+        baseDir = ./modules/traits;
+        segmentPath =
+          if optionalSegment != null
+          then "/${optionalSegment}"
+          else "";
+      in
+        builtins.filter (path: builtins.pathExists path) (
+          builtins.map (name: "${baseDir}/${name}${segmentPath}/default.nix")
+          (
+            attrNames (
+              filterAttrs (name: type: type == "directory")
+              (builtins.readDir baseDir)
+            )
+          )
+        );
+    };
+
     formatter = (
       listToAttrs (map (system: {
           name = system;
@@ -73,11 +97,13 @@
         name = box.hostName;
         value = nixpkgs.lib.nixosSystem {
           inherit (box) system;
-          specialArgs = inputs // {attrs = box;};
-          modules = [
-            box.hostType
-            ./modules/traits
-          ];
+          specialArgs =
+            inputs
+            // {attrs = box;}
+            // {inherit (self.lib) getImports;};
+          modules =
+            [box.hostType]
+            ++ (self.lib.getImports null);
         };
       })
       boxen

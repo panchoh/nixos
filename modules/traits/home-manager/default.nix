@@ -5,6 +5,7 @@
   nix-index-database,
   stylix,
   autofirma-nix,
+  getImports,
   attrs ? null,
   ...
 }: let
@@ -32,7 +33,7 @@ in {
       extraSpecialArgs = {
         inherit nix-index-database stylix autofirma-nix attrs;
       };
-      users.${attrs.userName or "alice"} = import ../default-hm.nix;
+      users.${attrs.userName or "alice"} = {imports = getImports "hm";};
     };
   };
 }
