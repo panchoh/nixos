@@ -30,10 +30,11 @@ in [
     hostType = nixos-hardware.nixosModules.lenovo-thinkpad-t490;
     isLaptop = true;
   })
-  (makeBox {
-    hostName = "neon";
-    macvlanAddr = "dc:a6:32:b1:ae:1d";
-    system = "aarch64-linux";
-    hostType = nixos-hardware.nixosModules.raspberry-pi-4;
-  })
+  # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
+  # (makeBox {
+  #   hostName = "neon";
+  #   macvlanAddr = "dc:a6:32:b1:ae:1d";
+  #   system = "aarch64-linux";
+  #   hostType = nixos-hardware.nixosModules.raspberry-pi-4;
+  # })
 ]
