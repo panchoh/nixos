@@ -6,6 +6,9 @@
 bump:
 	nix flake update --commit-lock-file
 
+check:
+	nix flake check --verbose
+
 nixos-rebuild-switch:
 	doas nixos-rebuild switch --verbose
 
