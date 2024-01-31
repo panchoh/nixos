@@ -20,9 +20,12 @@ in {
           path = pkgs.path;
         };
       };
+
       settings = {
+        # https://nixos.org/manual/nix/unstable/command-ref/conf-file
         auto-optimise-store = true;
         use-xdg-base-directories = true;
+        keep-outputs = true;
         experimental-features = [
           "nix-command"
           "flakes"
