@@ -1,9 +1,7 @@
-{
-  nixpkgs,
-  lib,
-  boxen,
-}: let
-  inherit (lib) listToAttrs unique catAttrs;
+inputs: let
+  inherit (inputs) nixpkgs;
+  inherit (inputs.nixpkgs.lib) listToAttrs unique catAttrs;
+  inherit (inputs.self.lib) boxen;
 in (
   listToAttrs (map (system: {
       name = system;

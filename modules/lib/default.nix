@@ -1,13 +1,9 @@
-inputs: rec {
   boxen = import ./boxen.nix {
     inherit (inputs) nixos-hardware;
   };
+inputs: {
 
-  fmt-alejandra = import ./fmt-alejandra.nix {
-    inherit (inputs) nixpkgs;
-    inherit (inputs.nixpkgs) lib;
-    inherit boxen;
-  };
+  fmt-alejandra = import ./fmt-alejandra.nix inputs;
 
   nixosModule = import ./module.nix {
     inherit (inputs.nixpkgs) lib;
