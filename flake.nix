@@ -24,20 +24,13 @@
     nixpkgs,
     ...
   } @ inputs: let
-    inherit (nixpkgs.lib) listToAttrs unique catAttrs;
-    inherit (self.lib) boxen nixosModules hmModules;
+    inherit (self.lib) boxen formatter nixosModules hmModules;
   in {
     lib = import ./lib {inherit inputs;};
 
-    nixosModules.default = nixosModules;
+    inherit formatter;
 
-    formatter = (
-      listToAttrs (map (system: {
-          name = system;
-          value = nixpkgs.legacyPackages.${system}.alejandra;
-        })
-        (unique (catAttrs "system" boxen)))
-    );
+    nixosModules.default = nixosModules;
 
     nixosConfigurations = builtins.listToAttrs (
       map (box: {
