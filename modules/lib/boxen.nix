@@ -10,8 +10,12 @@
     userName ? "pancho",
     userDesc ? "pancho horrillo",
     userEmail ? "pancho@pancho.name",
+    userKeys ? [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
+    ],
   }: {
-    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail;
+    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail userKeys;
   };
 in [
   (makeBox {
