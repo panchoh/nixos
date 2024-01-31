@@ -1,4 +1,4 @@
-{inputs}: rec {
+inputs: rec {
   boxen = import ./boxen.nix {
     inherit (inputs) nixos-hardware;
   };
