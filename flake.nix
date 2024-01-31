@@ -25,22 +25,11 @@
     ...
   } @ inputs: let
     inherit (nixpkgs.lib) listToAttrs unique catAttrs;
-    inherit (self.lib) boxen;
+    inherit (self.lib) boxen nixosModules hmModules;
   in {
-    lib = {
-      nixosModules = import ./lib/import-modules.nix {
-        inherit (nixpkgs) lib;
-        baseDir = ./modules/traits;
-      };
-      hmModules = import ./lib/import-modules.nix {
-        inherit (nixpkgs) lib;
-        baseDir = ./modules/traits;
-        subDir = "hm";
-      };
-      boxen = import ./lib/boxen.nix {inherit (inputs) nixos-hardware;};
-    };
+    lib = import ./lib {inherit inputs;};
 
-    nixosModules.default = self.lib.nixosModules;
+    nixosModules.default = nixosModules;
 
     formatter = (
       listToAttrs (map (system: {
@@ -58,10 +47,10 @@
           specialArgs =
             inputs
             // {attrs = box;}
-            // {inherit (self.lib) hmModules;};
+            // {inherit hmModules;};
           modules = [
             box.hostType
-            self.nixosModules.default
+            nixosModules
           ];
         };
       })
