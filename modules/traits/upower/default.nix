@@ -10,6 +10,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    services.upower.enable = true;
+    services = {
+      upower = {
+        enable = true;
+        criticalPowerAction = "PowerOff";
+      };
+    };
   };
 }
