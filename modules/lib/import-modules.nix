@@ -14,7 +14,7 @@ in {
     map (name: "${baseDir}/${name}${segmentPath}/default.nix")
     (
       attrNames (
-        filterAttrs (name: type: type == "directory")
+        filterAttrs (_name: type: type == "directory")
         (readDir baseDir)
       )
     )
