@@ -65,24 +65,18 @@
     inherit (nixpkgs.lib) listToAttrs unique catAttrs;
   in {
     lib = {
-      getImports = optionalSegment: let
-        inherit (nixpkgs.lib) attrNames filterAttrs;
+      nixosModules = import ./lib/import-modules.nix {
+        inherit (nixpkgs) lib;
         baseDir = ./modules/traits;
-        segmentPath =
-          if optionalSegment != null
-          then "/${optionalSegment}"
-          else "";
-      in
-        builtins.filter (path: builtins.pathExists path) (
-          builtins.map (name: "${baseDir}/${name}${segmentPath}/default.nix")
-          (
-            attrNames (
-              filterAttrs (name: type: type == "directory")
-              (builtins.readDir baseDir)
-            )
-          )
-        );
+      };
+      hmModules = import ./lib/import-modules.nix {
+        inherit (nixpkgs) lib;
+        baseDir = ./modules/traits;
+        subDir = "hm";
+      };
     };
+
+    nixosModules.default = self.lib.nixosModules;
 
     formatter = (
       listToAttrs (map (system: {
@@ -100,10 +94,11 @@
           specialArgs =
             inputs
             // {attrs = box;}
-            // {inherit (self.lib) getImports;};
-          modules =
-            [box.hostType]
-            ++ (self.lib.getImports null);
+            // {inherit (self.lib) hmModules;};
+          modules = [
+            box.hostType
+            self.nixosModules.default
+          ];
         };
       })
       boxen
