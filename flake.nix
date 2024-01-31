@@ -41,6 +41,7 @@
             // {inherit (self.lib) hmModules;};
           modules = [
             box.hostType
+            box.extraModule
             self.lib.nixosModules
           ];
         };

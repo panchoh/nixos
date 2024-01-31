@@ -14,8 +14,9 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ],
+    extraModule ? {},
   }: {
-    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail userKeys;
+    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail userKeys extraModule;
   };
 in [
   (makeBox {
@@ -27,6 +28,7 @@ in [
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
     hostType = nixos-hardware.nixosModules.intel-nuc-8i7beh;
+    extraModule = {config, ...}: {config.traits.caddy.enable = true;};
   })
   (makeBox {
     hostName = "magnesium";
