@@ -9,12 +9,12 @@
     inherit boxen;
   };
 
-  nixosModules = import ./import-modules.nix {
+  nixosModule = import ./import-modules.nix {
     inherit (inputs.nixpkgs) lib;
     baseDir = ../traits;
   };
 
-  hmModules = import ./import-modules.nix {
+  hmModule = import ./import-modules.nix {
     inherit (inputs.nixpkgs) lib;
     baseDir = ../traits;
     subDir = "hm";

@@ -28,7 +28,7 @@
 
     formatter = self.lib.fmt-alejandra;
 
-    nixosModules.default = self.lib.nixosModules;
+    nixosModules.default = self.lib.nixosModule;
 
     nixosConfigurations = builtins.listToAttrs (
       map (box: {
@@ -38,13 +38,13 @@
           modules = [
             box.hostType
             box.extraModule
-            self.lib.nixosModules
+            self.lib.nixosModule
           ];
           specialArgs =
             inputs
             // {
               inherit box;
-              inherit (self.lib) hmModules;
+              inherit (self.lib) hmModule;
             };
         };
       })
