@@ -11,12 +11,12 @@
 
   nixosModules = import ./import-modules.nix {
     inherit (inputs.nixpkgs) lib;
-    baseDir = ../modules/traits;
+    baseDir = ../traits;
   };
 
   hmModules = import ./import-modules.nix {
     inherit (inputs.nixpkgs) lib;
-    baseDir = ../modules/traits;
+    baseDir = ../traits;
     subDir = "hm";
   };
 }

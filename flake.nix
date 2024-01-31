@@ -26,7 +26,7 @@
   } @ inputs: let
     inherit (self.lib) boxen formatter nixosModules hmModules;
   in {
-    lib = import ./lib {inherit inputs;};
+    lib = import ./modules/lib {inherit inputs;};
 
     inherit formatter;
 
