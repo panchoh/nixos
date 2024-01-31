@@ -32,6 +32,9 @@ gc:
 
 gc-all: wipe-nixos-history wipe-home-manager-history gc
 
+store-optimise:
+	nix store optimise --verbose
+
 clean-firefox:
 	rm -rf ~/.afirma ~/.java ~/.mozilla
 
