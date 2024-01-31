@@ -7,13 +7,13 @@ bump:
 	nix flake update --commit-lock-file
 
 nixos-rebuild-switch:
-	doas nixos-rebuild switch --verbose --show-trace
+	doas nixos-rebuild switch --verbose
 
 nixos-rebuild-test:
-	doas nixos-rebuild test --verbose --show-trace
+	doas nixos-rebuild test --verbose
 
 nixos-rebuild-build:
-	doas nixos-rebuild switch --verbose --show-trace
+	doas nixos-rebuild switch --verbose
 
 list-nixos-history:
 	nix profile history --profile /nix/var/nix/profiles/system

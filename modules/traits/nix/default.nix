@@ -26,6 +26,7 @@ in {
         auto-optimise-store = true;
         use-xdg-base-directories = true;
         keep-outputs = true;
+        show-trace = true;
         experimental-features = [
           "nix-command"
           "flakes"
