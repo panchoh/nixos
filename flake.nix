@@ -35,15 +35,17 @@
         name = box.hostName;
         value = nixpkgs.lib.nixosSystem {
           inherit (box) system;
-          specialArgs =
-            inputs
-            // {inherit box;}
-            // {inherit (self.lib) hmModules;};
           modules = [
             box.hostType
             box.extraModule
             self.lib.nixosModules
           ];
+          specialArgs =
+            inputs
+            // {
+              inherit box;
+              inherit (self.lib) hmModules;
+            };
         };
       })
       self.lib.boxen
