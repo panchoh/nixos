@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  nixpkgs,
+  pkgs,
   ...
 }: let
   cfg = config.traits.nix;
@@ -13,7 +13,13 @@ in {
   config = lib.mkIf cfg.enable {
     nix = {
       channel.enable = false;
-      registry.nixpkgs.flake = nixpkgs;
+
+      registry = {
+        nixpkgs.to = {
+          type = "path";
+          path = pkgs.path;
+        };
+      };
       settings = {
         auto-optimise-store = true;
         use-xdg-base-directories = true;
