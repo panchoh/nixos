@@ -3,14 +3,7 @@ inputs: {
 
   fmt-alejandra = import ./fmt-alejandra.nix inputs;
 
-  nixosModule = import ./module.nix {
-    inherit (inputs.nixpkgs) lib;
-    baseDir = ../traits;
-  };
+  nixosModule = import ./module.nix inputs null;
 
-  hmModule = import ./module.nix {
-    inherit (inputs.nixpkgs) lib;
-    baseDir = ../traits;
-    subDir = "hm";
-  };
+  hmModule = import ./module.nix inputs "hm";
 }

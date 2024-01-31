@@ -1,10 +1,7 @@
-{
-  lib,
-  baseDir,
-  subDir ? null,
-}: let
+inputs: subDir: let
   inherit (builtins) filter pathExists readDir;
-  inherit (lib) attrNames filterAttrs;
+  inherit (inputs.nixpkgs.lib) attrNames filterAttrs;
+  baseDir = ../traits;
   segmentPath =
     if subDir != null
     then "/${subDir}"
