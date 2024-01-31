@@ -1,4 +1,4 @@
-{nixos-hardware}: let
+nixos-hardware: let
   makeBox = {
     hostName ? "nixos",
     hostType ? null,

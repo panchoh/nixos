@@ -1,7 +1,5 @@
-  boxen = import ./boxen.nix {
-    inherit (inputs) nixos-hardware;
-  };
 inputs: {
+  boxen = import ./boxen.nix inputs.nixos-hardware;
 
   fmt-alejandra = import ./fmt-alejandra.nix inputs;
 
