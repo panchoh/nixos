@@ -4,7 +4,7 @@
 .PHONY: gc gc-all clean-firefox pristine
 
 bump:
-	nix --option commit-lockfile-summary "chore(flake): bump" flake update --commit-lock-file
+	nix flake update --commit-lock-file
 
 nixos-rebuild-switch:
 	doas nixos-rebuild switch --verbose --show-trace

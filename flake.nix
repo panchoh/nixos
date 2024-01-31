@@ -1,6 +1,8 @@
 {
   description = "Nix is love.  Nix is life.  But Nix is also… snow.";
 
+  nixConfig.commit-lockfile-summary = "chore(flake): bump";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
