@@ -23,14 +23,12 @@
     self,
     nixpkgs,
     ...
-  } @ inputs: let
-    inherit (self.lib) boxen fmt-alejandra nixosModules hmModules;
-  in {
+  } @ inputs: {
     lib = import ./modules/lib {inherit inputs;};
 
-    formatter = fmt-alejandra;
+    formatter = self.lib.fmt-alejandra;
 
-    nixosModules.default = nixosModules;
+    nixosModules.default = self.lib.nixosModules;
 
     nixosConfigurations = builtins.listToAttrs (
       map (box: {
@@ -39,14 +37,15 @@
           inherit (box) system;
           specialArgs =
             inputs
-            // {inherit box hmModules;};
+            // {inherit box;}
+            // {inherit (self.lib) hmModules;};
           modules = [
             box.hostType
-            nixosModules
+            self.lib.nixosModules
           ];
         };
       })
-      boxen
+      self.lib.boxen
     );
   };
 }
