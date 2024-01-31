@@ -1,7 +1,9 @@
-.PHONY: bump nixos-rebuild-switch
-.PHONY: list-nixos-history list-home-manager-history
-.PHONY: gc-all pristine
-.PHONY: gc gc-all clean-firefox pristine
+.PHONY: bump check
+.PHONY: nixos-rebuild-switch nixos-rebuild-test nixos-rebuild-build
+.PHONY: list-nixos-history wipe-nixos-history
+.PHONY: list-home-manager-history wipe-home-manager-history
+.PHONY: gc gc-all store-optimise
+.PHONY: clean-firefox clean-chromium pristine
 
 bump:
 	nix flake update --commit-lock-file
