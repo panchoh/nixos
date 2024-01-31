@@ -1,7 +1,7 @@
 {
   config,
-  attrs ? null,
+  box ? null,
   ...
 }: {
-  config.system.stateVersion = attrs.stateVersion;
+  config.system.stateVersion = box.stateVersion;
 }

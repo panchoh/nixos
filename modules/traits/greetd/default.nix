@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.greetd;
@@ -18,7 +18,7 @@ in {
         default_session = initial_session;
         initial_session = {
           command = "${lib.getExe config.programs.hyprland.finalPackage} &>~/.Wsession.errors";
-          user = attrs.userName or "alice";
+          user = box.userName or "alice";
         };
       };
     };

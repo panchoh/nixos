@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.hm.git;
@@ -25,8 +25,8 @@ in {
 
     programs.git = {
       enable = true;
-      userName = attrs.userDesc or "Alice Q. User";
-      userEmail = attrs.userEmail or "alice@example.org";
+      userName = box.userDesc or "Alice Q. User";
+      userEmail = box.userEmail or "alice@example.org";
       extraConfig = {
         init = {
           defaultBranch = "main";

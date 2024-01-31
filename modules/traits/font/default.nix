@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  attrs ? null,
+  box ? null,
   ...
 }: {
   options.traits.font = {
@@ -16,7 +16,7 @@
     };
   };
 
-  config.traits.font = lib.mkIf attrs.isLaptop or false {
+  config.traits.font = lib.mkIf box.isLaptop or false {
     terminal = 12;
     applications = 10;
   };

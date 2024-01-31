@@ -6,7 +6,7 @@
   stylix,
   autofirma-nix,
   hmModules,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.home-manager;
@@ -20,7 +20,7 @@ in {
   config = lib.mkIf cfg.enable {
     assertions = [
       {
-        assertion = attrs.userName != "";
+        assertion = box.userName != "";
         message = "userName not defined.";
       }
     ];
@@ -31,9 +31,9 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        inherit nix-index-database stylix autofirma-nix attrs;
+        inherit nix-index-database stylix autofirma-nix box;
       };
-      users.${attrs.userName or "alice"} = hmModules;
+      users.${box.userName or "alice"} = hmModules;
     };
   };
 }

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.user;
@@ -14,18 +14,18 @@ in {
   config = lib.mkIf cfg.enable {
     assertions = [
       {
-        assertion = attrs.userName != "";
+        assertion = box.userName != "";
         message = "userName not defined";
       }
     ];
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     # users.mutableUsers = false;
-    # TODO: set ssh keys elsewhere (attrs?)
-    users.groups."storage".members = [attrs.userName or "alice"];
-    users.users.${attrs.userName or "alice"} = {
+    # TODO: set ssh keys elsewhere (box?)
+    users.groups."storage".members = [box.userName or "alice"];
+    users.users.${box.userName or "alice"} = {
       isNormalUser = true;
-      description = attrs.userDesc or "Alice Q. User";
+      description = box.userDesc or "Alice Q. User";
       extraGroups = ["wheel" "libvirtd" "docker" "audio"];
       shell = pkgs.fish;
       initialPassword = "password";

@@ -2,12 +2,12 @@
   config,
   lib,
   pkgs,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.epb;
   policy =
-    if attrs.isLaptop or false
+    if box.isLaptop or false
     then "--turbo-enable 0 power"
     else "performance";
 in {

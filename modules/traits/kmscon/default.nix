@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.kmscon;
@@ -15,7 +15,7 @@ in {
     services.kmscon = {
       enable = true;
       hwRender = true;
-      autologinUser = attrs.userName or "alice";
+      autologinUser = box.userName or "alice";
       extraOptions = "--xkb-layout=us --xkb-variant=altgr-intl";
       # TODO: report issue upstream (single font requires trailing comma)
       fonts = lib.mkBefore [

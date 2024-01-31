@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.networking;
@@ -18,10 +18,10 @@ in {
     };
 
     networking = {
-      hostName = attrs.hostName or "nixos";
+      hostName = box.hostName or "nixos";
       useDHCP = false;
       enableIPv6 = false;
-      wireless.iwd.enable = attrs.isLaptop or false;
+      wireless.iwd.enable = box.isLaptop or false;
       firewall.allowedTCPPorts = [
         51413 # transmission-gtk
       ];
@@ -38,13 +38,13 @@ in {
 
     systemd.network = {
       enable = true;
-      wait-online.anyInterface = attrs.isLaptop or false;
+      wait-online.anyInterface = box.isLaptop or false;
       netdevs = {
         "10-mv0" = {
           netdevConfig = {
             Name = "mv0";
             Kind = "macvlan";
-            MACAddress = attrs.macvlanAddr or "de:ad:be:ef:42:01";
+            MACAddress = box.macvlanAddr or "de:ad:be:ef:42:01";
           };
           macvlanConfig = {
             Mode = "bridge";

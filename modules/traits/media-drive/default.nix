@@ -1,13 +1,13 @@
 {
   config,
   lib,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.media-drive;
 in {
   options.traits.media-drive = {
-    enable = lib.mkEnableOption "big media drive" // {default = !attrs.isLaptop or false;};
+    enable = lib.mkEnableOption "big media drive" // {default = !box.isLaptop or false;};
   };
 
   config = lib.mkIf cfg.enable {

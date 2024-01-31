@@ -39,8 +39,7 @@
           inherit (box) system;
           specialArgs =
             inputs
-            // {attrs = box;}
-            // {inherit hmModules;};
+            // {inherit box hmModules;};
           modules = [
             box.hostType
             nixosModules

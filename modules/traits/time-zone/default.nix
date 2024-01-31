@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  attrs ? null,
+  box ? null,
   ...
 }: let
   cfg = config.traits.time-zone;
@@ -11,6 +11,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    time.timeZone = attrs.timeZone;
+    time.timeZone = box.timeZone;
   };
 }

@@ -2,7 +2,7 @@
   config,
   lib,
   modulesPath,
-  attrs ? null,
+  box ? null,
   ...
 }: {
   imports = [
@@ -19,7 +19,7 @@
       extraModulePackages = [];
     };
 
-    nixpkgs.hostPlatform = lib.mkDefault attrs.system or "x86_64-linux";
+    nixpkgs.hostPlatform = lib.mkDefault box.system or "x86_64-linux";
 
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
