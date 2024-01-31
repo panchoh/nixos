@@ -24,11 +24,11 @@
     nixpkgs,
     ...
   } @ inputs: let
-    inherit (self.lib) boxen formatter nixosModules hmModules;
+    inherit (self.lib) boxen fmt-alejandra nixosModules hmModules;
   in {
     lib = import ./modules/lib {inherit inputs;};
 
-    inherit formatter;
+    formatter = fmt-alejandra;
 
     nixosModules.default = nixosModules;
 

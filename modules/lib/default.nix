@@ -3,7 +3,7 @@
     inherit (inputs) nixos-hardware;
   };
 
-  formatter = import ./formatter.nix {
+  fmt-alejandra = import ./fmt-alejandra.nix {
     inherit (inputs) nixpkgs;
     inherit (inputs.nixpkgs) lib;
     inherit boxen;
