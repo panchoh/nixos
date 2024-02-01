@@ -15,6 +15,7 @@ in {
       virt-manager
       virt-viewer
       libguestfs
+      guestfs-tools
     ];
 
     # https://github.com/virt-manager/virt-manager/blob/main/data/org.virt-manager.virt-manager.gschema.xml
