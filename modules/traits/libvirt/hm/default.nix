@@ -14,6 +14,7 @@ in {
     home.packages = with pkgs; [
       virt-manager
       virt-viewer
+      libguestfs
     ];
 
     # https://github.com/virt-manager/virt-manager/blob/main/data/org.virt-manager.virt-manager.gschema.xml
