@@ -24,7 +24,7 @@
     nixpkgs,
     ...
   } @ inputs: {
-    lib = import ./modules/lib inputs;
+    lib = import ./lib inputs // import ./modules/lib inputs;
 
     formatter = self.lib.fmt-alejandra;
 
