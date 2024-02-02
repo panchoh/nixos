@@ -130,6 +130,8 @@ Adhere to Semantic Commit Messages
   https://github.com/nix-community/home-manager/issues/3090#issuecomment-1835357162
 
 ** dotfiles to Explore
+- [ ] https://myme.no/posts/2022-06-14-nixos-confederation.html https://github.com/myme/dotfiles pure latinum!
+- [ ] https://github.com/kclejeune/system Tons of good stuff
 - [ ] https://github.com/pmarreck/nix_machine_configs kernel.task_delayacct
 - [ ] https://github.com/PaulGrandperrin/nix-systems
 - [ ] https://github.com/pyrotelekinetic/figura
