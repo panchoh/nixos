@@ -94,6 +94,8 @@ in {
 
       lapce
       neovide
+
+      charasay
     ];
   };
 }
