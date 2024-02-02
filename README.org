@@ -84,6 +84,7 @@ Adhere to Semantic Commit Messages
 *** Flakes
 - https://thiscute.world/en/posts/nixos-and-flake-basics/
 - https://nixos-and-flakes.thiscute.world/
+- https://serokell.io/blog/practical-nix-flakes :reallygood:
 - https://nix.dev/tutorials/first-steps/nix-language
 - https://ayats.org/blog/no-flake-utils/
 - https://flake.parts/
