@@ -22,6 +22,7 @@ in {
             format = "vfat";
             extraArgs = ["-F32"];
             mountpoint = "/boot";
+            mountOptions = ["umask=0077"];
           };
         };
         swap = {
