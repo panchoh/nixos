@@ -7,7 +7,7 @@
   cfg = config.traits.media-drive;
 in {
   options.traits.media-drive = {
-    enable = lib.mkEnableOption "big media drive" // {default = !box.isLaptop or false;};
+    enable = lib.mkEnableOption "big media drive" // {default = box.hasMedia or false;};
   };
 
   config = lib.mkIf cfg.enable {

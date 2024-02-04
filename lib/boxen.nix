@@ -7,6 +7,7 @@ nixos-hardware: let
     stateVersion ? "23.11",
     timeZone ? "Europe/Madrid",
     isLaptop ? false,
+    hasMedia ? true,
     userName ? "pancho",
     userDesc ? "pancho horrillo",
     userEmail ? "pancho@pancho.name",
@@ -18,7 +19,7 @@ nixos-hardware: let
     ],
     extraModule ? {},
   }: {
-    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail userVirtualHost userVirtualHostRoot userKeys extraModule;
+    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop hasMedia userName userDesc userEmail userVirtualHost userVirtualHostRoot userKeys extraModule;
   };
 in [
   (makeBox {
@@ -33,10 +34,17 @@ in [
     extraModule = {config, ...}: {config.traits.caddy.enable = true;};
   })
   (makeBox {
+    hostName = "xenon";
+    macvlanAddr = "48:21:0b:3c:16:a9";
+    hasMedia = false;
+    extraModule = {config, ...}: {config.traits.epb.enable = false;};
+  })
+  (makeBox {
     hostName = "magnesium";
     macvlanAddr = "00:2b:67:11:27:06";
     hostType = nixos-hardware.nixosModules.lenovo-thinkpad-t490;
     isLaptop = true;
+    hasMedia = false;
   })
   # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
   # (makeBox {
@@ -44,5 +52,6 @@ in [
   #   macvlanAddr = "dc:a6:32:b1:ae:1d";
   #   system = "aarch64-linux";
   #   hostType = nixos-hardware.nixosModules.raspberry-pi-4;
+  #   hasMedia = false;
   # })
 ]
