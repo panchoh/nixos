@@ -2,7 +2,6 @@
   config,
   lib,
   home-manager,
-  nix-index-database,
   stylix,
   autofirma-nix,
   hmModule,
@@ -31,7 +30,7 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        inherit nix-index-database stylix autofirma-nix box;
+        inherit stylix autofirma-nix box;
       };
       users.${box.userName or "alice"} = hmModule;
     };
