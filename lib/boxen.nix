@@ -10,13 +10,15 @@ nixos-hardware: let
     userName ? "pancho",
     userDesc ? "pancho horrillo",
     userEmail ? "pancho@pancho.name",
+    userVirtualHost ? "canalplus.pancho.name",
+    userVirtualHostRoot ? "FF2E6E41-1FE8-4515-82D1-56D5C49EB2B5",
     userKeys ? [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ],
     extraModule ? {},
   }: {
-    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail userKeys extraModule;
+    inherit hostName hostType macvlanAddr system stateVersion timeZone isLaptop userName userDesc userEmail userVirtualHost userVirtualHostRoot userKeys extraModule;
   };
 in [
   (makeBox {
