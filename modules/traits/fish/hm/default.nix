@@ -93,8 +93,6 @@ in {
         };
       };
 
-      zoxide.enable = true;
-
       thefuck.enable = true;
 
       jq.enable = true;
