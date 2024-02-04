@@ -1,7 +1,7 @@
 nixos-hardware: let
   makeBox = {
     hostName ? "nixos",
-    hostType ? null,
+    hostType ? {},
     macvlanAddr,
     system ? "x86_64-linux",
     stateVersion ? "23.11",
