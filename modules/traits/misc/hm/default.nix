@@ -96,6 +96,8 @@ in {
       neovide
 
       charasay
+
+      glow
     ];
   };
 }
