@@ -20,7 +20,7 @@ in {
           content = {
             type = "filesystem";
             format = "vfat";
-            extraArgs = ["-F32"];
+            extraArgs = ["-F32" "-nESP"];
             mountpoint = "/boot";
             mountOptions = ["umask=0077"];
           };
