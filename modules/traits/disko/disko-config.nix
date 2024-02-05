@@ -15,7 +15,7 @@ in {
         ESP = {
           priority = 1;
           label = "ESP";
-          type = "ef00";
+          type = "EF00";
           size = "500M";
           content = {
             type = "filesystem";
