@@ -16,7 +16,7 @@ in {
           priority = 1;
           label = "ESP";
           type = "ef00";
-          size = "512M";
+          size = "500M";
           content = {
             type = "filesystem";
             format = "vfat";
