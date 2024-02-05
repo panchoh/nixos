@@ -26,6 +26,25 @@
 
     formatter = self.lib.fmt-alejandra;
 
+    apps =
+      builtins.foldl' (
+        acc: box:
+          acc
+          // {
+            ${box.system} =
+              (acc.${box.system} or {})
+              // {
+                ${box.hostName} = {
+                  type = "app";
+                  program = "${self.nixosConfigurations."${box.hostName}".config.system.build.diskoScript}";
+                };
+              };
+          }
+      ) {}
+      self.lib.boxen;
+
+    # apps."x86_64-linux".default = self.apps."x86_64-linux"."nixos";
+
     nixosModules.default = self.lib.nixosModule;
 
     nixosConfigurations = builtins.listToAttrs (

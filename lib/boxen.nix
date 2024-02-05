@@ -55,6 +55,11 @@ in [
     isLaptop = true;
     hasMedia = false;
   })
+  (makeBox {
+    hostName = "nixos";
+    diskDevice = "/dev/vda";
+    hasMedia = false;
+  })
   # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
   # (makeBox {
   #   system = "aarch64-linux";
