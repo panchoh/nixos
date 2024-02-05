@@ -1,4 +1,4 @@
-{...}: let
+{device ? throw "Set this to your disk device, e.g., /dev/vda", ...}: let
   sharedMountOptions = [
     "compress=zstd:1"
     "noatime"
@@ -8,7 +8,7 @@
 in {
   disko.devices.disk.main = {
     type = "disk";
-    device = "/dev/nvme0n1";
+    inherit device;
     content = {
       type = "gpt";
       partitions = {

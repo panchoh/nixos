@@ -1,6 +1,10 @@
-{disko, ...}: {
+{
+  disko,
+  box ? null,
+  ...
+}: {
   imports = [
     disko.nixosModules.default
-    ./disko-config.nix
+    (import ./disko-config.nix {device = box.diskDevice or "/dev/vda";})
   ];
 }

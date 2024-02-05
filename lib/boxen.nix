@@ -4,9 +4,10 @@ nixos-hardware: let
     system ? "x86_64-linux",
     hostType ? {},
     hostName ? "nixos",
-    macvlanAddr,
+    macvlanAddr ? "de:ad:be:ef:00:00",
     timeZone ? "Europe/Madrid",
     isLaptop ? false,
+    diskDevice ? "/dev/nvme0n1",
     hasMedia ? true,
     userName ? "pancho",
     userDesc ? "pancho horrillo",
@@ -22,7 +23,8 @@ nixos-hardware: let
     inherit stateVersion;
     inherit system;
     inherit hostType hostName macvlanAddr;
-    inherit timeZone isLaptop hasMedia;
+    inherit timeZone isLaptop;
+    inherit diskDevice hasMedia;
     inherit userName userDesc userEmail;
     inherit userVirtualHost userVirtualHostRoot;
     inherit userKeys;
