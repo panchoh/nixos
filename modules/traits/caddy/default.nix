@@ -22,10 +22,10 @@ in {
       enable = true;
       email = box.userEmail;
       logFormat = nixpkgs.lib.mkForce "level INFO";
-      virtualHosts."${box.userVirtualHost}".extraConfig = ''
+      virtualHosts."${box.virtualHost}".extraConfig = ''
         log
         root * /srv/http
-        file_server /${box.userVirtualHostRoot}/* browse
+        file_server /${box.virtualHostRoot}/* browse
       '';
     };
   };
