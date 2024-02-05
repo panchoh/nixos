@@ -17,11 +17,7 @@
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: {
+  outputs = {self, ...} @ inputs: {
     lib = import ./lib inputs // import ./modules/lib inputs;
 
     formatter = self.lib.fmt-alejandra;
@@ -30,25 +26,6 @@
 
     nixosModules.default = self.lib.nixosModule;
 
-    nixosConfigurations = builtins.listToAttrs (
-      map (box: {
-        name = box.hostName;
-        value = nixpkgs.lib.nixosSystem {
-          inherit (box) system;
-          modules = [
-            box.hostType
-            box.extraModule
-            self.lib.nixosModule
-          ];
-          specialArgs =
-            inputs
-            // {
-              inherit box;
-              inherit (self.lib) hmModule;
-            };
-        };
-      })
-      self.lib.boxen
-    );
+    nixosConfigurations = self.lib.nixosConfigurations;
   };
 }
