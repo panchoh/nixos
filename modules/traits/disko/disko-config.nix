@@ -6,7 +6,7 @@
     "X-fstrim.notrim"
   ];
 in {
-  disko.devices.disk.nvme0n1 = {
+  disko.devices.disk.main = {
     type = "disk";
     device = "/dev/nvme0n1";
     content = {
