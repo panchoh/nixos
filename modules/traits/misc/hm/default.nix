@@ -17,6 +17,7 @@ in {
       parted
       psmisc
       sysstat
+      sysfsutils
       pciutils
       usbutils
       usbtop
