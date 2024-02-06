@@ -12,6 +12,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = lib.optionals (box.isLaptop or false) [
+      pkgs.iw
+      pkgs.iwgtk
+    ];
+
     programs = {
       mtr.enable = true;
       mtr.package = pkgs.mtr-gui;
