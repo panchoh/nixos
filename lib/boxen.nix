@@ -20,15 +20,24 @@ nixos-hardware: let
     ],
     extraModule ? {},
   }: {
-    inherit stateVersion;
-    inherit system;
-    inherit hostType hostName macvlanAddr;
-    inherit timeZone isLaptop;
-    inherit diskDevice hasMedia;
-    inherit userName userDesc userEmail;
-    inherit virtualHost virtualHostRoot;
-    inherit userKeys;
-    inherit extraModule;
+    inherit
+      stateVersion
+      system
+      hostType
+      hostName
+      macvlanAddr
+      timeZone
+      isLaptop
+      diskDevice
+      hasMedia
+      userName
+      userDesc
+      userEmail
+      virtualHost
+      virtualHostRoot
+      userKeys
+      extraModule
+      ;
   };
 in [
   (makeBox {
