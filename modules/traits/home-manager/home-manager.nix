@@ -32,7 +32,9 @@ in {
       extraSpecialArgs = {
         inherit stylix autofirma-nix box;
       };
-      users.${box.userName or "alice"} = hmModule;
+      users.${box.userName or "alice"} = {
+        imports = [hmModule] ++ box.extraHMModules;
+      };
     };
   };
 }

@@ -18,6 +18,7 @@ inputs: let
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ];
     extraModules = [];
+    extraHMModules = [];
   };
 
   makeBox = overrides: defaults // overrides;
