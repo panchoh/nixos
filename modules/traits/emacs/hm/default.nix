@@ -16,7 +16,6 @@ in {
     home.sessionPath = [
       "${config.xdg.configHome}/emacs/bin"
       "$HOME/.local/bin"
-      "$HOME/.local/bin.go"
     ];
 
     home.activation = {
@@ -56,16 +55,6 @@ in {
       gnumake
       ccls
 
-      gotools
-      go-tools
-      gopls
-      gofumpt
-      gomodifytags
-      gotests
-      gore
-      delve
-      gdlv
-
       nil # nix lsp server
       deadnix
       alejandra
@@ -78,11 +67,6 @@ in {
         '';
       })
     ];
-
-    programs.go = {
-      enable = true;
-      goBin = ".local/bin.go";
-    };
 
     programs.ripgrep = {
       enable = true;
