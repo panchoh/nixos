@@ -1,5 +1,5 @@
 inputs: {
-  boxen = import ./boxen.nix inputs.nixos-hardware;
+  boxen = import ./boxen.nix inputs;
 
   fmt-alejandra = import ./fmt-alejandra.nix inputs;
 

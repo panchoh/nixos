@@ -1,4 +1,4 @@
-nixos-hardware: let
+inputs: let
   defaults = {
     stateVersion = "23.11";
     system = "x86_64-linux";
@@ -24,12 +24,12 @@ nixos-hardware: let
   makeBox = overrides: defaults // overrides;
 in [
   (makeBox {
-    hostType = nixos-hardware.nixosModules.intel-nuc-8i7beh;
+    hostType = inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh;
     hostName = "helium";
     macvlanAddr = "1c:69:7a:02:8d:23";
   })
   (makeBox {
-    hostType = nixos-hardware.nixosModules.intel-nuc-8i7beh;
+    hostType = inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh;
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
     extraModule = {config, ...}: {config.traits.caddy.enable = true;};
@@ -41,7 +41,7 @@ in [
     extraModule = {config, ...}: {config.traits.epb.enable = false;};
   })
   (makeBox {
-    hostType = nixos-hardware.nixosModules.lenovo-thinkpad-t490;
+    hostType = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490;
     hostName = "magnesium";
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
@@ -55,7 +55,7 @@ in [
   # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
   # (makeBox {
   #   system = "aarch64-linux";
-  #   hostType = nixos-hardware.nixosModules.raspberry-pi-4;
+  #   hostType = inputs.nixos-hardware.nixosModules.raspberry-pi-4;
   #   hostName = "neon";
   #   macvlanAddr = "dc:a6:32:b1:ae:1d";
   #   hasMedia = false;
