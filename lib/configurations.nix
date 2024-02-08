@@ -4,13 +4,7 @@ builtins.listToAttrs (
     name = box.hostName;
     value = inputs.nixpkgs.lib.nixosSystem {
       inherit (box) system;
-      modules =
-        [
-          box.hostType
-          inputs.self.lib.nixosModule
-        ]
-        ++ box.extraModules;
-
+      modules = [inputs.self.lib.nixosModule] ++ box.extraModules;
       specialArgs =
         inputs
         // {

@@ -2,7 +2,6 @@ inputs: let
   defaults = {
     stateVersion = "23.11";
     system = "x86_64-linux";
-    hostType = {};
     hostName = "nixos";
     macvlanAddr = "de:ad:be:ef:00:00";
     timeZone = "Europe/Madrid";
@@ -24,15 +23,17 @@ inputs: let
   makeBox = overrides: defaults // overrides;
 in [
   (makeBox {
-    hostType = inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh;
     hostName = "helium";
     macvlanAddr = "1c:69:7a:02:8d:23";
+    extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
   })
   (makeBox {
-    hostType = inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh;
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
-    extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+      ({config, ...}: {config.traits.caddy.enable = true;})
+    ];
   })
   (makeBox {
     hostName = "xenon";
@@ -41,11 +42,11 @@ in [
     extraModules = [({config, ...}: {config.traits.epb.enable = false;})];
   })
   (makeBox {
-    hostType = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490;
     hostName = "magnesium";
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
     hasMedia = false;
+    extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
   })
   (makeBox {
     hostName = "nixos";
@@ -55,9 +56,9 @@ in [
   # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
   # (makeBox {
   #   system = "aarch64-linux";
-  #   hostType = inputs.nixos-hardware.nixosModules.raspberry-pi-4;
   #   hostName = "neon";
   #   macvlanAddr = "dc:a6:32:b1:ae:1d";
   #   hasMedia = false;
+  #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
   # })
 ]
