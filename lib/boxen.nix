@@ -18,7 +18,7 @@ inputs: let
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ];
-    extraModule = {};
+    extraModules = [];
   };
 
   makeBox = overrides: defaults // overrides;
@@ -32,13 +32,13 @@ in [
     hostType = inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh;
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
-    extraModule = {config, ...}: {config.traits.caddy.enable = true;};
+    extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
   })
   (makeBox {
     hostName = "xenon";
     macvlanAddr = "48:21:0b:3c:16:a9";
     hasMedia = false;
-    extraModule = {config, ...}: {config.traits.epb.enable = false;};
+    extraModules = [({config, ...}: {config.traits.epb.enable = false;})];
   })
   (makeBox {
     hostType = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490;
