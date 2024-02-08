@@ -130,6 +130,7 @@ Adhere to Semantic Commit Messages
   https://github.com/nix-community/home-manager/issues/3090#issuecomment-1835357162
 
 ** dotfiles to Explore
+- [ ] https://github.com/Simon-Kenn/nixOs-sample
 - [ ] https://gitlab.com/Zaney/zaneyos/-/blob/main/config/home/hyprland.nix?ref_type=heads hyprland config
 - [ ] https://myme.no/posts/2022-06-14-nixos-confederation.html https://github.com/myme/dotfiles pure latinum!
 - [ ] https://github.com/kclejeune/system Tons of good stuff
