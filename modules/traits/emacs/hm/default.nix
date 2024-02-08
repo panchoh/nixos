@@ -66,21 +66,15 @@ in {
       delve
       gdlv
 
-      deadnix
       nil # nix lsp server
+      deadnix
       alejandra
-      # FIXME: Hack until Doom Emacs can handle alejandra directly
-      (stdenv.mkDerivation {
-        name = "alejandra-posing-as-nixfmt";
-        buildInputs = [alejandra];
-        phases = ["installPhase"];
-        installPhase = ''
-          mkdir -p $out/bin
-          cat <<EOF > $out/bin/nixfmt
-          #!/bin/sh
-          exec ${lib.getExe alejandra} --quiet "\$@"
-          EOF
-          chmod +x $out/bin/nixfmt
+      # FIXME: Hack until Doom Emacs can handle `nix fmt` directly
+      (pkgs.writeShellApplication {
+        name = "nixfmt";
+        runtimeInputs = [alejandra];
+        text = ''
+          exec alejandra --quiet "$@"
         '';
       })
     ];
