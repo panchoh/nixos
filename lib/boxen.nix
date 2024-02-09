@@ -11,6 +11,7 @@ inputs: let
     userName = "pancho";
     userDesc = "pancho horrillo";
     userEmail = "pancho@pancho.name";
+    githubUser = "panchoh";
     virtualHost = "canalplus.pancho.name";
     virtualHostRoot = "FF2E6E41-1FE8-4515-82D1-56D5C49EB2B5";
     userKeys = [
