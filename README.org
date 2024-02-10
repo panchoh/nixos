@@ -91,6 +91,7 @@ Adhere to Semantic Commit Messages
 - https://git.alioth.systems/mirrors/nixpkgs/commit/e5db80ae487b59b4e9f950d68983ffb0575e26c6 TODO ReadOnly
   - https://github.com/NixOS/nixpkgs/blob/795e6ce6794ed60d144b77d88f144e44d0e32ad0/flake.nix#L57
 - https://github.com/serokell/deploy-rs :abbe:
+- https://github.com/numtide/treefmt-nix :formatter:
 
 *** Tips
 - https://pavluk.org/blog/2023/05/30/nix_packaging.html
