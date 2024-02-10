@@ -15,7 +15,6 @@ in {
   config = lib.mkIf cfg.enable {
     home.sessionPath = [
       "${config.xdg.configHome}/emacs/bin"
-      "$HOME/.local/bin"
     ];
 
     home.activation = {
