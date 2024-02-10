@@ -57,9 +57,15 @@ in {
       nil # nix language server
       deadnix
       alejandra
+
       # FIXME: Hack until Doom Emacs can handle `nix fmt` directly
+      #
+      # Doom Emacs leverages nix-mode.el, which can be tweaked to use a
+      # different formatter, but not what parameters to send to it.
+      # So we need this wrapper.
       (pkgs.writeShellApplication {
-        name = "nixfmt";
+        # name = "nixfmt";
+        name = "alejandra-the-quiet";
         runtimeInputs = [alejandra];
         text = ''
           exec alejandra --quiet "$@"
