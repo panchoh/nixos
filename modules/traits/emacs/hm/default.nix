@@ -54,7 +54,7 @@ in {
       gnumake
       ccls
 
-      nil # nix lsp server
+      nil # nix language server
       deadnix
       alejandra
       # FIXME: Hack until Doom Emacs can handle `nix fmt` directly
