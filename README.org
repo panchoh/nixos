@@ -130,6 +130,7 @@ Adhere to Semantic Commit Messages
   https://github.com/nix-community/home-manager/issues/3090#issuecomment-1835357162
 
 ** dotfiles to Explore
+- [ ] https://github.com/nix-community/awesome-nix
 - [ ] https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
 - [ ] https://github.com/alarsyo/doom-conf
 - [ ] https://github.com/Simon-Kenn/nixOs-sample
