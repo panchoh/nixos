@@ -53,7 +53,10 @@ in {
       shellcheck
       nodejs_20
       python3
-      python311Packages.grip
+      # python312Packages.grip # TODO: broken, wait until fixed
+      # Waiting for fix to propagate to nixos-unstable:
+      # https://nixpk.gs/pr-tracker.html?pr=288869
+      # python311Packages.grip
       pipenv
       sqlite
 
