@@ -10,6 +10,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    virtualisation.libvirtd.enable = true;
+    virtualisation = {
+      libvirtd = {
+        enable = true;
+        qemu.runAsRoot = false;
+      };
+    };
   };
 }
