@@ -34,6 +34,16 @@ in {
     };
 
     home.packages = with pkgs; [
+      (pkgs.writeShellApplication {
+        name = "doom-wipe-state";
+        runtimeInputs = [coreutils];
+        text = ''
+          echo 'Cleaning most of state; repos and logs preserved:'
+          rm -rf "${emacsCfgDir}/.local/{cache,etc,straight/build*}"
+          echo 'Now run: doom build'
+        '';
+      })
+
       (aspellWithDicts (ds: with ds; [en en-computers en-science]))
 
       findutils
