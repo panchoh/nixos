@@ -5,7 +5,9 @@
 }: let
   cfg = config.traits.chrome;
 in {
-  imports = [./chrome.nix];
+  imports = [
+    ./chrome.nix
+  ];
 
   options.traits.chrome = {
     enable = lib.mkEnableOption "chrome" // {default = true;};

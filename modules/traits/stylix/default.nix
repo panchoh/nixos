@@ -7,7 +7,9 @@
 }: let
   cfg = config.traits.stylix;
 in {
-  imports = [stylix.nixosModules.stylix];
+  imports = [
+    stylix.nixosModules.stylix
+  ];
 
   options.traits.stylix = {
     enable = lib.mkEnableOption "Stylix" // {default = true;};

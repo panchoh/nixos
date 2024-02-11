@@ -10,7 +10,9 @@
 }: let
   cfg = config.traits.home-manager;
 in {
-  imports = [home-manager.nixosModules.default];
+  imports = [
+    home-manager.nixosModules.default
+  ];
 
   options.traits.home-manager = {
     enable = lib.mkEnableOption "Home Manager" // {default = true;};
