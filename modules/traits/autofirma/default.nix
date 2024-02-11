@@ -3,8 +3,7 @@
   lib,
   autofirma-nix,
   ...
-}:
-with lib; let
+}: let
   cfg = config.traits.autofirma;
 in {
   imports = [
@@ -12,10 +11,10 @@ in {
   ];
 
   options.traits.autofirma = {
-    enable = mkEnableOption "autofirma" // {default = true;};
+    enable = lib.mkEnableOption "autofirma" // {default = true;};
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.autofirma.fixJavaCerts = true;
   };
 }

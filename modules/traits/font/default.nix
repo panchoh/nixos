@@ -16,8 +16,10 @@
     };
   };
 
-  config.traits.font = lib.mkIf box.isLaptop or false {
-    terminal = 12;
-    applications = 10;
+  config = lib.mkIf box.isLaptop or false {
+    traits.font = {
+      terminal = 12;
+      applications = 10;
+    };
   };
 }

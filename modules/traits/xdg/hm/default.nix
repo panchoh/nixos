@@ -9,8 +9,10 @@ in {
     enable = lib.mkEnableOption "xdg" // {default = true;};
   };
 
-  config.xdg = lib.mkIf cfg.enable {
-    enable = true;
-    userDirs.download = "${config.home.homeDirectory}/incoming";
+  config = lib.mkIf cfg.enable {
+    xdg = {
+      enable = true;
+      userDirs.download = "${config.home.homeDirectory}/incoming";
+    };
   };
 }

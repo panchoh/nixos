@@ -10,12 +10,14 @@ in {
     enable = lib.mkEnableOption "Chromium" // {default = true;};
   };
 
-  config.programs.chromium = lib.mkIf cfg.enable {
-    enable = true;
-    package = pkgs.ungoogled-chromium;
-    commandLineArgs = [
-      "--incognito"
-      "--ozone-platform=wayland"
-    ];
+  config = lib.mkIf cfg.enable {
+    programs.chromium = {
+      enable = true;
+      package = pkgs.ungoogled-chromium;
+      commandLineArgs = [
+        "--incognito"
+        "--ozone-platform=wayland"
+      ];
+    };
   };
 }

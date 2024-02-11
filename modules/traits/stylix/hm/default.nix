@@ -16,41 +16,43 @@ in {
     enable = lib.mkEnableOption "stylix" // {default = true;};
   };
 
-  config.stylix = lib.mkIf cfg.enable {
-    targets.kde.enable = false;
+  config = lib.mkIf cfg.enable {
+    stylix = {
+      targets.kde.enable = false;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
-    image = pkgs.fetchurl {
-      url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
-      hash = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
-    };
-
-    fonts = {
-      serif = {
-        package = pkgs.iosevka-bin.override {variant = "etoile";};
-        name = "Iosevka Etoile";
+      image = pkgs.fetchurl {
+        url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
+        hash = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
       };
 
-      sansSerif = {
-        package = pkgs.iosevka-bin.override {variant = "aile";};
-        name = "Iosevka Aile";
-      };
+      fonts = {
+        serif = {
+          package = pkgs.iosevka-bin.override {variant = "etoile";};
+          name = "Iosevka Etoile";
+        };
 
-      monospace = {
-        package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
-        name = "Iosevka Term";
-      };
+        sansSerif = {
+          package = pkgs.iosevka-bin.override {variant = "aile";};
+          name = "Iosevka Aile";
+        };
 
-      emoji = {
-        name = "OpenMoji Color";
-        package = pkgs.openmoji-color;
-      };
+        monospace = {
+          package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
+          name = "Iosevka Term";
+        };
 
-      sizes = {
-        desktop = 10;
-        applications = osConfig.traits.font.applications;
-        terminal = osConfig.traits.font.terminal;
+        emoji = {
+          name = "OpenMoji Color";
+          package = pkgs.openmoji-color;
+        };
+
+        sizes = {
+          desktop = 10;
+          applications = osConfig.traits.font.applications;
+          terminal = osConfig.traits.font.terminal;
+        };
       };
     };
   };
