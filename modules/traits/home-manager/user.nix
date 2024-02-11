@@ -21,7 +21,6 @@ in {
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     # users.mutableUsers = false;
-    users.groups."storage".members = [box.userName or "alice"];
     users.users.${box.userName or "alice"} = {
       isNormalUser = true;
       description = box.userDesc or "Alice Q. User";

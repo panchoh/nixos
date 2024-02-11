@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  box ? null,
   ...
 }: let
   cfg = config.traits.usb-drives;
@@ -11,6 +12,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    users.groups."storage".members = [
+      box.userName or "alice"
+    ];
+
     services.udev.packages = [
       (pkgs.writeTextFile rec {
         name = "99-usb-drives.rules";
