@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  box ? null,
   ...
 }: let
   cfg = config.traits.sound;
@@ -10,6 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.${box.userName or "alice"}.extraGroups = ["audio"];
     sound.enable = true;
     security.rtkit.enable = true;
     services.pipewire = {
