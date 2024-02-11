@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  box ? null,
   ...
 }: let
   cfg = config.traits.libvirt;
@@ -10,6 +11,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    users.users.${box.userName or "alice"}.extraGroups = ["libvirtd"];
+
     virtualisation = {
       libvirtd = {
         enable = true;

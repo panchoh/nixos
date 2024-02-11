@@ -25,7 +25,7 @@ in {
     users.users.${box.userName or "alice"} = {
       isNormalUser = true;
       description = box.userDesc or "Alice Q. User";
-      extraGroups = ["wheel" "libvirtd" "docker" "audio"];
+      extraGroups = ["wheel" "docker" "audio"];
       shell = pkgs.fish;
       initialPassword = "password";
       openssh.authorizedKeys.keys = box.userKeys;
