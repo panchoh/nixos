@@ -12,7 +12,10 @@ in {
   config = lib.mkIf cfg.enable {
     xdg = {
       enable = true;
-      userDirs.download = "${config.home.homeDirectory}/incoming";
+      userDirs = {
+        createDirectories = true;
+        download = "${config.home.homeDirectory}/incoming";
+      };
     };
   };
 }
