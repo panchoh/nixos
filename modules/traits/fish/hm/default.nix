@@ -83,7 +83,13 @@ in {
         ];
       };
 
-      bat.enable = true;
+      bat = {
+        enable = true;
+        extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batwatch];
+        config = {
+          pager = "less -R";
+        };
+      };
 
       fzf = {
         enable = true;
