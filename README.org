@@ -136,6 +136,10 @@ Adhere to Semantic Commit Messages
 - [ ] https://github.com/alarsyo/doom-conf
 - [ ] https://github.com/Simon-Kenn/nixOs-sample
 - [ ] https://gitlab.com/Zaney/zaneyos/-/blob/main/config/home/hyprland.nix?ref_type=heads hyprland config
+- [ ] https://github.com/ncfavier/config/blob/ea5562881e66cba102f017a68c22db7dcfccc48d/modules/home-manager.nix#L4
+     (mkAliasOptionModule [ "hm" ] [ "home-manager" "users" my.username ])
+- [ ] https://github.com/ncfavier/config/blob/ea5562881e66cba102f017a68c22db7dcfccc48d/modules/xdg.nix#L68-L69 mime types (mpv)
+- [ ] https://github.com/ncfavier/config/blob/main/flake.nix#L43 extending lib (not sure I want that, though)
 - [ ] https://myme.no/posts/2022-06-14-nixos-confederation.html https://github.com/myme/dotfiles pure latinum!
 - [ ] https://github.com/kclejeune/system Tons of good stuff
 - [ ] https://github.com/pmarreck/nix_machine_configs kernel.task_delayacct
