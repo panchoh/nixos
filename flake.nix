@@ -20,9 +20,9 @@
   outputs = {self, ...} @ inputs: {
     lib = import ./lib inputs // import ./modules/lib inputs;
 
-    formatter = self.lib.fmt-alejandra;
+    formatter = self.lib.fmtAlejandra;
 
-    apps = self.lib.apps-disko-and-funk;
+    apps = self.lib.appsDiskoAndFunk;
 
     nixosModules.default = self.lib.nixosModule;
 
