@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -20,8 +21,12 @@ in {
     programs.chrome = {
       enable = mkEnableOption (lib.mdDoc "{command}`chrome` policies");
 
+      enablePlasmaBrowserIntegration = mkEnableOption (lib.mdDoc "Native Messaging Host for Plasma Browser Integration");
+
+      plasmaBrowserIntegrationPackage = mkPackageOption pkgs "plasma5Packages.plasma-browser-integration" {};
+
       extensions = mkOption {
-        type = types.listOf types.str;
+        type = with types; nullOr (listOf str);
         description = lib.mdDoc ''
           List of chrome extensions to install.
           For list of plugins ids see id in url of extensions on
@@ -32,7 +37,7 @@ in {
           [ExtensionInstallForcelist](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=ExtensionInstallForcelist)
           for additional details.
         '';
-        default = [];
+        default = null;
         example = literalExpression ''
           [
             "chlffgpmiacpedhhbkiomidkjlcfhogd" # pushbullet
@@ -87,9 +92,9 @@ in {
             "PasswordManagerEnabled" = false;
             "SpellcheckEnabled" = true;
             "SpellcheckLanguage" = [
-                                     "de"
-                                     "en-US"
-                                   ];
+              "de"
+              "en-US"
+            ];
           }
         '';
       };
@@ -98,9 +103,14 @@ in {
 
   ###### implementation
 
-  config = lib.mkIf cfg.enable {
-    # for google-chrome https://www.chromium.org/administrators/linux-quick-start
-    environment.etc."opt/chrome/policies/managed/default.json".text = builtins.toJSON defaultProfile;
-    environment.etc."opt/chrome/policies/managed/extra.json".text = builtins.toJSON cfg.extraOpts;
+  config = {
+    environment.etc = lib.mkIf cfg.enable {
+      # for google-chrome https://www.chromium.org/administrators/linux-quick-start
+      "opt/chrome/native-messaging-hosts/org.kde.plasma.browser_integration.json" =
+        lib.mkIf cfg.enablePlasmaBrowserIntegration
+        {source = "${cfg.plasmaBrowserIntegrationPackage}/etc/opt/chrome/native-messaging-hosts/org.kde.plasma.browser_integration.json";};
+      "opt/chrome/policies/managed/default.json" = lib.mkIf (defaultProfile != {}) {text = builtins.toJSON defaultProfile;};
+      "opt/chrome/policies/managed/extra.json" = lib.mkIf (cfg.extraOpts != {}) {text = builtins.toJSON cfg.extraOpts;};
+    };
   };
 }
