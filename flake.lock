@@ -331,7 +331,8 @@
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "vmtools": "vmtools"
       }
     },
     "stylix": {
@@ -365,6 +366,22 @@
       "original": {
         "owner": "danth",
         "repo": "stylix",
+        "type": "github"
+      }
+    },
+    "vmtools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1675610180,
+        "narHash": "sha256-E3+sIpPudkD6nGpnvL8S6/Q6ZwlAzxdikeV/Nq7Ny6M=",
+        "owner": "4km3",
+        "repo": "vmtools",
+        "rev": "cc4a4692aa8650e38b798605064ce2acbc635238",
+        "type": "github"
+      },
+      "original": {
+        "owner": "4km3",
+        "repo": "vmtools",
         "type": "github"
       }
     }

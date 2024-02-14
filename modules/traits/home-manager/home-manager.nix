@@ -4,6 +4,7 @@
   home-manager,
   stylix,
   autofirma-nix,
+  vmtools,
   hmModule,
   box ? null,
   ...
@@ -32,7 +33,7 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        inherit stylix autofirma-nix box;
+        inherit stylix autofirma-nix vmtools box;
       };
       users.${box.userName or "alice"} = {
         imports = [hmModule] ++ box.extraHMModules;
