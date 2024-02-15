@@ -5,6 +5,7 @@
   stylix,
   autofirma-nix,
   vmtools,
+  kubelab,
   hmModule,
   box ? null,
   ...
@@ -33,7 +34,7 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        inherit stylix autofirma-nix vmtools box;
+        inherit stylix autofirma-nix vmtools kubelab box;
       };
       users.${box.userName or "alice"} = {
         imports = [hmModule] ++ box.extraHMModules;

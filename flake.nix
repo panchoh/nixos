@@ -17,6 +17,8 @@
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
     vmtools.url = "github:4km3/vmtools";
     vmtools.flake = false;
+    kubelab.url = "github:4km3/kubelab";
+    kubelab.flake = false;
   };
 
   outputs = {self, ...} @ inputs: {
