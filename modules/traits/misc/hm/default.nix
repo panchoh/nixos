@@ -99,6 +99,8 @@ in {
       charasay
 
       glow
+
+      entr
     ];
   };
 }
