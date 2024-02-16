@@ -2,15 +2,10 @@
   config,
   lib,
   pkgs,
-  autofirma-nix,
   ...
 }: let
   cfg = config.hm.firefox;
 in {
-  imports = [
-    autofirma-nix.homeManagerModules.default
-  ];
-
   options.hm.firefox = {
     enable = lib.mkEnableOption "Firefox" // {default = true;};
   };
@@ -18,16 +13,6 @@ in {
   config = lib.mkIf cfg.enable {
     home.sessionVariables = {
       MOZ_USE_XINPUT2 = "1";
-    };
-
-    programs.autofirma = {
-      enable = true;
-      firefoxIntegration.profiles.default.enable = true;
-    };
-
-    programs.configuradorfnmt = {
-      enable = true;
-      firefoxIntegration.profiles.default.enable = true;
     };
 
     # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
