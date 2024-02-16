@@ -23,11 +23,17 @@ nixos-rebuild-build:
 list-nixos-history:
 	nix profile history --profile /nix/var/nix/profiles/system
 
+diff-closures:
+	nix profile diff-closures --profile /nix/var/nix/profiles/system
+
 wipe-nixos-history:
 	doas nix profile wipe-history --profile /nix/var/nix/profiles/system
 
 list-home-manager-history:
 	nix profile history --profile ~/.local/state/nix/profiles/home-manager
+
+diff-home-manager-closures:
+	nix profile diff-closures --profile ~/.local/state/nix/profiles/home-manager
 
 wipe-home-manager-history:
 	nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager
