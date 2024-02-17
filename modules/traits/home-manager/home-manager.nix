@@ -2,10 +2,7 @@
   config,
   lib,
   home-manager,
-  stylix,
-  autofirma-nix,
-  vmtools,
-  kubelab,
+  extraSpecialArgs,
   hmModule,
   box ? null,
   ...
@@ -33,9 +30,7 @@ in {
       verbose = true;
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = {
-        inherit stylix autofirma-nix vmtools kubelab box;
-      };
+      extraSpecialArgs = extraSpecialArgs // {inherit box;};
       users.${box.userName or "alice"} = {
         imports = [hmModule] ++ box.extraHMModules;
       };

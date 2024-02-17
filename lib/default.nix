@@ -1,6 +1,8 @@
 inputs: {
   flakeInputsClosure = import ./collect-flake-inputs.nix inputs.self;
 
+  extraSpecialArgs = import ./extra-special-args.nix inputs;
+
   boxen = import ./boxen.nix inputs;
 
   fmtAlejandra = import ./fmt-alejandra.nix inputs;
