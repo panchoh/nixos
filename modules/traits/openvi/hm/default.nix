@@ -6,8 +6,8 @@
 }: let
   cfg = config.hm.openvi;
 in {
-  options = {
-    hm.openvi.enable = lib.mkEnableOption "openvi" // {default = true;};
+  options.hm.openvi = {
+    enable = lib.mkEnableOption "openvi" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {
