@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.imv;
+  cfg = config.traits.hm.imv;
 in {
-  options.hm.imv = {
+  options.traits.hm.imv = {
     enable = lib.mkEnableOption "imv" // {default = true;};
   };
 

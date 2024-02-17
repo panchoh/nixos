@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.go;
+  cfg = config.traits.hm.go;
 in {
-  options.hm.go = {
+  options.traits.hm.go = {
     enable = lib.mkEnableOption "Go" // {default = true;};
   };
 

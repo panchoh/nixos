@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.firefox;
+  cfg = config.traits.hm.firefox;
 in {
-  options.hm.firefox = {
+  options.traits.hm.firefox = {
     enable = lib.mkEnableOption "Firefox" // {default = true;};
   };
 

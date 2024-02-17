@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.gnupg;
+  cfg = config.traits.hm.gnupg;
 in {
-  options.hm.gnupg = {
+  options.traits.hm.gnupg = {
     enable = lib.mkEnableOption "gnupg" // {default = true;};
   };
 

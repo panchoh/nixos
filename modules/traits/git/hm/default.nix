@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.hm.git;
+  cfg = config.traits.hm.git;
 in {
-  options.hm.git = {
+  options.traits.hm.git = {
     enable = lib.mkEnableOption "git" // {default = true;};
   };
 

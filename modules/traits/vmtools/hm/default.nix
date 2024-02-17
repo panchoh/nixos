@@ -5,9 +5,9 @@
   vmtools,
   ...
 }: let
-  cfg = config.hm.vmtools;
+  cfg = config.traits.hm.vmtools;
 in {
-  options.hm.vmtools = {
+  options.traits.hm.vmtools = {
     enable = lib.mkEnableOption "vmtools" // {default = true;};
   };
 

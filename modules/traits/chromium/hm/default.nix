@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.chromium;
+  cfg = config.traits.hm.chromium;
 in {
-  options.hm.chromium = {
+  options.traits.hm.chromium = {
     enable = lib.mkEnableOption "Chromium" // {default = true;};
   };
 

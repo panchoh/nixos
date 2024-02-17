@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.texlive;
+  cfg = config.traits.hm.texlive;
 in {
-  options.hm.texlive = {
+  options.traits.hm.texlive = {
     enable = lib.mkEnableOption "texlive" // {default = true;};
   };
 

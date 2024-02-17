@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.virt-manager;
+  cfg = config.traits.hm.virt-manager;
 in {
-  options.hm.virt-manager = {
+  options.traits.hm.virt-manager = {
     enable = lib.mkEnableOption "virt-manager" // {default = true;};
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.xdg;
+  cfg = config.traits.hm.xdg;
 in {
-  options.hm.xdg = {
+  options.traits.hm.xdg = {
     enable = lib.mkEnableOption "xdg" // {default = true;};
   };
 

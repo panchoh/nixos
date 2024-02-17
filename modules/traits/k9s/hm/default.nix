@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.k9s;
+  cfg = config.traits.hm.k9s;
 in {
-  options.hm.k9s = {
+  options.traits.hm.k9s = {
     enable = lib.mkEnableOption "k9s" // {default = true;};
   };
 

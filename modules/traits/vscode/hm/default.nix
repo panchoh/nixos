@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.vscode;
+  cfg = config.traits.hm.vscode;
 in {
-  options.hm.vscode = {
+  options.traits.hm.vscode = {
     enable = lib.mkEnableOption "vscode" // {default = true;};
   };
 

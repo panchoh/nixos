@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.bash;
+  cfg = config.traits.hm.bash;
 in {
-  options.hm.bash = {
+  options.traits.hm.bash = {
     enable = lib.mkEnableOption "bash" // {default = true;};
   };
 

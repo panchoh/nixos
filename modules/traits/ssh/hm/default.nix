@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.openssh;
+  cfg = config.traits.hm.openssh;
 in {
-  options.hm.openssh = {
+  options.traits.hm.openssh = {
     enable = lib.mkEnableOption "openssh" // {default = true;};
   };
 

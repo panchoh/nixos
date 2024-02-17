@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.misc;
+  cfg = config.traits.hm.misc;
 in {
-  options.hm.misc = {
+  options.traits.hm.misc = {
     enable = lib.mkEnableOption "misc" // {default = true;};
   };
 

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.iosevka;
+  cfg = config.traits.hm.iosevka;
 in {
-  options.hm.iosevka = {
+  options.traits.hm.iosevka = {
     enable = lib.mkEnableOption "iosevka" // {default = true;};
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.fuzzel;
+  cfg = config.traits.hm.fuzzel;
 in {
-  options.hm.fuzzel = {
+  options.traits.hm.fuzzel = {
     enable = lib.mkEnableOption "fuzzel" // {default = true;};
   };
 

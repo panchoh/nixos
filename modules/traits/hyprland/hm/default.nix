@@ -5,7 +5,7 @@
   osConfig,
   ...
 }: let
-  cfg = config.hm.hyprland;
+  cfg = config.traits.hm.hyprland;
 
   foot = lib.getExe config.programs.foot.package;
   swayidle = lib.getExe pkgs.swayidle;
@@ -15,7 +15,7 @@
   fuzzel = lib.getExe pkgs.fuzzel;
   makoctl = lib.getExe' pkgs.mako "makoctl";
 in {
-  options.hm.hyprland = {
+  options.traits.hm.hyprland = {
     enable = lib.mkEnableOption "hyprland" // {default = true;};
   };
 

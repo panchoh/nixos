@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.mako;
+  cfg = config.traits.hm.mako;
 in {
-  options.hm.mako = {
+  options.traits.hm.mako = {
     enable = lib.mkEnableOption "mako" // {default = true;};
   };
 

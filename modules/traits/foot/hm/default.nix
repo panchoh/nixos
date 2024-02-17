@@ -4,10 +4,10 @@
   osConfig,
   ...
 }: let
-  cfg = config.hm.foot;
+  cfg = config.traits.hm.foot;
   size = toString osConfig.traits.font.terminal;
 in {
-  options.hm.foot = {
+  options.traits.hm.foot = {
     enable = lib.mkEnableOption "foot" // {default = true;};
   };
 

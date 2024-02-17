@@ -5,9 +5,9 @@
   kubelab,
   ...
 }: let
-  cfg = config.hm.kubelab;
+  cfg = config.traits.hm.kubelab;
 in {
-  options.hm.kubelab = {
+  options.traits.hm.kubelab = {
     enable = lib.mkEnableOption "kubelab" // {default = true;};
   };
 

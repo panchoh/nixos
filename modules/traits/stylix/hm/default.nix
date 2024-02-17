@@ -6,13 +6,13 @@
   osConfig,
   ...
 }: let
-  cfg = config.hm.stylix;
+  cfg = config.traits.hm.stylix;
 in {
   imports = [
     stylix.homeManagerModules.stylix
   ];
 
-  options.hm.stylix = {
+  options.traits.hm.stylix = {
     enable = lib.mkEnableOption "stylix" // {default = true;};
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.helix;
+  cfg = config.traits.hm.helix;
 in {
-  options.hm.helix = {
+  options.traits.hm.helix = {
     enable = lib.mkEnableOption "helix" // {default = true;};
   };
 

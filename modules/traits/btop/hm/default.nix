@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.btop;
+  cfg = config.traits.hm.btop;
 in {
-  options.hm.btop = {
+  options.traits.hm.btop = {
     enable = lib.mkEnableOption "btop" // {default = true;};
   };
 

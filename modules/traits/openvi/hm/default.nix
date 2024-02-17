@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.openvi;
+  cfg = config.traits.hm.openvi;
 in {
-  options.hm.openvi = {
+  options.traits.hm.openvi = {
     enable = lib.mkEnableOption "openvi" // {default = true;};
   };
 

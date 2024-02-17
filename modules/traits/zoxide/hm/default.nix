@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.zoxide;
+  cfg = config.traits.hm.zoxide;
 in {
-  options.hm.zoxide = {
+  options.traits.hm.zoxide = {
     enable = lib.mkEnableOption "zoxide" // {default = true;};
   };
 

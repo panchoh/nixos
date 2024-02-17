@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.mpv;
+  cfg = config.traits.hm.mpv;
 in {
-  options.hm.mpv = {
+  options.traits.hm.mpv = {
     enable = lib.mkEnableOption "mpv" // {default = true;};
   };
 

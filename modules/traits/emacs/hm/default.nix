@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.emacs;
+  cfg = config.traits.hm.emacs;
   emacsCfgDir = "${config.xdg.configHome}/emacs";
   doomCfgDir = "${config.xdg.configHome}/doom";
 in {
-  options.hm.emacs = {
+  options.traits.hm.emacs = {
     enable = lib.mkEnableOption "emacs" // {default = true;};
   };
 

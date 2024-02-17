@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.gopass;
+  cfg = config.traits.hm.gopass;
   passwordStoreDir = "${config.xdg.dataHome}/gopass/stores/root";
 in {
-  options.hm.gopass = {
+  options.traits.hm.gopass = {
     enable = lib.mkEnableOption "gopass" // {default = true;};
   };
 

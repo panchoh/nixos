@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.fish;
+  cfg = config.traits.hm.fish;
 in {
-  options.hm.fish = {
+  options.traits.hm.fish = {
     enable = lib.mkEnableOption "fish" // {default = true;};
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.yt-dlp;
+  cfg = config.traits.hm.yt-dlp;
 in {
-  options.hm.yt-dlp = {
+  options.traits.hm.yt-dlp = {
     enable = lib.mkEnableOption "btop" // {default = true;};
   };
 

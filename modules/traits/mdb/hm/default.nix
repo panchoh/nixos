@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.mdb;
+  cfg = config.traits.hm.mdb;
 in {
-  options.hm.mdb = {
+  options.traits.hm.mdb = {
     enable = lib.mkEnableOption "m" // {default = true;};
   };
 

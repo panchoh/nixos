@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.hm.systemd;
+  cfg = config.traits.hm.systemd;
 in {
-  options.hm.systemd = {
+  options.traits.hm.systemd = {
     enable = lib.mkEnableOption "systemd" // {default = true;};
   };
 

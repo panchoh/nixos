@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.hm.games;
+  cfg = config.traits.hm.games;
 in {
-  options.hm.games = {
+  options.traits.hm.games = {
     enable = lib.mkEnableOption "games" // {default = true;};
   };
 
