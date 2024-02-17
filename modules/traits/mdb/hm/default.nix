@@ -6,8 +6,8 @@
 }: let
   cfg = config.hm.mdb;
 in {
-  options = {
-    hm.mdb.enable = lib.mkEnableOption "m" // {default = true;};
+  options.hm.mdb = {
+    enable = lib.mkEnableOption "m" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {
