@@ -100,7 +100,13 @@ in {
     programs.emacs = {
       enable = true;
       package = pkgs.emacs29-pgtk;
-      extraPackages = epkgs: [epkgs.vterm];
+      extraPackages = epkgs:
+        with epkgs; [
+          # nix-ts-mode
+          # https://github.com/nix-community/emacs-overlay/issues/341#issuecomment-1605290875
+          # treesit-grammars.with-all-grammars
+          vterm
+        ];
     };
 
     home.sessionVariables = {
