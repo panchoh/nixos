@@ -1,0 +1,26 @@
+#+title: Todo
+
+* [ / ] TODO ~nix fmt~
+nix fmt calls ~flake.formatter~, but it should also accept parameters:
+#+begin_src shell
+nix fmt --quiet
+#+end_src
+
+Or use a wrapper of =alejandra= that adds the =--quiet= flag.
+
+Find out which one is feasible.
+
+I think that nix fmt does in fact accept parameters. Find out exactly how.
+
+
+* [ / ] Seek enlightenment here: https://github.com/SenchoPens/base16.nix flake.nix lib
+https://github.com/SenchoPens/base16.nix/blob/main/flake.nix
+interesting usage of lib at flake.nix. See usage on module.nix.
+
+https://code.balsoft.ru/balsoft/nixos-config
+
+
+* architectural change of my flake
+2024-01-28T02:27:22 CET
+
+move the untyped makeBox list to a typed one, and stop passing box around, communicate via config.traits.box.*
