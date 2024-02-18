@@ -21,7 +21,8 @@ in {
       cloneDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
         if [[ ! -d "${emacsCfgDir}" ]]; then
           verboseEcho Cloning Doom Emacs
-          PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${emacsCfgDir}"
+          DOOMEMACS=https://github.com/doomemacs/doomemacs.git
+          PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG --depth=1 --single-branch "$DOOMEMACS" "${emacsCfgDir}"
         fi
         mkdir --parents "${doomCfgDir}"
         rmdir --ignore-fail-on-non-empty "${doomCfgDir}"
