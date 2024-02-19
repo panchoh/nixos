@@ -22,6 +22,9 @@ Adhere to Semantic Commit Messages
 - https://github.com/serokell/deploy-rs :abbe:
 - https://github.com/numtide/treefmt-nix :formatter:
 
+**** Templates
+- https://github.com/juspay/nix-dev-home/blob/main/nix/template.nix filtering files
+
 *** Tips
 - https://ipetkov.dev/blog/tips-and-tricks-for-nix-flakes/
 - https://pavluk.org/blog/2023/05/30/nix_packaging.html
