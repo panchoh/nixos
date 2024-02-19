@@ -13,8 +13,10 @@ in {
     xdg = {
       enable = true;
       userDirs = {
+        enable = true;
         createDirectories = true;
         download = "${config.home.homeDirectory}/incoming";
+        # TODO: decide what to do with the rest (disable most of them?)
       };
     };
   };
