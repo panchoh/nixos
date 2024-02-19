@@ -15,8 +15,11 @@ in {
     home.packages = with pkgs; [
       bvi
       diffoscope
+      git-doc
       gitg
       gti
+      gitui
+      gittyup
       gource
       tig
       meld
