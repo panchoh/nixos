@@ -103,7 +103,10 @@ in {
 
       jq.enable = true;
 
-      tealdeer.enable = true;
+      tealdeer = {
+        enable = true;
+        settings.updates.auto_update = true;
+      };
 
       # https://dystroy.org/broot/
       # TODO: explore the tool and configure verbs et al.
