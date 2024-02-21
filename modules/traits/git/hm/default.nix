@@ -52,6 +52,7 @@ in {
     programs.gh = {
       enable = true;
       settings.git_protocol = "ssh";
+      extensions = [pkgs.gh-eco];
     };
   };
 }
