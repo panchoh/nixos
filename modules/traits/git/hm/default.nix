@@ -31,16 +31,12 @@ in {
       userName = box.userDesc or "Alice Q. User";
       userEmail = box.userEmail or "alice@example.org";
       extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
+        init.defaultBranch = "main";
         merge.conflictStyle = "zdiff3";
       };
       delta = {
         enable = true;
-        options = {
-          side-by-side = true;
-        };
+        options.side-by-side = true;
       };
       # TODO: move this to makeBox @ flake.nix
       signing = {
