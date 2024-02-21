@@ -35,3 +35,5 @@ move the untyped makeBox list to a typed one, and stop passing box around, commu
 * [ ] TODO: replace ocurrences of panchoh with box.githubUser
 
 * https://stackoverflow.com/questions/45401704/systemd-can-not-import-environment-variables-like-ssh-auth-sock
+
+* https://www.gnu.org/software/emacs/manual/html_node/auth/The-Unix-password-store.html :forge:
