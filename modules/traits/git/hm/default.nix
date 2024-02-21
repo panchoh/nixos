@@ -33,6 +33,7 @@ in {
       extraConfig = {
         init.defaultBranch = "main";
         merge.conflictStyle = "zdiff3";
+        github.user = box.githubUser or "aliceq";
       };
       delta = {
         enable = true;
