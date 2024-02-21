@@ -101,6 +101,8 @@ in {
       glow
 
       entr
+
+      gpt4all-chat
     ];
   };
 }
