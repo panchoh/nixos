@@ -115,6 +115,7 @@ Adhere to Semantic Commit Messages
 - [ ] https://github.com/baitinq/nixos-config
 - [ ] https://gitlab.com/maxbaroi/nixos-config/
 - [ ] https://heinicke.xyz/nixos/
+- [ ] https://github.com/jwiegley/nix-config
 - [ ] https://github.com/jwiegley/dot-emacs/blob/master/init.org
 - [ ] https://github.com/robbert-vdh/dotfiles/blob/master/user/emacs/.config/doom/config.org
 - [ ] https://codeberg.org/nosewings/emacs-init/src/branch/main/flake.nix
