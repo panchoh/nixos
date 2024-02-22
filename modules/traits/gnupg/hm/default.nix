@@ -26,6 +26,9 @@ in {
       defaultCacheTtl = 1;
       enableSshSupport = true;
       pinentryFlavor = "gnome3";
+      extraConfig = ''
+        allow-emacs-pinentry
+      '';
     };
   };
 }
