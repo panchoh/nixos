@@ -61,10 +61,6 @@ in {
       youtube-tui
       zoom-us
 
-      qmk
-      qmk_hid
-      keymapviz
-
       binutils
       dua
       duf

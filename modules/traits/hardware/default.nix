@@ -12,8 +12,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     hardware = {
-      keyboard.qmk.enable = true;
-
       logitech.wireless = {
         enable = true;
         enableGraphical = true;
