@@ -69,6 +69,7 @@ Adhere to Semantic Commit Messages
 - [ ] https://jmgilman.github.io/std-book/ std
 - [ ] https://github.com/divnix/hive secretive framework
 - [ ] https://github.com/nix-community/awesome-nix
+- [ ] https://github.com/edmundmiller/.doom.d
 - [ ] https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
 - [ ] https://github.com/alarsyo/doom-conf
 - [ ] https://github.com/Simon-Kenn/nixOs-sample
