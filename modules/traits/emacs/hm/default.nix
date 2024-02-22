@@ -66,6 +66,8 @@ in {
       gnumake
       ccls
 
+      marksman # markdown language server
+
       nil # nix language server
       deadnix
       alejandra
