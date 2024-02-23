@@ -15,7 +15,6 @@ in {
       settings = {
         # https://github.com/aristocratos/btop#configurability
         vim_keys = true;
-        color_theme = "dracula";
       };
     };
   };
