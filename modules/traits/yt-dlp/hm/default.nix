@@ -6,7 +6,7 @@
   cfg = config.traits.hm.yt-dlp;
 in {
   options.traits.hm.yt-dlp = {
-    enable = lib.mkEnableOption "btop" // {default = true;};
+    enable = lib.mkEnableOption "yt-dlp" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {
