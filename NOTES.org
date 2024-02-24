@@ -40,6 +40,7 @@ Adhere to Semantic Commit Messages
 #+begin_src nix
   nix store gc
 #+end_src
+- https://jeancharles.quillet.org/posts/2023-08-01-Deploying-a-static-website-with-nix.html
 
 *** Nixpkgs
 - https://nixos.org/manual/nixos/stable/#sec-customising-packages
