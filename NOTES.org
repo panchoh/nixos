@@ -171,7 +171,8 @@ Adhere to Semantic Commit Messages
 **** Install ChatGPT
 - https://github.com/emacs-openai/chatgpt
 
-**** TODO Install marksman
+**** DONE Install marksman
+CLOSED: [2024-02-24 Sat 11:16]
 https://github.com/artempyanykh/marksman
 
 **** ~doomPrivateDir~
