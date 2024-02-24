@@ -8,9 +8,13 @@
 }: let
   cfg = config.traits.hardware;
 in {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports =
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ]
+    ++ lib.optionals (box.hostName == "nixos") [
+      (modulesPath + "/profiles/qemu-guest.nix")
+    ];
 
   options.traits.hardware = {
     enable = lib.mkEnableOption "hardware" // {default = true;};
