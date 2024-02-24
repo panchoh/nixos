@@ -20,6 +20,9 @@ Adhere to Semantic Commit Messages
 - https://github.com/serokell/deploy-rs :abbe:
 - https://github.com/numtide/treefmt-nix :formatter:
 
+**** eval
+- https://github.com/NixOS/nixpkgs/blob/master/nixos/lib/eval-config.nix
+
 **** readOnlyPkgs
 - https://github.com/NixOS/nixpkgs/pull/230523
 - https://github.com/NixOS/nixpkgs/blob/795e6ce6794ed60d144b77d88f144e44d0e32ad0/flake.nix#L57
