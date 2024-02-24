@@ -17,10 +17,15 @@ Adhere to Semantic Commit Messages
 - https://nix.dev/tutorials/first-steps/nix-language
 - https://ayats.org/blog/no-flake-utils/
 - https://flake.parts/
-- https://git.alioth.systems/mirrors/nixpkgs/commit/e5db80ae487b59b4e9f950d68983ffb0575e26c6 TODO ReadOnly
-  - https://github.com/NixOS/nixpkgs/blob/795e6ce6794ed60d144b77d88f144e44d0e32ad0/flake.nix#L57
 - https://github.com/serokell/deploy-rs :abbe:
 - https://github.com/numtide/treefmt-nix :formatter:
+
+**** readOnlyPkgs
+- https://github.com/NixOS/nixpkgs/pull/230523
+- https://github.com/NixOS/nixpkgs/blob/795e6ce6794ed60d144b77d88f144e44d0e32ad0/flake.nix#L57
+
+**** legacyPackages explained
+- https://github.com/NixOS/nixpkgs/blob/795e6ce6794ed60d144b77d88f144e44d0e32ad0/flake.nix#L42-L55
 
 **** Templates
 - https://github.com/juspay/nix-dev-home/blob/main/nix/template.nix filtering files
