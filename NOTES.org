@@ -55,6 +55,8 @@ Adhere to Semantic Commit Messages
   https://discourse.nixos.org/t/ci-will-soon-enforce-pkgs-by-name-for-new-packages/38098/3
 - lib.optional, lib.optionals
   https://discourse.nixos.org/t/lib-optional-considered-harmful/7081
+- unfree
+  - https://discourse.nixos.org/t/allowunfree-predicate-does-not-apply-to-self-packages/21734/5?page=2
 
 *** Nix Registry
 - https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-registry.html
