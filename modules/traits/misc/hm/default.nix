@@ -29,6 +29,7 @@ in {
       lm_sensors
 
       ldns
+      doggo
       dogdns
       nmap
       speedtest-go
