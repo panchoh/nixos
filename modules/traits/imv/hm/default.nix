@@ -6,7 +6,7 @@
   cfg = config.traits.hm.imv;
 in {
   options.traits.hm.imv = {
-    enable = lib.mkEnableOption "imv" // {default = false;}; # freeimage deemed insecure
+    enable = lib.mkEnableOption "imv" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {
