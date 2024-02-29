@@ -37,6 +37,7 @@ in {
 
       curl
       wget
+      restish
 
       moreutils
       yq-go
