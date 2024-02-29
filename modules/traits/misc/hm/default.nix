@@ -100,7 +100,7 @@ in {
 
       entr
 
-      gpt4all-chat
+      gpt4all
     ];
   };
 }
