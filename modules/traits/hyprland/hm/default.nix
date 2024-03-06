@@ -58,28 +58,32 @@ in {
         # Caps: group switch
         # Shift-Caps: Ye'Olde Caps
 
-        device:keychron-keychron-q10 {
+        device {
+            name = keychron-keychron-q10
             kb_model = pc105
             kb_layout = us,us
             kb_variant = altgr-intl,dvorak-alt-intl
             kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
         }
 
-        device:keychron-keychron-q8 {
+        device {
+            name = keychron-keychron-q8
             kb_model = pc105
             kb_layout = us,us
             kb_variant = altgr-intl,dvorak-alt-intl
             kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
         }
 
-        device:PFU_Limited_HHKB-Classic {
+        device {
+            name = PFU_Limited_HHKB-Classic
             kb_model = hhk
             kb_layout = us,us
             kb_variant = altgr-intl,dvorak-alt-intl
             kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
         }
 
-        device:at-translated-set-2-keyboard {
+        device {
+            name = at-translated-set-2-keyboard
             kb_model = thinkpad
             kb_layout = us,us
             kb_variant = altgr-intl,dvorak-alt-intl
