@@ -13,7 +13,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
-      (iosevka-bin.override {variant = "slab";})
+      (iosevka-bin.override {variant = "Slab";})
       iosevka-bin
     ];
   };

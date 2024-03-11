@@ -29,17 +29,17 @@ in {
 
       fonts = {
         serif = {
-          package = pkgs.iosevka-bin.override {variant = "etoile";};
+          package = pkgs.iosevka-bin.override {variant = "Etoile";};
           name = "Iosevka Etoile";
         };
 
         sansSerif = {
-          package = pkgs.iosevka-bin.override {variant = "aile";};
+          package = pkgs.iosevka-bin.override {variant = "Aile";};
           name = "Iosevka Aile";
         };
 
         monospace = {
-          package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
+          package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";};
           name = "Iosevka Term";
         };
 
