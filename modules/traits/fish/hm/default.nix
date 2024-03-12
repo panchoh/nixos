@@ -65,7 +65,6 @@ in {
 
       eza = {
         enable = false;
-        enableAliases = true;
         git = true;
         icons = true;
         extraOptions = [
