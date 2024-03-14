@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.traits.hm.gnupg;
@@ -25,7 +26,7 @@ in {
       enable = true;
       defaultCacheTtl = 1;
       enableSshSupport = true;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
       extraConfig = ''
         allow-emacs-pinentry
       '';
