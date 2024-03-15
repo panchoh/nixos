@@ -16,9 +16,10 @@ in {
 
     programs.zoxide = {
       enable = true;
-      options = [
-        "--cmd cd"
-      ];
+      # TODO: debug why fish completion doesn't work with this on:
+      # options = [
+      #   "--cmd cd"
+      # ];
     };
   };
 }
