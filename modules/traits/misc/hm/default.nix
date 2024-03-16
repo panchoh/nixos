@@ -92,7 +92,6 @@ in {
       intel-gpu-tools
 
       lapce
-      neovide
 
       charasay
 

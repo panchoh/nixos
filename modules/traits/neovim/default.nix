@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.traits.editor;
+  cfg = config.traits.neovim;
 in {
-  options.traits.editor = {
-    enable = lib.mkEnableOption "editor" // {default = true;};
+  options.traits.neovim = {
+    enable = lib.mkEnableOption "neovim" // {default = true;};
   };
 
   config = lib.mkIf cfg.enable {

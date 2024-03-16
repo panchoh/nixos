@@ -11,7 +11,7 @@
   swayidle = lib.getExe pkgs.swayidle;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
-  neovim = lib.getExe pkgs.neovim;
+  neovim = lib.getExe config.programs.neovim.finalPackage;
   fuzzel = lib.getExe pkgs.fuzzel;
   makoctl = lib.getExe' pkgs.mako "makoctl";
 in {

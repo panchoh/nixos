@@ -113,9 +113,9 @@ in {
     home.sessionVariables = {
       EDITOR = lib.getBin (
         pkgs.writeShellScript "editor" ''
-          exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"}  \
-            --reuse-frame                                                       \
-            --alternate-editor=${lib.getExe pkgs.neovim}                        \
+          exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"}   \
+            --reuse-frame                                                        \
+            --alternate-editor=${lib.getExe config.programs.neovim.finalPackage} \
           "''${@:---create-frame}"
         ''
       );
