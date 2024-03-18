@@ -124,8 +124,8 @@ in {
     services.emacs = {
       enable = true;
       defaultEditor = false;
-      socketActivation.enable = true;
-      # startWithUserSession = "graphical";
+      socketActivation.enable = false;
+      startWithUserSession = "graphical";
       client = {
         enable = true;
         arguments = [
