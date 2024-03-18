@@ -11,7 +11,6 @@
   swayidle = lib.getExe pkgs.swayidle;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
-  neovim = lib.getExe config.programs.neovim.finalPackage;
   fuzzel = lib.getExe pkgs.fuzzel;
   makoctl = lib.getExe' pkgs.mako "makoctl";
 in {
@@ -149,7 +148,7 @@ in {
         }
 
         bind = SUPER, Return, exec, ${foot}
-        bind = SUPER, X, exec, ${emacsclient} --no-wait --reuse-frame --alternate-editor='${foot} ${neovim}'
+        bind = SUPER, X, exec, ${emacsclient} --no-wait --reuse-frame
         bind = SUPER,       Slash, exec, chromium
         bind = SUPER SHIFT, Slash, exec, google-chrome-stable
 

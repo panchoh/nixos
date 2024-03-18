@@ -15,9 +15,7 @@ in {
       fish = {
         enable = true;
         shellAliases = {
-          e = "${
-            lib.getExe' config.programs.emacs.finalPackage "emacsclient"
-          } --no-wait --reuse-frame --alternate-editor=${lib.getExe config.programs.neovim.finalPackage}";
+          e = "$EDITOR --no-wait";
         };
       };
 

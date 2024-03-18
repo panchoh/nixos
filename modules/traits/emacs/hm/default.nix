@@ -113,12 +113,12 @@ in {
     home.sessionVariables = {
       EDITOR = lib.getBin (
         pkgs.writeShellScript "editor" ''
-          exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"}   \
-            --reuse-frame                                                        \
-            --alternate-editor=${lib.getExe config.programs.neovim.finalPackage} \
-          "''${@:---create-frame}"
+          exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"} \
+            --reuse-frame                                                      \
+            "$@"
         ''
       );
+      ALTERNATE_EDITOR = lib.getExe' pkgs.neovide "neovide";
     };
 
     services.emacs = {
@@ -130,7 +130,6 @@ in {
         enable = true;
         arguments = [
           "--reuse-frame"
-          "--alternate-editor=nvim"
         ];
       };
     };
