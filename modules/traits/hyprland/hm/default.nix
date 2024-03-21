@@ -39,7 +39,9 @@ in {
       package = osConfig.programs.hyprland.finalPackage;
       xwayland.enable = osConfig.programs.hyprland.xwayland.enable;
       extraConfig = ''
-        monitor=, preferred, auto, auto, bitdepth, 10
+        # TODO: keep 10-bit depth disabled until meet supports it
+        # monitor=, preferred, auto, auto, bitdepth, 10
+        # monitor=, preferred, auto, auto
         exec-once = ${foot}
         exec-once = ${swayidle} -w timeout 300 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'
         env = XCURSOR_SIZE,24
