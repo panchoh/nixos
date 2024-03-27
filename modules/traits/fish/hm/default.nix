@@ -39,8 +39,7 @@ in {
           header = true;
           indicators = true;
           sorting.dir-grouping = "first";
-          # TODO: check when the new release hits the store
-          # literal = true;
+          literal = true;
           total-size = false;
           ignore-globs = [
             ".git"
