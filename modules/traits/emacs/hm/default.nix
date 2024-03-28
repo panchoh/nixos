@@ -68,6 +68,8 @@ in {
 
       marksman # markdown language server
 
+      dockfmt
+
       nil # nix language server
       deadnix
       alejandra
