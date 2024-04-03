@@ -36,7 +36,7 @@ in {
       ipcalc
 
       curl
-      wget
+      wget2
       restish
 
       moreutils
