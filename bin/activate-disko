@@ -4,4 +4,4 @@ nix run                                          \
     --experimental-features 'nix-command flakes' \
     github:nix-community/disko                   \
     -- --mode disko                              \
-    ./modules/traits/disko/disko-config.nix
+    ./modules/traits/disko/disk-config.nix
