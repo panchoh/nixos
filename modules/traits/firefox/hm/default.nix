@@ -23,7 +23,10 @@ in {
       package = pkgs.firefox.override {
         cfg.smartcardSupport = true;
       };
-      profiles.default.id = 0;
+      profiles.default = {
+        id = 0;
+        containersForce = true;
+      };
       policies = {
         # https://mozilla.github.io/policy-templates
         # about:policies#documentation
