@@ -373,15 +373,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1712847516,
-        "narHash": "sha256-/b7TZ+PY99e1bRbSGW9FOJExX8tBII5sS1zMqEaUHBo=",
-        "owner": "danth",
+        "lastModified": 1712863603,
+        "narHash": "sha256-7tyUpQMIy0xKFF1xeJgLUFbflRe2N6JvGNlr8Q9S6rs=",
+        "owner": "trueNAHO",
         "repo": "stylix",
-        "rev": "406f793045ce82689194273cb7e7c4ad0fec530c",
+        "rev": "86ef3096e5076b7572d688846b493e72e7fc5821",
         "type": "github"
       },
       "original": {
-        "owner": "danth",
+        "owner": "trueNAHO",
+        "ref": "fix-modules-plymouth-nixos-substitute-in-place-does-not-match-anything",
         "repo": "stylix",
         "type": "github"
       }
