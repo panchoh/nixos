@@ -91,11 +91,6 @@ in {
             kb_options = lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps
         }
 
-        cursor {
-            inactive_timeout = 5
-            hide_on_key_press = true
-        }
-
         general {
             gaps_in = 5
             gaps_out = 20
@@ -105,6 +100,7 @@ in {
 
             layout = master
 
+            cursor_inactive_timeout = 5
             resize_on_border = true
             hover_icon_on_border = true
         }
