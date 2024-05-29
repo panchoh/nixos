@@ -17,7 +17,7 @@ in {
       settings = rec {
         default_session = initial_session;
         initial_session = {
-          command = "${lib.getExe config.programs.hyprland.finalPackage} &>~/.Wsession.errors";
+          command = "${lib.getExe config.programs.hyprland.package} &>~/.Wsession.errors";
           user = box.userName or "alice";
         };
       };
