@@ -90,6 +90,8 @@ in {
         "sodium"
         "kalium"
 
+        "fuchsia"
+
         "backup"
 
         # 2022-08-20T15:57:56 CEST
