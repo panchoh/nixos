@@ -1,6 +1,6 @@
 inputs: let
   defaults = {
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     system = "x86_64-linux";
     hostName = "nixos";
     macvlanAddr = "de:ad:be:ef:00:00";
@@ -31,6 +31,7 @@ in [
     extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
   })
   (makeBox {
+    stateVersion = "23.11";
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
     extraModules = [
