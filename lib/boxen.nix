@@ -43,14 +43,16 @@ in [
     hostName = "xenon";
     macvlanAddr = "48:21:0b:3c:16:a9";
     hasMedia = false;
-    extraModules = [({config, ...}: {config.traits.epb.enable = false;})];
   })
   (makeBox {
     hostName = "magnesium";
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
     hasMedia = false;
-    extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
+      ({config, ...}: {config.traits.epb.enable = true;})
+    ];
   })
   (makeBox {
     hostName = "nixos";
