@@ -7,7 +7,7 @@ inputs: let
     timeZone = "Europe/Madrid";
     isLaptop = false;
     diskDevice = "/dev/nvme0n1";
-    hasMedia = true;
+    hasMedia = false;
     userName = "pancho";
     userDesc = "pancho horrillo";
     userEmail = "pancho@pancho.name";
@@ -28,24 +28,24 @@ in [
   (makeBox {
     hostName = "helium";
     macvlanAddr = "1c:69:7a:02:8d:23";
+    hasMedia = true;
     extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
   })
   (makeBox {
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
+    hasMedia = true;
     extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
   })
   (makeBox {
     hostName = "xenon";
     macvlanAddr = "48:21:0b:3c:16:a9";
-    hasMedia = false;
     extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
   })
   (makeBox {
     hostName = "magnesium";
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
-    hasMedia = false;
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
       ({config, ...}: {config.traits.epb.enable = true;})
@@ -54,14 +54,12 @@ in [
   (makeBox {
     hostName = "nixos";
     diskDevice = "/dev/vda";
-    hasMedia = false;
   })
   # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
   # (makeBox {
   #   system = "aarch64-linux";
   #   hostName = "neon";
   #   macvlanAddr = "dc:a6:32:b1:ae:1d";
-  #   hasMedia = false;
   #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
   # })
 ]
