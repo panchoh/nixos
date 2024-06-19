@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     users.users.${box.userName or "alice"}.extraGroups = ["audio"];
-    sound.enable = true;
+    sound.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
