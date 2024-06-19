@@ -12,7 +12,7 @@
     else "performance";
 in {
   options.traits.epb = {
-    enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)" // {default = true;};
+    enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)" // {default = false;};
   };
 
   config = lib.mkIf cfg.enable {
