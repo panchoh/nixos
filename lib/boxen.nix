@@ -31,7 +31,6 @@ in [
     extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
   })
   (makeBox {
-    stateVersion = "23.11";
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
     extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
