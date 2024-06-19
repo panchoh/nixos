@@ -34,15 +34,13 @@ in [
     stateVersion = "23.11";
     hostName = "krypton";
     macvlanAddr = "1c:69:7a:06:76:c0";
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-      ({config, ...}: {config.traits.caddy.enable = true;})
-    ];
+    extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
   })
   (makeBox {
     hostName = "xenon";
     macvlanAddr = "48:21:0b:3c:16:a9";
     hasMedia = false;
+    extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
   })
   (makeBox {
     hostName = "magnesium";
