@@ -7,7 +7,7 @@
   cfg = config.traits.greetd;
 in {
   options.traits.greetd = {
-    enable = lib.mkEnableOption "greetd" // {default = true;};
+    enable = lib.mkEnableOption "greetd" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

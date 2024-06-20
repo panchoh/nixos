@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   box ? null,
   ...
 }: let
@@ -12,6 +13,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     users.users.${box.userName or "alice"}.extraGroups = ["libvirtd"];
+
+    environment.systemPackages = [
+      pkgs.libguestfs
+      pkgs.guestfs-tools
+    ];
 
     virtualisation = {
       libvirtd = {

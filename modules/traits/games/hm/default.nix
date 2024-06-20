@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.games;
 in {
   options.traits.hm.games = {
-    enable = lib.mkEnableOption "games" // {default = true;};
+    enable = lib.mkEnableOption "games" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

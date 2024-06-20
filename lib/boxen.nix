@@ -6,6 +6,7 @@ inputs: let
     macvlanAddr = "de:ad:be:ef:00:00";
     timeZone = "Europe/Madrid";
     isLaptop = false;
+    isStation = false;
     diskDevice = "/dev/nvme0n1";
     hasMedia = false;
     userName = "pancho";
@@ -40,12 +41,14 @@ in [
   (makeBox {
     hostName = "xenon";
     macvlanAddr = "48:21:0b:3c:16:a9";
+    isStation = true;
     extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
   })
   (makeBox {
     hostName = "magnesium";
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
+    isStation = true;
     extraModules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
       ({config, ...}: {config.traits.epb.enable = true;})

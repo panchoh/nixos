@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.emacs;
@@ -9,7 +10,7 @@
   doomCfgDir = "${config.xdg.configHome}/doom";
 in {
   options.traits.hm.emacs = {
-    enable = lib.mkEnableOption "emacs" // {default = true;};
+    enable = lib.mkEnableOption "emacs" // {default = box.isStation;};
   };
 
   config = lib.mkIf cfg.enable {

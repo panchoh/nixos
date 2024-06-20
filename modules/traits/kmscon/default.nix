@@ -8,7 +8,7 @@
   cfg = config.traits.kmscon;
 in {
   options.traits.kmscon = {
-    enable = lib.mkEnableOption "kmscon" // {default = true;};
+    enable = lib.mkEnableOption "kmscon" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

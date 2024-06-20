@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.misc;
@@ -11,95 +12,96 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      efibootmgr
-      gptfdisk
-      parted
-      psmisc
-      sysstat
-      sysfsutils
-      pciutils
-      usbutils
-      usbtop
-      iotop-c
-      smartmontools
-      hdparm
-      nvme-cli
-      sg3_utils
-      lm_sensors
+    home.packages = with pkgs;
+      [
+        efibootmgr
+        gptfdisk
+        parted
+        psmisc
+        sysstat
+        sysfsutils
+        pciutils
+        usbutils
+        usbtop
+        iotop-c
+        smartmontools
+        hdparm
+        nvme-cli
+        sg3_utils
+        lm_sensors
 
-      ldns
-      doggo
-      dogdns
-      nmap
-      speedtest-go
-      ipcalc
+        ldns
+        doggo
+        dogdns
+        nmap
+        speedtest-go
+        ipcalc
 
-      curl
-      wget2
-      restish
+        curl
+        wget2
+        restish
 
-      moreutils
-      yq-go
-      hwloc
-      b3sum
-      unzip
-      zip
+        moreutils
+        yq-go
+        hwloc
+        b3sum
+        unzip
+        zip
 
-      qastools
-      pavucontrol
-      helvum
+        binutils
+        dua
+        duf
+        du-dust
+        file
+        fdupes
+        rdfind
+        rmlint
+        gnutls
+        zstd
 
-      v4l-utils
-      graphviz
-      ffmpeg
-      vlc
-      mkvtoolnix
-      evince
-      gimp
-      inkscape
-      audacity
-      picard
-      youtube-tui
-      zoom-us
+        bc
+        cdrkit
+        cloud-utils
 
-      binutils
-      dua
-      duf
-      du-dust
-      file
-      fdupes
-      rdfind
-      rmlint
-      gnutls
-      zstd
+        intel-gpu-tools
 
-      bc
+        charasay
 
-      telegram-desktop
-      discord
-      nheko
-      tessen
+        glow
 
-      cdrkit
-      cloud-utils
+        entr
+      ]
+      ++ lib.optionals (box.isStation or false) [
+        qastools
+        pavucontrol
+        helvum
 
-      popcorntime
+        v4l-utils
+        graphviz
+        ffmpeg
+        vlc
+        mkvtoolnix
+        evince
+        gimp
+        inkscape
+        audacity
+        picard
+        youtube-tui
+        zoom-us
 
-      transmission-gtk
-      wormhole-william
+        telegram-desktop
+        discord
+        nheko
+        tessen
 
-      intel-gpu-tools
+        lapce
 
-      lapce
+        popcorntime
 
-      charasay
+        transmission-gtk
+        wormhole-william
 
-      glow
-
-      entr
-
-      gpt4all
-    ];
+        gpt4all
+      ];
   };
 }

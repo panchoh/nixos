@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.console;
 in {
   options.traits.console = {
-    enable = lib.mkEnableOption "console" // {default = true;};
+    enable = lib.mkEnableOption "console" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

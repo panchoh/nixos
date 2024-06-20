@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.mdb;
 in {
   options.traits.hm.mdb = {
-    enable = lib.mkEnableOption "m" // {default = true;};
+    enable = lib.mkEnableOption "m" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

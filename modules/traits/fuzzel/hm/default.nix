@@ -1,12 +1,13 @@
 {
   config,
   lib,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.fuzzel;
 in {
   options.traits.hm.fuzzel = {
-    enable = lib.mkEnableOption "fuzzel" // {default = true;};
+    enable = lib.mkEnableOption "fuzzel" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

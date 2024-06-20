@@ -2,13 +2,14 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.gopass;
   passwordStoreDir = "${config.xdg.dataHome}/gopass/stores/root";
 in {
   options.traits.hm.gopass = {
-    enable = lib.mkEnableOption "gopass" // {default = true;};
+    enable = lib.mkEnableOption "gopass" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.mpv;
 in {
   options.traits.hm.mpv = {
-    enable = lib.mkEnableOption "mpv" // {default = true;};
+    enable = lib.mkEnableOption "mpv" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

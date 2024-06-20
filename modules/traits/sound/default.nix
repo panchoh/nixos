@@ -7,7 +7,7 @@
   cfg = config.traits.sound;
 in {
   options.traits.sound = {
-    enable = lib.mkEnableOption "sound" // {default = true;};
+    enable = lib.mkEnableOption "sound" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

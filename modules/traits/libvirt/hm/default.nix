@@ -2,20 +2,19 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.virt-manager;
 in {
   options.traits.hm.virt-manager = {
-    enable = lib.mkEnableOption "virt-manager" // {default = true;};
+    enable = lib.mkEnableOption "virt-manager" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      virt-manager
-      virt-viewer
-      libguestfs
-      guestfs-tools
+    home.packages = [
+      pkgs.virt-manager
+      pkgs.virt-viewer
     ];
 
     # https://github.com/virt-manager/virt-manager/blob/main/data/org.virt-manager.virt-manager.gschema.xml

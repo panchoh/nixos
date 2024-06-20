@@ -3,6 +3,7 @@
   lib,
   pkgs,
   osConfig,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.hyprland;
@@ -15,7 +16,7 @@
   makoctl = lib.getExe' pkgs.mako "makoctl";
 in {
   options.traits.hm.hyprland = {
-    enable = lib.mkEnableOption "hyprland" // {default = true;};
+    enable = lib.mkEnableOption "hyprland" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

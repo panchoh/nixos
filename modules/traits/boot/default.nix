@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.boot;
@@ -32,12 +33,12 @@ in {
       initrd = {
         verbose = false;
         systemd.enable = true;
-        kernelModules = ["i915" "btrfs"];
+        kernelModules = ["btrfs"] ++ lib.optionals (box.isStation or false) ["i915"];
       };
 
       consoleLogLevel = 0;
 
-      plymouth.enable = true;
+      plymouth.enable = box.isStation or false;
     };
   };
 }

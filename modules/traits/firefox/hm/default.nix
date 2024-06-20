@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.firefox;
 in {
   options.traits.hm.firefox = {
-    enable = lib.mkEnableOption "Firefox" // {default = true;};
+    enable = lib.mkEnableOption "Firefox" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

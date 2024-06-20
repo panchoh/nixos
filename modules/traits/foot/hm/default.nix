@@ -2,13 +2,14 @@
   config,
   lib,
   osConfig,
+  box ? null,
   ...
 }: let
   cfg = config.traits.hm.foot;
   size = toString osConfig.traits.font.terminal;
 in {
   options.traits.hm.foot = {
-    enable = lib.mkEnableOption "foot" // {default = true;};
+    enable = lib.mkEnableOption "foot" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

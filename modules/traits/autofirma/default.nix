@@ -2,6 +2,7 @@
   config,
   lib,
   autofirma-nix,
+  box ? null,
   ...
 }: let
   cfg = config.traits.autofirma;
@@ -11,7 +12,7 @@ in {
   ];
 
   options.traits.autofirma = {
-    enable = lib.mkEnableOption "autofirma" // {default = true;};
+    enable = lib.mkEnableOption "autofirma" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  box ? null,
   ...
 }: let
   cfg = config.traits.chrome;
@@ -10,7 +11,7 @@ in {
   ];
 
   options.traits.chrome = {
-    enable = lib.mkEnableOption "chrome" // {default = true;};
+    enable = lib.mkEnableOption "chrome" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {

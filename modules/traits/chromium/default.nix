@@ -2,6 +2,7 @@
   config,
   lib,
   modulesPath,
+  box ? null,
   ...
 }: let
   cfg = config.traits.chromium;
@@ -12,7 +13,7 @@ in {
   ];
 
   options.traits.chromium = {
-    enable = lib.mkEnableOption "chromium" // {default = true;};
+    enable = lib.mkEnableOption "chromium" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {
