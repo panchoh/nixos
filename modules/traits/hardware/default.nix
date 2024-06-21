@@ -40,7 +40,7 @@ in {
         enableGraphical = true;
       };
 
-      opengl = {
+      graphics = {
         enable = true;
         extraPackages = with pkgs; [
           # https://nixos.wiki/wiki/Accelerated_Video_Playback
