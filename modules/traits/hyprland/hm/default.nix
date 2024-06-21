@@ -20,6 +20,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    services.hyprpaper.enable = lib.mkForce false;
+
     home.packages = with pkgs; [
       swaylock
       grim
