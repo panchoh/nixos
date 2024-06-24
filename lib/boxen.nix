@@ -49,10 +49,7 @@ in [
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
     isStation = true;
-    extraModules = [
-      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
-      ({config, ...}: {config.traits.epb.enable = true;})
-    ];
+    extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
   })
   (makeBox {
     hostName = "nixos";
