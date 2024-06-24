@@ -1,7 +1,16 @@
 {
   description = "Nix is love.  Nix is life.  But Nix is also… snow.";
 
-  nixConfig.commit-lockfile-summary = "chore(flake): bump";
+  nixConfig = {
+    commit-lockfile-summary = "chore(flake): bump";
+
+    extra-substituters = [
+      "https://autofirma-nix.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "autofirma-nix.cachix.org-1:cDC9Dtee+HJ7QZcM8s36836scXyRToqNX/T+yvjiI0E="
+    ];
+  };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
