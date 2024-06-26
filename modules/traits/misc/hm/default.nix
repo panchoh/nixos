@@ -98,7 +98,7 @@ in {
 
         popcorntime
 
-        transmission-gtk
+        transmission_4-gtk
         wormhole-william
 
         gpt4all
