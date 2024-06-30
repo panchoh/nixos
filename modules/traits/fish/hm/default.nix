@@ -89,6 +89,15 @@ in {
 
       fzf = {
         enable = true;
+        defaultCommand = "fd --type f";
+        defaultOptions = [
+          "--height 40%"
+          "--border"
+        ];
+        fileWidgetCommand = "fd --type f";
+        fileWidgetOptions = [
+          "--preview 'head {}'"
+        ];
         tmux = {
           enableShellIntegration = true;
           shellIntegrationOptions = ["-d 40%"];
