@@ -138,12 +138,14 @@ in {
         }
 
         master {
-            allow_small_split = true
             mfact = 0.66
-            new_is_master = true
+            new_status = inherit
+            new_on_active = before
+            new_on_top = true
             no_gaps_when_only = true
             orientation = right
             # orientation = center
+            special_scale_factor = 0.98
         }
 
         gestures {
