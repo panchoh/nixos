@@ -42,8 +42,8 @@ in {
       package = osConfig.programs.hyprland.package;
       xwayland.enable = osConfig.programs.hyprland.xwayland.enable;
       extraConfig = ''
-        # TODO: keep 10-bit depth disabled until meet supports it
-        # monitor=, preferred, auto, auto, bitdepth, 10
+        # CAVEAT EMPTOR: Google Meet does not support 10-bit depth, colors of shared windows will be off
+        monitor=desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 10
         # monitor=, preferred, auto, auto
         exec-once = ${foot}
         exec-once = ${swayidle} -w timeout 300 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'
