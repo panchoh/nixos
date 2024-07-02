@@ -16,7 +16,7 @@ in {
       enable = true;
       hwRender = true;
       autologinUser = box.userName or "alice";
-      extraOptions = "--xkb-layout=us --xkb-variant=altgr-intl";
+      useXkbConfig = true;
       # TODO: report issue upstream (single font requires trailing comma)
       fonts = lib.mkBefore [
         {
