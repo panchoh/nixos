@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.traits.hm.systemd;
@@ -11,5 +12,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     systemd.user.startServices = "sd-switch";
+
+    home.packages = [
+      pkgs.systemctl-tui
+    ];
   };
 }
