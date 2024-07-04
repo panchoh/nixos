@@ -48,7 +48,7 @@ in {
             StrictHostKeyChecking = "no";
           };
           identityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
-          proxyCommand = "${pkgs.libressl}/bin/nc ( string replace .vm '' %h ) %p";
+          proxyCommand = "nc ( string replace .vm '' %h ) %p";
         };
       };
     };
