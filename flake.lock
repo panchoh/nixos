@@ -245,11 +245,11 @@
     "kubelab": {
       "flake": false,
       "locked": {
-        "lastModified": 1706868749,
-        "narHash": "sha256-58S7sWha0BPp6nYzZ28qhCEqcmC0jhQeguVhT3tW7qw=",
+        "lastModified": 1720091410,
+        "narHash": "sha256-E/NvP2q/5fTEsxrqwDbsjv8bGwIwrQ1J2h8Fh3iSSVY=",
         "owner": "4km3",
         "repo": "kubelab",
-        "rev": "f34ea70435d7a130be9d1e218607ec228d565a47",
+        "rev": "3ed8e16a39f67550173de57465efda3df923ce34",
         "type": "github"
       },
       "original": {
