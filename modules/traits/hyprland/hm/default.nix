@@ -166,10 +166,11 @@ in {
             allow_workspace_cycles = true
         }
 
-        bind = SUPER, Return, exec, ${foot}
-        bind = SUPER, X, exec, ${emacsclient} --no-wait --reuse-frame
-        bind = SUPER,       Slash, exec, chromium
-        bind = SUPER SHIFT, Slash, exec, google-chrome-stable
+        bind = SUPER      , Return, exec, ${foot}
+        bind = SUPER      , X     , exec, emacs
+        bind = SUPER SHIFT, X     , exec, ${emacsclient} --no-wait --reuse-frame
+        bind = SUPER      , Slash , exec, chromium
+        bind = SUPER SHIFT, Slash , exec, google-chrome-stable
 
         # bind = , Terminate_Server, exit,
         # bind = , terminate_server, exit,
