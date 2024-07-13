@@ -55,8 +55,7 @@ in {
       shellcheck
       nodejs_20
       python3
-      # python312Packages.grip # TODO: broken, wait until fixed
-      python311Packages.grip
+      python312Packages.grip
       pipenv
       sqlite
 
