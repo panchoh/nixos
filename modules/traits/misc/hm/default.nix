@@ -87,7 +87,9 @@ in {
         discord
         nheko
 
+        # Editors
         lapce
+        zed-editor
 
         transmission_4-gtk
         wormhole-william
