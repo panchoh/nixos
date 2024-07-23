@@ -89,8 +89,6 @@ in {
 
         lapce
 
-        popcorntime
-
         transmission_4-gtk
         wormhole-william
 
