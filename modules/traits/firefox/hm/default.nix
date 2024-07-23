@@ -21,9 +21,6 @@ in {
     # https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/modules/home/apps/firefox/default.nix?ref_type=heads
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox.override {
-        cfg.smartcardSupport = true;
-      };
       profiles.default = {
         id = 0;
         containersForce = true;
@@ -63,6 +60,11 @@ in {
         OverridePostUpdatePage = "";
         PasswordManagerEnabled = false;
         SearchBar = "unified"; # alternative: "separate"
+        SecurityDevices = {
+          Add = {
+            "YubiKey/SmartCard" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+          };
+        };
         Preferences = let
           lock-true = {
             Value = true;
