@@ -31,28 +31,37 @@ in {
       policies = {
         # https://mozilla.github.io/policy-templates
         # about:policies#documentation
-        DisableTelemetry = true;
+        AppAutoUpdate = false;
+        BackgroundAppUpdate = false;
+        DisableAccounts = true;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxAccounts = true;
+        DisableFirefoxScreenshots = true;
         DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableProfileImport = true;
+        DisableSetDesktopBackground = true;
+        DisableSystemAddonUpdate = true;
+        DisableTelemetry = true;
+        DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+        DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+        DNSOverHTTPS.Enabled = 0;
+        DontCheckDefaultBrowser = true;
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
           Cryptomining = true;
           Fingerprinting = true;
         };
-        DisablePocket = true;
-        DisableFirefoxAccounts = true;
-        DisableAccounts = true;
-        DisableFirefoxScreenshots = true;
-        DNSOverHTTPS.Enabled = 0;
-        DontCheckDefaultBrowser = true;
-        DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
-        DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
         Homepage.StartPage = "none";
         NewTabPage = false;
-        OfferToSaveLogins = false;
+        NoDefaultBookmarks = true;
         OfferToSaveLoginsDefault = false;
+        OfferToSaveLogins = false;
         OverrideFirstRunPage = "";
         OverridePostUpdatePage = "";
+        PasswordManagerEnabled = false;
         SearchBar = "unified"; # alternative: "separate"
         Preferences = let
           lock-true = {
