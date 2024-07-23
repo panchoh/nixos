@@ -72,10 +72,6 @@ in {
         entr
       ]
       ++ lib.optionals (box.isStation or false) [
-        qastools
-        pavucontrol
-        helvum
-
         v4l-utils
         graphviz
         ffmpeg
@@ -84,8 +80,6 @@ in {
         evince
         gimp
         inkscape
-        audacity
-        picard
         youtube-tui
         zoom-us
 
