@@ -70,6 +70,8 @@ in {
         glow
 
         entr
+
+        pv
       ]
       ++ lib.optionals (box.isStation or false) [
         v4l-utils
