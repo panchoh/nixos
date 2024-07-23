@@ -86,7 +86,6 @@ in {
         telegram-desktop
         discord
         nheko
-        tessen
 
         lapce
 

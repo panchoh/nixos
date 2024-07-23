@@ -28,6 +28,10 @@ in {
           fi
         '';
       };
+
+      packages = [
+        pkgs.tessen
+      ];
     };
 
     programs.password-store = {
