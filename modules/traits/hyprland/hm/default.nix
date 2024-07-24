@@ -80,9 +80,14 @@ in {
         };
 
         # kb_options explanation:
+        # AltGr: 3rd. level
+        # AltGr-Space: non-breakable space
         # Shift-AltGr: compose
-        # Caps: group switch
-        # Shift-Caps: Ye'Olde Caps
+        # Caps: Ye'Olde Caps
+        # Alt-Caps: group switch
+        #
+        # TODO: reply here that grp:alt_caps_toggle does the job
+        # https://unix.stackexchange.com/questions/589075/using-both-ctrlswapcaps-and-grpcaps-toggle-with-setxkbmap
 
         device = [
           {
@@ -90,7 +95,7 @@ in {
             kb_model = "pc105";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
@@ -98,7 +103,7 @@ in {
             kb_model = "pc105";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
@@ -106,7 +111,7 @@ in {
             kb_model = "hhk";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
@@ -114,7 +119,7 @@ in {
             kb_model = "thinkpad";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps";
+            kb_options = "lv3:ralt_switch_multikey,ctrl:swapcaps,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
@@ -122,7 +127,7 @@ in {
             kb_model = "pc105";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps";
+            kb_options = "lv3:ralt_switch_multikey,ctrl:swapcaps,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
         ];
 

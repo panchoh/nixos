@@ -16,7 +16,7 @@ in {
       model = "pc105";
       layout = "us,us";
       variant = "altgr-intl,dvorak-alt-intl";
-      options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+      options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
     };
 
     console = {
