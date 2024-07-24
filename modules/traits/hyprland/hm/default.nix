@@ -10,6 +10,7 @@
 
   foot = lib.getExe config.programs.foot.package;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+  emacs = lib.getExe config.programs.emacs.finalPackage;
   emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
   fuzzel = lib.getExe pkgs.fuzzel;
   makoctl = lib.getExe' pkgs.mako "makoctl";
@@ -191,7 +192,7 @@ in {
 
         bind = [
           "SUPER      , Return, exec, ${foot}"
-          "SUPER      , X     , exec, emacs"
+          "SUPER      , X     , exec, ${emacs}"
           "SUPER SHIFT, X     , exec, ${emacsclient} --no-wait --reuse-frame"
           "SUPER      , Slash , exec, chromium"
           "SUPER SHIFT, Slash , exec, google-chrome-stable"
