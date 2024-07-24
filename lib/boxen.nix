@@ -23,43 +23,47 @@ inputs: let
     extraModules = [];
     extraHMModules = [];
   };
+in
+  map (overrides: defaults // overrides) [
+    {
+      hostName = "helium";
+      macvlanAddr = "1c:69:7a:02:8d:23";
+      hasMedia = true;
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
 
-  makeBox = overrides: defaults // overrides;
-in [
-  (makeBox {
-    hostName = "helium";
-    macvlanAddr = "1c:69:7a:02:8d:23";
-    hasMedia = true;
-    extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-  })
-  (makeBox {
-    hostName = "krypton";
-    macvlanAddr = "1c:69:7a:06:76:c0";
-    hasMedia = true;
-    extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-  })
-  (makeBox {
-    hostName = "xenon";
-    macvlanAddr = "48:21:0b:3c:16:a9";
-    isStation = true;
-    extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
-  })
-  (makeBox {
-    hostName = "magnesium";
-    macvlanAddr = "00:2b:67:11:27:06";
-    isLaptop = true;
-    isStation = true;
-    extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
-  })
-  (makeBox {
-    hostName = "nixos";
-    diskDevice = "/dev/vda";
-  })
-  # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
-  # (makeBox {
-  #   system = "aarch64-linux";
-  #   hostName = "neon";
-  #   macvlanAddr = "dc:a6:32:b1:ae:1d";
-  #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
-  # })
-]
+    {
+      hostName = "krypton";
+      macvlanAddr = "1c:69:7a:06:76:c0";
+      hasMedia = true;
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
+
+    {
+      hostName = "xenon";
+      macvlanAddr = "48:21:0b:3c:16:a9";
+      isStation = true;
+      extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
+    }
+
+    {
+      hostName = "magnesium";
+      macvlanAddr = "00:2b:67:11:27:06";
+      isLaptop = true;
+      isStation = true;
+      extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
+    }
+
+    {
+      hostName = "nixos";
+      diskDevice = "/dev/vda";
+    }
+
+    # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
+    # {
+    #   system = "aarch64-linux";
+    #   hostName = "neon";
+    #   macvlanAddr = "dc:a6:32:b1:ae:1d";
+    #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
+    # }
+  ]
