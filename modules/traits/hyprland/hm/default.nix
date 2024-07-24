@@ -36,246 +36,274 @@ in {
       libxkbcommon # for xkbcli interactive-wayland
     ];
 
-    # TODO: migrate to native nix structure and be done with hardcoded paths
     wayland.windowManager.hyprland = {
       enable = true;
       package = osConfig.programs.hyprland.package;
       xwayland.enable = osConfig.programs.hyprland.xwayland.enable;
-      extraConfig = ''
+      importantPrefixes = [
+        "bezier"
+        "name"
+        "source"
+      ];
+      settings = {
         # CAVEAT EMPTOR: Google Meet does not support 10-bit depth, colors of shared windows will be off
-        monitor=desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 10
-        # monitor=, preferred, auto, auto
-        exec-once = ${foot}
-        exec-once = ${swayidle} -w timeout 300 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'
-        env = XCURSOR_SIZE,24
+        monitor = [
+          "desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 10"
+        ];
 
-        input {
-            follow_mouse = 1
-            touchpad {
-                natural_scroll = no
-            }
-            sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-        }
+        exec-once = [
+          "${foot}"
+          "${swayidle} -w timeout 300 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'"
+        ];
+
+        env = lib.mapAttrsToList (name: value: "${name}, ${toString value}") {
+          XCURSOR_SIZE = 24;
+        };
+
+        input = {
+          follow_mouse = 1;
+          touchpad = {
+            natural_scroll = false;
+          };
+          sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        };
 
         # kb_options explanation:
         # Shift-AltGr: compose
         # Caps: group switch
         # Shift-Caps: Ye'Olde Caps
 
-        device {
-            name = keychron-keychron-q10
-            kb_model = pc105
-            kb_layout = us,us
-            kb_variant = altgr-intl,dvorak-alt-intl
-            kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
-        }
+        device = [
+          {
+            name = "keychron-keychron-q10";
+            kb_model = "pc105";
+            kb_layout = "us,us";
+            kb_variant = "altgr-intl,dvorak-alt-intl";
+            kb_options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+          }
 
-        device {
-            name = keychron-keychron-q8
-            kb_model = pc105
-            kb_layout = us,us
-            kb_variant = altgr-intl,dvorak-alt-intl
-            kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
-        }
+          {
+            name = "keychron-keychron-q8";
+            kb_model = "pc105";
+            kb_layout = "us,us";
+            kb_variant = "altgr-intl,dvorak-alt-intl";
+            kb_options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+          }
 
-        device {
-            name = PFU_Limited_HHKB-Classic
-            kb_model = hhk
-            kb_layout = us,us
-            kb_variant = altgr-intl,dvorak-alt-intl
-            kb_options = lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp
-        }
+          {
+            name = "PFU_Limited_HHKB-Classic";
+            kb_model = "hhk";
+            kb_layout = "us,us";
+            kb_variant = "altgr-intl,dvorak-alt-intl";
+            kb_options = "lv3:ralt_switch_multikey,grp:caps_toggle,terminate:ctrl_alt_bksp";
+          }
 
-        device {
-            name = at-translated-set-2-keyboard
-            kb_model = thinkpad
-            kb_layout = us,us
-            kb_variant = altgr-intl,dvorak-alt-intl
-            kb_options = lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps
-        }
+          {
+            name = "at-translated-set-2-keyboard";
+            kb_model = "thinkpad";
+            kb_layout = "us,us";
+            kb_variant = "altgr-intl,dvorak-alt-intl";
+            kb_options = "lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps";
+          }
 
-        device {
-            name = logitech-k400-plus
-            kb_model = pc105
-            kb_layout = us,us
-            kb_variant = altgr-intl,dvorak-alt-intl
-            kb_options = lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps
-        }
+          {
+            name = "logitech-k400-plus";
+            kb_model = "pc105";
+            kb_layout = "us,us";
+            kb_variant = "altgr-intl,dvorak-alt-intl";
+            kb_options = "lv3:ralt_switch_multikey,terminate:ctrl_alt_bksp,ctrl:swapcaps";
+          }
+        ];
 
-        cursor {
-            inactive_timeout = 5
-            hide_on_key_press = true
-        }
+        cursor = {
+          inactive_timeout = 5;
+          hide_on_key_press = true;
+        };
 
-        general {
-            gaps_in = 5
-            gaps_out = 20
-            border_size = 2
-            col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-            col.inactive_border = rgba(595959aa)
+        general = {
+          gaps_in = 5;
+          gaps_out = 20;
+          border_size = 2;
+          "col.active_border" = lib.mkForce "rgba(33ccffee) rgba(00ff99ee) 45deg";
+          "col.inactive_border" = lib.mkForce "rgba(595959aa)";
 
-            layout = master
+          layout = "master";
 
-            resize_on_border = true
-            hover_icon_on_border = true
-        }
+          resize_on_border = true;
+          hover_icon_on_border = true;
+        };
 
-        decoration {
-            rounding = 5
-            # blur = yes
-            # blur_size = 3
-            # blur_passes = 1
-            # blur_new_optimizations = on
+        decoration = {
+          rounding = 5;
+          # blur = true;
+          # blur_size = 3;
+          # blur_passes = 1;
+          # blur_new_optimizations = true;
 
-            # drop_shadow = yes
-            # shadow_range = 4
-            # shadow_render_power = 3
-            # col.shadow = rgba(1a1a1aee)
-        }
+          # drop_shadow = true;
+          # shadow_range = 4;
+          # shadow_render_power = 3;
+          # "col.shadow" = "rgba(1a1a1aee)";
+        };
 
-        animations {
-            enabled = no
-        }
+        animations = {
+          enabled = false;
+        };
 
-        master {
-            mfact = 0.66
-            new_status = inherit
-            new_on_active = before
-            new_on_top = true
-            no_gaps_when_only = true
-            orientation = right
-            # orientation = center
-            special_scale_factor = 0.98
-        }
+        master = {
+          mfact = 0.66;
+          new_status = "inherit";
+          new_on_active = "before";
+          new_on_top = true;
+          no_gaps_when_only = true;
+          orientation = "right";
+          # orientation = "center";
+          special_scale_factor = 0.98;
+        };
 
-        gestures {
-            workspace_swipe = off
-        }
+        gestures = {
+          workspace_swipe = false;
+        };
 
         # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
         # https://github.com/hyprwm/Hyprland/issues/3073
-        misc {
-            disable_hyprland_logo = true;
-            disable_splash_rendering = true;
-            focus_on_activate = true;
-        }
+        misc = {
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          focus_on_activate = true;
+        };
 
         # https://github.com/hyprwm/Hyprland/pull/352/files
-        binds {
-            workspace_back_and_forth = false
-            allow_workspace_cycles = true
-        }
+        binds = {
+          workspace_back_and_forth = false;
+          allow_workspace_cycles = true;
+        };
 
-        bind = SUPER      , Return, exec, ${foot}
-        bind = SUPER      , X     , exec, emacs
-        bind = SUPER SHIFT, X     , exec, ${emacsclient} --no-wait --reuse-frame
-        bind = SUPER      , Slash , exec, chromium
-        bind = SUPER SHIFT, Slash , exec, google-chrome-stable
+        bind = [
+          "SUPER      , Return, exec, ${foot}"
+          "SUPER      , X     , exec, emacs"
+          "SUPER SHIFT, X     , exec, ${emacsclient} --no-wait --reuse-frame"
+          "SUPER      , Slash , exec, chromium"
+          "SUPER SHIFT, Slash , exec, google-chrome-stable"
 
-        # bind = , Terminate_Server, exit,
-        # bind = , terminate_server, exit,
-        bind = CONTROL ALT, BackSpace, exit,
+          # TODO: debug why the Terminate_Server symbol is not honored
+          # ", Terminate_Server, exit,"
+          # ", terminate_server, exit,"
+          "CONTROL ALT, BackSpace, exit,"
 
-        bind = SUPER SHIFT, Q, killactive,
+          "SUPER SHIFT, Q, killactive,"
 
-        bind = SUPER SHIFT, Return, layoutmsg, swapwithmaster master
-        bind = SUPER,       M,      layoutmsg, focusmaster auto
-        bind = SUPER,       SPACE,  focusurgentorlast,
-        bind = SUPER SHIFT, SPACE,  togglefloating,
+          "SUPER SHIFT, Return, layoutmsg, swapwithmaster master"
+          "SUPER,       M,      layoutmsg, focusmaster auto"
+          "SUPER,       SPACE,  focusurgentorlast,"
+          "SUPER SHIFT, SPACE,  togglefloating,"
 
-        bind = SUPER,       TAB, layoutmsg, cyclenext
-        bind = SUPER SHIFT, TAB, layoutmsg, cycleprev
+          "SUPER,       TAB, layoutmsg, cyclenext"
+          "SUPER SHIFT, TAB, layoutmsg, cycleprev"
 
-        bind = SUPER, H, movefocus, l
-        bind = SUPER, L, movefocus, r
-        bind = SUPER, K, movefocus, u
-        bind = SUPER, J, movefocus, d
+          "SUPER, H, movefocus, l"
+          "SUPER, L, movefocus, r"
+          "SUPER, K, movefocus, u"
+          "SUPER, J, movefocus, d"
 
-        bind = SUPER SHIFT, H, layoutmsg, removemaster
-        bind = SUPER SHIFT, L, layoutmsg, addmaster
-        bind = SUPER SHIFT, K, layoutmsg, swapprev
-        bind = SUPER SHIFT, J, layoutmsg, swapnext
+          "SUPER SHIFT, H, layoutmsg, removemaster"
+          "SUPER SHIFT, L, layoutmsg, addmaster"
+          "SUPER SHIFT, K, layoutmsg, swapprev"
+          "SUPER SHIFT, J, layoutmsg, swapnext"
 
-        # Switch workspaces with SUPER + [0-9]
-        bind = SUPER, 1, workspace, 1
-        bind = SUPER, 2, workspace, 2
-        bind = SUPER, 3, workspace, 3
-        bind = SUPER, 4, workspace, 4
-        bind = SUPER, 5, workspace, 5
-        bind = SUPER, 6, workspace, 6
-        bind = SUPER, 7, workspace, 7
-        bind = SUPER, 8, workspace, 8
-        bind = SUPER, 9, workspace, 9
-        bind = SUPER, 0, workspace, 10
+          # Switch workspaces with SUPER + [0-9]
+          "SUPER, 1, workspace,  1"
+          "SUPER, 2, workspace,  2"
+          "SUPER, 3, workspace,  3"
+          "SUPER, 4, workspace,  4"
+          "SUPER, 5, workspace,  5"
+          "SUPER, 6, workspace,  6"
+          "SUPER, 7, workspace,  7"
+          "SUPER, 8, workspace,  8"
+          "SUPER, 9, workspace,  9"
+          "SUPER, 0, workspace, 10"
 
-        bind = SUPER, A, workspace, previous
+          "SUPER, A, workspace, previous"
 
-        # Cycle through active workspaces
-        bind = SUPER, right, workspace, e+1
-        bind = SUPER, left, workspace, e-1
-        bind = SUPER, mouse_down, workspace, e+1
-        bind = SUPER, mouse_up, workspace, e-1
+          # Cycle through active workspaces
+          "SUPER, right,      workspace, e+1"
+          "SUPER, left,       workspace, e-1"
+          "SUPER, mouse_down, workspace, e+1"
+          "SUPER, mouse_up,   workspace, e-1"
 
-        # Move active window to a workspace with SUPER + SHIFT + [0-9]
-        bind = SUPER SHIFT, 1, movetoworkspacesilent, 1
-        bind = SUPER SHIFT, 2, movetoworkspacesilent, 2
-        bind = SUPER SHIFT, 3, movetoworkspacesilent, 3
-        bind = SUPER SHIFT, 4, movetoworkspacesilent, 4
-        bind = SUPER SHIFT, 5, movetoworkspacesilent, 5
-        bind = SUPER SHIFT, 6, movetoworkspacesilent, 6
-        bind = SUPER SHIFT, 7, movetoworkspacesilent, 7
-        bind = SUPER SHIFT, 8, movetoworkspacesilent, 8
-        bind = SUPER SHIFT, 9, movetoworkspacesilent, 9
-        bind = SUPER SHIFT, 0, movetoworkspacesilent, 10
+          # Move active window to a workspace with SUPER + SHIFT + [0-9]
+          "SUPER SHIFT, 1, movetoworkspacesilent,  1"
+          "SUPER SHIFT, 2, movetoworkspacesilent,  2"
+          "SUPER SHIFT, 3, movetoworkspacesilent,  3"
+          "SUPER SHIFT, 4, movetoworkspacesilent,  4"
+          "SUPER SHIFT, 5, movetoworkspacesilent,  5"
+          "SUPER SHIFT, 6, movetoworkspacesilent,  6"
+          "SUPER SHIFT, 7, movetoworkspacesilent,  7"
+          "SUPER SHIFT, 8, movetoworkspacesilent,  8"
+          "SUPER SHIFT, 9, movetoworkspacesilent,  9"
+          "SUPER SHIFT, 0, movetoworkspacesilent, 10"
 
-        bind = SUPER,       W, movetoworkspacesilent, special
-        bind = SUPER SHIFT, W, togglespecialworkspace
+          "SUPER,       W, movetoworkspacesilent, special"
+          "SUPER SHIFT, W, togglespecialworkspace"
 
-        # Select / Move to scratchpads
-        bind = SUPER SHIFT, Minus, movetoworkspace,        special:s1
-        bind = SUPER,       Minus, togglespecialworkspace, s1
-        bind = SUPER SHIFT, Equal, movetoworkspace,        special:s2
-        bind = SUPER,       Equal, togglespecialworkspace, s2
+          # Select / Move to scratchpads
+          "SUPER SHIFT, Minus, movetoworkspace,        special:s1"
+          "SUPER,       Minus, togglespecialworkspace,         s1"
+          "SUPER SHIFT, Equal, movetoworkspace,        special:s2"
+          "SUPER,       Equal, togglespecialworkspace,         s2"
 
-        bind = SUPER,       F, fullscreen, 0
-        bind = SUPER ALT,   F, fullscreen, 1
-        bind = SUPER SHIFT, F, fakefullscreen
+          "SUPER,       F, fullscreen,     0"
+          "SUPER ALT,   F, fullscreen,     1"
+          "SUPER SHIFT, F, fakefullscreen"
 
-        # Start fuzzel opens fuzzel on first press, closes it on second
-        # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
-        bind = SUPER, D, exec, ${fuzzel}
+          # Start fuzzel opens fuzzel on first press, closes it on second
+          # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
+          "SUPER, D, exec, ${fuzzel}"
 
-        # Handle notifications
-        bind = SUPER,       N, exec, ${makoctl} dismiss
-        bind = SUPER SHIFT, N, exec, ${makoctl} dismiss -a
+          # Handle notifications
+          "SUPER,       N, exec, ${makoctl} dismiss"
+          "SUPER SHIFT, N, exec, ${makoctl} dismiss -a"
 
-        # Screenshots
-        # bind = SUPER,       P, exec, grimblast save active
-        # bind = SUPER SHIFT, P, exec, grimblast save area
-        # bind = SUPER ALT,   P, exec, grimblast save output
-        # bind = SUPER CTRL,  P, exec, grimblast save screen
-        bind =      , Print, exec, grimblast save active
-        bind = SHIFT, Print, exec, grimblast save area
-        bind = ALT,   Print, exec, grimblast save output
-        bind = CTRL,  Print, exec, grimblast save screen
+          # Screenshots
+          # "SUPER,       P, exec, grimblast save active"
+          # "SUPER SHIFT, P, exec, grimblast save area"
+          # "SUPER ALT,   P, exec, grimblast save output"
+          # "SUPER CTRL,  P, exec, grimblast save screen"
+          "     , Print, exec, grimblast save active"
+          "SHIFT, Print, exec, grimblast save area"
+          "ALT,   Print, exec, grimblast save output"
+          "CTRL,  Print, exec, grimblast save screen"
+        ];
 
-        # Multimedia
-        bindl =      , XF86AudioMute,        exec, wpctl set-mute        @DEFAULT_AUDIO_SINK@   toggle
-        bindl =      , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   1%+
-        bindl =      , XF86AudioLowerVolume, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   1%-
-        bindl = SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   5%+
-        bindl = SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   5%-
-        bindl =      , XF86AudioPrev,        exec, playerctl previous
-        bindl =      , XF86AudioPlay,        exec, playerctl play-pause
-        bindl =      , XF86AudioNext,        exec, playerctl next
+        bindl = [
+          # Multimedia
+          "     , XF86AudioMute,        exec, wpctl set-mute        @DEFAULT_AUDIO_SINK@   toggle"
+          "     , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   1%+"
+          "     , XF86AudioLowerVolume, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   1%-"
+          "SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   5%+"
+          "SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   5%-"
+          "     , XF86AudioPrev,        exec, playerctl previous"
+          "     , XF86AudioPlay,        exec, playerctl play-pause"
+          "     , XF86AudioNext,        exec, playerctl next"
 
-        # Radios management
-        # https://github.com/dwlocks/scripts-tools-config/blob/master/etc/rfkill-toggle
-        bindl =      , XF86WLAN,             exec, sh -c '[[ "$(< /sys/class/rfkill/rfkill0/state)" == "1" ]] && rfkill block all || rfkill unblock all'
+          # Radios management
+          # https://github.com/dwlocks/scripts-tools-config/blob/master/etc/rfkill-toggle
+          # TODO: extract shell script to its own rfkill-toggle executable
+          '', XF86WLAN, exec, sh -c '[[ "$(< /sys/class/rfkill/rfkill0/state)" == "1" ]] && rfkill block all || rfkill unblock all' ''
+        ];
 
-        # Move/resize windows with SUPER + LMB/RMB and dragging
-        bindm = SUPER, mouse:272, movewindow
-        bindm = SUPER, mouse:273, resizewindow
+        bindm = [
+          # Move/resize windows with SUPER + LMB/RMB and dragging
+          "SUPER, mouse:272, movewindow"
+          "SUPER, mouse:273, resizewindow"
+        ];
+      };
+
+      # TODO: migrate to native nix structure and be done with hardcoded paths
+      # Explore toHyprconf
+      # https://github.com/nix-community/home-manager/blob/af70fc502a15d7e1e4c5a4c4fc8e06c2ec561e0c/modules/lib/generators.nix#L4
+      # to understand how to express the submap below as plain (nix) settings:
+      extraConfig = ''
 
         # Resize submap
         bind = SUPER, R, submap, resize
@@ -283,14 +311,14 @@ in {
           bind  = SUPER, R,      submap, reset
           bind  =      , Escape, submap, reset
           bind  =      , Return, submap, reset
-          binde =      , L,      resizeactive, 5 0
-          binde =      , H,      resizeactive, -5 0
-          binde =      , K,      resizeactive, 0 -5
-          binde =      , J,      resizeactive, 0 5
-          binde = SHIFT, L,      resizeactive, 100 0
-          binde = SHIFT, H,      resizeactive, -100 0
-          binde = SHIFT, K,      resizeactive, 0 -100
-          binde = SHIFT, J,      resizeactive, 0 100
+          binde =      , L,      resizeactive,    5    0
+          binde =      , H,      resizeactive,   -5    0
+          binde =      , K,      resizeactive,    0   -5
+          binde =      , J,      resizeactive,    0    5
+          binde = SHIFT, L,      resizeactive,  100    0
+          binde = SHIFT, H,      resizeactive, -100    0
+          binde = SHIFT, K,      resizeactive,    0 -100
+          binde = SHIFT, J,      resizeactive,    0  100
         submap = reset
       '';
     };
