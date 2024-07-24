@@ -9,7 +9,6 @@
   cfg = config.traits.hm.hyprland;
 
   foot = lib.getExe config.programs.foot.package;
-  swayidle = lib.getExe pkgs.swayidle;
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
   fuzzel = lib.getExe pkgs.fuzzel;
@@ -21,6 +20,18 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.hyprpaper.enable = lib.mkForce false;
+    services.hypridle = {
+      enable = true;
+      settings = {
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "${hyprctl} dispatch dpms off";
+            on-resume = "${hyprctl} dispatch dpms on";
+          }
+        ];
+      };
+    };
 
     home.packages = with pkgs; [
       swaylock
@@ -53,7 +64,6 @@ in {
 
         exec-once = [
           "${foot}"
-          "${swayidle} -w timeout 300 '${hyprctl} dispatch dpms off' resume '${hyprctl} dispatch dpms on'"
         ];
 
         env = lib.mapAttrsToList (name: value: "${name}, ${toString value}") {
