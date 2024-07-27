@@ -89,44 +89,36 @@ in {
         # TODO: reply here that grp:alt_caps_toggle does the job
         # https://unix.stackexchange.com/questions/589075/using-both-ctrlswapcaps-and-grpcaps-toggle-with-setxkbmap
 
-        device = [
+        device = map (overrides:
           {
-            name = "keychron-keychron-q10";
+            name = "unnamed-keyboard";
             kb_model = "pc105";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,dvorak-alt-intl";
             kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
+          // overrides) [
+          {
+            name = "keychron-keychron-q10";
+          }
 
           {
             name = "keychron-keychron-q8";
-            kb_model = "pc105";
-            kb_layout = "us,us";
-            kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
             name = "PFU_Limited_HHKB-Classic";
             kb_model = "hhk";
-            kb_layout = "us,us";
-            kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
             name = "at-translated-set-2-keyboard";
             kb_model = "thinkpad";
-            kb_layout = "us,us";
-            kb_variant = "altgr-intl,dvorak-alt-intl";
             kb_options = "lv3:ralt_switch_multikey,ctrl:swapcaps,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
             name = "logitech-k400-plus";
-            kb_model = "pc105";
-            kb_layout = "us,us";
-            kb_variant = "altgr-intl,dvorak-alt-intl";
             kb_options = "lv3:ralt_switch_multikey,ctrl:swapcaps,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
         ];
