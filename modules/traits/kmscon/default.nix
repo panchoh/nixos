@@ -17,10 +17,8 @@ in {
       hwRender = true;
       autologinUser = box.userName or "alice";
       useXkbConfig = true;
-      # TODO: report issue upstream (single font requires trailing comma)
       fonts = lib.mkBefore [
         {
-          # name = "IosevkaTerm NFM Light,"; # commas save lives!
           name = "IosevkaTerm NFM Light";
           package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
         }
