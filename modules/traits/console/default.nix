@@ -13,7 +13,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.xserver.xkb = {
-      model = "pc105";
+      model = "pc104";
       layout = "us,us";
       variant = "altgr-intl,dvorak-alt-intl";
       options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
