@@ -36,12 +36,18 @@ in {
         pkgs.interception-tools-plugins.dual-function-keys
       ];
       udevmonConfig = ''
-        - JOB: "${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE | ${lib.getExe pkgs.interception-tools-plugins.caps2esc} -m 1 | ${lib.getExe' pkgs.interception-tools "uinput"} -d $DEVNODE"
+        - JOB: >-
+            ${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE
+            | ${lib.getExe pkgs.interception-tools-plugins.caps2esc} -m 1
+            | ${lib.getExe' pkgs.interception-tools "uinput"} -d $DEVNODE
           DEVICE:
             LINK: /dev/input/by-path/platform-i8042-serio-0-event-kbd
             EVENTS:
               EV_KEY: [KEY_CAPSLOCK]
-        - JOB: "${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE | ${lib.getExe pkgs.interception-tools-plugins.dual-function-keys} -c /etc/interception/dual-function-keys/hhkb.yaml | ${lib.getExe' pkgs.interception-tools "uinput"} -d $DEVNODE"
+        - JOB: >-
+            ${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE
+            | ${lib.getExe pkgs.interception-tools-plugins.dual-function-keys} -c /etc/interception/dual-function-keys/hhkb.yaml
+            | ${lib.getExe' pkgs.interception-tools "uinput"} -d $DEVNODE
           DEVICE:
             NAME: PFU Limited HHKB-Classic
             EVENTS:
