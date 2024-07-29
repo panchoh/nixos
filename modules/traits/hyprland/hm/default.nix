@@ -114,7 +114,7 @@ in {
           {
             name = "at-translated-set-2-keyboard";
             kb_model = "thinkpad";
-            kb_options = "lv3:ralt_switch_multikey,ctrl:swapcaps,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
+            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
