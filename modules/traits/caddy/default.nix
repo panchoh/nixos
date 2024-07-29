@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  nixpkgs,
   box ? null,
   ...
 }: let
@@ -21,7 +20,7 @@ in {
       # acmeCA = "https://acme-v02.api.letsencrypt.org/directory"; # while in development
       enable = true;
       email = box.userEmail;
-      logFormat = nixpkgs.lib.mkForce "level INFO";
+      logFormat = lib.mkForce "level INFO";
       virtualHosts."${box.virtualHost}".extraConfig = ''
         log
         root * /srv/http
