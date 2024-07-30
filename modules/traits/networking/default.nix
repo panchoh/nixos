@@ -84,7 +84,7 @@ in {
           matchConfig.Name = "mv0";
           networkConfig = {
             DHCP = "ipv4";
-            IPForward = true;
+            IPv4Forwarding = true;
             LinkLocalAddressing = "no";
             DNSSECNegativeTrustAnchors = "lemd wifi";
           };
