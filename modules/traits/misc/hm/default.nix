@@ -72,8 +72,19 @@ in {
         entr
 
         pv
+
+        fx
       ]
       ++ lib.optionals (box.isStation or false) [
+        whois
+
+        pdftk
+        pdfchain
+
+        asciinema
+        asciinema-agg
+        asciinema-scenario
+
         v4l-utils
         graphviz
         ffmpeg
@@ -97,6 +108,9 @@ in {
         wormhole-william
 
         gpt4all
+
+        stellarium
+        celestia
       ];
   };
 }
