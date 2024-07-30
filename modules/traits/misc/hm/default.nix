@@ -76,6 +76,8 @@ in {
         fx
       ]
       ++ lib.optionals (box.isStation or false) [
+        recode
+
         whois
 
         pdftk
