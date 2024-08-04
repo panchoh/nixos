@@ -6,7 +6,7 @@
   ...
 }: let
   cfg = config.traits.hm.foot;
-  size = toString osConfig.traits.font.terminal;
+  size = toString osConfig.stylix.fonts.sizes.terminal;
 in {
   options.traits.hm.foot = {
     enable = lib.mkEnableOption "foot" // {default = box.isStation or false;};
@@ -17,7 +17,6 @@ in {
       enable = true;
       settings = {
         main = {
-          font = lib.mkForce "IosevkaTerm NFM Light:size=${size}";
           font-bold = lib.mkForce "IosevkaTerm NFM:size=${size}";
         };
         mouse = {

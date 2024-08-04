@@ -3,6 +3,7 @@
   lib,
   pkgs,
   stylix,
+  box ? null,
   ...
 }: let
   cfg = config.traits.stylix;
@@ -19,12 +20,52 @@ in {
     stylix = {
       enable = true;
       targets.plymouth.enable = false;
+
       # Either image or base16Scheme is required
       base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-      fonts.sizes.terminal = config.traits.font.terminal;
+
+      image = pkgs.fetchurl {
+        url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
+        hash = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
+      };
+
       homeManagerIntegration = {
-        followSystem = false;
-        autoImport = false;
+        followSystem = true;
+        autoImport = true;
+      };
+
+      fonts = {
+        serif = {
+          package = pkgs.iosevka-bin.override {variant = "Etoile";};
+          name = "Iosevka Etoile";
+        };
+
+        sansSerif = {
+          package = pkgs.iosevka-bin.override {variant = "Aile";};
+          name = "Iosevka Aile";
+        };
+
+        monospace = {
+          package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";};
+          name = "IosevkaTerm NFM Light";
+        };
+
+        emoji = {
+          name = "OpenMoji Color";
+          package = pkgs.openmoji-color;
+        };
+
+        sizes =
+          lib.mapAttrs (
+            _name: value:
+              if box.isLaptop or false
+              then value - 2
+              else value
+          ) {
+            desktop = 10;
+            applications = 12;
+            terminal = 14;
+          };
       };
     };
   };
