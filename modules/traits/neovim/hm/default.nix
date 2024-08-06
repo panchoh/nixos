@@ -19,7 +19,7 @@ in {
         if vim.g.neovide then
           -- https://neovide.dev/configuration.html
           -- Put anything you want to happen only in Neovide here
-          vim.o.guifont = "IosevkaTerm NFM Light:h14"
+          vim.o.guifont = "Iosevka Light:h14"
         end
       '';
     };
