@@ -46,8 +46,8 @@ in {
         };
 
         monospace = {
-          package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";};
-          name = "IosevkaTerm NFM Light";
+          package = pkgs.iosevka-bin;
+          name = "Iosevka";
         };
 
         emoji = {
@@ -62,7 +62,7 @@ in {
               then value - 2
               else value
           ) {
-            desktop = 10;
+            desktop = 12;
             applications = 12;
             terminal = 14;
           };
