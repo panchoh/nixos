@@ -251,10 +251,9 @@ in {
           "SUPER SHIFT, 9, movetoworkspacesilent,  9"
           "SUPER SHIFT, 0, movetoworkspacesilent, 10"
 
-          "SUPER,       W, movetoworkspacesilent, special"
-          "SUPER SHIFT, W, togglespecialworkspace"
-
           # Select / Move to scratchpads
+          "SUPER SHIFT, grave, movetoworkspacesilent,  special"
+          "SUPER,       grave, togglespecialworkspace"
           "SUPER SHIFT, Minus, movetoworkspace,        special:s1"
           "SUPER,       Minus, togglespecialworkspace,         s1"
           "SUPER SHIFT, Equal, movetoworkspace,        special:s2"
