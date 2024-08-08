@@ -12,11 +12,65 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    fonts.packages = with pkgs; [
-      (nerdfonts.override {fonts = ["IosevkaTerm"];})
-      (iosevka-bin.override {variant = "Aile";})
-      (iosevka-bin.override {variant = "Slab";})
-      iosevka-bin
+    fonts.packages = [
+      (pkgs.iosevka.override {
+        set = "Europa";
+        privateBuildPlan = {
+          family = "Iosevka Europa";
+          weights = {
+            Regular = {
+              shape = 300;
+              menu = 300;
+              css = 300;
+            };
+          };
+        };
+      })
+
+      (pkgs.iosevka.override {
+        set = "EuropaTerm";
+        privateBuildPlan = {
+          family = "Iosevka Europa Term";
+          spacing = "term";
+          weights = {
+            Regular = {
+              shape = 300;
+              menu = 300;
+              css = 300;
+            };
+          };
+        };
+      })
+
+      (pkgs.iosevka.override {
+        set = "EuropaSlab";
+        privateBuildPlan = {
+          family = "Iosevka Europa Slab";
+          serifs = "slab";
+          weights = {
+            Regular = {
+              shape = 300;
+              menu = 300;
+              css = 300;
+            };
+          };
+        };
+      })
+
+      (pkgs.iosevka.override {
+        set = "EuropaAile";
+        privateBuildPlan = {
+          family = "Iosevka Europa Aile";
+          spacing = "quasi-proportional";
+          weights = {
+            Regular = {
+              shape = 300;
+              menu = 300;
+              css = 300;
+            };
+          };
+        };
+      })
     ];
   };
 }

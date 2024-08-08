@@ -36,18 +36,58 @@ in {
 
       fonts = {
         serif = {
-          package = pkgs.iosevka-bin.override {variant = "Etoile";};
-          name = "Iosevka Etoile";
+          name = "Iosevka Europa Etoile";
+          package = pkgs.iosevka.override {
+            set = "EuropaEtoile";
+            privateBuildPlan = {
+              family = "Iosevka Europa Etoile";
+              serif = "slab";
+              spacing = "quasi-proportional";
+              weights = {
+                Regular = {
+                  shape = 300;
+                  menu = 300;
+                  css = 300;
+                };
+              };
+            };
+          };
         };
 
         sansSerif = {
-          package = pkgs.iosevka-bin.override {variant = "Aile";};
-          name = "Iosevka Aile";
+          name = "Iosevka Europa Aile";
+          package = pkgs.iosevka.override {
+            set = "EuropaAile";
+            privateBuildPlan = {
+              family = "Iosevka Europa Aile";
+              spacing = "quasi-proportional";
+              weights = {
+                Regular = {
+                  shape = 300;
+                  menu = 300;
+                  css = 300;
+                };
+              };
+            };
+          };
         };
 
         monospace = {
-          package = pkgs.iosevka-bin;
-          name = "Iosevka";
+          name = "Iosevka Europa Mono";
+          package = pkgs.iosevka.override {
+            set = "EuropaMono";
+            privateBuildPlan = {
+              family = "Iosevka Europa Mono";
+              spacing = "fontconfig-mono";
+              weights = {
+                Regular = {
+                  shape = 300;
+                  menu = 300;
+                  css = 300;
+                };
+              };
+            };
+          };
         };
 
         emoji = {

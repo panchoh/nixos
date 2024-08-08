@@ -17,10 +17,8 @@ in {
       enable = true;
       settings = {
         main = {
-          # font = lib.mkForce "IosevkaTerm NFM Light:size=${size}";
-          # font-bold = lib.mkForce "IosevkaTerm NFM:size=${size}";
-          font = lib.mkForce "Iosevka Light:size=${size}";
-          font-bold = lib.mkForce "Iosevka:size=${size}";
+          font = lib.mkForce "Iosevka Europa Term:size=${size}";
+          font-bold = lib.mkForce "Iosevka Europa Term:size=${size}";
         };
         mouse = {
           hide-when-typing = true;
