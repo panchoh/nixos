@@ -12,11 +12,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    fonts.packages = with pkgs; [
-      (nerdfonts.override {fonts = ["IosevkaTerm"];})
-      (iosevka-bin.override {variant = "Aile";})
-      (iosevka-bin.override {variant = "Slab";})
-      iosevka-bin
+    fonts.packages = [
+      pkgs.iosevka-comfy.comfy
+      pkgs.iosevka-comfy.comfy-fixed
+      pkgs.iosevka-comfy.comfy-duo
+      pkgs.iosevka-comfy.comfy-motion
     ];
   };
 }

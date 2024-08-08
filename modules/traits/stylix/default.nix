@@ -36,18 +36,18 @@ in {
 
       fonts = {
         serif = {
-          package = pkgs.iosevka-bin.override {variant = "Etoile";};
-          name = "Iosevka Etoile";
+          name = "Iosevka Comfy Motion";
+          package = pkgs.iosevka-comfy.comfy-motion;
         };
 
         sansSerif = {
-          package = pkgs.iosevka-bin.override {variant = "Aile";};
-          name = "Iosevka Aile";
+          name = "Iosevka Comfy";
+          package = pkgs.iosevka-comfy.comfy;
         };
 
         monospace = {
-          package = pkgs.iosevka-bin;
-          name = "Iosevka";
+          name = "Iosevka Comfy Fixed";
+          package = pkgs.iosevka-comfy.comfy-fixed;
         };
 
         emoji = {
@@ -62,9 +62,10 @@ in {
               then value - 2
               else value
           ) {
-            desktop = 12;
-            applications = 12;
+            desktop = 14;
+            applications = 14;
             terminal = 14;
+            popups = 12;
           };
       };
     };

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   box ? null,
   ...
 }: let
@@ -17,12 +16,6 @@ in {
       hwRender = true;
       autologinUser = box.userName or "alice";
       useXkbConfig = true;
-      fonts = lib.mkBefore [
-        {
-          name = "IosevkaTerm NFM Light";
-          package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
-        }
-      ];
     };
   };
 }
