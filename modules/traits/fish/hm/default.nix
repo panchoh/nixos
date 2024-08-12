@@ -37,6 +37,9 @@ in {
         settings = {
           date = "relative";
           header = true;
+          icons = {
+            when = "never";
+          };
           indicators = true;
           sorting.dir-grouping = "first";
           literal = true;
