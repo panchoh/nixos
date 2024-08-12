@@ -13,10 +13,21 @@ in {
   ];
 
   options.traits.stylix = {
-    enable = lib.mkEnableOption "Stylix" // {default = true;};
+    enable = lib.mkEnableOption "Stylix" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {
+    fonts = {
+      enableDefaultPackages = true;
+      packages = [
+        pkgs.corefonts
+        pkgs.iosevka-comfy.comfy
+        pkgs.iosevka-comfy.comfy-fixed
+        pkgs.iosevka-comfy.comfy-duo
+        pkgs.iosevka-comfy.comfy-motion
+      ];
+    };
+
     stylix = {
       enable = true;
       targets.plymouth.enable = false;
