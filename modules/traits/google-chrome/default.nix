@@ -4,18 +4,18 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.chrome;
+  cfg = config.traits.google-chrome;
 in {
   imports = [
-    ./chrome.nix
+    ./google-chrome.nix
   ];
 
-  options.traits.chrome = {
-    enable = lib.mkEnableOption "chrome" // {default = box.isStation or false;};
+  options.traits.google-chrome = {
+    enable = lib.mkEnableOption "Google Chrome" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {
-    programs.chrome = {
+    programs.google-chrome = {
       # Seen on stylix and nixpkgs:
       # This enables policies without installing the browser. Policies take up a
       # negligible amount of space, so it's reasonable to have this always on.
