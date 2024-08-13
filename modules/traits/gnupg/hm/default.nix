@@ -25,7 +25,11 @@ in {
 
     services.gpg-agent = {
       enable = true;
+      verbose = true;
       defaultCacheTtl = 1;
+      defaultCacheTtlSsh = 1;
+      maxCacheTtl = 1;
+      maxCacheTtlSsh = 1;
       enableSshSupport = true;
       pinentryPackage = pkgs.pinentry-gnome3;
       extraConfig = ''
