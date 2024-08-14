@@ -65,7 +65,7 @@ builtins.foldl' (
 
               echo -e '\nPriming procedure completed successfully.\n'
               echo -e '\nThe cake awaits.'
-              read -erp 'Press return to reboot, or Control-D to return to the shell: ' -i 'There is no cake!' || exit 1
+              read -erp 'Press return to reboot, or Control-D to return to the shell: ' -i 'The cake is a lie!' || exit 1
               echo 'Rebooting...'
               reboot
             '';
