@@ -3,7 +3,7 @@ inputs: subDir: let
   inherit (inputs.nixpkgs.lib) attrNames filterAttrs concatStringsSep optionalString;
   baseDir = ../traits;
 in {
-  imports = filter (path: pathExists path) (
+  imports = filter pathExists (
     map (
       name:
         concatStringsSep "/" [
