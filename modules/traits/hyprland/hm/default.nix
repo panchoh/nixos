@@ -259,9 +259,9 @@ in {
           "SUPER SHIFT, Equal, movetoworkspace,        special:s2"
           "SUPER,       Equal, togglespecialworkspace,         s2"
 
-          "SUPER,       F, fullscreen,     0"
-          "SUPER ALT,   F, fullscreen,     1"
-          "SUPER SHIFT, F, fakefullscreen"
+          "SUPER,       F, fullscreen"
+          "SUPER ALT,   F, fullscreenstate, 1, 1" # TODO: when 0.43 arrives, replace with "maximize"
+          "SUPER SHIFT, F, fullscreenstate, 0, 2"
 
           # Start fuzzel opens fuzzel on first press, closes it on second
           # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
