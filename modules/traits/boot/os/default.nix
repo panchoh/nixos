@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.boot;
+  cfg = config.traits.os.boot;
 in {
-  options.traits.boot = {
+  options.traits.os.boot = {
     enable = lib.mkEnableOption "boot" // {default = true;};
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.fish;
+  cfg = config.traits.os.fish;
 in {
-  options.traits.fish = {
+  options.traits.os.fish = {
     enable = lib.mkEnableOption "fish" // {default = true;};
   };
 

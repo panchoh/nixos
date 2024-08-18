@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.sound;
+  cfg = config.traits.os.sound;
 in {
-  options.traits.sound = {
+  options.traits.os.sound = {
     enable = lib.mkEnableOption "sound" // {default = box.isStation or false;};
   };
 

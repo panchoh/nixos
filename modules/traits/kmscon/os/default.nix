@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.kmscon;
+  cfg = config.traits.os.kmscon;
 in {
-  options.traits.kmscon = {
+  options.traits.os.kmscon = {
     enable = lib.mkEnableOption "kmscon" // {default = box.isStation or false;};
   };
 

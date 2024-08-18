@@ -5,14 +5,14 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.chromium;
+  cfg = config.traits.os.chromium;
 in {
   imports = [
     {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
     ./chromium.nix
   ];
 
-  options.traits.chromium = {
+  options.traits.os.chromium = {
     enable = lib.mkEnableOption "chromium" // {default = box.isStation or false;};
   };
 

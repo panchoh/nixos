@@ -5,13 +5,13 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.autofirma;
+  cfg = config.traits.os.autofirma;
 in {
   imports = [
     autofirma-nix.nixosModules.default
   ];
 
-  options.traits.autofirma = {
+  options.traits.os.autofirma = {
     enable = lib.mkEnableOption "autofirma" // {default = box.isStation or false;};
   };
 

@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.networking;
+  cfg = config.traits.os.networking;
 in {
-  options.traits.networking = {
+  options.traits.os.networking = {
     enable = lib.mkEnableOption "networking" // {default = true;};
   };
 

@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.user;
+  cfg = config.traits.os.user;
 in {
-  options.traits.user = {
+  options.traits.os.user = {
     enable = lib.mkEnableOption "user" // {default = true;};
   };
 

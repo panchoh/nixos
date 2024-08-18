@@ -6,13 +6,13 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.stylix;
+  cfg = config.traits.os.stylix;
 in {
   imports = [
     stylix.nixosModules.stylix
   ];
 
-  options.traits.stylix = {
+  options.traits.os.stylix = {
     enable = lib.mkEnableOption "Stylix" // {default = box.isStation or false;};
   };
 

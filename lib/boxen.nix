@@ -43,7 +43,7 @@ in
       hostName = "xenon";
       macvlanAddr = "48:21:0b:3c:16:a9";
       isStation = true;
-      extraModules = [({config, ...}: {config.traits.caddy.enable = true;})];
+      extraModules = [({config, ...}: {config.traits.os.caddy.enable = true;})];
     }
 
     {

@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.time-zone;
+  cfg = config.traits.os.time-zone;
 in {
-  options.traits.time-zone = {
+  options.traits.os.time-zone = {
     enable = lib.mkEnableOption "time zone" // {default = true;};
   };
 

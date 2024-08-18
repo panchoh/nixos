@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.traits.dbus;
+  cfg = config.traits.os.dbus;
 in {
-  options.traits.dbus = {
+  options.traits.os.dbus = {
     enable = lib.mkEnableOption "dbus" // {default = true;};
   };
 

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.traits.neovim;
+  cfg = config.traits.os.neovim;
 in {
-  options.traits.neovim = {
+  options.traits.os.neovim = {
     enable = lib.mkEnableOption "neovim" // {default = true;};
   };
 

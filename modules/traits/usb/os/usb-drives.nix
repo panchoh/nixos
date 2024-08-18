@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.usb-drives;
+  cfg = config.traits.os.usb-drives;
 in {
-  options.traits.usb-drives = {
+  options.traits.os.usb-drives = {
     enable = lib.mkEnableOption "usb drives" // {default = true;};
   };
 

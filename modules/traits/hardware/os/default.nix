@@ -6,7 +6,7 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.hardware;
+  cfg = config.traits.os.hardware;
 in {
   imports =
     [
@@ -16,7 +16,7 @@ in {
       (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  options.traits.hardware = {
+  options.traits.os.hardware = {
     enable = lib.mkEnableOption "hardware" // {default = true;};
   };
 

@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.fwupd;
+  cfg = config.traits.os.fwupd;
 in {
-  options.traits.fwupd = {
+  options.traits.os.fwupd = {
     enable = lib.mkEnableOption "fwupd" // {default = box.isStation or false;};
   };
 

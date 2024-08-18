@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.traits.podman;
+  cfg = config.traits.os.podman;
 in {
-  options.traits.podman = {
+  options.traits.os.podman = {
     enable = lib.mkEnableOption "podman" // {default = true;};
   };
 

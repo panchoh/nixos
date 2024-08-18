@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.media-drive;
+  cfg = config.traits.os.media-drive;
 in {
-  options.traits.media-drive = {
+  options.traits.os.media-drive = {
     enable = lib.mkEnableOption "big media drive" // {default = box.hasMedia or false;};
   };
 

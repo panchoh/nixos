@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.console;
+  cfg = config.traits.os.console;
 in {
-  options.traits.console = {
+  options.traits.os.console = {
     enable = lib.mkEnableOption "console" // {default = box.isStation or false;};
   };
 

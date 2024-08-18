@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.interception-tools;
+  cfg = config.traits.os.interception-tools;
 in {
-  options.traits.interception-tools = {
+  options.traits.os.interception-tools = {
     enable = lib.mkEnableOption "Interception Tools" // {default = box.isStation or false;};
   };
 

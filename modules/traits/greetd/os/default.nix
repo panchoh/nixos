@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.greetd;
+  cfg = config.traits.os.greetd;
 in {
-  options.traits.greetd = {
+  options.traits.os.greetd = {
     enable = lib.mkEnableOption "greetd" // {default = box.isStation or false;};
   };
 

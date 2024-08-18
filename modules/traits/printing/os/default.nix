@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.printing;
+  cfg = config.traits.os.printing;
 in {
-  options.traits.printing = {
+  options.traits.os.printing = {
     enable = lib.mkEnableOption "printing" // {default = box.isStation or false;};
   };
 

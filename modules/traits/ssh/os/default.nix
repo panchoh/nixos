@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.ssh;
+  cfg = config.traits.os.ssh;
 in {
-  options.traits.ssh = {
+  options.traits.os.ssh = {
     enable = lib.mkEnableOption "ssh and mosh" // {default = true;};
   };
 

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.traits.yubikey;
+  cfg = config.traits.os.yubikey;
 in {
-  options.traits.yubikey = {
+  options.traits.os.yubikey = {
     enable = lib.mkEnableOption "YubiKey" // {default = true;};
   };
 

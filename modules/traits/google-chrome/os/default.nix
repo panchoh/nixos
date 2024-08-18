@@ -4,13 +4,13 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.google-chrome;
+  cfg = config.traits.os.google-chrome;
 in {
   imports = [
     ./google-chrome.nix
   ];
 
-  options.traits.google-chrome = {
+  options.traits.os.google-chrome = {
     enable = lib.mkEnableOption "Google Chrome" // {default = box.isStation or false;};
   };
 

@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.hyprland;
+  cfg = config.traits.os.hyprland;
 in {
-  options.traits.hyprland = {
+  options.traits.os.hyprland = {
     enable = lib.mkEnableOption "hyprland" // {default = box.isStation or false;};
   };
 

@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.libvirt;
+  cfg = config.traits.os.libvirt;
 in {
-  options.traits.libvirt = {
+  options.traits.os.libvirt = {
     enable = lib.mkEnableOption "libvirt" // {default = true;};
   };
 

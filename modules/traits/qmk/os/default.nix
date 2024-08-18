@@ -4,9 +4,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.qmk;
+  cfg = config.traits.os.qmk;
 in {
-  options.traits.qmk = {
+  options.traits.os.qmk = {
     enable = lib.mkEnableOption "qmk" // {default = box.isStation or false;};
   };
 

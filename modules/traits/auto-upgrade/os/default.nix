@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.traits.auto-upgrade;
+  cfg = config.traits.os.auto-upgrade;
 in {
   # TODO: this is a WIP
-  options.traits.auto-upgrade = {
+  options.traits.os.auto-upgrade = {
     enable = lib.mkEnableOption "auto upgrade" // {default = false;};
   };
 

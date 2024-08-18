@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.upower;
+  cfg = config.traits.os.upower;
 in {
-  options.traits.upower = {
+  options.traits.os.upower = {
     enable = lib.mkEnableOption "upower" // {default = true;};
   };
 

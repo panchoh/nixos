@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.fstrim;
+  cfg = config.traits.os.fstrim;
 in {
-  options.traits.fstrim = {
+  options.traits.os.fstrim = {
     enable = lib.mkEnableOption "fstrim" // {default = true;};
   };
 

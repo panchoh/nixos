@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.doas;
+  cfg = config.traits.os.doas;
 in {
-  options.traits.doas = {
+  options.traits.os.doas = {
     enable = lib.mkEnableOption "doas" // {default = true;};
   };
 

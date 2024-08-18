@@ -4,9 +4,9 @@
   nixpkgs,
   ...
 }: let
-  cfg = config.traits.nix;
+  cfg = config.traits.os.nix;
 in {
-  options.traits.nix = {
+  options.traits.os.nix = {
     enable = lib.mkEnableOption "nix" // {default = true;};
   };
 

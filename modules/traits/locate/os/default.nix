@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.traits.locate;
+  cfg = config.traits.os.locate;
 in {
-  options.traits.locate = {
+  options.traits.os.locate = {
     enable = lib.mkEnableOption "locate" // {default = true;};
   };
 

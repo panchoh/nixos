@@ -4,9 +4,9 @@
   flakeInputsClosure,
   ...
 }: let
-  cfg = config.traits.flake-sources;
+  cfg = config.traits.os.flake-sources;
 in {
-  options.traits.flake-sources = {
+  options.traits.os.flake-sources = {
     enable = lib.mkEnableOption "flake inputs as GC roots (recursively)" // {default = true;};
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.allow-unfree;
+  cfg = config.traits.os.allow-unfree;
 in {
-  options.traits.allow-unfree = {
+  options.traits.os.allow-unfree = {
     enable = lib.mkEnableOption "allow unfree" // {default = true;};
   };
 

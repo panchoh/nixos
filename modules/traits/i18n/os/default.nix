@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.i18n;
+  cfg = config.traits.os.i18n;
 in {
-  options.traits.i18n = {
+  options.traits.os.i18n = {
     enable = lib.mkEnableOption "i18n" // {default = true;};
   };
 

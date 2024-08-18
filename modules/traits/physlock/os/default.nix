@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.traits.physlock;
+  cfg = config.traits.os.physlock;
 in {
-  options.traits.physlock = {
+  options.traits.os.physlock = {
     enable = lib.mkEnableOption "physlock" // {default = true;};
   };
 
