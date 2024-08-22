@@ -31,9 +31,9 @@ in {
 
     services.interception-tools = {
       enable = true;
-      plugins = [
-        pkgs.interception-tools-plugins.caps2esc
-        pkgs.interception-tools-plugins.dual-function-keys
+      plugins = with pkgs; [
+        interception-tools-plugins.caps2esc
+        interception-tools-plugins.dual-function-keys
       ];
       udevmonConfig = ''
         - JOB: >-

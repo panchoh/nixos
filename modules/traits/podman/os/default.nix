@@ -11,10 +11,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.dive
-      pkgs.podman-tui
-      pkgs.podman-compose
+    environment.systemPackages = with pkgs; [
+      dive
+      podman-tui
+      podman-compose
     ];
 
     virtualisation = {

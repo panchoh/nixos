@@ -12,12 +12,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      pkgs.audacity
-      pkgs.helvum
-      pkgs.picard
-      pkgs.pwvucontrol
-      pkgs.qastools
+    home.packages = with pkgs; [
+      audacity
+      helvum
+      picard
+      pwvucontrol
+      qastools
     ];
   };
 }

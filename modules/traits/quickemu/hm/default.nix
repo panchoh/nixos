@@ -12,9 +12,9 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      pkgs.quickemu
-      pkgs.quickgui
+    home.packages = with pkgs; [
+      quickemu
+      quickgui
     ];
   };
 }
