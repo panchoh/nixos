@@ -254,9 +254,9 @@ in {
           # Select / Move to scratchpads
           "SUPER SHIFT, grave, movetoworkspacesilent,  special"
           "SUPER,       grave, togglespecialworkspace"
-          "SUPER SHIFT, Minus, movetoworkspace,        special:s1"
+          "SUPER SHIFT, Minus, movetoworkspacesilent,  special:s1"
           "SUPER,       Minus, togglespecialworkspace,         s1"
-          "SUPER SHIFT, Equal, movetoworkspace,        special:s2"
+          "SUPER SHIFT, Equal, movetoworkspacesilent,  special:s2"
           "SUPER,       Equal, togglespecialworkspace,         s2"
 
           "SUPER,       F, fullscreen"
