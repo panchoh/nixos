@@ -105,10 +105,9 @@ in {
       package = pkgs.emacs29-pgtk;
       extraPackages = epkgs:
         with epkgs; [
-          # nix-ts-mode
-          # https://github.com/nix-community/emacs-overlay/issues/341#issuecomment-1605290875
-          # treesit-grammars.with-all-grammars
+          nix-ts-mode
           vterm
+          treesit-grammars.with-all-grammars
         ];
     };
 
