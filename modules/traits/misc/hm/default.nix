@@ -100,7 +100,7 @@ in {
 
         telegram-desktop
         discord
-        nheko
+        # nheko
 
         # Editors
         lapce
