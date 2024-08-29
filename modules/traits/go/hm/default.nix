@@ -24,6 +24,7 @@ in {
       gomodifytags
       gotests
       gore
+      godef
       delve
       gdlv
     ];
