@@ -61,7 +61,6 @@ in {
 
         bc
         cdrkit
-        cloud-utils
 
         intel-gpu-tools
 

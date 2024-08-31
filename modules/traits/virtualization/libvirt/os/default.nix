@@ -17,6 +17,7 @@ in {
     environment.systemPackages = with pkgs; [
       libguestfs
       guestfs-tools
+      cloud-utils
     ];
 
     virtualisation = {
