@@ -68,6 +68,8 @@ in {
 
       marksman # markdown language server
 
+      hugo
+
       dockfmt
 
       nil # nix language server
