@@ -36,8 +36,13 @@ in {
         github.user = box.githubUser or "aliceq";
       };
       delta = {
-        enable = true;
+        enable = false;
         options.side-by-side = true;
+      };
+      difftastic = {
+        enable = true;
+        # background = "dark";
+        display = "side-by-side-show-both";
       };
       signing = {
         key = box.gpgSigningKey;
