@@ -31,6 +31,22 @@ in {
         };
       };
 
+      atuin = {
+        enable = true;
+        flags = [
+          "--disable-up-arrow"
+        ];
+        settings = {
+          auto_sync = false;
+          common_prefix = ["doas"];
+          dotfiles.enabled = false;
+          enter_accept = true;
+          exit_mode = "return-query";
+          sync.records = true;
+          workspaces = true;
+        };
+      };
+
       lsd = {
         enable = true;
         enableAliases = true;
