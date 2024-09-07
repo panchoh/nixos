@@ -64,7 +64,7 @@ in {
         ];
 
         exec-once = [
-          "${foot}"
+          "${foot} --title=special"
         ];
 
         env = lib.mapAttrsToList (name: value: "${name}, ${toString value}") {
@@ -303,6 +303,13 @@ in {
           # Move/resize windows with SUPER + LMB/RMB and dragging
           "SUPER, mouse:272, movewindow"
           "SUPER, mouse:273, resizewindow"
+        ];
+
+        windowrulev2 = [
+          "workspace special silent,    class:^(foot), title:^(special)$"
+          "float,                       class:^(org.telegram.desktop)$, title:^(Media viewer)$"
+          "workspace special:s1 silent, class:^(org.telegram.desktop)$"
+          "workspace special:s2 silent, class:^(transmission-gtk)$, title:^(Transmission)$"
         ];
       };
 
