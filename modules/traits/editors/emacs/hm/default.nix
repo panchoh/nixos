@@ -66,6 +66,8 @@ in {
       gnumake
       ccls
 
+      pyright
+
       marksman # markdown language server
 
       hugo
