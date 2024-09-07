@@ -129,11 +129,9 @@ in {
         };
 
         general = {
-          gaps_in = 5;
-          gaps_out = 20;
           border_size = 2;
           "col.active_border" = lib.mkForce "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = lib.mkForce "rgba(595959aa)";
+          # "col.inactive_border" = lib.mkForce "rgba(595959aa)";
 
           layout = "master";
 
@@ -143,19 +141,12 @@ in {
 
         decoration = {
           rounding = 5;
-          # blur = true;
-          # blur_size = 3;
-          # blur_passes = 1;
-          # blur_new_optimizations = true;
-
-          # drop_shadow = true;
-          # shadow_range = 4;
-          # shadow_render_power = 3;
-          # "col.shadow" = "rgba(1a1a1aee)";
+          dim_inactive = true;
+          dim_strength = 0.1;
         };
 
         animations = {
-          enabled = false;
+          enabled = true;
         };
 
         master = {
@@ -163,9 +154,11 @@ in {
           new_status = "inherit";
           new_on_active = "before";
           new_on_top = true;
-          no_gaps_when_only = true;
+          drop_at_cursor = false;
+          smart_resizing = false;
+          no_gaps_when_only = 1;
           orientation = "right";
-          # orientation = "center";
+          always_center_master = true;
           special_scale_factor = 0.98;
         };
 
@@ -173,51 +166,73 @@ in {
           workspace_swipe = false;
         };
 
-        # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
-        # https://github.com/hyprwm/Hyprland/issues/3073
         misc = {
-          disable_hyprland_logo = true;
+          # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
+          disable_hyprland_logo = false;
           disable_splash_rendering = true;
-          focus_on_activate = true;
+          force_default_wallpaper = 2;
+
+          mouse_move_enables_dpms = true;
+          key_press_enables_dpms = true;
+
+          # https://github.com/hyprwm/Hyprland/issues/3073
+          focus_on_activate = false; # disabling, otherwise Telegram hogs the focus
         };
 
         # https://github.com/hyprwm/Hyprland/pull/352/files
         binds = {
           workspace_back_and_forth = false;
           allow_workspace_cycles = true;
+          workspace_center_on = 1;
         };
 
+        render = {
+          direct_scanout = true;
+        };
+
+        animation = [
+          "specialWorkspace, 1, 8, default, slidefadevert 20%"
+        ];
+
         bind = [
-          "SUPER      , Return, exec, ${foot}"
-          "SUPER      , X     , exec, ${emacs}"
-          "SUPER SHIFT, X     , exec, ${emacsclient} --no-wait --reuse-frame"
-          "SUPER      , Slash , exec, chromium"
-          "SUPER SHIFT, Slash , exec, google-chrome-stable"
+          "SUPER SHIFT, Return, exec, ${foot}"
+          "SUPER,       E,      exec, ${emacs}"
+          "SUPER SHIFT, E,      exec, ${emacsclient} --no-wait --reuse-frame"
+          "SUPER,       slash,  exec, chromium"
+          "SUPER SHIFT, slash,  exec, google-chrome-stable"
 
           # TODO: debug why the Terminate_Server symbol is not honored
           # ", Terminate_Server, exit,"
-          # ", terminate_server, exit,"
           "CONTROL ALT, BackSpace, exit,"
 
-          "SUPER SHIFT, Q, killactive,"
+          "SUPER,       Q, forcerendererreload,"
+          "SUPER,       X, killactive,"
+          "SUPER SHIFT, X, exec, hyprctl kill"
 
-          "SUPER SHIFT, Return, layoutmsg, swapwithmaster master"
-          "SUPER,       M,      layoutmsg, focusmaster auto"
-          "SUPER,       SPACE,  focusurgentorlast,"
-          "SUPER SHIFT, SPACE,  togglefloating,"
+          "SUPER,       U, focusurgentorlast,"
+          "SUPER,       T, togglefloating, active"
 
-          "SUPER,       TAB, layoutmsg, cyclenext"
-          "SUPER SHIFT, TAB, layoutmsg, cycleprev"
-
-          "SUPER, H, movefocus, l"
-          "SUPER, L, movefocus, r"
-          "SUPER, K, movefocus, u"
-          "SUPER, J, movefocus, d"
-
-          "SUPER SHIFT, H, layoutmsg, removemaster"
-          "SUPER SHIFT, L, layoutmsg, addmaster"
-          "SUPER SHIFT, K, layoutmsg, swapprev"
-          "SUPER SHIFT, J, layoutmsg, swapnext"
+          "SUPER,       Return,       layoutmsg, swapwithmaster master"
+          "SUPER,       M,            layoutmsg, focusmaster auto"
+          "SUPER SHIFT, backslash,    layoutmsg, orientationcycle left right"
+          "SUPER,       space,        layoutmsg, orientationnext"
+          "SUPER SHIFT, space,        layoutmsg, focusmaster master"
+          "SUPER SHIFT, space,        layoutmsg, mfact exact 0.66"
+          "SUPER SHIFT, space,        layoutmsg, orientationright"
+          "SUPER,       bracketright, layoutmsg, rollnext"
+          "SUPER,       bracketleft,  layoutmsg, rollprev"
+          "SUPER,       period,       layoutmsg, addmaster"
+          "SUPER,       comma,        layoutmsg, removemaster"
+          "SUPER SHIFT, J,            layoutmsg, swapnext"
+          "SUPER SHIFT, K,            layoutmsg, swapprev"
+          "SUPER,       J,            layoutmsg, cyclenext"
+          "SUPER,       Tab,          layoutmsg, cyclenext"
+          "SUPER,       K,            layoutmsg, cycleprev"
+          "SUPER SHIFT, Tab,          layoutmsg, cycleprev"
+          "SUPER,       H,            layoutmsg, mfact +0.05"
+          "SUPER SHIFT, H,            layoutmsg, mfact +0.2"
+          "SUPER,       L,            layoutmsg, mfact -0.05"
+          "SUPER SHIFT, L,            layoutmsg, mfact -0.2"
 
           # Switch workspaces with SUPER + [0-9]
           "SUPER, 1, workspace,  1"
@@ -234,8 +249,8 @@ in {
           "SUPER, A, workspace, previous"
 
           # Cycle through active workspaces
-          "SUPER, right,      workspace, e+1"
-          "SUPER, left,       workspace, e-1"
+          "SUPER, Right,      workspace, e+1"
+          "SUPER, Left,       workspace, e-1"
           "SUPER, mouse_down, workspace, e+1"
           "SUPER, mouse_up,   workspace, e-1"
 
@@ -258,6 +273,8 @@ in {
           "SUPER,       Minus, togglespecialworkspace,         s1"
           "SUPER SHIFT, Equal, movetoworkspacesilent,  special:s2"
           "SUPER,       Equal, togglespecialworkspace,         s2"
+          "SUPER,       W,     movetoworkspacesilent,  special:iconified"
+          "SUPER SHIFT, W,     togglespecialworkspace,         iconified"
 
           "SUPER,       F, fullscreen"
           "SUPER ALT,   F, fullscreenstate, 1, 1" # TODO: when 0.43 arrives, replace with "maximize"
@@ -265,7 +282,7 @@ in {
 
           # Start fuzzel opens fuzzel on first press, closes it on second
           # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
-          "SUPER, D, exec, ${fuzzel}"
+          "SUPER, P, exec, ${fuzzel}"
 
           # Handle notifications
           "SUPER,       N, exec, ${makoctl} dismiss"
@@ -310,6 +327,15 @@ in {
           "float,                       class:^(org.telegram.desktop)$, title:^(Media viewer)$"
           "workspace special:s1 silent, class:^(org.telegram.desktop)$"
           "workspace special:s2 silent, class:^(transmission-gtk)$, title:^(Transmission)$"
+          "noanim 1,                    class:^(gcr-prompter)$"
+          "xray 1,                      class:^(gcr-prompter)$"
+          "dimaround 1,                 class:^(gcr-prompter)$"
+          "stayfocused,                 class:^(gcr-prompter)$"
+        ];
+
+        layerrule = [
+          "xray 1,    launcher"
+          "dimaround, launcher"
         ];
       };
 
