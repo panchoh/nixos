@@ -42,7 +42,7 @@ in {
         text = ''
           echo 'Cleaning most of state; repos and logs preserved:'
           rm -rf "${emacsCfgDir}/.local/{cache,etc,straight/build*}"
-          echo 'Now run: doom build'
+          echo 'Now run: doom sync --build --aot'
         '';
       })
 
