@@ -8,9 +8,6 @@ insert_final_newline = true
 charset = utf-8
 trim_trailing_whitespace = true
 
-[*.nix]
+[*.{nix,yaml}]
 ident_style = space
 ident_size = 2
-
-[Makefile]
-indent_style = tab

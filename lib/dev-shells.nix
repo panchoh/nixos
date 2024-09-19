@@ -10,14 +10,14 @@ builtins.foldl' (
         cacert
         nix
         git
-        gnumake
+        go-task
         toilet
       ];
       shellHook = ''
         echo
         toilet --font smbraille --gay "My Flaky NixOS Config"
         echo
-        make help
+        task
       '';
     };
   in

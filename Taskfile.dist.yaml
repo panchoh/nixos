@@ -1,0 +1,103 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  bump:
+    desc: Update flake inputs and commit the updated lockfile
+    cmds:
+      - nix flake update --commit-lock-file
+
+  check:
+    desc: Check the flake for errors
+    cmds:
+      - nix flake check --verbose
+
+  nixos-rebuild-switch:
+    desc: Rebuild and switch to the new NixOS configuration
+    cmds:
+      - doas nixos-rebuild switch --verbose
+
+  nixos-rebuild-test:
+    desc: Test the new NixOS configuration without switching
+    cmds:
+      - doas nixos-rebuild test --verbose
+
+  nixos-rebuild-build:
+    desc: Build the new NixOS configuration
+    cmds:
+      - doas nixos-rebuild switch --verbose
+
+  list-nixos-history:
+    desc: Display the history of NixOS system profiles
+    cmds:
+      - nix profile history --profile /nix/var/nix/profiles/system
+
+  wipe-direnv:
+    desc: Clear .direnv
+    cmds:
+      - rm -rf .direnv
+
+  diff-closures:
+    desc: Show differences between NixOS system profile closures
+    cmds:
+      - nix profile diff-closures --profile /nix/var/nix/profiles/system
+
+  wipe-nixos-history:
+    desc: Clear the history of NixOS system profiles
+    cmds:
+      - doas nix profile wipe-history --profile /nix/var/nix/profiles/system
+
+  list-home-manager-history:
+    desc: Display the history of Home Manager profiles
+    cmds:
+      - nix profile history --profile ~/.local/state/nix/profiles/home-manager
+
+  diff-home-manager-closures:
+    desc: Show differences between Home Manager profile closures
+    cmds:
+      - nix profile diff-closures --profile ~/.local/state/nix/profiles/home-manager
+
+  wipe-home-manager-history:
+    desc: Clear the history of Home Manager profiles
+    cmds:
+      - nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager
+
+  gc:
+    desc: Run garbage collection on the Nix store
+    cmds:
+      - nix store gc --verbose --print-build-logs --auto-optimise-store
+
+  gc-all:
+    desc: Wipe NixOS and Home Manager histories, then run garbage collection
+    cmds:
+      - task: wipe-nixos-history
+      - task: wipe-home-manager-history
+      - task: gc
+
+  store-optimise:
+    desc: Optimize the Nix store
+    cmds:
+      - nix store optimise --verbose
+
+  clean-firefox:
+    desc: Remove Firefox-related user data
+    cmds:
+      - rm -rf ~/.afirma ~/.java ~/.mozilla
+
+  clean-chromium:
+    desc: Remove Chromium-related user data
+    cmds:
+      - rm -rf ~/.config/chromium ~/.cache/chromium
+
+  pristine:
+    desc: Perform a full cleanup (gc-all, clean-firefox, clean-chromium)
+    cmds:
+      - task: gc-all
+      - task: clean-firefox
+      - task: clean-chromium
