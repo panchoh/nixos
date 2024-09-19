@@ -25,7 +25,7 @@ nixos-rebuild-test:
 	doas nixos-rebuild test --verbose
 
 nixos-rebuild-build:
-	doas nixos-rebuild switch --verbose
+	doas nixos-rebuild build --verbose
 
 list-nixos-history:
 	nix profile history --profile /nix/var/nix/profiles/system
