@@ -17,6 +17,7 @@ in {
     ];
 
     home.packages = with pkgs; [
+      go-task
       gotools
       go-tools
       gopls
