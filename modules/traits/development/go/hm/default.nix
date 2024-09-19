@@ -27,6 +27,7 @@ in {
       godef
       delve
       gdlv
+      golangci-lint
     ];
 
     programs.go = {
