@@ -118,7 +118,7 @@ in {
             "$@"
         ''
       );
-      ALTERNATE_EDITOR = lib.getExe' pkgs.neovide "neovide";
+      ALTERNATE_EDITOR = lib.getExe config.programs.neovide.package;
     };
 
     services.emacs = {
