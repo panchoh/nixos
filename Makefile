@@ -1,9 +1,16 @@
+.PHONY: help
 .PHONY: bump check
 .PHONY: nixos-rebuild-switch nixos-rebuild-test nixos-rebuild-build
 .PHONY: list-nixos-history wipe-nixos-history
 .PHONY: list-home-manager-history wipe-home-manager-history
 .PHONY: gc gc-all store-optimise
 .PHONY: clean-firefox clean-chromium pristine
+
+help:
+	@echo 'Usage: make [target]'
+	@echo
+	@echo 'Targets:'
+	@make -pRrq : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") { print $$1 }}' | sort --unique | awk '{ print "  " $$0 }'
 
 bump:
 	nix flake update --commit-lock-file

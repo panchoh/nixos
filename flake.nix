@@ -37,6 +37,8 @@
 
     apps = self.lib.appsDiskoAndFunk;
 
+    devShells = self.lib.devShells;
+
     nixosModules.default = self.lib.nixosModule;
 
     nixosConfigurations = self.lib.nixosConfigurations;
