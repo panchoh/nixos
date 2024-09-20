@@ -33,6 +33,9 @@ Adhere to Semantic Commit Messages
 **** Templates
 - https://github.com/juspay/nix-dev-home/blob/main/nix/template.nix filtering files
 
+**** devShells
+- https://fasterthanli.me/series/building-a-rust-service-with-nix/part-10
+
 *** Tips
 - https://ipetkov.dev/blog/tips-and-tricks-for-nix-flakes/
 - https://pavluk.org/blog/2023/05/30/nix_packaging.html
