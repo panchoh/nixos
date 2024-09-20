@@ -5,12 +5,19 @@
 Adhere to Semantic Commit Messages
 - https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 - https://www.conventionalcommits.org/en/v1.0.0/
+- https://cbea.ms/git-commit/
+
+** Code style
+- https://nix.dev/guides/best-practices#with-attrset-expression
 
 ** Useful Pointers
 *** Overview (mindmap)
 - https://coggle.it/diagram/Y9k9VVmUw-1okyFh/t/nix
 
 *** Flakes
+- https://github.com/the-nix-way :reallygood:
+  - https://github.com/the-nix-way/dev-templates/blob/main/go/flake.nix
+  - https://github.com/the-nix-way/nix-flake-dev-environments/blob/main/go/flake.nix
 - https://thiscute.world/en/posts/nixos-and-flake-basics/
 - https://nixos-and-flakes.thiscute.world/
 - https://serokell.io/blog/practical-nix-flakes :reallygood:
@@ -349,3 +356,6 @@ assumption does not hold. If the package has a main program, please set
 Otherwise, if the package does not have a main program,
 or if you don't control its definition, specify the full path to the program,
 such as ~"${lib.getBin foo}/bin/bar"~.
+
+*** IFD (Input From Derivation)
+- https://github.com/NixOS/nix/pull/7332
