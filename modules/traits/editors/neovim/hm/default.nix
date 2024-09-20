@@ -16,6 +16,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.neovim = {
       enable = true;
+      vimdiffAlias = true;
       extraPackages = [
         pkgs.shfmt
         pkgs.vimPlugins.vim-nix
