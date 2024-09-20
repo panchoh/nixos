@@ -97,7 +97,9 @@ in {
 
         telegram-desktop
         discord
+        dissent
         # nheko
+        fractal
 
         # Editors
         lapce
