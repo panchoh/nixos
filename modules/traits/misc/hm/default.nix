@@ -73,6 +73,8 @@ in {
         fx
       ]
       ++ lib.optionals (box.isStation or false) [
+        hwatch
+
         recode
 
         whois
