@@ -64,8 +64,6 @@ in {
 
         intel-gpu-tools
 
-        charasay
-
         glow
 
         entr

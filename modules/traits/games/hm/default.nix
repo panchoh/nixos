@@ -19,8 +19,19 @@ in {
       sl
       neofetch
       hyperrogue
-      # bsdgames # provides wtf, but conflicts with fish shell
-      # FIXME: PR with the current BSD Games, which fixes this an more
+      notcurses
+
+      figlet
+      toilet
+      banner
+
+      neo-cowsay
+      charasay
+
+      # bsdgames:
+      # - provides `wtf`, which conflicts with `fish` shell
+      # - provides `banner`, which conflicts with `banner`
+      # FIXME: PR with the current BSD Games, which fixes this and more
       (stdenv.mkDerivation {
         pname = "bsdgames-custom";
         version = pkgs.bsdgames.version;
@@ -30,6 +41,7 @@ in {
           cp -a ${pkgs.bsdgames}/. $out/
           chmod +w $out/bin
           mv -f $out/bin/fish $out/bin/gofish
+          mv -f $out/bin/banner $out/bin/bsdbanner
         '';
       })
     ];
