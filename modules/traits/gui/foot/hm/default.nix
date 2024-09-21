@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   box ? null,
   ...
 }: let
@@ -14,10 +15,16 @@ in {
     programs.foot = {
       enable = true;
       settings = {
+        main = {
+          pad = "4x4 center";
+        };
         bell = {
           urgent = true;
           notify = true;
           visual = true;
+        };
+        desktop-notifications = {
+          command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
         };
         mouse = {
           hide-when-typing = true;
