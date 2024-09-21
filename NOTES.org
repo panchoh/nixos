@@ -92,6 +92,8 @@ Adhere to Semantic Commit Messages
 - https://github.com/NixOS/nixpkgs/blob/653038c38dee95539f74480e955a2c95000be732/nixos/tests/sway.nix#L49
 
 ** dotfiles to Explore
+- [ ] https://github.com/fufexan/dotfiles
+- [ ] https://github.com/figsoda/cfg
 - [ ] https://jmgilman.github.io/std-book/ std
 - [ ] https://github.com/divnix/hive secretive framework
 - [ ] https://github.com/nix-community/awesome-nix
