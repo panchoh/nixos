@@ -14,6 +14,11 @@ in {
     programs.foot = {
       enable = true;
       settings = {
+        bell = {
+          urgent = true;
+          notify = true;
+          visual = true;
+        };
         mouse = {
           hide-when-typing = true;
         };
