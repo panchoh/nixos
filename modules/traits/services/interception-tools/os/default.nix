@@ -12,6 +12,23 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.etc."interception/dual-function-keys/thinkpad.yaml".source = pkgs.writeText "thinkpad.yaml" ''
+      TIMING:
+        TAP_MILLISEC: 200
+        DOUBLE_TAP_MILLISEC: 150
+
+      MAPPINGS:
+        - KEY: KEY_CAPSLOCK
+          TAP: KEY_ESC
+          HOLD: KEY_LEFTCTRL
+        - KEY: KEY_LEFTSHIFT
+          TAP: [KEY_LEFTSHIFT, KEY_9,]
+          HOLD: KEY_LEFTSHIFT
+        - KEY: KEY_RIGHTSHIFT
+          TAP: [KEY_LEFTSHIFT, KEY_0,]
+          HOLD: KEY_RIGHTSHIFT
+    '';
+
     environment.etc."interception/dual-function-keys/hhkb.yaml".source = pkgs.writeText "hhkb.yaml" ''
       TIMING:
         TAP_MILLISEC: 200
@@ -32,18 +49,17 @@ in {
     services.interception-tools = {
       enable = true;
       plugins = with pkgs; [
-        interception-tools-plugins.caps2esc
         interception-tools-plugins.dual-function-keys
       ];
       udevmonConfig = ''
         - JOB: >-
             ${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE
-            | ${lib.getExe pkgs.interception-tools-plugins.caps2esc} -m 1
+            | ${lib.getExe pkgs.interception-tools-plugins.dual-function-keys} -c /etc/interception/dual-function-keys/thinkpad.yaml
             | ${lib.getExe' pkgs.interception-tools "uinput"} -d $DEVNODE
           DEVICE:
-            LINK: /dev/input/by-path/platform-i8042-serio-0-event-kbd
+            NAME: (AT Translated Set 2 keyboard|Logitech K400 Plus)
             EVENTS:
-              EV_KEY: [KEY_CAPSLOCK]
+              EV_KEY: [KEY_CAPSLOCK,KEY_LEFTSHIFT,KEY_RIGHTSHIFT]
         - JOB: >-
             ${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE
             | ${lib.getExe pkgs.interception-tools-plugins.dual-function-keys} -c /etc/interception/dual-function-keys/hhkb.yaml

@@ -81,7 +81,9 @@ in {
 
         # kb_options explanation:
         # AltGr: 3rd. level
-        # AltGr-Space: non-breakable space
+        # AltGr-Shift: 4th. level
+        # AltGr-Space: non-breaking space
+        # AltGr-Shift-Space: thin non-breaking space
         # Shift-AltGr: compose
         # Caps: Ye'Olde Caps
         # Alt-Caps: group switch
@@ -112,14 +114,14 @@ in {
           }
 
           {
-            name = "at-translated-set-2-keyboard";
+            name = "at-translated-set-2-keyboard-1";
             kb_model = "thinkpad";
-            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
+            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
-            name = "logitech-k400-plus";
-            kb_options = "lv3:ralt_switch_multikey,ctrl:swapcaps,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
+            name = "logitech-k400-plus-2";
+            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
         ];
 
