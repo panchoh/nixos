@@ -8,7 +8,7 @@ builtins.listToAttrs (
       specialArgs =
         inputs
         // {
-          inherit (inputs.self.lib) flakeInputsClosure extraSpecialArgs hmModule;
+          inherit (inputs.self.lib) extraSpecialArgs hmModule;
           inherit box;
         };
     };
