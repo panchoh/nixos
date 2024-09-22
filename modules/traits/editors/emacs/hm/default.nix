@@ -66,6 +66,9 @@ in {
       gnumake
       ccls
 
+      zig
+      zls
+
       pyright
 
       marksman # markdown language server
