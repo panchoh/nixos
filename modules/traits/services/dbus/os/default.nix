@@ -13,9 +13,6 @@ in {
   config = lib.mkIf cfg.enable {
     services = {
       dbus.implementation = "broker";
-      dbus.packages = [
-        pkgs.gcr # for pinentry-gnome3
-      ];
     };
   };
 }

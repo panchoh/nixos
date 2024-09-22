@@ -31,9 +31,9 @@ in {
       maxCacheTtl = 1;
       maxCacheTtlSsh = 1;
       enableSshSupport = true;
-      pinentryPackage = pkgs.pinentry-gnome3;
+      pinentryPackage = pkgs.wayprompt;
       extraConfig = ''
-        allow-emacs-pinentry
+        no-allow-loopback-pinentry
       '';
     };
   };
