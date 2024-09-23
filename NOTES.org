@@ -280,6 +280,7 @@ in {
 - https://nixos.wiki/wiki/NixOS_modules
 - https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md
   - https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md#part-1-1
+- https://discourse.nixos.org/t/is-my-understanding-about-nixos-modules-correct/39518
 **** Conditional imports
 - https://discourse.nixos.org/t/conditionally-import-module-if-it-exists/17832
 
