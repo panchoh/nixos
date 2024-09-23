@@ -275,8 +275,13 @@ in {
           "SUPER,       Minus, togglespecialworkspace,         s1"
           "SUPER SHIFT, Equal, movetoworkspacesilent,  special:s2"
           "SUPER,       Equal, togglespecialworkspace,         s2"
-          "SUPER,       W,     movetoworkspacesilent,  special:iconified"
-          "SUPER SHIFT, W,     togglespecialworkspace,         iconified"
+
+          # Simulate "iconify"
+          "SUPER,       W,     togglespecialworkspace,         magic"
+          "SUPER,       W,     movetoworkspace,                +0"
+          "SUPER,       W,     togglespecialworkspace,         magic"
+          "SUPER,       W,     movetoworkspace,        special:magic"
+          "SUPER,       W,     togglespecialworkspace,         magic"
 
           "SUPER,       F, fullscreen"
           "SUPER ALT,   F, fullscreenstate, 1, 1" # TODO: when 0.43 arrives, replace with "maximize"
