@@ -3,7 +3,7 @@
   lib,
   home-manager,
   extraSpecialArgs,
-  hmModule,
+  home,
   box ? null,
   ...
 }: let
@@ -26,14 +26,12 @@ in {
     ];
 
     home-manager = {
+      inherit extraSpecialArgs;
       backupFileExtension = "backup";
       verbose = true;
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = extraSpecialArgs // {inherit box;};
-      users.${box.userName or "alice"} = {
-        imports = [hmModule] ++ box.extraHMModules;
-      };
+      users.${box.userName or "alice"} = home;
     };
   };
 }
