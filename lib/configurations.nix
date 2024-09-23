@@ -4,7 +4,16 @@ builtins.listToAttrs (
     name = box.hostName;
     value = inputs.nixpkgs.lib.nixosSystem {
       inherit (box) system;
-      modules = [inputs.self.nixosModules.default] ++ box.extraModules;
+      modules =
+        [
+          {
+            nixpkgs.overlays = [
+              inputs.emacs-overlay.overlays.default
+            ];
+          }
+          inputs.self.nixosModules.default
+        ]
+        ++ box.extraModules;
       specialArgs =
         inputs
         // {
