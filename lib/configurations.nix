@@ -5,15 +5,7 @@ builtins.listToAttrs (
     value = inputs.nixpkgs.lib.nixosSystem {
       inherit (box) system;
       modules =
-        [
-          {
-            nixpkgs.overlays = [
-              inputs.emacs-overlay.overlays.default
-            ];
-          }
-          inputs.self.nixosModules.default
-        ]
-        ++ box.extraModules;
+        [inputs.self.nixosModules.default] ++ box.extraModules;
       specialArgs =
         inputs
         // {
