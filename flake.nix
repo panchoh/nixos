@@ -43,6 +43,8 @@
 
     devShells = self.lib.devShells;
 
+    homeModules.default = self.lib.homeModule;
+
     nixosModules.default = self.lib.nixosModule;
 
     nixosConfigurations = self.lib.nixosConfigurations;
