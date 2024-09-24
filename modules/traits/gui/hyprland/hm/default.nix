@@ -293,8 +293,8 @@ in {
           "SUPER, P, exec, ${fuzzel}"
 
           # Handle notifications
-          "SUPER,       N, exec, ${makoctl} dismiss"
-          "SUPER SHIFT, N, exec, ${makoctl} dismiss -a"
+          "SUPER,       Escape, exec, ${makoctl} dismiss"
+          "SUPER SHIFT, Escape, exec, ${makoctl} dismiss --all"
 
           # Screenshots
           # "SUPER,       P, exec, grimblast save active"
