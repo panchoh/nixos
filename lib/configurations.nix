@@ -11,7 +11,7 @@ builtins.listToAttrs (
         // {
           extraSpecialArgs = inputs // {inherit box;};
           home = {
-            imports = [inputs.self.lib.hmModule] ++ box.extraHMModules;
+            imports = [inputs.self.lib.homeModule] ++ box.extraHomeModules;
           };
           inherit box;
         };
