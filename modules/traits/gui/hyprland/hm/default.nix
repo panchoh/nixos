@@ -46,7 +46,7 @@ in {
       wev
       xkeyboard_config
       libxkbcommon # for xkbcli interactive-wayland
-      wtype # REVIEW: will support mouse https://github.com/atx/wtype/pull/56, then we can implemente SUPER V (mouse 2, or paste)
+      wtype
     ];
 
     wayland.windowManager.hyprland = {
@@ -214,6 +214,9 @@ in {
 
           "SUPER,       U, focusurgentorlast,"
           "SUPER,       T, togglefloating, active"
+
+          # Paste
+          "SUPER,       V, sendshortcut, , mouse:274, activewindow"
 
           "SUPER,       Return,       layoutmsg, swapwithmaster master"
           "SUPER,       M,            layoutmsg, focusmaster auto"
