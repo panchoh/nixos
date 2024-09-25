@@ -55,6 +55,12 @@ in
     }
 
     {
+      hostName = "talos";
+      macvlanAddr = "88:ae:dd:66:8c:dc";
+      isStation = true;
+    }
+
+    {
       hostName = "nixos";
       diskDevice = "/dev/vda";
     }
