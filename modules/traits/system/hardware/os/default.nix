@@ -43,6 +43,8 @@ in {
       graphics = {
         enable = true;
         extraPackages = with pkgs; [
+          # https://wiki.nixos.org/wiki/Intel_Graphics
+          vpl-gpu-rt
           # https://nixos.wiki/wiki/Accelerated_Video_Playback
           intel-ocl
           intel-compute-runtime
