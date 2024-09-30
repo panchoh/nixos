@@ -30,7 +30,12 @@ in {
         if [[ ! -d "${doomCfgDir}" ]]; then
           verboseEcho Cloning Doom Emacs config
           PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG git@github.com:panchoh/dotconfig-doom.git "${doomCfgDir}"
-          # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" run "${emacsCfgDir}"/bin/doom sync
+
+          # FIXME: this takes more than 5 mins, and thus the home manager activation service times out
+          # See home-manager/nixos/default.nix and look for TimeoutStartSec there.
+          # verboseEcho Preparing Thy Doom
+          # ulimit -Sn hard # FIXME try (unsuccessfully) to prevent "Too many open files" errors
+          # PATH="${pkgs.git}/bin:$PATH" EMACS="${lib.getExe config.programs.emacs.finalPackage}" run "${emacsCfgDir}"/bin/doom sync --rebuild --aot
         fi
       '';
     };
