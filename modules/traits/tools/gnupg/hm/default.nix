@@ -6,12 +6,24 @@
   ...
 }: let
   cfg = config.traits.hm.gnupg;
+  inherit (lib.generators) toINI mkKeyValueDefault mkValueStringDefault;
 in {
   options.traits.hm.gnupg = {
     enable = lib.mkEnableOption "gnupg" // {default = box.isStation or false;};
   };
 
   config = lib.mkIf cfg.enable {
+    home.file."${config.xdg.configHome}/wayprompt/config.ini".text =
+      toINI {
+        mkKeyValue = mkKeyValueDefault {
+          mkValueString = v: mkValueStringDefault {} v + ";";
+        } " = ";
+      } {
+        general = {
+          pin-square-amount = 32;
+        };
+      };
+
     programs.gpg = {
       enable = true;
       scdaemonSettings = {
