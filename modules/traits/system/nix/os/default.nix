@@ -30,7 +30,6 @@ in {
         experimental-features = [
           "nix-command"
           "flakes"
-          "repl-flake" # TODO: remove once nix 1.19 percolates to NixOS
         ];
         # https://github.com/NixOS/nix/issues/9574
         nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
