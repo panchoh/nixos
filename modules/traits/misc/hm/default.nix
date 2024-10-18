@@ -105,12 +105,9 @@ in {
 
         # Editors
         lapce
-        zed-editor
 
         transmission_4-gtk
         wormhole-william
-
-        gpt4all
 
         stellarium
         celestia
