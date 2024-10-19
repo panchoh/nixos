@@ -63,6 +63,7 @@ in {
         monitor = [
           "desc:Dell Inc. DELL U4025QW B1MKH34, highrr, auto, auto, bitdepth, 10, vrr, 1"
           "desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 10"
+          "desc:Chimei Innolux Corporation 0x14D4, preferred, auto, 1"
         ];
 
         exec-once = [
