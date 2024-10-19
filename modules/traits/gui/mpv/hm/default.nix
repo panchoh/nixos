@@ -42,6 +42,8 @@ in {
 
         # https://github.com/mpv-player/mpv/issues/10972#issuecomment-1340100762
         vd-lavc-dr = false;
+
+        drm-vrr-enabled = "auto";
       };
       profiles = {
         alsa-mm1 = {
