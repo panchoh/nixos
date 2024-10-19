@@ -326,6 +326,10 @@ in {
           # https://github.com/dwlocks/scripts-tools-config/blob/master/etc/rfkill-toggle
           # TODO: extract shell script to its own rfkill-toggle executable
           '', XF86WLAN, exec, sh -c '[[ "$(< /sys/class/rfkill/rfkill0/state)" == "1" ]] && rfkill block all || rfkill unblock all' ''
+
+          # Lid management
+          '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"''
+          '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
         ];
 
         bindm = [
