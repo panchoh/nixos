@@ -40,6 +40,12 @@ in
     }
 
     {
+      hostName = "radon";
+      macvlanAddr = "1c:69:7a:a7:e4:e5";
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
+
+    {
       hostName = "xenon";
       macvlanAddr = "48:21:0b:3c:16:a9";
       isStation = true;
