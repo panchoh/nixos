@@ -344,6 +344,7 @@ in {
           "float,                       class:^(org.telegram.desktop)$, title:^(Media viewer)$"
           "workspace special:s1 silent, class:^(org.telegram.desktop)$"
           "workspace special:s2 silent, class:^(transmission-gtk)$, title:^(Transmission)$"
+          "float,                       class:^(transmission-gtk)$, title:^(Torrent Options)$"
           "noanim 1,                    class:^(gcr-prompter)$"
           "xray 1,                      class:^(gcr-prompter)$"
           "dimaround 1,                 class:^(gcr-prompter)$"
