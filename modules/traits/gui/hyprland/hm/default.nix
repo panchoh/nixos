@@ -35,6 +35,7 @@ in {
     };
 
     home.packages = with pkgs; [
+      hyprpolkitagent
       swaylock
       grim
       grimblast
@@ -68,6 +69,7 @@ in {
 
         exec-once = [
           "${foot} --title=special"
+          "systemctl --user start hyprpolkitagent"
         ];
 
         env = lib.mapAttrsToList (name: value: "${name}, ${toString value}") {
