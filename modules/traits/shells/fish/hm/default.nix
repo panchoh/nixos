@@ -11,6 +11,9 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    # TODO: drop upon next release of fish
+    xdg.configFile."fish/completions/run0.fish".source = ./run0.fish;
+
     programs = {
       fish = {
         enable = true;
