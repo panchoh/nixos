@@ -21,17 +21,17 @@ tasks:
   nixos-rebuild-switch:
     desc: Rebuild and switch to the new NixOS configuration
     cmds:
-      - doas nixos-rebuild switch --verbose
+      - run0 nixos-rebuild switch --verbose
 
   nixos-rebuild-test:
     desc: Test the new NixOS configuration without switching
     cmds:
-      - doas nixos-rebuild test --verbose
+      - run0 nixos-rebuild test --verbose
 
   nixos-rebuild-build:
     desc: Build the new NixOS configuration
     cmds:
-      - doas nixos-rebuild switch --verbose
+      - run0 nixos-rebuild switch --verbose
 
   list-nixos-history:
     desc: Display the history of NixOS system profiles
@@ -51,7 +51,7 @@ tasks:
   wipe-nixos-history:
     desc: Clear the history of NixOS system profiles
     cmds:
-      - doas nix profile wipe-history --profile /nix/var/nix/profiles/system
+      - run0 nix profile wipe-history --profile /nix/var/nix/profiles/system
 
   list-home-manager-history:
     desc: Display the history of Home Manager profiles
