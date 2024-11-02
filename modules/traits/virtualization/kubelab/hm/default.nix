@@ -38,7 +38,7 @@ in {
 
         # fixupPhase = ''
         #   for script in $out/bin/vm*; do
-        #     substituteInPlace $script --replace sudo doas
+        #     substituteInPlace $script --replace sudo run0
         #     wrapProgram $script --prefix PATH : ${lib.makeBinPath buildInputs}
         #   done
         # '';
