@@ -46,8 +46,8 @@ in {
         runtimeInputs = [coreutils];
         text = ''
           echo 'Cleaning most of state; repos and logs preserved:'
-          rm -rf "${emacsCfgDir}/.local/{cache,etc,straight/build*}"
-          echo 'Now run: doom sync --rebuild --aot'
+          rm -rf ${emacsCfgDir}/.local/{cache,etc,straight/build*}
+          echo 'Now run: ulimit -Sn hard; doom sync --aot'
         '';
       })
 
