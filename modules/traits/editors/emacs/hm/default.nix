@@ -83,6 +83,7 @@ in {
       dockfmt
 
       nil # nix language server
+      nixd
       deadnix
       alejandra
 
