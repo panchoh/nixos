@@ -68,7 +68,6 @@ in {
         ];
 
         exec-once = [
-          "${foot} --title=special"
           "systemctl --user start hyprpolkitagent"
         ];
 
@@ -163,10 +162,8 @@ in {
           new_on_top = true;
           drop_at_cursor = false;
           smart_resizing = false;
-          no_gaps_when_only = 1;
           orientation = "right";
           always_center_master = true;
-          special_scale_factor = 0.98;
         };
 
         gestures = {
@@ -182,8 +179,12 @@ in {
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = true;
 
+          enable_swallow = true;
+          swallow_regex = "^foot$";
+          swallow_exception_regex = "^wev .*$";
+
           # https://github.com/hyprwm/Hyprland/issues/3073
-          focus_on_activate = false; # disabling, otherwise Telegram hogs the focus
+          focus_on_activate = true;
         };
 
         # https://github.com/hyprwm/Hyprland/pull/352/files
@@ -284,7 +285,7 @@ in {
           "SUPER SHIFT, Equal, movetoworkspacesilent,  special:s2"
           "SUPER,       Equal, togglespecialworkspace,         s2"
 
-          # Simulate "iconify"
+          # Simulate “iconify”
           "SUPER,       W,     togglespecialworkspace,         magic"
           "SUPER,       W,     movetoworkspace,                +0"
           "SUPER,       W,     togglespecialworkspace,         magic"
@@ -341,12 +342,29 @@ in {
           "SUPER, mouse:273, resizewindow"
         ];
 
+        # Smart gaps (old no_gaps_when_only)
+        # https://wiki.hyprland.org/Configuring/Workspace-Rules/#smart-gaps
+        workspace = [
+          "w[tv1] s[false],  gapsout:0, gapsin:0"
+          "f[1] s[false],    gapsout:0, gapsin:0"
+          "s[true],          gapsout:100, gapsin:50"
+
+          "special:special, on-created-empty:foot"
+          "special:s1,      on-created-empty:telegram-desktop"
+          "special:s2,      on-created-empty:transmission-gtk"
+        ];
+
         windowrulev2 = [
-          "workspace special silent,    class:^(foot), title:^(special)$"
+          "bordersize 0, floating:0, onworkspace:w[tv1] s[false]"
+          "rounding 0,   floating:0, onworkspace:w[tv1] s[false]"
+          "bordersize 0, floating:0, onworkspace:f[1] s[false]"
+          "rounding 0,   floating:0, onworkspace:f[1] s[false]"
+
           "float,                       class:^(org.telegram.desktop)$, title:^(Media viewer)$"
           "workspace special:s1 silent, class:^(org.telegram.desktop)$"
           "workspace special:s2 silent, class:^(transmission-gtk)$, title:^(Transmission)$"
-          "float,                       class:^(transmission-gtk)$, title:^(Torrent Options)$"
+          "center,                      class:^(transmission-gtk)$, title:^(Torrent Options)$"
+
           "noanim 1,                    class:^(gcr-prompter)$"
           "xray 1,                      class:^(gcr-prompter)$"
           "dimaround 1,                 class:^(gcr-prompter)$"
