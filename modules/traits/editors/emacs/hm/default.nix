@@ -110,7 +110,7 @@ in {
 
     programs.emacs = {
       enable = true;
-      package = pkgs.emacs-unstable-pgtk;
+      package = pkgs.emacs30-pgtk;
       extraPackages = epkgs:
         with epkgs; [
           nix-ts-mode
