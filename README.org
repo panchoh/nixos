@@ -15,7 +15,7 @@ passwd
 
 4. Manage your ssh key and then let Home Manager finish the setup
  #+begin_src shell
-doas systemctl restart home-manager-pancho.service
+run0 systemctl restart home-manager-pancho.service
 #+end_src
 
 5. Optimise the storage just this once

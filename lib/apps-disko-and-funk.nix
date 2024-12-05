@@ -27,7 +27,7 @@ builtins.foldl' (
               echo -e '\nGreetings, human with ID: "${userDesc} (${userName}) <${userEmail}>", GitHub account: "${githubUser}".'
               echo -e "\nYou have requested the priming of the box designated as '${hostName}', on device: '${diskDevice}'."
 
-              [[ $EUID -eq 0 ]] || { echo 'Skynet needs total control.  Run me again with sudo.  Aborting...' 1>&2; exit 1; }
+              [[ $EUID -eq 0 ]] || { echo 'Skynet needs total control.  Run me again with run0.  Aborting...' 1>&2; exit 1; }
 
               echo -e '\nWARNING: The following procedure will wipe your system clean!'
               echo 'Destruction will ensue.  You have been warned.'

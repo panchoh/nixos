@@ -41,7 +41,7 @@ in {
         ];
         settings = {
           auto_sync = false;
-          common_prefix = ["doas"];
+          common_prefix = ["run0"];
           dotfiles.enabled = false;
           enter_accept = true;
           exit_mode = "return-query";
