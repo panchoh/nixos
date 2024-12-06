@@ -40,13 +40,19 @@ in
     }
 
     {
-      hostName = "radon";
+      hostName = "xenon";
       macvlanAddr = "1c:69:7a:a7:e4:e5";
       extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
     }
 
     {
-      hostName = "xenon";
+      hostName = "radon";
+      macvlanAddr = "1c:69:7a:0e:17:74";
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
+
+    {
+      hostName = "oxygen";
       macvlanAddr = "48:21:0b:3c:16:a9";
       isStation = true;
       extraModules = [({config, ...}: {config.traits.os.caddy.enable = true;})];
@@ -58,12 +64,6 @@ in
       isLaptop = true;
       isStation = true;
       extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
-    }
-
-    {
-      hostName = "talos";
-      macvlanAddr = "88:ae:dd:66:8c:dc";
-      isStation = true;
     }
 
     {
