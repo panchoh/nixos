@@ -349,6 +349,9 @@ in {
           "f[1] s[false],    gapsout:0, gapsin:0"
           "s[true],          gapsout:100, gapsin:50"
 
+          "1,               on-created-empty:emacs"
+          "2,               on-created-empty:chromium"
+          "3,               on-created-empty:google-chrome-stable"
           "special:special, on-created-empty:foot"
           "special:s1,      on-created-empty:telegram-desktop"
           "special:s2,      on-created-empty:transmission-gtk"
