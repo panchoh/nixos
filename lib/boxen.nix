@@ -29,7 +29,10 @@ in
       hostName = "helium";
       macvlanAddr = "1c:69:7a:02:8d:23";
       hasMedia = true;
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+      extraModules = [
+        inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+        ({config, ...}: {config.traits.os.minecraft.enable = true;})
+      ];
     }
 
     {
