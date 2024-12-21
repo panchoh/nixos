@@ -5,9 +5,9 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.hm.games;
+  cfg = config.traits.hm.games.misc;
 in {
-  options.traits.hm.games = {
+  options.traits.hm.games.misc = {
     enable = lib.mkEnableOption "games" // {default = box.isStation or false;};
   };
 
