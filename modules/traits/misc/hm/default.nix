@@ -55,7 +55,8 @@ in {
         file
         fdupes
         rdfind
-        rmlint
+        czkawka
+        fclones
         gnutls
         zstd
 
