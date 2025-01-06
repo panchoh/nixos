@@ -23,14 +23,9 @@ in {
         telemetry = {
           metrics = false;
         };
-        theme = {
-          mode = "dark";
-          light = "Atelier Cave Light";
-          dark = "Atelier Cave Dark";
-        };
         vim_mode = true;
-        ui_font_size = 16;
-        buffer_font_size = 16;
+        ui_font_size = lib.mkForce 16;
+        buffer_font_size = lib.mkForce 16;
       };
     };
   };
