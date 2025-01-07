@@ -28,6 +28,7 @@ in {
       neo-cowsay
       charasay
 
+      nbsdgames
       # bsdgames:
       # - provides `wtf`, which conflicts with `fish` shell
       # FIXME: PR with the current BSD Games, which fixes this and more
