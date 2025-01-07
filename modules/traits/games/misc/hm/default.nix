@@ -30,7 +30,6 @@ in {
 
       # bsdgames:
       # - provides `wtf`, which conflicts with `fish` shell
-      # - provides `banner`, which conflicts with `banner`
       # FIXME: PR with the current BSD Games, which fixes this and more
       (stdenv.mkDerivation {
         pname = "bsdgames-custom";
@@ -41,7 +40,6 @@ in {
           cp -a ${pkgs.bsdgames}/. $out/
           chmod +w $out/bin
           mv -f $out/bin/fish $out/bin/gofish
-          mv -f $out/bin/banner $out/bin/bsdbanner
         '';
       })
     ];
