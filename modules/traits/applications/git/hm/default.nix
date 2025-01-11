@@ -16,6 +16,7 @@ in {
       bvi
       diffoscope
       git-doc
+      git-dive
       gitg
       gti
       gitui
