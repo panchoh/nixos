@@ -26,32 +26,8 @@ inputs: let
 in
   map (overrides: defaults // overrides) [
     {
-      hostName = "helium";
-      macvlanAddr = "1c:69:7a:02:8d:23";
-      hasMedia = true;
-      extraModules = [
-        inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-        ({config, ...}: {config.traits.os.minecraft.enable = true;})
-      ];
-    }
-
-    {
-      hostName = "krypton";
-      macvlanAddr = "1c:69:7a:06:76:c0";
-      hasMedia = true;
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-    }
-
-    {
-      hostName = "xenon";
-      macvlanAddr = "1c:69:7a:a7:e4:e5";
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-    }
-
-    {
-      hostName = "radon";
-      macvlanAddr = "1c:69:7a:0e:17:74";
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+      hostName = "nixos";
+      diskDevice = "/dev/vda";
     }
 
     {
@@ -70,8 +46,40 @@ in
     }
 
     {
-      hostName = "nixos";
-      diskDevice = "/dev/vda";
+      hostName = "potassium";
+      macvlanAddr = "1c:69:7a:02:8d:23";
+      hasMedia = true;
+      extraModules = [
+        inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+        ({config, ...}: {config.traits.os.minecraft.enable = true;})
+      ];
+    }
+
+    {
+      hostName = "calcium";
+      macvlanAddr = "1c:69:7a:06:76:c0";
+      hasMedia = true;
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
+
+    {
+      hostName = "scandium";
+      macvlanAddr = "1c:69:7a:a7:e4:e5";
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
+
+    {
+      hostName = "titanium";
+      macvlanAddr = "1c:69:7a:a7:ad:ec";
+      diskDevice = "/dev/sda";
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
+    }
+
+    {
+      hostName = "vanadium";
+      macvlanAddr = "1c:69:7a:a7:a8:a9";
+      diskDevice = "/dev/sda";
+      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
     }
 
     # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
