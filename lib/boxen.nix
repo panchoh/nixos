@@ -65,6 +65,7 @@ in
     {
       hostName = "scandium";
       macvlanAddr = "1c:69:7a:a7:e4:e5";
+      isStation = true;
       extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
     }
 
