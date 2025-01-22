@@ -57,7 +57,9 @@ in {
           date = "relative";
           header = true;
           icons = {
-            when = "never";
+            when = "auto";
+            separator = "  ";
+            theme = "fancy";
           };
           indicators = true;
           sorting.dir-grouping = "first";
