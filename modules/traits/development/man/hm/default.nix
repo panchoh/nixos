@@ -11,6 +11,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    manual.html.enable = true;
+    manual.json.enable = true;
+    manual.manpages.enable = true;
+
     home.packages = with pkgs; [
       man-pages
       man-pages-posix
