@@ -127,7 +127,7 @@ in {
         };
       };
 
-      thefuck.enable = true;
+      pay-respects.enable = true;
 
       jq.enable = true;
 
