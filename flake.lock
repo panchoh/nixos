@@ -9,14 +9,15 @@
         "jmulticard-src": "jmulticard-src",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "python-updates": "python-updates"
       },
       "locked": {
-        "lastModified": 1737892917,
-        "narHash": "sha256-A8khx2gwRULPIfQfca6KbHwcC1ZQ7fSU45XRAvcnB/c=",
+        "lastModified": 1737943344,
+        "narHash": "sha256-52XCZZUItYe129wbIrFIpPuXw9OURf0AuxHSMMhf3GQ=",
         "owner": "nilp0inter",
         "repo": "autofirma-nix",
-        "rev": "35b595775d318a9f7aa143c4ad940aae4412423d",
+        "rev": "b1213468703b226f1cecc13c7eeefcac13cdf453",
         "type": "github"
       },
       "original": {
@@ -322,11 +323,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737762889,
-        "narHash": "sha256-5HGG09bh/Yx0JA8wtBMAzt0HMCL1bYZ93x4IqzVExio=",
+        "lastModified": 1737968762,
+        "narHash": "sha256-xiPARGKwocaMtv+U/rgi+h2g56CZZEmrcl7ldRaslq8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "daf04c5950b676f47a794300657f1d3d14c1a120",
+        "rev": "e1ae908bcc30af792b0bb0a52e53b03d2577255e",
         "type": "github"
       },
       "original": {
@@ -413,16 +414,32 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1737746512,
-        "narHash": "sha256-nU6AezEX4EuahTO1YopzueAXfjFfmCHylYEFCagduHU=",
+        "lastModified": 1737885589,
+        "narHash": "sha256-Zf0hSrtzaM1DEz8//+Xs51k/wdSajticVrATqDrfQjg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "825479c345a7f806485b7f00dbe3abb50641b083",
+        "rev": "852ff1d9e153d8875a83602e03fdef8a63f0ecf8",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "python-updates": {
+      "locked": {
+        "lastModified": 1737898750,
+        "narHash": "sha256-TvIlixh7FoZoa42yBncs6K98X5IHxnuvQ1BJu0kUAoI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "318dfa8a1ec2e4e71429d810f2b227e923bf1462",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "python-updates",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -463,11 +480,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1737861120,
-        "narHash": "sha256-V/GWU1BQwbxyZif9RBvwn10S1KX+86uPkkI41KQEcQQ=",
+        "lastModified": 1737930520,
+        "narHash": "sha256-CAgB9/o54SXzqWwypA+hL2ETxiHW92Y+Ou4fT581jdk=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "d6951d0b2ffe74e4779a180e9b6a0e17627756e1",
+        "rev": "6103431cd2f9d4352e5493a4063cf57e307d355c",
         "type": "github"
       },
       "original": {
