@@ -36,6 +36,7 @@ in {
 
     home.packages = with pkgs; [
       hyprpolkitagent
+      hyprland-qtutils
       swaylock
       grim
       grimblast
