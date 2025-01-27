@@ -13,11 +13,11 @@
         "python-updates": "python-updates"
       },
       "locked": {
-        "lastModified": 1738007724,
-        "narHash": "sha256-2+h3rO+YOlPKN95xIcqGEfcObDlKtubDR9h76QJWmyQ=",
+        "lastModified": 1738016825,
+        "narHash": "sha256-BJncqblrT6QLLSNofLNiep8hpnZMx2kUbKbLyL0irVA=",
         "owner": "nix-community",
         "repo": "autofirma-nix",
-        "rev": "1c09c85cd1f11c7ab3c20cf72f6c64e0470d93e1",
+        "rev": "5f2af5fd2014e1dc469bd5cbf6d25867937ebea9",
         "type": "github"
       },
       "original": {
