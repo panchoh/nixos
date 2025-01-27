@@ -13,15 +13,15 @@
         "python-updates": "python-updates"
       },
       "locked": {
-        "lastModified": 1737943344,
-        "narHash": "sha256-52XCZZUItYe129wbIrFIpPuXw9OURf0AuxHSMMhf3GQ=",
-        "owner": "nilp0inter",
+        "lastModified": 1737992319,
+        "narHash": "sha256-MKy5MHhv1fj+BDsRVQVHkFBMoq6O08qd4Sac3Q9hlUQ=",
+        "owner": "nix-community",
         "repo": "autofirma-nix",
-        "rev": "b1213468703b226f1cecc13c7eeefcac13cdf453",
+        "rev": "e00e6726acb3690afda008149a47f6c52769f73f",
         "type": "github"
       },
       "original": {
-        "owner": "nilp0inter",
+        "owner": "nix-community",
         "repo": "autofirma-nix",
         "type": "github"
       }
