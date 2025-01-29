@@ -72,7 +72,6 @@ in
     {
       hostName = "titanium";
       macvlanAddr = "1c:69:7a:a7:ad:ec";
-      diskDevice = "/dev/sda";
       extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
     }
 
