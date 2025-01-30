@@ -164,7 +164,7 @@ in {
           drop_at_cursor = false;
           smart_resizing = false;
           orientation = "right";
-          always_center_master = true;
+          slave_count_for_center_master = 0;
         };
 
         gestures = {
