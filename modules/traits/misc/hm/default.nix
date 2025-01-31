@@ -40,6 +40,7 @@ in {
 
         curl
         wget2
+        xh
         restish
 
         moreutils
