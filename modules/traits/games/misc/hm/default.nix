@@ -20,6 +20,7 @@ in {
       neofetch
       hyperrogue
       notcurses
+      torus-trooper
 
       figlet
       toilet
