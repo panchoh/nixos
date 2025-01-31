@@ -13,11 +13,11 @@
         "python-updates": "python-updates"
       },
       "locked": {
-        "lastModified": 1738200099,
-        "narHash": "sha256-9Gk20xBKYUBsvWE5n/FcsNGtShFrkj0BCvdQ9l8tYMk=",
+        "lastModified": 1738285346,
+        "narHash": "sha256-DO9VuBiRpX3Ni9X3e+Gn3RgCgrMOsZF6Od4Z0ER+qyY=",
         "owner": "nix-community",
         "repo": "autofirma-nix",
-        "rev": "0017e7ec8b008adbc487d9fa5a099d27c6fbb16b",
+        "rev": "9eae74b4fb266f03ece0269b9584dea33d00f707",
         "type": "github"
       },
       "original": {
@@ -481,11 +481,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1738276392,
-        "narHash": "sha256-bNicGzIvfGfsSts/Q/4ajtMQpalMQN0NUUGGmE/CuFA=",
+        "lastModified": 1738278499,
+        "narHash": "sha256-q1SUyXSQ9znHTME53/vPLe+Ga3V1wW3X3gWfa8JsBUM=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "d9df2b4200ba53a0944c3d2c6d242095e523d3d9",
+        "rev": "b00c9f46ae6c27074d24d2db390f0ac5ebcc329f",
         "type": "github"
       },
       "original": {
