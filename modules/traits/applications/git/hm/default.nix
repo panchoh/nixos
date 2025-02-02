@@ -17,6 +17,7 @@ in {
       diffoscope
       git-doc
       git-dive
+      git-town
       gitg
       gti
       gitui
