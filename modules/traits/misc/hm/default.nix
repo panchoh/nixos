@@ -42,6 +42,7 @@ in {
         wget2
         xh
         restish
+        slumber
 
         moreutils
         yq-go
