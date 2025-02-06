@@ -1,8 +1,6 @@
 {
   config,
   lib,
-  pkgs,
-  box ? null,
   ...
 }: let
   cfg = config.traits.os.minecraft;

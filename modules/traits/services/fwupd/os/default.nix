@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  box ? null,
   ...
 }: let
   cfg = config.traits.os.fwupd;
