@@ -18,9 +18,7 @@ in {
 
   options = {
     programs.google-chrome = {
-      enable = lib.mkEnableOption "the {command}`google-chrome` web browser";
-
-      package = lib.mkPackageOption pkgs "google-chrome" {};
+      enable = lib.mkEnableOption "policies for the Google Chrome web browser";
 
       enablePlasmaBrowserIntegration = lib.mkEnableOption "Native Messaging Host for Plasma Browser Integration";
 
@@ -29,10 +27,10 @@ in {
       extensions = lib.mkOption {
         type = with lib.types; nullOr (listOf str);
         description = ''
-          List of chrome extensions to install.
+          List of Google Chrome extensions to install.
           For list of plugins ids see id in url of extensions on
           [chrome web store](https://chrome.google.com/webstore/category/extensions)
-          page. To install a chrome extension not included in the chrome web
+          page. To install a Google Chrome extension not included in the chrome web
           store, append to the extension id a semicolon ";" followed by a URL
           pointing to an Update Manifest XML file. See
           [ExtensionInstallForcelist](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=ExtensionInstallForcelist)
@@ -122,12 +120,10 @@ in {
 
   ###### implementation
 
-  config = lib.mkIf cfg.enable {
-    environment.etc = {
+  config = {
+    environment.etc = lib.mkIf cfg.enable {
       # for google-chrome https://www.chromium.org/administrators/linux-quick-start
-      "opt/chrome/native-messaging-hosts/org.kde.plasma.browser_integration.json" =
-        lib.mkIf cfg.enablePlasmaBrowserIntegration
-        {source = "${cfg.plasmaBrowserIntegrationPackage}/etc/opt/chrome/native-messaging-hosts/org.kde.plasma.browser_integration.json";};
+      "opt/chrome/native-messaging-hosts/org.kde.plasma.browser_integration.json" = lib.mkIf cfg.enablePlasmaBrowserIntegration {source = "${cfg.plasmaBrowserIntegrationPackage}/etc/opt/chrome/native-messaging-hosts/org.kde.plasma.browser_integration.json";};
       "opt/chrome/policies/managed/default.json" = lib.mkIf (defaultProfile != {}) {text = builtins.toJSON defaultProfile;};
       "opt/chrome/policies/managed/extra.json" = lib.mkIf (cfg.extraOpts != {}) {text = builtins.toJSON cfg.extraOpts;};
     };

@@ -18,9 +18,7 @@ in {
 
   options = {
     programs.chromium = {
-      enable = lib.mkEnableOption "the {command}`chromium` web browser";
-
-      package = lib.mkPackageOption pkgs "chromium" {};
+      enable = lib.mkEnableOption "policies for Chromium and Brave";
 
       enablePlasmaBrowserIntegration = lib.mkEnableOption "Native Messaging Host for Plasma Browser Integration";
 
@@ -122,12 +120,10 @@ in {
 
   ###### implementation
 
-  config = lib.mkIf cfg.enable {
-    environment.etc = {
+  config = {
+    environment.etc = lib.mkIf cfg.enable {
       # for chromium
-      "chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json" =
-        lib.mkIf cfg.enablePlasmaBrowserIntegration
-        {source = "${cfg.plasmaBrowserIntegrationPackage}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";};
+      "chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json" = lib.mkIf cfg.enablePlasmaBrowserIntegration {source = "${cfg.plasmaBrowserIntegrationPackage}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";};
       "chromium/policies/managed/default.json" = lib.mkIf (defaultProfile != {}) {text = builtins.toJSON defaultProfile;};
       "chromium/policies/managed/extra.json" = lib.mkIf (cfg.extraOpts != {}) {text = builtins.toJSON cfg.extraOpts;};
       "chromium/initial_preferences" = lib.mkIf (cfg.initialPrefs != {}) {text = builtins.toJSON cfg.initialPrefs;};
