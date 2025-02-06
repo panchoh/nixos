@@ -18,7 +18,7 @@ in {
       crawl
       sl
       neofetch
-      hyperrogue
+      # hyperrogue
       notcurses
       torus-trooper
 
