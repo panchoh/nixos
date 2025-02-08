@@ -14,7 +14,8 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       bvi
-      diffoscope
+      # TODO: uncomment when fixed on nixpkgs
+      # diffoscope
       git-doc
       git-dive
       git-town
