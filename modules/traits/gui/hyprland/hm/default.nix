@@ -173,7 +173,7 @@ in {
 
         misc = {
           # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
-          disable_hyprland_logo = false;
+          disable_hyprland_logo = true;
           disable_splash_rendering = true;
           force_default_wallpaper = 2;
 
