@@ -24,6 +24,9 @@
     stylix.inputs.home-manager.follows = "home-manager";
     autofirma-nix.url = "github:nix-community/autofirma-nix";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  inputs = {
     vmtools.url = "github:4km3/vmtools";
     vmtools.flake = false;
     kubelab.url = "github:4km3/kubelab";
