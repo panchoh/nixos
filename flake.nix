@@ -24,6 +24,7 @@
     stylix.inputs.home-manager.follows = "home-manager";
     autofirma-nix.url = "github:nix-community/autofirma-nix";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
+    autofirma-nix.inputs.home-manager.follows = "home-manager";
   };
 
   inputs = {
