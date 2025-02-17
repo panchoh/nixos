@@ -7,10 +7,8 @@
 }: let
   cfg = config.traits.os.chromium;
 in {
-  imports = [
-    {disabledModules = [(modulesPath + "/programs/chromium.nix")];}
-    ./chromium.nix
-  ];
+  disabledModules = [(modulesPath + "/programs/chromium.nix")];
+  imports = [./chromium.nix];
 
   options.traits.os.chromium = {
     enable = lib.mkEnableOption "chromium" // {default = box.isStation or false;};
