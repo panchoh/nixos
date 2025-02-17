@@ -90,6 +90,8 @@ in {
         asciinema-agg
         asciinema-scenario
 
+        bgnet
+
         v4l-utils
         graphviz
         ffmpeg
