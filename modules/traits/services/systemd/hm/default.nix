@@ -14,6 +14,7 @@ in {
     systemd.user.startServices = "sd-switch";
 
     home.packages = [
+      pkgs.isd
       pkgs.systemctl-tui
     ];
   };
