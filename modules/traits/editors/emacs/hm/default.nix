@@ -87,6 +87,10 @@ in {
       deadnix
       alejandra
 
+      nixpkgs-review
+      nix-output-monitor
+      nix-fast-build
+
       # FIXME: Hack until Doom Emacs can handle `nix fmt` directly
       #
       # Doom Emacs leverages nix-mode.el, which can be tweaked to use a
