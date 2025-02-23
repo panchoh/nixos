@@ -17,6 +17,9 @@ in {
       installBatSyntax = true;
       settings = {
         window-decoration = false;
+        cursor-style = "block";
+        cursor-style-blink = false;
+        shell-integration-features = "no-cursor";
       };
     };
   };
