@@ -35,11 +35,6 @@ in {
       # Either image or base16Scheme is required
       base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
-      image = pkgs.fetchurl {
-        url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
-        hash = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
-      };
-
       homeManagerIntegration = {
         followSystem = true;
         autoImport = true;
