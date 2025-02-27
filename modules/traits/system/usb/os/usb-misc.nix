@@ -46,6 +46,13 @@ in {
             ATTR{bInterfaceClass}=="01",       \
             ATTR{authorized}="0"
 
+          # Logitech Brio 100 FullHD Webcam
+          SUBSYSTEM=="video4linux",            \
+            KERNEL=="video[0-9]*",             \
+            ATTRS{product}=="Brio 100",        \
+            ATTR{index}=="0",                  \
+            RUN+="${pkgs.v4l-utils}/bin/v4l2-ctl -d '$devnode' --set-ctrl=power_line_frequency=1 --set-ctrl=saturation=100"
+
           # Logitech C505e HD Webcam
           SUBSYSTEM=="video4linux",            \
             KERNEL=="video[0-9]*",             \
