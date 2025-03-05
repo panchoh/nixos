@@ -57,7 +57,7 @@ in {
             | ${lib.getExe pkgs.interception-tools-plugins.dual-function-keys} -c /etc/interception/dual-function-keys/thinkpad.yaml
             | ${lib.getExe' pkgs.interception-tools "uinput"} -d $DEVNODE
           DEVICE:
-            NAME: (AT Translated Set 2 keyboard|Logitech K400 Plus)
+            NAME: (AT Translated Set 2 keyboard|Logitech USB Receiver|Logitech K400 Plus)
             EVENTS:
               EV_KEY: [KEY_CAPSLOCK,KEY_LEFTSHIFT,KEY_RIGHTSHIFT]
         - JOB: >-

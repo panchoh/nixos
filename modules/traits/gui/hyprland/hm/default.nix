@@ -126,6 +126,11 @@ in {
           }
 
           {
+            name = "logitech-usb-receiver-2";
+            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
+          }
+
+          {
             name = "logitech-k400-plus-2";
             kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
