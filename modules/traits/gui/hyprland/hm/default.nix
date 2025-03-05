@@ -48,6 +48,7 @@ in {
       wev
       xkeyboard_config
       libxkbcommon # for xkbcli interactive-wayland
+      libinput # for libinput list-devices
       wtype
     ];
 
