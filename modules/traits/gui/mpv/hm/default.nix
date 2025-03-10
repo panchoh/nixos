@@ -35,7 +35,6 @@ in {
         vo = "gpu-next";
         gpu-api = "vulkan";
         gpu-context = "waylandvk";
-        sub-font = "Iosevka Europa";
 
         # https://github.com/mpv-player/mpv/issues/8981
         hdr-compute-peak = false;
