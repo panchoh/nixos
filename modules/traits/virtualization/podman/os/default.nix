@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }: let
   cfg = config.traits.os.podman;
@@ -15,6 +16,8 @@ in {
       dive
       podman-tui
       podman-compose
+    ] ++ lib.optionals (box.isStation or false) [
+      podman-desktop
     ];
 
     virtualisation = {
