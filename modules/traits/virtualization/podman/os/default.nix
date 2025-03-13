@@ -15,6 +15,8 @@ in {
       dive
       podman-tui
       podman-compose
+    ] ++ lib.optionals (box.isStation or false) [
+      podman-desktop
     ];
 
     virtualisation = {
