@@ -18,9 +18,11 @@ in {
       crawl
       sl
       neofetch
+      # TODO: uncomment when fixed
       # hyperrogue
       notcurses
-      torus-trooper
+      # TODO: uncomment when fixed
+      # torus-trooper
 
       figlet
       toilet
