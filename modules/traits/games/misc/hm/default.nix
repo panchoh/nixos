@@ -14,6 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       abuse
+      beneath-a-steel-sky
       bb
       crawl
       sl
