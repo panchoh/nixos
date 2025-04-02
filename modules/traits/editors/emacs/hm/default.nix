@@ -55,6 +55,7 @@ in {
 
       findutils
       coreutils
+      ddate
       fd
       shfmt
       shellcheck
