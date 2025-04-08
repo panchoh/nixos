@@ -17,6 +17,9 @@ in {
         "nix"
       ];
       userSettings = {
+        auto_update = false;
+        autosave = "on_focus_change";
+        always_treat_brackets_as_autoclosed = true;
         features = {
           copilot = false;
         };
@@ -26,6 +29,8 @@ in {
         vim_mode = true;
         ui_font_size = lib.mkForce 16;
         buffer_font_size = lib.mkForce 16;
+        # lsp.gopls.formatting.gofumpt = true;
+        lsp.gopls.initialization_options.gofumpt = true;
       };
     };
   };
