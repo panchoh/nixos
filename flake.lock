@@ -15,11 +15,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1744172791,
-        "narHash": "sha256-hwccXg/iMQM29Cl99t4PQY91ZVFcPn0xvUKD3sj4vqg=",
+        "lastModified": 1744259092,
+        "narHash": "sha256-xUSPMvDHrC61xvfNVizRgtAJ++UqrCbe45hvKx1x67g=",
         "owner": "nix-community",
         "repo": "autofirma-nix",
-        "rev": "2e4b4c24330e37dc93b2a487116c71a0d4f85fe7",
+        "rev": "e36242ecec0665bfb73c1b4ccf7b360eb3e714db",
         "type": "github"
       },
       "original": {
@@ -519,11 +519,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1744196911,
-        "narHash": "sha256-zzkDmUG04/1ALtUOoZNGkrtjjId8RbM38zlpYFtgXVs=",
+        "lastModified": 1744270948,
+        "narHash": "sha256-+1psY8uBaDdkqV/P3G40SzulPvUcb9VHisqQnDozC0U=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "31fdf60634beaa0bb14fa57fc64cd5a67d1bf101",
+        "rev": "ce45f19e8acb43e5f02888d873d451e2f994546b",
         "type": "github"
       },
       "original": {
