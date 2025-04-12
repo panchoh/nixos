@@ -83,8 +83,11 @@ in {
 
         whois
 
-        pdftk
+        pdf4qt
         pdfchain
+        pdfcpu
+        pdfgrep
+        pdftk
 
         asciinema
         asciinema-agg
