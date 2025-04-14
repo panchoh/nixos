@@ -93,18 +93,15 @@ in {
         # AltGr-Shift-Space: thin non-breaking space
         # Shift-AltGr: compose
         # Caps: Ye'Olde Caps
-        # Alt-Caps: group switch
-        #
-        # TODO: reply here that grp:alt_caps_toggle does the job
-        # https://unix.stackexchange.com/questions/589075/using-both-ctrlswapcaps-and-grpcaps-toggle-with-setxkbmap
+        # Right Control: group switch
 
         device = map (overrides:
           {
             name = "unnamed-keyboard";
             kb_model = "pc104";
             kb_layout = "us,us";
-            kb_variant = "altgr-intl,dvorak-alt-intl";
-            kb_options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
+            kb_variant = "altgr-intl,colemak_dh";
+            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
           // overrides) [
           {
@@ -123,17 +120,14 @@ in {
           {
             name = "at-translated-set-2-keyboard-1";
             kb_model = "thinkpad";
-            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
             name = "logitech-usb-receiver-2";
-            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
 
           {
             name = "logitech-k400-plus-2";
-            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
           }
         ];
 

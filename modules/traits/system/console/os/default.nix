@@ -15,7 +15,7 @@ in {
     services.xserver.xkb = {
       model = "pc104";
       layout = "us,us";
-      variant = "altgr-intl,dvorak-alt-intl";
+      variant = "altgr-intl,colemak_dh";
       options = "lv3:ralt_switch_multikey,grp:alt_caps_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
     };
 
