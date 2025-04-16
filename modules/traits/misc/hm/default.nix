@@ -111,6 +111,7 @@ in {
         dissent
         # nheko
         fractal
+        session-desktop
 
         # Editors
         lapce
