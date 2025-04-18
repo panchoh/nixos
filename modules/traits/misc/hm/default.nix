@@ -121,7 +121,8 @@ in {
         transmission_4-gtk
         wormhole-william
 
-        stellarium
+        # TODO: uncomment when build gets fixed
+        # stellarium
         celestia
       ];
   };
