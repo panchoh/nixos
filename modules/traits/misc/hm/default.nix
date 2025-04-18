@@ -93,6 +93,8 @@ in {
         asciinema-agg
         asciinema-scenario
 
+        pinact
+
         bgnet
 
         v4l-utils
