@@ -183,7 +183,7 @@ in {
 
           enable_swallow = true;
           swallow_regex = "^foot$";
-          swallow_exception_regex = "^wev .*$";
+          swallow_exception_regex = "^(.* *\.tex|wev.*|xkbcli.*)$";
 
           # https://github.com/hyprwm/Hyprland/issues/3073
           focus_on_activate = true;
