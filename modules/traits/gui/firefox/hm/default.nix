@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  stylix,
   box ? null,
   ...
 }: let
@@ -15,6 +16,9 @@ in {
     home.sessionVariables = {
       MOZ_USE_XINPUT2 = "1";
     };
+
+    # https://stylix.danth.me/options/modules/firefox.html?highlight=firefox#firefox-and-its-derivatives
+    stylix.targets.firefox.profileNames = ["default"];
 
     # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
