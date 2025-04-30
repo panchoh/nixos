@@ -43,7 +43,7 @@ in {
       maxCacheTtl = 1;
       maxCacheTtlSsh = 1;
       enableSshSupport = true;
-      pinentryPackage = pkgs.wayprompt;
+      pinentry.package = pkgs.wayprompt;
       extraConfig = ''
         no-allow-loopback-pinentry
       '';
