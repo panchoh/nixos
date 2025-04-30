@@ -97,6 +97,8 @@ in {
 
         bgnet
 
+        flac
+
         v4l-utils
         graphviz
         ffmpeg
