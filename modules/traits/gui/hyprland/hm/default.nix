@@ -7,13 +7,6 @@
   ...
 }: let
   cfg = config.traits.hm.hyprland;
-
-  foot = lib.getExe config.programs.foot.package;
-  hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
-  emacs = lib.getExe config.programs.emacs.finalPackage;
-  emacsclient = lib.getExe' config.programs.emacs.finalPackage "emacsclient";
-  fuzzel = lib.getExe pkgs.fuzzel;
-  makoctl = lib.getExe' pkgs.mako "makoctl";
 in {
   options.traits.hm.hyprland = {
     enable = lib.mkEnableOption "hyprland" // {default = box.isStation or false;};
@@ -27,8 +20,8 @@ in {
         listener = [
           {
             timeout = 300;
-            on-timeout = "${hyprctl} dispatch dpms off";
-            on-resume = "${hyprctl} dispatch dpms on";
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
           }
         ];
       };
@@ -207,9 +200,9 @@ in {
         ];
 
         bind = [
-          "SUPER SHIFT, Return, exec, ${foot}"
-          "SUPER,       E,      exec, ${emacs}"
-          "SUPER SHIFT, E,      exec, ${emacsclient} --no-wait --reuse-frame"
+          "SUPER SHIFT, Return, exec, foot"
+          "SUPER,       E,      exec, emacs"
+          "SUPER SHIFT, E,      exec, emacsclient --no-wait --reuse-frame"
           "SUPER,       slash,  exec, chromium"
           "SUPER SHIFT, slash,  exec, google-chrome-stable"
 
@@ -302,11 +295,11 @@ in {
 
           # Start fuzzel opens fuzzel on first press, closes it on second
           # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
-          "SUPER, P, exec, ${fuzzel}"
+          "SUPER, P, exec, fuzzel"
 
           # Handle notifications
-          "SUPER,       Escape, exec, ${makoctl} dismiss"
-          "SUPER SHIFT, Escape, exec, ${makoctl} dismiss --all"
+          "SUPER,       Escape, exec, makoctl dismiss"
+          "SUPER SHIFT, Escape, exec, makoctl dismiss --all"
 
           # Screenshots
           # "SUPER,       P, exec, grimblast save active"
