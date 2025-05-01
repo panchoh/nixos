@@ -94,7 +94,7 @@ in {
             kb_model = "pc104";
             kb_layout = "us,us";
             kb_variant = "altgr-intl,colemak_dh";
-            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n,terminate:ctrl_alt_bksp";
+            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n";
           }
           // overrides) [
           {
@@ -206,8 +206,6 @@ in {
           "SUPER,       slash,  exec, chromium"
           "SUPER SHIFT, slash,  exec, google-chrome-stable"
 
-          # TODO: debug why the Terminate_Server symbol is not honored
-          # ", Terminate_Server, exit,"
           "CONTROL ALT, BackSpace, exit,"
 
           "SUPER,       Q, forcerendererreload,"
