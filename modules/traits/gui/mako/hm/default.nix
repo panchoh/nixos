@@ -13,7 +13,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.mako = {
       enable = true;
-      borderRadius = 5;
+      settings.borderRadius = "5";
     };
   };
 }
