@@ -33,8 +33,6 @@ in {
           "nix-command"
           "flakes"
         ];
-        # https://github.com/NixOS/nix/issues/9574
-        nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
       };
 
       gc = {
