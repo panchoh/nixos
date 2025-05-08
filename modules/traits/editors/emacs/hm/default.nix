@@ -75,6 +75,8 @@ in {
       zig
       zls
 
+      graphviz
+
       pyright
 
       marksman # markdown language server
