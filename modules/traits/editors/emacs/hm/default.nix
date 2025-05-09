@@ -29,7 +29,7 @@ in {
         rmdir --ignore-fail-on-non-empty "${doomCfgDir}"
         if [[ ! -d "${doomCfgDir}" ]]; then
           verboseEcho Cloning Doom Emacs config
-          PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG git@github.com:panchoh/dotconfig-doom.git "${doomCfgDir}"
+          PATH="${config.home.path}/bin:$PATH" run git clone $VERBOSE_ARG git@github.com:panchoh/doom.git "${doomCfgDir}"
 
           # FIXME: this takes more than 5 mins, and thus the home manager activation service times out
           # See home-manager/nixos/default.nix and look for TimeoutStartSec there.
