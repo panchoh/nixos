@@ -372,6 +372,8 @@ in {
         layerrule = [
           "xray 1,    launcher"
           "dimaround, launcher"
+          "xray 1,    wayprompt"
+          "dimaround, wayprompt"
         ];
       };
 
