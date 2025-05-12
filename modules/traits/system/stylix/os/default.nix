@@ -40,6 +40,8 @@ in {
         autoImport = true;
       };
 
+      opacity.popups = 0.80;
+
       fonts = {
         serif = {
           name = "Iosevka Comfy Motion";
