@@ -85,6 +85,9 @@ in {
 
       dockfmt
 
+      bash-language-server
+      yaml-language-server
+
       nil # nix language server
       nixd
       deadnix
