@@ -85,6 +85,8 @@ in {
 
       dockfmt
 
+      semgrep
+
       bash-language-server
       yaml-language-server
 
