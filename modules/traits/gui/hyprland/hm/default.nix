@@ -185,8 +185,7 @@ in {
         # https://github.com/hyprwm/Hyprland/pull/352/files
         binds = {
           workspace_back_and_forth = false;
-          # TODO: uncomment when next release lands
-          # hide_special_on_workspace_change = true;
+          hide_special_on_workspace_change = true;
           allow_workspace_cycles = true;
           workspace_center_on = 1;
         };
