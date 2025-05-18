@@ -15,11 +15,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747455920,
-        "narHash": "sha256-vVXxXft5q/7uE07iupgDqcOcvB5e3sJMcbKEa76vqKY=",
+        "lastModified": 1747542852,
+        "narHash": "sha256-OXtr0OGQEzyCZJBCzLWIQv/QXS2CmK9nffuAzcgeQHw=",
         "owner": "nix-community",
         "repo": "autofirma-nix",
-        "rev": "391f19d231738edc9a3b448effced79297b28441",
+        "rev": "999876e28d8e65b407eb6afffb57a40aeb443965",
         "type": "github"
       },
       "original": {
@@ -289,16 +289,16 @@
     "gnome-shell": {
       "flake": false,
       "locked": {
-        "lastModified": 1732369855,
-        "narHash": "sha256-JhUWbcYPjHO3Xs3x9/Z9RuqXbcp5yhPluGjwsdE2GMg=",
+        "lastModified": 1744584021,
+        "narHash": "sha256-0RJ4mJzf+klKF4Fuoc8VN8dpQQtZnKksFmR2jhWE1Ew=",
         "owner": "GNOME",
         "repo": "gnome-shell",
-        "rev": "dadd58f630eeea41d645ee225a63f719390829dc",
+        "rev": "52c517c8f6c199a1d6f5118fae500ef69ea845ae",
         "type": "github"
       },
       "original": {
         "owner": "GNOME",
-        "ref": "47.2",
+        "ref": "48.1",
         "repo": "gnome-shell",
         "type": "github"
       }
@@ -310,11 +310,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747439237,
-        "narHash": "sha256-5rCGrnkglKKj4cav1U3HC+SIUNJh08pqOK4spQv9RjA=",
+        "lastModified": 1747565775,
+        "narHash": "sha256-B6jmKHUEX1jxxcdoYHl7RVaeohtAVup8o3nuVkzkloA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ae755329092c87369b9e9a1510a8cf1ce2b1c708",
+        "rev": "97118a310eb8e13bc1b9b12d67267e55b7bee6c8",
         "type": "github"
       },
       "original": {
@@ -500,11 +500,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1747542249,
-        "narHash": "sha256-mcfUioIYXDQ0tfM5JaabyJKnz61qd1fefjdu3dvd/Bg=",
+        "lastModified": 1747578370,
+        "narHash": "sha256-7pk8quDMQcGIVmm7KXMQLI5CbfamwPv/vO20cTcT/wI=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "54628294614355a4d6fb9c31c7c8684a3ed84385",
+        "rev": "2eaa338eb879b8432f7e252d6ab8725ada98f52d",
         "type": "github"
       },
       "original": {
