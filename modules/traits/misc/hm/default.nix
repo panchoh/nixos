@@ -100,6 +100,7 @@ in {
         flac
 
         v4l-utils
+        libation
         ffmpeg
         vlc
         mkvtoolnix
