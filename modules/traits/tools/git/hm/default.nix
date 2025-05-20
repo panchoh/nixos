@@ -33,7 +33,7 @@ in {
       userName = box.userDesc or "Alice Q. User";
       userEmail = box.userEmail or "alice@example.org";
       extraConfig = {
-        init.defaultBranch = "main";
+        init.defaultBranch = "master";
         merge.conflictStyle = "zdiff3";
         github.user = box.githubUser or "aliceq";
       };
