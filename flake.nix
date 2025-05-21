@@ -2,6 +2,7 @@
   description = "Nix is love.  Nix is life.  But Nix is also… snow.";
 
   nixConfig = {
+    abort-on-warn = true;
     commit-lockfile-summary = "chore(flake): bump";
 
     extra-substituters = [
