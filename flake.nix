@@ -26,6 +26,9 @@
     autofirma-nix.url = "github:nix-community/autofirma-nix";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.inputs.home-manager.follows = "home-manager";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-overlay.inputs.nixpkgs-stable.follows = "nixpkgs";
   };
 
   inputs = {
