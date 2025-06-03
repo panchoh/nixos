@@ -77,6 +77,9 @@ in {
         fx
       ]
       ++ lib.optionals (box.isStation or false) [
+        ddrescue
+        ddrescueview
+
         hwatch
 
         recode
