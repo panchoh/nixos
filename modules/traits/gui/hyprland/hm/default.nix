@@ -274,10 +274,10 @@ in {
           # Select / Move to scratchpads
           "SUPER SHIFT, grave, movetoworkspacesilent,  special"
           "SUPER,       grave, togglespecialworkspace"
-          "SUPER SHIFT, Minus, movetoworkspacesilent,  special:s1"
-          "SUPER,       Minus, togglespecialworkspace,         s1"
-          "SUPER SHIFT, Equal, movetoworkspacesilent,  special:s2"
-          "SUPER,       Equal, togglespecialworkspace,         s2"
+          "SUPER SHIFT, Minus, movetoworkspacesilent,  special:Telegram"
+          "SUPER,       Minus, togglespecialworkspace,         Telegram"
+          "SUPER SHIFT, Equal, movetoworkspacesilent,  special:Transmission"
+          "SUPER,       Equal, togglespecialworkspace,         Transmission"
 
           # Simulate “iconify”
           "SUPER,       W,     togglespecialworkspace,         magic"
@@ -339,16 +339,17 @@ in {
         # Smart gaps (old no_gaps_when_only)
         # https://wiki.hyprland.org/Configuring/Workspace-Rules/#smart-gaps
         workspace = [
-          "w[tv1] s[false],  gapsout:0, gapsin:0"
-          "f[1] s[false],    gapsout:0, gapsin:0"
-          "s[true],          gapsout:100, gapsin:50"
+          "w[tv1] s[false], gapsout:0,   gapsin:0"
+          "f[1] s[false],   gapsout:0,   gapsin:0"
+          "s[true],         gapsout:100, gapsin:50"
 
-          "1,               on-created-empty:emacs"
-          "2,               on-created-empty:chromium"
-          "3,               on-created-empty:google-chrome-stable"
-          "special:special, on-created-empty:foot"
-          "special:s1,      on-created-empty:telegram-desktop"
-          "special:s2,      on-created-empty:transmission-gtk"
+          "1,               defaultName:Emacs,    on-created-empty: emacs"
+          "2,               defaultName:Chromium, on-created-empty:[float] chromium"
+          "3,               defaultName:Chrome,   on-created-empty: google-chrome-stable"
+          "4,               defaultName:Firefox,  on-created-empty: firefox"
+          "special:special,                       on-created-empty: foot"
+          "special:Telegram,                      on-created-empty: telegram-desktop"
+          "special:Transmission,                  on-created-empty: transmission-gtk"
         ];
 
         windowrulev2 = [
@@ -357,15 +358,15 @@ in {
           "bordersize 0, floating:0, onworkspace:f[1] s[false]"
           "rounding 0,   floating:0, onworkspace:f[1] s[false]"
 
-          "float,                       class:^(org.telegram.desktop)$, title:^(Media viewer)$"
-          "workspace special:s1 silent, class:^(org.telegram.desktop)$"
-          "workspace special:s2 silent, class:^(transmission-gtk)$, title:^(Transmission)$"
-          "center,                      class:^(transmission-gtk)$, title:^(Torrent Options)$"
+          "float,                                 class:^(org.telegram.desktop)$, title:^(Media viewer)$"
+          "workspace special:Telegram silent,     class:^(org.telegram.desktop)$"
+          "workspace special:Transmission silent, class:^(transmission-gtk)$, title:^(Transmission)$"
+          "center,                                class:^(transmission-gtk)$, title:^(Torrent Options)$"
 
-          "noanim 1,                    class:^(gcr-prompter)$"
-          "xray 1,                      class:^(gcr-prompter)$"
-          "dimaround 1,                 class:^(gcr-prompter)$"
-          "stayfocused,                 class:^(gcr-prompter)$"
+          "noanim 1,                              class:^(gcr-prompter)$"
+          "xray 1,                                class:^(gcr-prompter)$"
+          "dimaround 1,                           class:^(gcr-prompter)$"
+          "stayfocused,                           class:^(gcr-prompter)$"
         ];
 
         layerrule = [
@@ -385,17 +386,21 @@ in {
         # Resize submap
         bind = SUPER, R, submap, resize
         submap = resize
-          bind  = SUPER, R,      submap, reset
-          bind  =      , Escape, submap, reset
-          bind  =      , Return, submap, reset
-          binde =      , L,      resizeactive,    5    0
-          binde =      , H,      resizeactive,   -5    0
-          binde =      , K,      resizeactive,    0   -5
-          binde =      , J,      resizeactive,    0    5
-          binde = SHIFT, L,      resizeactive,  100    0
-          binde = SHIFT, H,      resizeactive, -100    0
-          binde = SHIFT, K,      resizeactive,    0 -100
-          binde = SHIFT, J,      resizeactive,    0  100
+          bind  = SUPER  , R,      submap, reset
+          bind  =        , Escape, submap, reset
+          bind  =        , Return, submap, reset
+          binde = CONTROL, L,      resizeactive,    1    0
+          binde = CONTROL, H,      resizeactive,   -1    0
+          binde = CONTROL, K,      resizeactive,    0   -1
+          binde = CONTROL, J,      resizeactive,    0    1
+          binde =        , L,      resizeactive,    8    0
+          binde =        , H,      resizeactive,   -8    0
+          binde =        , K,      resizeactive,    0   -8
+          binde =        , J,      resizeactive,    0    8
+          binde = SHIFT  , L,      resizeactive,  128    0
+          binde = SHIFT  , H,      resizeactive, -128    0
+          binde = SHIFT  , K,      resizeactive,    0 -128
+          binde = SHIFT  , J,      resizeactive,    0  128
         submap = reset
       '';
     };
