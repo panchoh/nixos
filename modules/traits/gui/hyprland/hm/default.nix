@@ -234,10 +234,10 @@ in {
           "SUPER,       Tab,          layoutmsg, cyclenext"
           "SUPER,       K,            layoutmsg, cycleprev"
           "SUPER SHIFT, Tab,          layoutmsg, cycleprev"
-          "SUPER,       H,            layoutmsg, mfact +0.05"
-          "SUPER SHIFT, H,            layoutmsg, mfact +0.2"
-          "SUPER,       L,            layoutmsg, mfact -0.05"
-          "SUPER SHIFT, L,            layoutmsg, mfact -0.2"
+          "SUPER,       H,            layoutmsg, mfact -0.05"
+          "SUPER SHIFT, H,            layoutmsg, mfact -0.2"
+          "SUPER,       L,            layoutmsg, mfact +0.05"
+          "SUPER SHIFT, L,            layoutmsg, mfact +0.2"
 
           # Switch workspaces with SUPER + [0-9]
           "SUPER, 1, workspace,  1"
