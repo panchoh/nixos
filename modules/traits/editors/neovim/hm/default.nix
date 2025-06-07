@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  nixvim,
   pkgs,
   osConfig,
   ...
@@ -9,19 +10,78 @@
   size = osConfig.stylix.fonts.sizes.terminal * 1.0;
   font = osConfig.stylix.fonts.sansSerif.name;
 in {
+  imports = [
+    nixvim.homeModules.nixvim
+  ];
+
   options.traits.hm.neovim = {
     enable = lib.mkEnableOption "neovim" // {default = true;};
   };
 
+  # TODO: Import config from https://github.com/GaetanLepage/nix-config/blob/master/home/modules/tui/neovim/options.nix
   config = lib.mkIf cfg.enable {
-    programs.neovim = {
+    programs.nixvim = {
       enable = true;
-      vimdiffAlias = true;
-      extraPackages = [
-        pkgs.shfmt
-        pkgs.vimPlugins.vim-nix
-      ];
-      extraLuaConfig = ''
+      nixpkgs.useGlobalPackages = true;
+
+      viAlias = true;
+      vimAlias = true;
+
+      plugins.lualine.enable = true;
+
+      performance.byteCompileLua.enable = true;
+
+      luaLoader.enable = true;
+
+      opts = {
+        updatetime = 100; # Faster completion
+        spell = false;
+      };
+
+      plugins = {
+        cmp.enable = true;
+
+        nix.enable = true;
+
+        lsp = {
+          enable = true;
+          inlayHints = true;
+        };
+
+        efmls-configs = {
+          enable = true;
+          setup = {
+            bash = {
+              formatter = "shfmt";
+              linter = "shellcheck";
+            };
+          };
+        };
+
+        treesitter = {
+          enable = true;
+
+          nixvimInjections = true;
+
+          settings = {
+            highlight.enable = true;
+            indent.enable = true;
+          };
+        };
+
+        treesitter-refactor = {
+          enable = true;
+          highlightDefinitions = {
+            enable = true;
+            # Set to false if you have an `updatetime` of ~100.
+            clearOnCursorMove = false;
+          };
+        };
+
+        hmts.enable = true;
+      };
+
+      extraConfigLua = ''
         if vim.g.neovide then
           -- Put anything you want to happen only in Neovide here
           -- https://neovide.dev/configuration.html#cursor-particles
@@ -37,7 +97,6 @@ in {
         frame = "full";
         idle = true;
         maximized = false;
-        neovim-bin = lib.getExe config.programs.neovim.finalPackage;
         no-multigrid = false;
         srgb = false;
         tabs = false;
