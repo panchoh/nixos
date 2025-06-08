@@ -12,6 +12,11 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = [
+      # For notify-send, used by programs.foot.settings.desktop-notifications.command’s default value
+      pkgs.libnotify
+    ];
+
     programs.foot = {
       enable = true;
       settings = {
@@ -22,9 +27,6 @@ in {
           urgent = true;
           notify = true;
           visual = true;
-        };
-        desktop-notifications = {
-          command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
         };
         mouse = {
           hide-when-typing = true;
