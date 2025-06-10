@@ -3,12 +3,9 @@
   lib,
   nixvim,
   pkgs,
-  osConfig,
   ...
 }: let
   cfg = config.traits.hm.neovim;
-  size = osConfig.stylix.fonts.sizes.terminal * 1.0;
-  font = osConfig.stylix.fonts.sansSerif.name;
 in {
   imports = [
     nixvim.homeModules.nixvim
@@ -104,11 +101,6 @@ in {
         title-hidden = true;
         vsync = true;
         wsl = false;
-
-        font = {
-          inherit size;
-          normal = [font];
-        };
       };
     };
   };
