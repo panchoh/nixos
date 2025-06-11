@@ -17,8 +17,8 @@ in {
           src = final.fetchFromGitHub {
             owner = "panchoh";
             repo = "wayprompt";
-            rev = "a87ff0db228542f8964250a91136eb9e053274a";
-            hash = "sha256-2dYPZGxb9TjKharSZYDM2lVSYz0UUxCki64hAyQdoac=";
+            rev = "982058c87ad907894717d40e59cd2ce7c3a5a7c7";
+            hash = "sha256-2i9bDzd5NnMMRD4BWoRWDNwnKEPPRmpFtYyIYn21YS4=";
           };
         });
       })
