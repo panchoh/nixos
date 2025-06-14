@@ -28,7 +28,6 @@ in {
       yubico-piv-tool
       yubikey-manager
       yubikey-personalization
-      yubikey-personalization-gui
       yubikey-touch-detector
       yubioath-flutter
     ];
