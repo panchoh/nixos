@@ -348,7 +348,7 @@ in {
           "3,               defaultName:Chrome,   on-created-empty: google-chrome-stable"
           "4,               defaultName:Firefox,  on-created-empty: firefox"
           "special:special,                       on-created-empty: foot"
-          "special:Telegram,                      on-created-empty: telegram-desktop"
+          "special:Telegram,                      on-created-empty: Telegram"
           "special:Transmission,                  on-created-empty: transmission-gtk"
         ];
 
