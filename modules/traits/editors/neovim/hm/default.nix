@@ -84,8 +84,12 @@ in {
           -- https://neovide.dev/configuration.html#cursor-particles
           vim.g.neovide_cursor_vfx_mode = "pixiedust"
         end
+
+        require("disable_keys").setup()
       '';
     };
+
+    home.file.".config/nvim/lua/disable_keys.lua".source = ./disable_keys.lua;
 
     programs.neovide = {
       enable = true;
