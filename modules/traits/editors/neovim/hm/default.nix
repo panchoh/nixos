@@ -9,6 +9,7 @@ in {
   imports = [
     nixvim.homeModules.nixvim
     ./disable_keys.nix
+    ./neovide.nix
   ];
 
   options.traits.hm.neovim = {
