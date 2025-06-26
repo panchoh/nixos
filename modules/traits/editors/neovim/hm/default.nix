@@ -8,6 +8,7 @@
 in {
   imports = [
     nixvim.homeModules.nixvim
+    ./disable_keys.nix
   ];
 
   options.traits.hm.neovim = {
@@ -83,8 +84,6 @@ in {
           -- https://neovide.dev/configuration.html#cursor-particles
           vim.g.neovide_cursor_vfx_mode = "pixiedust"
         end
-
-        require("disable_keys").setup()
       '';
     };
 
