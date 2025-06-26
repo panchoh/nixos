@@ -89,7 +89,7 @@ in {
       '';
     };
 
-    home.file.".config/nvim/lua/disable_keys.lua".source = ./disable_keys.lua;
+    xdg.configFile."nvim/lua/disable_keys.lua".source = ./disable_keys.lua;
 
     programs.neovide = {
       enable = true;
