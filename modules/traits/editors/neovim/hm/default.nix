@@ -2,7 +2,6 @@
   config,
   lib,
   nixvim,
-  pkgs,
   ...
 }: let
   cfg = config.traits.hm.neovim;
