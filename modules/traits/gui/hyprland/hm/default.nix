@@ -200,7 +200,7 @@ in {
 
         bind = [
           "SUPER SHIFT, Return, exec, foot"
-          "SUPER,       E,      exec, emacs"
+          "SUPER,       E,      exec, doom-emacs"
           "SUPER SHIFT, E,      exec, emacsclient --no-wait --reuse-frame"
           "SUPER,       slash,  exec, chromium"
           "SUPER SHIFT, slash,  exec, google-chrome-stable"
@@ -343,7 +343,7 @@ in {
           "f[1] s[false],   gapsout:0,   gapsin:0"
           "s[true],         gapsout:100, gapsin:50"
 
-          "1,               defaultName:Emacs,    on-created-empty: emacs"
+          "1,               defaultName:Doom,     on-created-empty: doom-emacs"
           "2,               defaultName:Chromium, on-created-empty:[float] chromium"
           "3,               defaultName:Chrome,   on-created-empty: google-chrome-stable"
           "4,               defaultName:Firefox,  on-created-empty: firefox"

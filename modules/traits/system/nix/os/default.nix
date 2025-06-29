@@ -21,8 +21,6 @@ in {
     nix = {
       channel.enable = false;
 
-      registry.nixpkgs.flake = nixpkgs;
-
       settings = {
         # https://nixos.org/manual/nix/unstable/command-ref/conf-file
         auto-optimise-store = true;

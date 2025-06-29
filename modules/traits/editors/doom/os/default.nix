@@ -5,10 +5,10 @@
   box ? null,
   ...
 }: let
-  cfg = config.traits.os.emacs;
+  cfg = config.traits.os.doom-emacs;
 in {
-  options.traits.os.emacs = {
-    enable = lib.mkEnableOption "emacs" // {default = box.isStation;};
+  options.traits.os.doom-emacs = {
+    enable = lib.mkEnableOption "Doom Emacs" // {default = box.isStation;};
   };
 
   config = lib.mkIf cfg.enable {
