@@ -168,17 +168,14 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1750971277,
-        "narHash": "sha256-yqeuL5N6q0j6U66k4KvOx96uI/IZqQeBh1LlapTpbvY=",
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "rev": "3d75d8e205eb0c0def40920be6e30469eb5f4769",
-        "type": "github"
+        "lastModified": 1751222493,
+        "narHash": "sha256-xVjFHq15uoN7NVkMce2SZOgNCXFjuoUwHHNbIS87laI=",
+        "path": "/home/pancho/sandbox/doomemacs/doomemacs",
+        "type": "path"
       },
       "original": {
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "type": "github"
+        "path": "/home/pancho/sandbox/doomemacs/doomemacs",
+        "type": "path"
       }
     },
     "emacs-overlay": {
@@ -191,11 +188,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751164253,
-        "narHash": "sha256-hJmYTh/cS3TWI+JF1AniGpw/HXycruk4HV4xIZjMipo=",
+        "lastModified": 1751216990,
+        "narHash": "sha256-KMcGSznyttkf3C2Gv4LNCPYOfvjj7Qk/Mu2Og2yCsbk=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "10f086fb8668f0e3d08cd2a01180abccc43f6552",
+        "rev": "562e5da816da90627ed5775d4ba6f968bde0ff57",
         "type": "github"
       },
       "original": {
@@ -480,7 +477,9 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": "doomemacs",
+        "doomemacs": [
+          "doomemacs"
+        ],
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -658,6 +657,7 @@
         "autofirma-nix": "autofirma-nix",
         "disko": "disko",
         "doom-config": "doom-config",
+        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "kubelab": "kubelab",
