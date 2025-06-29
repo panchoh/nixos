@@ -102,6 +102,7 @@ in {
 
         flac
 
+        mission-center
         v4l-utils
         libation
         ffmpeg
