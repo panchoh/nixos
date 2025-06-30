@@ -13,7 +13,7 @@ in {
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
       (final: prev: {
-        wayprompt = prev.wayprompt.overrideAttrs (old: {
+        wayprompt = prev.wayprompt.overrideAttrs (_old: {
           src = final.fetchFromGitHub {
             owner = "panchoh";
             repo = "wayprompt";
