@@ -44,6 +44,15 @@ in {
     home.packages = with pkgs; [
       (aspellWithDicts (ds: with ds; [en en-computers en-science]))
 
+      (pkgs.writeShellApplication {
+        name = "doom-pristine";
+        runtimeInputs = [coreutils];
+        text = ''
+          echo 'Cleaning Doom state…'
+          rm -rfv ~/.cache/doom ~/.local/state/doom ~/.local/share/doom
+        '';
+      })
+
       findutils
       coreutils
       ddate
