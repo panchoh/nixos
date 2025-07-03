@@ -109,6 +109,7 @@ in {
         vlc
         mkvtoolnix
         evince
+        papers
         gimp
         inkscape
         youtube-tui
