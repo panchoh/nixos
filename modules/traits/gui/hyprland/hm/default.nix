@@ -200,7 +200,8 @@ in {
 
         bind = [
           "SUPER SHIFT, Return, exec, foot"
-          "SUPER,       E,      exec, doom-emacs"
+          "SUPER,       D,      exec, doom-emacs"
+          "SUPER,       E,      exec, emacs"
           "SUPER SHIFT, E,      exec, emacsclient --no-wait --reuse-frame"
           "SUPER,       slash,  exec, chromium"
           "SUPER SHIFT, slash,  exec, google-chrome-stable"
