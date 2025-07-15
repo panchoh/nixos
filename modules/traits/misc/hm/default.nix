@@ -110,7 +110,7 @@ in {
         mkvtoolnix
         evince
         papers
-        gimp
+        gimp3
         inkscape
         youtube-tui
         zoom-us
