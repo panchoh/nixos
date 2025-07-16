@@ -5,7 +5,7 @@ inputs: let
 in (
   listToAttrs (map (system: {
       name = system;
-      value = nixpkgs.legacyPackages.${system}.alejandra;
+      value = nixpkgs.legacyPackages.${system}.nixfmt-tree;
     })
     (unique (catAttrs "system" boxen)))
 )
