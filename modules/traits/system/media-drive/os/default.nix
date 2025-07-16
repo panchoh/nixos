@@ -3,18 +3,30 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.media-drive;
-in {
+in
+{
   options.traits.os.media-drive = {
-    enable = lib.mkEnableOption "big media drive" // {default = box.hasMedia or false;};
+    enable = lib.mkEnableOption "big media drive" // {
+      default = box.hasMedia or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     fileSystems."/srv/media" = {
       device = "/dev/disk/by-label/media";
       fsType = "btrfs";
-      options = ["nofail" "noexec" "nosuid" "nodev" "noatime" "compress=zstd:1" "X-fstrim.notrim"];
+      options = [
+        "nofail"
+        "noexec"
+        "nosuid"
+        "nodev"
+        "noatime"
+        "compress=zstd:1"
+        "X-fstrim.notrim"
+      ];
     };
   };
 }

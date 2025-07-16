@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.dbus;
-in {
+in
+{
   options.traits.os.dbus = {
-    enable = lib.mkEnableOption "dbus" // {default = true;};
+    enable = lib.mkEnableOption "dbus" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

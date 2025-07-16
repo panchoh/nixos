@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.ansible;
-in {
+in
+{
   options.traits.ansible = {
-    enable = lib.mkEnableOption "ansible" // {default = true;};
+    enable = lib.mkEnableOption "ansible" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

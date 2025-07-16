@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.locate;
-in {
+in
+{
   options.traits.os.locate = {
-    enable = lib.mkEnableOption "locate" // {default = true;};
+    enable = lib.mkEnableOption "locate" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

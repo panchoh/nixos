@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.google-chrome;
-in {
+in
+{
   options.traits.hm.google-chrome = {
-    enable = lib.mkEnableOption "Google Chrome" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Google Chrome" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

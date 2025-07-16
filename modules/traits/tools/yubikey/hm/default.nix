@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.yubikey;
-in {
+in
+{
   options.traits.hm.yubikey = {
-    enable = lib.mkEnableOption "yubikey" // {default = true;};
+    enable = lib.mkEnableOption "yubikey" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

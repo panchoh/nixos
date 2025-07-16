@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.user;
-in {
+in
+{
   options.traits.os.user = {
-    enable = lib.mkEnableOption "user" // {default = true;};
+    enable = lib.mkEnableOption "user" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,7 +28,7 @@ in {
     users.users.${box.userName or "alice"} = {
       isNormalUser = true;
       description = box.userDesc or "Alice Q. User";
-      extraGroups = ["wheel"];
+      extraGroups = [ "wheel" ];
       shell = pkgs.fish;
       initialPassword = "password";
       openssh.authorizedKeys.keys = box.userKeys;

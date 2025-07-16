@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.time-zone;
-in {
+in
+{
   options.traits.os.time-zone = {
-    enable = lib.mkEnableOption "time zone" // {default = true;};
+    enable = lib.mkEnableOption "time zone" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

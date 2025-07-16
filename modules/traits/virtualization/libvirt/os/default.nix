@@ -4,15 +4,19 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.libvirt;
-in {
+in
+{
   options.traits.os.libvirt = {
-    enable = lib.mkEnableOption "libvirt" // {default = true;};
+    enable = lib.mkEnableOption "libvirt" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    users.users.${box.userName or "alice"}.extraGroups = ["libvirtd"];
+    users.users.${box.userName or "alice"}.extraGroups = [ "libvirtd" ];
 
     environment.systemPackages = with pkgs; [
       libguestfs

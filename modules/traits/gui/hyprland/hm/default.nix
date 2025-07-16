@@ -5,11 +5,15 @@
   osConfig,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.hyprland;
-in {
+in
+{
   options.traits.hm.hyprland = {
-    enable = lib.mkEnableOption "hyprland" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "hyprland" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -88,41 +92,46 @@ in {
         # Caps: Ye'Olde Caps
         # Right Control: group switch
 
-        device = map (overrides:
-          {
-            name = "unnamed-keyboard";
-            kb_model = "pc104";
-            kb_layout = "us,us";
-            kb_variant = "altgr-intl,colemak_dh";
-            kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n";
-          }
-          // overrides) [
-          {
-            name = "keychron-keychron-q10";
-          }
+        device =
+          map
+            (
+              overrides:
+              {
+                name = "unnamed-keyboard";
+                kb_model = "pc104";
+                kb_layout = "us,us";
+                kb_variant = "altgr-intl,colemak_dh";
+                kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n";
+              }
+              // overrides
+            )
+            [
+              {
+                name = "keychron-keychron-q10";
+              }
 
-          {
-            name = "keychron-keychron-q8";
-          }
+              {
+                name = "keychron-keychron-q8";
+              }
 
-          {
-            name = "PFU_Limited_HHKB-Classic";
-            kb_model = "hhk";
-          }
+              {
+                name = "PFU_Limited_HHKB-Classic";
+                kb_model = "hhk";
+              }
 
-          {
-            name = "at-translated-set-2-keyboard-1";
-            kb_model = "thinkpad";
-          }
+              {
+                name = "at-translated-set-2-keyboard-1";
+                kb_model = "thinkpad";
+              }
 
-          {
-            name = "logitech-usb-receiver-2";
-          }
+              {
+                name = "logitech-usb-receiver-2";
+              }
 
-          {
-            name = "logitech-k400-plus-2";
-          }
-        ];
+              {
+                name = "logitech-k400-plus-2";
+              }
+            ];
 
         cursor = {
           inactive_timeout = 5;

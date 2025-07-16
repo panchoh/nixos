@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.kmscon;
-in {
+in
+{
   options.traits.os.kmscon = {
-    enable = lib.mkEnableOption "kmscon" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "kmscon" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

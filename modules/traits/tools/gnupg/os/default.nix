@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.gnupg;
-in {
+in
+{
   options.traits.os.gnupg = {
-    enable = lib.mkEnableOption "gnupg" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "gnupg" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

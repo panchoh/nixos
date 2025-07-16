@@ -6,15 +6,19 @@
   doom-config,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.doom-emacs;
-in {
+in
+{
   imports = [
     nix-doom-emacs-unstraightened.homeModule
   ];
 
   options.traits.hm.doom-emacs = {
-    enable = lib.mkEnableOption "Doom Emacs" // {default = box.isStation;};
+    enable = lib.mkEnableOption "Doom Emacs" // {
+      default = box.isStation;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -25,8 +29,8 @@ in {
       experimentalFetchTree = true;
       provideEmacs = false;
 
-      extraPackages = epkgs:
-        with epkgs; [
+      extraPackages =
+        epkgs: with epkgs; [
           nix-ts-mode
           vterm
           treesit-grammars.with-all-grammars
@@ -37,16 +41,22 @@ in {
 
     programs.ripgrep = {
       enable = true;
-      package = pkgs.ripgrep.override {withPCRE2 = true;};
-      arguments = ["--no-config"];
+      package = pkgs.ripgrep.override { withPCRE2 = true; };
+      arguments = [ "--no-config" ];
     };
 
     home.packages = with pkgs; [
-      (aspellWithDicts (ds: with ds; [en en-computers en-science]))
+      (aspellWithDicts (
+        ds: with ds; [
+          en
+          en-computers
+          en-science
+        ]
+      ))
 
       (writeShellApplication {
         name = "doom-pristine";
-        runtimeInputs = [coreutils];
+        runtimeInputs = [ coreutils ];
         text = ''
           echo 'Cleaning Doom state…'
           rm -rfv ~/.cache/doom ~/.local/state/doom ~/.local/share/doom

@@ -3,15 +3,19 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.google-chrome;
-in {
+in
+{
   imports = [
     ./google-chrome.nix
   ];
 
   options.traits.os.google-chrome = {
-    enable = lib.mkEnableOption "Google Chrome" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Google Chrome" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -39,7 +43,7 @@ in {
         "PromptForDownloadLocation" = false;
         "ShowAppsShortcutInBookmarkBar" = false;
         "SpellcheckEnabled" = false;
-        "SpellcheckLanguage" = ["en-US"];
+        "SpellcheckLanguage" = [ "en-US" ];
         "SpellCheckServiceEnabled" = false;
         "ShowCastIconInToolbar" = false;
         "SyncDisabled" = false;

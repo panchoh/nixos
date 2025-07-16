@@ -3,11 +3,15 @@
   lib,
   nixpkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.nix;
-in {
+in
+{
   options.traits.os.nix = {
-    enable = lib.mkEnableOption "nix" // {default = true;};
+    enable = lib.mkEnableOption "nix" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

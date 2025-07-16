@@ -4,11 +4,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.usb-drives;
-in {
+in
+{
   options.traits.os.usb-drives = {
-    enable = lib.mkEnableOption "usb drives" // {default = true;};
+    enable = lib.mkEnableOption "usb drives" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -47,63 +51,73 @@ in {
     ];
 
     fileSystems = builtins.listToAttrs (
-      map (label: {
-        name = "/media/${label}";
-        value = {
-          device = "/dev/disk/by-label/${label}";
-          fsType = "btrfs";
-          options = ["noauto" "users" "noexec" "nosuid" "nodev" "noatime" "nodiscard" "X-fstrim.notrim"];
-        };
-      })
-      [
-        # My Passport Drives
-        "onyx"
-        "graphite"
-        "gold"
+      map
+        (label: {
+          name = "/media/${label}";
+          value = {
+            device = "/dev/disk/by-label/${label}";
+            fsType = "btrfs";
+            options = [
+              "noauto"
+              "users"
+              "noexec"
+              "nosuid"
+              "nodev"
+              "noatime"
+              "nodiscard"
+              "X-fstrim.notrim"
+            ];
+          };
+        })
+        [
+          # My Passport Drives
+          "onyx"
+          "graphite"
+          "gold"
 
-        "goo"
-        "blue"
-        "white"
+          "goo"
+          "blue"
+          "white"
 
-        # Red is dead, babe.  Red is dead.
-        "orange"
-        "yellow"
+          # Red is dead, babe.  Red is dead.
+          "orange"
+          "yellow"
 
-        # Black stack
-        "tesseract"
-        "void"
-        "monolith"
+          # Black stack
+          "tesseract"
+          "void"
+          "monolith"
 
-        # My Passport Ultra Drives
-        ## Silver
-        "uru"
-        "quicksilver"
-        "silver"
+          # My Passport Ultra Drives
+          ## Silver
+          "uru"
+          "quicksilver"
+          "silver"
 
-        ## Blue
-        "neon"
-        "cobalt"
-        "copper"
+          ## Blue
+          "neon"
+          "cobalt"
+          "copper"
 
-        ## Silver
-        "lithium"
-        "sodium"
-        "kalium"
+          ## Silver
+          "lithium"
+          "sodium"
+          "kalium"
 
-        "fuchsia"
+          "fuchsia"
 
-        "backup"
+          "backup"
 
-        ## 6 TB Silver
-        "steel"
-        "titanium"
+          ## 6 TB Silver
+          "steel"
+          "titanium"
 
-        # 2022-08-20T15:57:56 CEST
-        # Zeroed.
-        # Seems to have trouble spinning up, maybe some connector issue.
-        # I think is best not to use it anymore.
-        # "black"
-      ]
+          # 2022-08-20T15:57:56 CEST
+          # Zeroed.
+          # Seems to have trouble spinning up, maybe some connector issue.
+          # I think is best not to use it anymore.
+          # "black"
+        ]
     );
   };
 }

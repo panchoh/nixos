@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.git;
-in {
+in
+{
   options.traits.os.git = {
-    enable = lib.mkEnableOption "git" // {default = true;};
+    enable = lib.mkEnableOption "git" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

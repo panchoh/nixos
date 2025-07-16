@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.systemd;
-in {
+in
+{
   options.traits.os.systemd = {
-    enable = lib.mkEnableOption "systemd" // {default = true;};
+    enable = lib.mkEnableOption "systemd" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -14,6 +18,6 @@ in {
       enableStrictShellChecks = true;
     };
 
-    security.pam.services.systemd-run0 = {};
+    security.pam.services.systemd-run0 = { };
   };
 }
