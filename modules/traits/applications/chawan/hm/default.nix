@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.chawan;
-in {
+in
+{
   options.traits.hm.chawan = {
-    enable = lib.mkEnableOption "chawan" // {default = true;};
+    enable = lib.mkEnableOption "chawan" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

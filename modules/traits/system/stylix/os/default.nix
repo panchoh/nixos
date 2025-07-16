@@ -5,15 +5,19 @@
   stylix,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.stylix;
-in {
+in
+{
   imports = [
     stylix.nixosModules.stylix
   ];
 
   options.traits.os.stylix = {
-    enable = lib.mkEnableOption "Stylix" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Stylix" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -63,18 +67,12 @@ in {
           package = pkgs.openmoji-color;
         };
 
-        sizes =
-          lib.mapAttrs (
-            _name: value:
-              if box.isLaptop or false
-              then value - 2
-              else value
-          ) {
-            desktop = 14;
-            applications = 14;
-            terminal = 14;
-            popups = 12;
-          };
+        sizes = lib.mapAttrs (_name: value: if box.isLaptop or false then value - 2 else value) {
+          desktop = 14;
+          applications = 14;
+          terminal = 14;
+          popups = 12;
+        };
       };
     };
   };

@@ -4,15 +4,19 @@
   autofirma-nix,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.autofirma;
-in {
+in
+{
   imports = [
     autofirma-nix.homeManagerModules.default
   ];
 
   options.traits.hm.autofirma = {
-    enable = lib.mkEnableOption "autofirma" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "autofirma" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

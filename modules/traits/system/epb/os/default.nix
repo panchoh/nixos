@@ -4,15 +4,16 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.epb;
-  policy =
-    if box.isLaptop or false
-    then "--turbo-enable 0 power"
-    else "performance";
-in {
+  policy = if box.isLaptop or false then "--turbo-enable 0 power" else "performance";
+in
+{
   options.traits.os.epb = {
-    enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)" // {default = false;};
+    enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)" // {
+      default = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -23,7 +24,7 @@ in {
     systemd.services.epb = {
       enable = true;
       description = "Run x86_energy_perf_policy at boot";
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;

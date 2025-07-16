@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.openssh;
-in {
+in
+{
   options.traits.hm.openssh = {
-    enable = lib.mkEnableOption "openssh" // {default = true;};
+    enable = lib.mkEnableOption "openssh" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -32,7 +36,7 @@ in {
         VisualHostKey        yes
       '';
       matchBlocks = {
-        "ubuntu* k8s-*" = lib.hm.dag.entryBefore ["*.vm"] {
+        "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
           user = "sysadmin";
           identityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
           extraOptions = {

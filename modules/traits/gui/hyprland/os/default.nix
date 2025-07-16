@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.hyprland;
-in {
+in
+{
   options.traits.os.hyprland = {
-    enable = lib.mkEnableOption "hyprland" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "hyprland" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

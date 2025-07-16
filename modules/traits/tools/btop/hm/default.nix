@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.btop;
-in {
+in
+{
   options.traits.hm.btop = {
-    enable = lib.mkEnableOption "btop" // {default = true;};
+    enable = lib.mkEnableOption "btop" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.git;
-in {
+in
+{
   options.traits.hm.git = {
-    enable = lib.mkEnableOption "git" // {default = true;};
+    enable = lib.mkEnableOption "git" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -55,7 +59,7 @@ in {
     programs.gh = {
       enable = true;
       settings.git_protocol = "ssh";
-      extensions = [pkgs.gh-eco];
+      extensions = [ pkgs.gh-eco ];
     };
   };
 }

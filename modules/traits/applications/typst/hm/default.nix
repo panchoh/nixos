@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.typst;
-in {
+in
+{
   options.traits.hm.typst = {
-    enable = lib.mkEnableOption "Typst" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Typst" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

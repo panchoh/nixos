@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.networking;
-in {
+in
+{
   options.traits.os.networking = {
-    enable = lib.mkEnableOption "networking" // {default = true;};
+    enable = lib.mkEnableOption "networking" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -74,7 +78,7 @@ in {
         };
         "20-en" = {
           matchConfig.Name = "en*";
-          macvlan = ["mv0"];
+          macvlan = [ "mv0" ];
           networkConfig = {
             LinkLocalAddressing = "no";
           };

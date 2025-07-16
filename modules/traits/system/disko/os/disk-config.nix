@@ -1,11 +1,16 @@
-{device ? throw "Set this to your disk device, e.g., /dev/vda", ...}: let
+{
+  device ? throw "Set this to your disk device, e.g., /dev/vda",
+  ...
+}:
+let
   sharedMountOptions = [
     "compress=zstd:1"
     "noatime"
     "autodefrag"
     "X-fstrim.notrim"
   ];
-in {
+in
+{
   disko.devices.disk = {
     main = {
       type = "disk";
@@ -21,9 +26,12 @@ in {
             content = {
               type = "filesystem";
               format = "vfat";
-              extraArgs = ["-F32" "-nESP"];
+              extraArgs = [
+                "-F32"
+                "-nESP"
+              ];
               mountpoint = "/boot";
-              mountOptions = ["umask=0077"];
+              mountOptions = [ "umask=0077" ];
             };
           };
           swap = {
@@ -40,7 +48,7 @@ in {
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"]; # Override existing partition
+              extraArgs = [ "-f" ]; # Override existing partition
               subvolumes = {
                 "@" = {
                   mountpoint = "/";

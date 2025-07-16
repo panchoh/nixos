@@ -4,11 +4,15 @@
   emacs-overlay,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.doom-emacs;
-in {
+in
+{
   options.traits.os.doom-emacs = {
-    enable = lib.mkEnableOption "Doom Emacs" // {default = box.isStation;};
+    enable = lib.mkEnableOption "Doom Emacs" // {
+      default = box.isStation;
+    };
   };
 
   config = lib.mkIf cfg.enable {

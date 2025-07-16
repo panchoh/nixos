@@ -44,19 +44,21 @@
     kubelab.flake = false;
   };
 
-  outputs = {self, ...} @ inputs: {
-    lib = import ./lib inputs // import ./modules/lib inputs;
+  outputs =
+    { self, ... }@inputs:
+    {
+      lib = import ./lib inputs // import ./modules/lib inputs;
 
-    formatter = self.lib.nixfmt-tree;
+      formatter = self.lib.nixfmt-tree;
 
-    apps = self.lib.appsDiskoAndFunk;
+      apps = self.lib.appsDiskoAndFunk;
 
-    devShells = self.lib.devShells;
+      devShells = self.lib.devShells;
 
-    homeModules.default = self.lib.homeModule;
+      homeModules.default = self.lib.homeModule;
 
-    nixosModules.default = self.lib.nixosModule;
+      nixosModules.default = self.lib.nixosModule;
 
-    nixosConfigurations = self.lib.nixosConfigurations;
-  };
+      nixosConfigurations = self.lib.nixosConfigurations;
+    };
 }

@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.go;
-in {
+in
+{
   options.traits.hm.go = {
-    enable = lib.mkEnableOption "Go" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Go" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -4,12 +4,16 @@
   osConfig,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.fuzzel;
   size = toString (osConfig.stylix.fonts.sizes.desktop + 2);
-in {
+in
+{
   options.traits.hm.fuzzel = {
-    enable = lib.mkEnableOption "fuzzel" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "fuzzel" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.fwupd;
-in {
+in
+{
   options.traits.os.fwupd = {
-    enable = lib.mkEnableOption "fwupd" // {default = true;};
+    enable = lib.mkEnableOption "fwupd" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

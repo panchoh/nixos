@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.caddy;
-in {
+in
+{
   options.traits.os.caddy = {
-    enable = lib.mkEnableOption "caddy" // {default = false;};
+    enable = lib.mkEnableOption "caddy" // {
+      default = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

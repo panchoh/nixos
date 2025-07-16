@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.yt-dlp;
-in {
+in
+{
   options.traits.hm.yt-dlp = {
-    enable = lib.mkEnableOption "yt-dlp" // {default = true;};
+    enable = lib.mkEnableOption "yt-dlp" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

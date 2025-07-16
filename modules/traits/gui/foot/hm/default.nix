@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.foot;
-in {
+in
+{
   options.traits.hm.foot = {
-    enable = lib.mkEnableOption "foot" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "foot" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

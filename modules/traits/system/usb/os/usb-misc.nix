@@ -3,11 +3,15 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.usb-misc;
-in {
+in
+{
   options.traits.os.usb-misc = {
-    enable = lib.mkEnableOption "misc usb devices" // {default = true;};
+    enable = lib.mkEnableOption "misc usb devices" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.virt-manager;
-in {
+in
+{
   options.traits.hm.virt-manager = {
-    enable = lib.mkEnableOption "virt-manager" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "virt-manager" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -26,8 +30,8 @@ in {
         forcepoweroff = false;
       };
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
       "org/virt-manager/virt-manager/new-vm" = {
         firmware = "uefi";

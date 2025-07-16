@@ -4,14 +4,18 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.dosbox;
-in {
+in
+{
   options.traits.hm.dosbox = {
-    enable = lib.mkEnableOption "DOSBox Staging" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "DOSBox Staging" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [pkgs.dosbox-staging];
+    home.packages = [ pkgs.dosbox-staging ];
   };
 }

@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.neovim;
-in {
+in
+{
   config = lib.mkIf cfg.enable {
     xdg.configFile."nvim/lua/disable_keys.lua".source = ./disable_keys.lua;
 

@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.ssh;
-in {
+in
+{
   options.traits.os.ssh = {
-    enable = lib.mkEnableOption "ssh and mosh" // {default = true;};
+    enable = lib.mkEnableOption "ssh and mosh" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -14,7 +18,8 @@ in {
 
     programs.ssh.knownHosts = {
       # obtained by running `ssh-keyscan -t ed25519 github.com`
-      "github.com".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+      "github.com".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
     };
 
     services.openssh = {

@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.mako;
-in {
+in
+{
   options.traits.hm.mako = {
-    enable = lib.mkEnableOption "mako" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "mako" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

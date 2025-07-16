@@ -4,15 +4,20 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.misc;
-in {
+in
+{
   options.traits.hm.misc = {
-    enable = lib.mkEnableOption "misc" // {default = true;};
+    enable = lib.mkEnableOption "misc" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs;
+    home.packages =
+      with pkgs;
       [
         dmidecode
         efibootmgr

@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.command-not-found;
-in {
+in
+{
   options.traits.os.command-not-found = {
-    enable = lib.mkEnableOption "command-not-found" // {default = true;};
+    enable = lib.mkEnableOption "command-not-found" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

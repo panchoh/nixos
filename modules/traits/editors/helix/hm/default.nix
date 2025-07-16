@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.helix;
-in {
+in
+{
   options.traits.hm.helix = {
-    enable = lib.mkEnableOption "helix" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "helix" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

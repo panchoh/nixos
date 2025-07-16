@@ -4,17 +4,21 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.printing;
-in {
+in
+{
   options.traits.os.printing = {
-    enable = lib.mkEnableOption "printing" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "printing" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     services.printing = {
       enable = true;
-      drivers = [pkgs.hplip];
+      drivers = [ pkgs.hplip ];
     };
   };
 }

@@ -3,9 +3,11 @@
   lib,
   nixvim,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.neovim;
-in {
+in
+{
   config = lib.mkIf cfg.enable {
     programs.neovide = {
       enable = true;

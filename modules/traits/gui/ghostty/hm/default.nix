@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.ghostty;
-in {
+in
+{
   options.traits.hm.ghostty = {
-    enable = lib.mkEnableOption "ghostty" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "ghostty" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.minecraft;
-in {
+in
+{
   options.traits.os.minecraft = {
-    enable = lib.mkEnableOption "Minecraft Server" // {default = false;};
+    enable = lib.mkEnableOption "Minecraft Server" // {
+      default = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

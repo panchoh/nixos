@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.direnv;
-in {
+in
+{
   options.traits.hm.direnv = {
-    enable = lib.mkEnableOption "direnv" // {default = true;};
+    enable = lib.mkEnableOption "direnv" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

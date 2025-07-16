@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.bash;
-in {
+in
+{
   options.traits.hm.bash = {
-    enable = lib.mkEnableOption "bash" // {default = true;};
+    enable = lib.mkEnableOption "bash" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

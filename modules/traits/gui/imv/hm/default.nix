@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.imv;
-in {
+in
+{
   options.traits.hm.imv = {
-    enable = lib.mkEnableOption "imv" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "imv" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

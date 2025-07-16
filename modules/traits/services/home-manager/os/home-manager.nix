@@ -6,15 +6,19 @@
   home,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.home-manager;
-in {
+in
+{
   imports = [
     home-manager.nixosModules.default
   ];
 
   options.traits.os.home-manager = {
-    enable = lib.mkEnableOption "Home Manager" // {default = true;};
+    enable = lib.mkEnableOption "Home Manager" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

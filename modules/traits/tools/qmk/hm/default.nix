@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.qmk;
-in {
+in
+{
   options.traits.hm.qmk = {
-    enable = lib.mkEnableOption "qmk" // {default = true;};
+    enable = lib.mkEnableOption "qmk" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

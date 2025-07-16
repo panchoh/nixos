@@ -1,4 +1,5 @@
-inputs: let
+inputs:
+let
   defaults = {
     stateVersion = "24.05";
     system = "x86_64-linux";
@@ -20,73 +21,85 @@ inputs: let
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
     ];
-    extraModules = [];
-    extraHomeModules = [];
+    extraModules = [ ];
+    extraHomeModules = [ ];
   };
 in
-  map (overrides: defaults // overrides) [
-    {
-      hostName = "nixos";
-      diskDevice = "/dev/vda";
-    }
+map (overrides: defaults // overrides) [
+  {
+    hostName = "nixos";
+    diskDevice = "/dev/vda";
+  }
 
-    {
-      hostName = "oxygen";
-      macvlanAddr = "48:21:0b:3c:16:a9";
-      isStation = true;
-      extraModules = [({config, ...}: {config.traits.os.caddy.enable = true;})];
-    }
+  {
+    hostName = "oxygen";
+    macvlanAddr = "48:21:0b:3c:16:a9";
+    isStation = true;
+    extraModules = [
+      (
+        { config, ... }:
+        {
+          config.traits.os.caddy.enable = true;
+        }
+      )
+    ];
+  }
 
-    {
-      hostName = "magnesium";
-      macvlanAddr = "00:2b:67:11:27:06";
-      isLaptop = true;
-      isStation = true;
-      extraModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490];
-    }
+  {
+    hostName = "magnesium";
+    macvlanAddr = "00:2b:67:11:27:06";
+    isLaptop = true;
+    isStation = true;
+    extraModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
+  }
 
-    {
-      hostName = "potassium";
-      macvlanAddr = "1c:69:7a:02:8d:23";
-      hasMedia = true;
-      extraModules = [
-        inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-        ({config, ...}: {config.traits.os.minecraft.enable = true;})
-      ];
-    }
+  {
+    hostName = "potassium";
+    macvlanAddr = "1c:69:7a:02:8d:23";
+    hasMedia = true;
+    extraModules = [
+      inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+      (
+        { config, ... }:
+        {
+          config.traits.os.minecraft.enable = true;
+        }
+      )
+    ];
+  }
 
-    {
-      hostName = "calcium";
-      macvlanAddr = "1c:69:7a:06:76:c0";
-      hasMedia = true;
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-    }
+  {
+    hostName = "calcium";
+    macvlanAddr = "1c:69:7a:06:76:c0";
+    hasMedia = true;
+    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+  }
 
-    {
-      hostName = "scandium";
-      macvlanAddr = "1c:69:7a:a7:e4:e5";
-      isStation = true;
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-    }
+  {
+    hostName = "scandium";
+    macvlanAddr = "1c:69:7a:a7:e4:e5";
+    isStation = true;
+    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+  }
 
-    {
-      hostName = "titanium";
-      macvlanAddr = "1c:69:7a:a7:ad:ec";
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-    }
+  {
+    hostName = "titanium";
+    macvlanAddr = "1c:69:7a:a7:ad:ec";
+    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+  }
 
-    {
-      hostName = "vanadium";
-      macvlanAddr = "1c:69:7a:a7:a8:a9";
-      diskDevice = "/dev/sda";
-      extraModules = [inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh];
-    }
+  {
+    hostName = "vanadium";
+    macvlanAddr = "1c:69:7a:a7:a8:a9";
+    diskDevice = "/dev/sda";
+    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+  }
 
-    # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
-    # {
-    #   system = "aarch64-linux";
-    #   hostName = "neon";
-    #   macvlanAddr = "dc:a6:32:b1:ae:1d";
-    #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
-    # }
-  ]
+  # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
+  # {
+  #   system = "aarch64-linux";
+  #   hostName = "neon";
+  #   macvlanAddr = "dc:a6:32:b1:ae:1d";
+  #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
+  # }
+]

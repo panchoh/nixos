@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.zoxide;
-in {
+in
+{
   options.traits.hm.zoxide = {
-    enable = lib.mkEnableOption "zoxide" // {default = true;};
+    enable = lib.mkEnableOption "zoxide" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

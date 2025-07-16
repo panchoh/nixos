@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.qmk;
-in {
+in
+{
   options.traits.os.qmk = {
-    enable = lib.mkEnableOption "qmk" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "qmk" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

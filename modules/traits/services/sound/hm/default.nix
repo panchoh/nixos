@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.sound;
-in {
+in
+{
   options.traits.hm.sound = {
-    enable = lib.mkEnableOption "sound" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "sound" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

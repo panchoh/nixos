@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.console;
-in {
+in
+{
   options.traits.os.console = {
-    enable = lib.mkEnableOption "console" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "console" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -22,7 +26,7 @@ in {
     console = {
       earlySetup = true;
       font = "ter-powerline-v24n";
-      packages = [pkgs.powerline-fonts];
+      packages = [ pkgs.powerline-fonts ];
       useXkbConfig = true;
     };
   };

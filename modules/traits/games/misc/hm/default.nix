@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.games.misc;
-in {
+in
+{
   options.traits.hm.games.misc = {
-    enable = lib.mkEnableOption "games" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "games" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

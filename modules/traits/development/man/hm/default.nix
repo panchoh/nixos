@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.man;
-in {
+in
+{
   options.traits.hm.man = {
-    enable = lib.mkEnableOption "man" // {default = true;};
+    enable = lib.mkEnableOption "man" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

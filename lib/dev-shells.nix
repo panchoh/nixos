@@ -1,6 +1,7 @@
 inputs:
 builtins.foldl' (
-  acc: box: let
+  acc: box:
+  let
     inherit (inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
     inherit (box) system;
 
@@ -23,6 +24,10 @@ builtins.foldl' (
       '';
     };
   in
-    acc // {${system} = (acc.${system} or {}) // {default = devShell;};}
-) {}
-inputs.self.lib.boxen
+  acc
+  // {
+    ${system} = (acc.${system} or { }) // {
+      default = devShell;
+    };
+  }
+) { } inputs.self.lib.boxen

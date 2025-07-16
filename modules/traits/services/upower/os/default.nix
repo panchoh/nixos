@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.upower;
-in {
+in
+{
   options.traits.os.upower = {
-    enable = lib.mkEnableOption "upower" // {default = true;};
+    enable = lib.mkEnableOption "upower" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

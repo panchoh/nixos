@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.neomutt;
-in {
+in
+{
   options.traits.hm.neomutt = {
-    enable = lib.mkEnableOption "NeoMutt" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "NeoMutt" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

@@ -3,9 +3,11 @@
   lib,
   nixvim,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.neovim;
-in {
+in
+{
   imports = [
     nixvim.homeModules.nixvim
     ./disable_keys.nix
@@ -13,7 +15,9 @@ in {
   ];
 
   options.traits.hm.neovim = {
-    enable = lib.mkEnableOption "neovim" // {default = true;};
+    enable = lib.mkEnableOption "neovim" // {
+      default = true;
+    };
   };
 
   # TODO: Import config from https://github.com/GaetanLepage/nix-config/blob/master/home/modules/tui/neovim/options.nix

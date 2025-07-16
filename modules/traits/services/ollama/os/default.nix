@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.ollama;
-in {
+in
+{
   options.traits.os.ollama = {
-    enable = lib.mkEnableOption "Ollama" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Ollama" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

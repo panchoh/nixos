@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.fstrim;
-in {
+in
+{
   options.traits.os.fstrim = {
-    enable = lib.mkEnableOption "fstrim" // {default = true;};
+    enable = lib.mkEnableOption "fstrim" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

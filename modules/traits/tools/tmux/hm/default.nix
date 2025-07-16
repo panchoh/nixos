@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.tmux;
-in {
+in
+{
   options.traits.hm.tmux = {
-    enable = lib.mkEnableOption "tmux" // {default = true;};
+    enable = lib.mkEnableOption "tmux" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

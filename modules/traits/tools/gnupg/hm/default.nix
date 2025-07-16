@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.gnupg;
-in {
+in
+{
   options.traits.hm.gnupg = {
-    enable = lib.mkEnableOption "gnupg" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "gnupg" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

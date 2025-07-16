@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.xdg;
-in {
+in
+{
   options.traits.hm.xdg = {
-    enable = lib.mkEnableOption "xdg" // {default = true;};
+    enable = lib.mkEnableOption "xdg" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

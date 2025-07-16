@@ -4,11 +4,15 @@
   pkgs,
   vmtools,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.vmtools;
-in {
+in
+{
   options.traits.hm.vmtools = {
-    enable = lib.mkEnableOption "vmtools" // {default = true;};
+    enable = lib.mkEnableOption "vmtools" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,7 +28,7 @@ in {
           guestfs-tools
         ];
 
-        nativeBuildInputs = [pkgs.makeWrapper];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
 
         dontUnpack = true;
         dontPatch = true;

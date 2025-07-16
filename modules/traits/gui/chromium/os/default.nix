@@ -4,14 +4,18 @@
   modulesPath,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.chromium;
-in {
-  disabledModules = [(modulesPath + "/programs/chromium.nix")];
-  imports = [./chromium.nix];
+in
+{
+  disabledModules = [ (modulesPath + "/programs/chromium.nix") ];
+  imports = [ ./chromium.nix ];
 
   options.traits.os.chromium = {
-    enable = lib.mkEnableOption "chromium" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "chromium" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -48,12 +52,12 @@ in {
         "ShowAppsShortcutInBookmarkBar" = false;
         "ShowHomeButton" = false;
         "SpellcheckEnabled" = false;
-        "SpellcheckLanguage" = ["en-US"];
+        "SpellcheckLanguage" = [ "en-US" ];
         "SpellCheckServiceEnabled" = false;
         "ShowCastIconInToolbar" = false;
         "SyncDisabled" = true;
         "SystemFeaturesDisableMode" = "hidden";
-        "SystemFeaturesDisableList" = ["camera"];
+        "SystemFeaturesDisableList" = [ "camera" ];
       };
     };
   };

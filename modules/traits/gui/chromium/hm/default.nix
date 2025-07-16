@@ -4,11 +4,15 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.chromium;
-in {
+in
+{
   options.traits.hm.chromium = {
-    enable = lib.mkEnableOption "Chromium" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Chromium" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
