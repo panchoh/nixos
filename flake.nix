@@ -47,7 +47,7 @@
   outputs = {self, ...} @ inputs: {
     lib = import ./lib inputs // import ./modules/lib inputs;
 
-    formatter = self.lib.fmtAlejandra;
+    formatter = self.lib.nixfmt-tree;
 
     apps = self.lib.appsDiskoAndFunk;
 

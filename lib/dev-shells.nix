@@ -9,6 +9,8 @@ builtins.foldl' (
       packages = with pkgs; [
         cacert
         nix
+        nixfmt-tree
+        nixfmt-rfc-style
         git
         go-task
         toilet

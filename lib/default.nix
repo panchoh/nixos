@@ -1,7 +1,7 @@
 inputs: {
   boxen = import ./boxen.nix inputs;
 
-  fmtAlejandra = import ./fmt-alejandra.nix inputs;
+  nixfmt-tree = import ./nixfmt-tree.nix inputs;
 
   appsDiskoAndFunk = import ./apps-disko-and-funk.nix inputs;
 
