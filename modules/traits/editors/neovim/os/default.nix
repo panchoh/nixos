@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.neovim;
-in {
+in
+{
   options.traits.os.neovim = {
-    enable = lib.mkEnableOption "neovim" // {default = true;};
+    enable = lib.mkEnableOption "neovim" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -23,7 +27,7 @@ in {
             set mouse=
           '';
           packages.myVimPackage = with pkgs.vimPlugins; {
-            start = [vim-nix];
+            start = [ vim-nix ];
           };
         };
       };

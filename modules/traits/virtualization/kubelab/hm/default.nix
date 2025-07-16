@@ -4,11 +4,15 @@
   pkgs,
   kubelab,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.kubelab;
-in {
+in
+{
   options.traits.hm.kubelab = {
-    enable = lib.mkEnableOption "kubelab" // {default = true;};
+    enable = lib.mkEnableOption "kubelab" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,7 +28,7 @@ in {
           # TODO: vmtools, when refactored into a proper package
         ];
 
-        nativeBuildInputs = [pkgs.makeWrapper];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
 
         dontUnpack = true;
         dontPatch = true;

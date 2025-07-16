@@ -4,15 +4,19 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.mpv;
-in {
+in
+{
   options.traits.hm.mpv = {
-    enable = lib.mkEnableOption "mpv" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "mpv" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [pkgs.playerctl];
+    home.packages = [ pkgs.playerctl ];
 
     services.playerctld.enable = true;
 
@@ -20,14 +24,14 @@ in {
 
     programs.mpv = {
       enable = true;
-      scripts = [pkgs.mpvScripts.mpris];
+      scripts = [ pkgs.mpvScripts.mpris ];
       bindings = {
         ENTER = "playlist-next force";
         WHEEL_UP = "seek 10";
         WHEEL_DOWN = "seek -10";
         "Alt+0" = "set window-scale 0.5";
       };
-      defaultProfiles = ["gpu-hq"];
+      defaultProfiles = [ "gpu-hq" ];
       config = {
         fullscreen = true;
         sub-auto = "fuzzy";

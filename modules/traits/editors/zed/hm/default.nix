@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.zed;
-in {
+in
+{
   options.traits.hm.zed = {
-    enable = lib.mkEnableOption "zed.dev" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "zed.dev" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -28,15 +32,42 @@ in {
             "space o p" = "project_panel::ToggleFocus";
             "space o t" = "terminal_panel::ToggleFocus";
             "space q q" = "zed::Quit";
-            "space w 1" = ["workspace::ActivatePane" 0];
-            "space w 2" = ["workspace::ActivatePane" 1];
-            "space w 3" = ["workspace::ActivatePane" 2];
-            "space w 4" = ["workspace::ActivatePane" 3];
-            "space w 5" = ["workspace::ActivatePane" 4];
-            "space w 6" = ["workspace::ActivatePane" 5];
-            "space w 7" = ["workspace::ActivatePane" 6];
-            "space w 8" = ["workspace::ActivatePane" 7];
-            "space w 9" = ["workspace::ActivatePane" 8];
+            "space w 1" = [
+              "workspace::ActivatePane"
+              0
+            ];
+            "space w 2" = [
+              "workspace::ActivatePane"
+              1
+            ];
+            "space w 3" = [
+              "workspace::ActivatePane"
+              2
+            ];
+            "space w 4" = [
+              "workspace::ActivatePane"
+              3
+            ];
+            "space w 5" = [
+              "workspace::ActivatePane"
+              4
+            ];
+            "space w 6" = [
+              "workspace::ActivatePane"
+              5
+            ];
+            "space w 7" = [
+              "workspace::ActivatePane"
+              6
+            ];
+            "space w 8" = [
+              "workspace::ActivatePane"
+              7
+            ];
+            "space w 9" = [
+              "workspace::ActivatePane"
+              8
+            ];
             "space w c" = "pane::CloseActiveItem";
             "space w d" = "pane::CloseActiveItem";
             "space w h" = "workspace::ActivatePaneLeft";

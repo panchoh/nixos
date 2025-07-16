@@ -5,11 +5,15 @@
   stylix,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.firefox;
-in {
+in
+{
   options.traits.hm.firefox = {
-    enable = lib.mkEnableOption "Firefox" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "Firefox" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -18,7 +22,7 @@ in {
     };
 
     # https://stylix.danth.me/options/modules/firefox.html?highlight=firefox#firefox-and-its-derivatives
-    stylix.targets.firefox.profileNames = ["default"];
+    stylix.targets.firefox.profileNames = [ "default" ];
 
     # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
@@ -69,43 +73,45 @@ in {
             "YubiKey/SmartCard" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
           };
         };
-        Preferences = let
-          lock-true = {
-            Value = true;
-            Status = "locked";
+        Preferences =
+          let
+            lock-true = {
+              Value = true;
+              Status = "locked";
+            };
+            lock-false = {
+              Value = false;
+              Status = "locked";
+            };
+            lock-strict = {
+              Value = "strict";
+              Status = "locked";
+            };
+          in
+          {
+            "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
+            "browser.sessionstore.resume_from_crash" = false;
+            "dom.security.https_only_mode" = true;
+            "dom.security.https_only_mode_ever_enabled" = true;
+            "browser.contentblocking.category" = lock-strict;
+            "extensions.pocket.enabled" = lock-false;
+            "extensions.screenshots.disabled" = lock-true;
+            "browser.topsites.contile.enabled" = lock-false;
+            "browser.formfill.enable" = lock-false;
+            "browser.search.suggest.enabled" = lock-false;
+            "browser.search.suggest.enabled.private" = lock-false;
+            "browser.urlbar.suggest.searches" = lock-false;
+            "browser.urlbar.showSearchSuggestionsFirst" = lock-false;
+            "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
+            "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
+            "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
+            "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = lock-false;
+            "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = lock-false;
+            "browser.newtabpage.activity-stream.section.highlights.includeVisited" = lock-false;
+            "browser.newtabpage.activity-stream.showSponsored" = lock-false;
+            "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
+            "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
           };
-          lock-false = {
-            Value = false;
-            Status = "locked";
-          };
-          lock-strict = {
-            Value = "strict";
-            Status = "locked";
-          };
-        in {
-          "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
-          "browser.sessionstore.resume_from_crash" = false;
-          "dom.security.https_only_mode" = true;
-          "dom.security.https_only_mode_ever_enabled" = true;
-          "browser.contentblocking.category" = lock-strict;
-          "extensions.pocket.enabled" = lock-false;
-          "extensions.screenshots.disabled" = lock-true;
-          "browser.topsites.contile.enabled" = lock-false;
-          "browser.formfill.enable" = lock-false;
-          "browser.search.suggest.enabled" = lock-false;
-          "browser.search.suggest.enabled.private" = lock-false;
-          "browser.urlbar.suggest.searches" = lock-false;
-          "browser.urlbar.showSearchSuggestionsFirst" = lock-false;
-          "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
-          "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
-          "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
-          "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = lock-false;
-          "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = lock-false;
-          "browser.newtabpage.activity-stream.section.highlights.includeVisited" = lock-false;
-          "browser.newtabpage.activity-stream.showSponsored" = lock-false;
-          "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
-          "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
-        };
       };
     };
   };

@@ -3,11 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.systemd;
-in {
+in
+{
   options.traits.hm.systemd = {
-    enable = lib.mkEnableOption "systemd" // {default = true;};
+    enable = lib.mkEnableOption "systemd" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

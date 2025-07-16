@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.home-local-bin;
-in {
+in
+{
   options.traits.hm.home-local-bin = {
-    enable = lib.mkEnableOption "~/.local/bin on the search PATH" // {default = true;};
+    enable = lib.mkEnableOption "~/.local/bin on the search PATH" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

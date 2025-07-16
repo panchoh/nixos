@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.i18n;
-in {
+in
+{
   options.traits.os.i18n = {
-    enable = lib.mkEnableOption "i18n" // {default = true;};
+    enable = lib.mkEnableOption "i18n" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

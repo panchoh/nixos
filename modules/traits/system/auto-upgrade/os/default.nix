@@ -2,12 +2,16 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.auto-upgrade;
-in {
+in
+{
   # TODO: this is a WIP
   options.traits.os.auto-upgrade = {
-    enable = lib.mkEnableOption "auto upgrade" // {default = false;};
+    enable = lib.mkEnableOption "auto upgrade" // {
+      default = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -15,7 +19,11 @@ in {
       enable = true;
       allowReboot = true;
       flake = "github:panchoh/nixos";
-      flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
+      flags = [
+        "--update-input"
+        "nixpkgs"
+        "--commit-lock-file"
+      ];
     };
   };
 }

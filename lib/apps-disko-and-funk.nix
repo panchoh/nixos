@@ -1,11 +1,20 @@
 inputs:
 builtins.foldl' (
-  acc: box: let
+  acc: box:
+  let
     inherit (inputs.nixpkgs.lib) getExe;
     inherit (inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
     inherit (inputs.self.nixosConfigurations.${box.hostName}.config.system.build) diskoScript;
     inherit (inputs.self.nixosConfigurations.${box.hostName}.config.users.users.${box.userName}) home;
-    inherit (box) system hostName diskDevice userName userDesc userEmail githubUser;
+    inherit (box)
+      system
+      hostName
+      diskDevice
+      userName
+      userDesc
+      userEmail
+      githubUser
+      ;
     # flake = inputs.self.outPath;
 
     entry = {
@@ -74,7 +83,11 @@ builtins.foldl' (
       );
     };
   in
-    acc // {${system} = (acc.${system} or {}) // {${hostName} = entry;};}
-) {}
-inputs.self.lib.boxen
+  acc
+  // {
+    ${system} = (acc.${system} or { }) // {
+      ${hostName} = entry;
+    };
+  }
+) { } inputs.self.lib.boxen
 # TODO: apps."x86_64-linux".default = self.apps."x86_64-linux"."nixos";

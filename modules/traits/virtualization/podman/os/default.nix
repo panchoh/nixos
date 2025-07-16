@@ -4,21 +4,28 @@
   pkgs,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.podman;
-in {
+in
+{
   options.traits.os.podman = {
-    enable = lib.mkEnableOption "podman" // {default = true;};
+    enable = lib.mkEnableOption "podman" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      dive
-      podman-tui
-      podman-compose
-    ] ++ lib.optionals (box.isStation or false) [
-      podman-desktop
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        dive
+        podman-tui
+        podman-compose
+      ]
+      ++ lib.optionals (box.isStation or false) [
+        podman-desktop
+      ];
 
     virtualisation = {
       podman = {

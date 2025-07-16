@@ -3,11 +3,15 @@
   lib,
   box ? null,
   ...
-}: let
+}:
+let
   cfg = config.traits.os.greetd;
-in {
+in
+{
   options.traits.os.greetd = {
-    enable = lib.mkEnableOption "greetd" // {default = box.isStation or false;};
+    enable = lib.mkEnableOption "greetd" // {
+      default = box.isStation or false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

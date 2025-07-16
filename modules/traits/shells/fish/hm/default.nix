@@ -2,11 +2,15 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.traits.hm.fish;
-in {
+in
+{
   options.traits.hm.fish = {
-    enable = lib.mkEnableOption "fish" // {default = true;};
+    enable = lib.mkEnableOption "fish" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -37,7 +41,7 @@ in {
         ];
         settings = {
           auto_sync = false;
-          common_prefix = ["run0"];
+          common_prefix = [ "run0" ];
           dotfiles.enabled = false;
           enter_accept = true;
           exit_mode = "return-query";
@@ -118,7 +122,7 @@ in {
         ];
         tmux = {
           enableShellIntegration = true;
-          shellIntegrationOptions = ["-d 40%"];
+          shellIntegrationOptions = [ "-d 40%" ];
         };
       };
 
