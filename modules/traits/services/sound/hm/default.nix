@@ -22,6 +22,7 @@ in
       picard
       pwvucontrol
       qastools
+      qpwgraph
     ];
   };
 }
