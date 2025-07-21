@@ -11,7 +11,7 @@ builtins.foldl' (
         cacert
         nix
         nixfmt-tree
-        nixfmt-rfc-style
+        nixfmt
         git
         go-task
         toilet
