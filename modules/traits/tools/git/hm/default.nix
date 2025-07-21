@@ -27,6 +27,7 @@ in
       gitui
       gittyup
       gource
+      lazygit
       tig
       meld
       vbindiff
