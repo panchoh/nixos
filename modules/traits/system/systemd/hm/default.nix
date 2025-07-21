@@ -16,7 +16,6 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      pkgs.isd
       pkgs.systemctl-tui
     ];
   };
