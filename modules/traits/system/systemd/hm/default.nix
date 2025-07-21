@@ -15,8 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.user.startServices = "sd-switch";
-
     home.packages = [
       pkgs.isd
       pkgs.systemctl-tui
