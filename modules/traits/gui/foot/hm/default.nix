@@ -25,7 +25,7 @@ in
       enable = true;
       settings = {
         main = {
-          pad = "4x4 center";
+          pad = "0x0";
         };
         bell = {
           urgent = true;
