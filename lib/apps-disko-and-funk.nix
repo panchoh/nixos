@@ -19,6 +19,7 @@ builtins.foldl' (
 
     entry = {
       type = "app";
+      meta.description = "Fresh install of NixOS.";
       program = builtins.toString (
         getExe (
           pkgs.writeShellApplication {
