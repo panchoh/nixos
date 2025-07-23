@@ -1,13 +1,13 @@
 {
   config,
   lib,
-  osConfig,
+  nixosConfig,
   box ? null,
   ...
 }:
 let
   cfg = config.traits.hm.fuzzel;
-  size = toString (osConfig.stylix.fonts.sizes.desktop + 2);
+  size = toString (nixosConfig.stylix.fonts.sizes.desktop + 2);
 in
 {
   options.traits.hm.fuzzel = {

@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  osConfig,
+  nixosConfig,
   box ? null,
   ...
 }:
@@ -51,8 +51,8 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = osConfig.programs.hyprland.package;
-      xwayland.enable = osConfig.programs.hyprland.xwayland.enable;
+      package = nixosConfig.programs.hyprland.package;
+      xwayland.enable = nixosConfig.programs.hyprland.xwayland.enable;
       importantPrefixes = [
         "bezier"
         "name"
