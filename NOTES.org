@@ -271,6 +271,7 @@ in {
 
 *** Iosevka
 - https://stackoverflow.com/questions/62230166/configuring-iosevka-for-nix
+- https://github.com/eshrh/nixos-config/blob/master/nixos/fonts/iosevka.nix
 
 *** Using Nix Community’s Emacs Overlay
 - https://github.com/bbigras/nix-config/
