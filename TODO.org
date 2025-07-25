@@ -25,7 +25,8 @@ https://github.com/balsoft/nixos-config
 
 move the untyped makeBox list to a typed one, and stop passing box around, communicate via config.traits.box.*
 
-* Make use of zram
+* Make use of zram and/or zswap
+- https://wiki.nixos.org/wiki/Swap#Zram_swap
 - https://en.wikipedia.org/wiki/Zram
 - https://unix.stackexchange.com/questions/499485/how-do-i-use-swap-space-for-emergencies-only (zram there)
 - https://wiki.archlinux.org/title/improving_performance#zram_or_zswap
