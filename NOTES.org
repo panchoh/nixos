@@ -92,6 +92,7 @@ Adhere to Semantic Commit Messages
 - https://github.com/NixOS/nixpkgs/blob/653038c38dee95539f74480e955a2c95000be732/nixos/tests/sway.nix#L49
 
 ** dotfiles to Explore
+- [] https://github.com/balsoft/nixos-config, previously at https://code.balsoft.ru/balsoft/nixos-config
 - [] https://gitlab.com/arkboi/dotfiles/-/tree/main/share/user/.config/emacs
 - [ ] https://gitlab.com/magus/mes/-/tree/main # Emacs from scratch, Go (go-ts-mode)
 - [ ] https://github.com/lovesegfault/nix-config
