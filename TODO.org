@@ -17,7 +17,7 @@ I think that nix fmt does in fact accept parameters. Find out exactly how.
 https://github.com/SenchoPens/base16.nix/blob/main/flake.nix
 interesting usage of lib at flake.nix. See usage on module.nix.
 
-https://code.balsoft.ru/balsoft/nixos-config
+https://github.com/balsoft/nixos-config
 
 
 * architectural change of my flake
