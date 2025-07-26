@@ -84,6 +84,7 @@ in
         auto_update = false;
         autosave = "on_focus_change";
         always_treat_brackets_as_autoclosed = true;
+        disable_ai = true;
         features = {
           copilot = false;
         };
