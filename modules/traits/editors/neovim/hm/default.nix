@@ -15,7 +15,7 @@ in
   ];
 
   options.traits.hm.neovim = {
-    enable = lib.mkEnableOption "neovim" // {
+    enable = lib.mkEnableOption "Neovim" // {
       default = true;
     };
   };
