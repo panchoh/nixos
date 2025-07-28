@@ -68,6 +68,8 @@ in
         gnutls
         zstd
 
+        inotify-info
+
         bc
         cdrkit
 
