@@ -83,7 +83,5 @@ in
         hmts.enable = true;
       };
     };
-
-    xdg.configFile."nvim/lua/disable_keys.lua".source = ./disable_keys.lua;
   };
 }
