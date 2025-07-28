@@ -82,33 +82,8 @@ in
 
         hmts.enable = true;
       };
-
-      extraConfigLua = ''
-        if vim.g.neovide then
-          -- Put anything you want to happen only in Neovide here
-          -- https://neovide.dev/configuration.html#cursor-particles
-          vim.g.neovide_cursor_vfx_mode = "pixiedust"
-        end
-      '';
     };
 
     xdg.configFile."nvim/lua/disable_keys.lua".source = ./disable_keys.lua;
-
-    programs.neovide = {
-      enable = true;
-      settings = {
-        fork = false;
-        frame = "full";
-        idle = true;
-        maximized = false;
-        no-multigrid = false;
-        srgb = false;
-        tabs = false;
-        theme = "auto";
-        title-hidden = true;
-        vsync = true;
-        wsl = false;
-      };
-    };
   };
 }
