@@ -3,6 +3,7 @@
 
   nixConfig = {
     abort-on-warn = true;
+    allow-import-from-derivation = true; # for nix-doom-emacs-unstraightened
     commit-lockfile-summary = "chore(flake): bump";
 
     extra-substituters = [
