@@ -4,6 +4,7 @@
   nixConfig = {
     abort-on-warn = true;
     allow-import-from-derivation = true; # for nix-doom-emacs-unstraightened
+    extra-experimental-features = [ "pipe-operators" ];
     commit-lockfile-summary = "chore(flake): bump";
 
     extra-substituters = [
