@@ -1,40 +1,27 @@
 inputs: moduleFamily:
 let
-  inherit (builtins) readDir baseNameOf;
-  inherit (inputs.nixpkgs.lib) concatMap concatStringsSep mapAttrsToList;
-  baseDir = ../traits;
+  inherit (builtins) readDir concatMap baseNameOf;
+  inherit (inputs.nixpkgs.lib.attrsets) mapAttrsToList;
+
+  nameTypePair = name: type: { inherit name type; };
 
   traverse =
     family: path:
-    concatMap
-      (
-        entry:
-        let
-          inherit (entry) name type;
-        in
-        if type == "directory" then
-          traverse family (
-            concatStringsSep "/" [
-              path
-              name
-            ]
-          )
-        else if name == "default.nix" && type == "regular" && (baseNameOf path == family) then
-          [
-            (concatStringsSep "/" [
-              path
-              name
-            ])
-          ]
-        else
-          [ ]
-      )
-      (
-        mapAttrsToList (name: type: {
-          inherit name type;
-        }) (readDir path)
-      );
+    readDir path
+    |> mapAttrsToList nameTypePair
+    |> concatMap (
+      entry:
+      let
+        inherit (entry) name type;
+      in
+      if type == "directory" then
+        traverse family (path + "/${name}")
+      else if name == "default.nix" && type == "regular" && (baseNameOf path == family) then
+        [ (path + "/${name}") ]
+      else
+        [ ]
+    );
 in
 {
-  imports = traverse moduleFamily baseDir;
+  imports = traverse moduleFamily ../traits;
 }
