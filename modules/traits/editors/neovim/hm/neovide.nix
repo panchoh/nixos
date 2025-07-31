@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  nixvim,
   ...
 }:
 let
@@ -26,14 +25,16 @@ in
       };
     };
 
-    programs.nixvim = {
-      extraConfigLua = ''
-        if vim.g.neovide then
-          -- Put anything you want to happen only in Neovide here
-          -- https://neovide.dev/configuration.html#cursor-particles
-          vim.g.neovide_cursor_vfx_mode = "pixiedust"
-        end
-      '';
-    };
+    programs.nvf.settings.vim.luaConfigPost = ''
+      if vim.g.neovide then
+        -- Put anything you want to happen only in Neovide here
+
+        -- https://neovide.dev/configuration.html#cursor-particles
+        vim.g.neovide_cursor_vfx_mode = {"pixiedust", "ripple"}
+
+        -- https://neovide.dev/configuration.html#animate-switch-to-command-line
+        vim.g.neovide_cursor_animate_command_line = true
+      end
+    '';
   };
 }
