@@ -24,6 +24,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.url = "github:nix-community/autofirma-nix";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.inputs.home-manager.follows = "home-manager";

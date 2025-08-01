@@ -445,6 +445,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753589988,
+        "narHash": "sha256-y1JlcMB2dKFkrr6g+Ucmj8L//IY09BtSKTH/A7OU7mU=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "f0736b09c43028fd726fb70c3eb3d1f0795454cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nix-unit": {
       "inputs": {
         "flake-parts": [
@@ -561,6 +581,7 @@
         "home-manager": "home-manager",
         "kubelab": "kubelab",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
+        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
