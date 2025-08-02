@@ -21,7 +21,10 @@ in
     };
 
     # https://stylix.danth.me/options/modules/firefox.html?highlight=firefox#firefox-and-its-derivatives
-    stylix.targets.firefox.profileNames = [ "default" ];
+    # TODO: investigate why this setting causes:
+    # 1. `nix flake check` to fail
+    # 2. bootstrapping a box to fail
+    # stylix.targets.firefox.profileNames = [ "default" ];
 
     # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
