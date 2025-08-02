@@ -136,7 +136,7 @@ in
         wormhole-william
 
         stellarium
-        celestia
+        # celestia
       ];
   };
 }
