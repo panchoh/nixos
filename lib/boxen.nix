@@ -35,14 +35,7 @@ map (overrides: defaults // overrides) [
     hostName = "oxygen";
     macvlanAddr = "48:21:0b:3c:16:a9";
     isStation = true;
-    extraModules = [
-      (
-        { config, ... }:
-        {
-          config.traits.os.caddy.enable = true;
-        }
-      )
-    ];
+    extraModules = [ { traits.os.caddy.enable = true; } ];
   }
 
   {
@@ -59,12 +52,7 @@ map (overrides: defaults // overrides) [
     hasMedia = true;
     extraModules = [
       inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-      (
-        { config, ... }:
-        {
-          config.traits.os.minecraft.enable = true;
-        }
-      )
+      { traits.os.minecraft.enable = true; }
     ];
   }
 
