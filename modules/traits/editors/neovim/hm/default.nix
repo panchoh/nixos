@@ -23,7 +23,8 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    stylix.targets.nvf.enable = false;
+    # TODO: reenable this and manual dracula theme when fixed
+    # stylix.targets.nvf.enable = false;
 
     programs.nvf = {
       enable = true;
@@ -176,11 +177,11 @@ in
 
           statusline.lualine.enable = true;
 
-          theme = {
-            enable = true;
-            name = "dracula";
-            style = "dark";
-          };
+          # theme = {
+          #   enable = true;
+          #   name = "dracula";
+          #   style = "dark";
+          # };
 
           treesitter = {
             enable = true;
