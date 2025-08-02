@@ -8,19 +8,14 @@
 sudo nix --experimental-features 'nix-command flakes' run github:panchoh/nixos#helium
 #+end_src
 
-3. Change the default password (you guessed it, it’s ‘password’)
- #+begin_src shell
-passwd
-#+end_src
-
-4. Manage your ssh key and then let Home Manager finish the setup
+3. Manage your ssh key and then let Home Manager finish the setup
  #+begin_src shell
 run0 systemctl restart home-manager-pancho.service
 #+end_src
 
-5. Optimise the storage just this once
+4. Optimise the storage just this once
  #+begin_src shell
 nix store optimise --verbose
 #+end_src
 
-6. You are all set.  Happy hacking!
+5. You are all set.  Happy hacking!
