@@ -14,6 +14,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.bash.enable = true;
+    programs = {
+      bash.enable = true;
+      readline = {
+        enable = true;
+        variables.bell-style = "visible";
+      };
+    };
   };
 }
