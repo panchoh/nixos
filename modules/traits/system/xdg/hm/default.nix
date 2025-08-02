@@ -14,6 +14,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.preferXdgDirectories = true;
+
     xdg = {
       enable = true;
       userDirs = {
