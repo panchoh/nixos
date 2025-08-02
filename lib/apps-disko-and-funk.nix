@@ -73,6 +73,9 @@ builtins.foldl' (
               mkdir -p "$ETC_NIXOS_PATH"
               ln -s "''${FLAKE_PATH#/mnt}"/flake.nix "$ETC_NIXOS_PATH/"
 
+              echo -e '\nReset password for user ${userName}'
+              nixos-enter --root /mnt -c 'passwd ${userName}'
+
               echo -e '\nPriming procedure completed successfully.\n'
               echo -e '\nThe cake awaits.'
               read -erp 'Press return to reboot, or Control-D to return to the shell: ' -i 'The cake is a lie!' || exit 1
