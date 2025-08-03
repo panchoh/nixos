@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.qmk = {
-    enable = lib.mkEnableOption "qmk" // {
+    enable = lib.mkEnableOption "QMK" // {
       default = true;
     };
   };

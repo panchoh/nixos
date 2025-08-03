@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.zed = {
-    enable = lib.mkEnableOption "zed.dev" // {
+    enable = lib.mkEnableOption "Zed" // {
       default = box.isStation or false;
     };
   };

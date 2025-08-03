@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.nix = {
-    enable = lib.mkEnableOption "nix" // {
+    enable = lib.mkEnableOption "Nix" // {
       default = true;
     };
   };

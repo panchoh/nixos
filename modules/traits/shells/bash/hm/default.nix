@@ -8,7 +8,7 @@ let
 in
 {
   options.traits.hm.bash = {
-    enable = lib.mkEnableOption "bash" // {
+    enable = lib.mkEnableOption "Bash" // {
       default = true;
     };
   };

@@ -10,7 +10,7 @@ let
 in
 {
   options.traits.hm.emacs = {
-    enable = lib.mkEnableOption "emacs" // {
+    enable = lib.mkEnableOption "Emacs" // {
       default = box.isStation;
     };
   };

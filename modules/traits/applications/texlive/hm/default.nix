@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.texlive = {
-    enable = lib.mkEnableOption "texlive" // {
+    enable = lib.mkEnableOption "TeX Live" // {
       default = box.isStation or false;
     };
   };

@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.openssh = {
-    enable = lib.mkEnableOption "openssh" // {
+    enable = lib.mkEnableOption "OpenSSH" // {
       default = true;
     };
   };

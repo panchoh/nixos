@@ -10,7 +10,7 @@ let
 in
 {
   options.traits.hm.obs-studio = {
-    enable = lib.mkEnableOption "obs-studio" // {
+    enable = lib.mkEnableOption "OBS Studio" // {
       default = box.isStation or false;
     };
   };

@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.ghostty = {
-    enable = lib.mkEnableOption "ghostty" // {
+    enable = lib.mkEnableOption "Ghostty" // {
       default = box.isStation or false;
     };
   };

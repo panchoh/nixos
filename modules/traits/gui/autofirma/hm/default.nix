@@ -14,7 +14,7 @@ in
   ];
 
   options.traits.hm.autofirma = {
-    enable = lib.mkEnableOption "autofirma" // {
+    enable = lib.mkEnableOption "AutoFirma" // {
       default = box.isStation or false;
     };
   };

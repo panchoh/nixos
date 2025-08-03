@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.k9s = {
-    enable = lib.mkEnableOption "k9s" // {
+    enable = lib.mkEnableOption "K9s" // {
       default = box.isStation or false;
     };
   };

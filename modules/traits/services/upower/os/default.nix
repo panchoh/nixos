@@ -8,7 +8,7 @@ let
 in
 {
   options.traits.os.upower = {
-    enable = lib.mkEnableOption "upower" // {
+    enable = lib.mkEnableOption "UPower" // {
       default = true;
     };
   };
