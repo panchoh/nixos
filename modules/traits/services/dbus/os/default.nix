@@ -8,7 +8,7 @@ let
 in
 {
   options.traits.os.dbus = {
-    enable = lib.mkEnableOption "dbus" // {
+    enable = lib.mkEnableOption "D-Bus" // {
       default = true;
     };
   };

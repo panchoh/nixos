@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.gnupg = {
-    enable = lib.mkEnableOption "gnupg" // {
+    enable = lib.mkEnableOption "GnuPG" // {
       default = box.isStation or false;
     };
   };

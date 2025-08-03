@@ -8,7 +8,7 @@ let
 in
 {
   options.traits.hm.chawan = {
-    enable = lib.mkEnableOption "chawan" // {
+    enable = lib.mkEnableOption "Chawan" // {
       default = true;
     };
   };

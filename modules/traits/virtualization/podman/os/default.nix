@@ -10,7 +10,7 @@ let
 in
 {
   options.traits.os.podman = {
-    enable = lib.mkEnableOption "podman" // {
+    enable = lib.mkEnableOption "Podman" // {
       default = true;
     };
   };

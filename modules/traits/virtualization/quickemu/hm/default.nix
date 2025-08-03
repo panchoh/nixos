@@ -10,7 +10,7 @@ let
 in
 {
   options.traits.hm.quickemu = {
-    enable = lib.mkEnableOption "quickemu" // {
+    enable = lib.mkEnableOption "Quickemu" // {
       default = box.isStation or false;
     };
   };

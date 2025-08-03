@@ -11,7 +11,7 @@ let
 in
 {
   options.traits.hm.hyprland = {
-    enable = lib.mkEnableOption "hyprland" // {
+    enable = lib.mkEnableOption "Hyprland" // {
       default = box.isStation or false;
     };
   };

@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.yubikey = {
-    enable = lib.mkEnableOption "yubikey" // {
+    enable = lib.mkEnableOption "YubiKey" // {
       default = true;
     };
   };

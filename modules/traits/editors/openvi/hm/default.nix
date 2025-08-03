@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.openvi = {
-    enable = lib.mkEnableOption "openvi" // {
+    enable = lib.mkEnableOption "OpenVi" // {
       default = true;
     };
   };

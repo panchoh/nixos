@@ -8,7 +8,7 @@ let
 in
 {
   options.traits.hm.xdg = {
-    enable = lib.mkEnableOption "xdg" // {
+    enable = lib.mkEnableOption "XDG" // {
       default = true;
     };
   };

@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.hyprland = {
-    enable = lib.mkEnableOption "hyprland" // {
+    enable = lib.mkEnableOption "Hyprland" // {
       default = box.isStation or false;
     };
   };

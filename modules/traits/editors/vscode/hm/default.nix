@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.hm.vscode = {
-    enable = lib.mkEnableOption "vscode" // {
+    enable = lib.mkEnableOption "Visual Studio Code" // {
       default = box.isStation or false;
     };
   };

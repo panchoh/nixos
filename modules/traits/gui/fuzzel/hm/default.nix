@@ -11,7 +11,7 @@ let
 in
 {
   options.traits.hm.fuzzel = {
-    enable = lib.mkEnableOption "fuzzel" // {
+    enable = lib.mkEnableOption "Fuzzel" // {
       default = box.isStation or false;
     };
   };

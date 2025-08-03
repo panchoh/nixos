@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.neovim = {
-    enable = lib.mkEnableOption "neovim" // {
+    enable = lib.mkEnableOption "Neovim" // {
       default = true;
     };
   };

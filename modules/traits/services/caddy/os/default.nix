@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.caddy = {
-    enable = lib.mkEnableOption "caddy" // {
+    enable = lib.mkEnableOption "Caddy" // {
       default = false;
     };
   };
