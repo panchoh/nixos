@@ -16,7 +16,7 @@ in
 
   options.traits.os.stylix = {
     enable = lib.mkEnableOption "Stylix" // {
-      default = box.isStation or false;
+      default = true;
     };
   };
 
