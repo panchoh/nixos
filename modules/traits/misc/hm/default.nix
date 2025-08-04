@@ -44,7 +44,7 @@ in
         ipcalc
 
         curl
-        wget2
+        # wget2
         xh
         restish
         slumber
