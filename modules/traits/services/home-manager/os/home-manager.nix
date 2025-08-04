@@ -12,7 +12,7 @@ let
 in
 {
   imports = [
-    home-manager.nixosModules.default
+    home-manager.nixosModules.home-manager
   ];
 
   options.traits.os.home-manager = {
