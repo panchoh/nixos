@@ -115,7 +115,6 @@ in
         ffmpeg
         vlc
         mkvtoolnix
-        evince
         papers
         gimp3
         inkscape
