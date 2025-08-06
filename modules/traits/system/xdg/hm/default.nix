@@ -16,8 +16,15 @@ in
   config = lib.mkIf cfg.enable {
     home.preferXdgDirectories = true;
 
+    # Identify mime type with `xdg-mime query filetype ./path/to/foobar.baz`
+    # .desktop files are located in /etc/profiles/per-user/${user}/share/applications/*.desktop
+    # xdg.mimeApps.defaultApplications = {
+    #   "application/foobar" = [ "org.some.App.desktop" ];
+    # };
+
     xdg = {
       enable = true;
+      mimeApps.enable = true;
       userDirs = {
         enable = true;
         createDirectories = true;

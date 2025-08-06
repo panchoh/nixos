@@ -15,6 +15,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    xdg.mimeApps.associations.removed."application/pdf" = "google-chrome.desktop";
+
     programs.google-chrome = {
       enable = true;
       commandLineArgs = [

@@ -16,6 +16,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    xdg.mimeApps.associations.removed."application/pdf" = "chromium-browser.desktop";
+
     programs.chromium = {
       enable = true;
       package = pkgs.ungoogled-chromium;

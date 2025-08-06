@@ -16,6 +16,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    xdg.mimeApps.defaultApplications."application/pdf" = "org.gnome.Papers.desktop";
+
     home.packages = [ pkgs.papers ];
   };
 }

@@ -26,6 +26,7 @@ in
       # https://chromeenterprise.google/policies/
       enable = true;
       extraOpts = {
+        "AlwaysOpenPdfExternally" = true; # Force Google Chrome to download PDFs instead of opening them
         "AutofillAddressEnabled" = false;
         "AutofillCreditCardEnabled" = false;
         "BackgroundModeEnabled" = false;
