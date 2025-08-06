@@ -17,13 +17,10 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    xdg.mimeApps.defaultApplications =
-      [
-        "x-scheme-handler/tg"
-        "x-scheme-handler/tonsite"
-      ]
-      |> map (lib.flip lib.nameValuePair "telegram.desktop.desktop")
-      |> lib.listToAttrs;
+    xdg.mimeApps.defaultApplications = lib.attrsets.genAttrs [
+      "x-scheme-handler/tg"
+      "x-scheme-handler/tonsite"
+    ] (_scheme: "telegram.desktop.desktop");
 
     home.packages = [ pkgs.telegram-desktop ];
   };
