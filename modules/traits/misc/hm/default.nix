@@ -115,7 +115,6 @@ in
         ffmpeg
         vlc
         mkvtoolnix
-        papers
         gimp3
         inkscape
         youtube-tui
