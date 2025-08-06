@@ -120,7 +120,6 @@ in
         youtube-tui
         zoom-us
 
-        telegram-desktop
         discord
         dissent
         # nheko
