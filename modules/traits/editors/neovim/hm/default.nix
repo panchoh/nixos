@@ -48,19 +48,18 @@ in
             hardtime-nvim = {
               enable = true;
               setupOpts.disabled_keys =
-                lib.attrsets.genAttrs
-                  [
-                    "<Insert>"
-                    "<Del>"
-                    "<Home>"
-                    "<End>"
-                    "<PageUp>"
-                    "<PageDown>"
-                  ]
-                  (_key: [
-                    ""
-                    "i"
-                  ]);
+                [
+                  "<Insert>"
+                  "<Del>"
+                  "<Home>"
+                  "<End>"
+                  "<PageUp>"
+                  "<PageDown>"
+                ]
+                |> lib.flip lib.attrsets.genAttrs (_key: [
+                  ""
+                  "i"
+                ]);
             };
           };
 
