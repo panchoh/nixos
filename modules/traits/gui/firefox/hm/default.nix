@@ -23,6 +23,8 @@ in
     # https://stylix.danth.me/options/modules/firefox.html?highlight=firefox#firefox-and-its-derivatives
     stylix.targets.firefox.profileNames = [ "default" ];
 
+    xdg.mimeApps.associations.removed."application/pdf" = "firefox.desktop";
+
     # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
     # https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/modules/home/apps/firefox/default.nix?ref_type=heads
@@ -39,6 +41,7 @@ in
         BackgroundAppUpdate = false;
         DisableAccounts = true;
         DisableAppUpdate = true;
+        DisableBuiltinPDFViewer = true;
         DisableFeedbackCommands = true;
         DisableFirefoxAccounts = true;
         DisableFirefoxScreenshots = true;
@@ -66,6 +69,7 @@ in
         OverrideFirstRunPage = "";
         OverridePostUpdatePage = "";
         PasswordManagerEnabled = false;
+        PDFjs.Enabled = false;
         SearchBar = "unified"; # alternative: "separate"
         SecurityDevices = {
           Add = {

@@ -28,6 +28,7 @@ in
       defaultSearchProviderEnabled = true;
       defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
       extraOpts = {
+        "AlwaysOpenPdfExternally" = true; # Force Chromium to download PDFs instead of opening them
         "AutofillAddressEnabled" = false;
         "AutofillCreditCardEnabled" = false;
         "BackgroundModeEnabled" = false;
