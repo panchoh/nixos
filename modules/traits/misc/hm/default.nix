@@ -130,7 +130,6 @@ in
         # Editors
         lapce
 
-        transmission_4-gtk
         wormhole-william
 
         stellarium
