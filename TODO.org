@@ -1,1 +1,8 @@
 #+title: To Do
+
+* TODO Refactor flake to adhere to the [[https://github.com/mightyiam/dendritic][Dendritic]] [[https://vic.github.io/dendrix/Dendritic.html][Pattern]] [/]
+** TODO Review [[https://flake.parts/][Flake Parts]]
+** TODO Review [[https://github.com/mightyiam/infra][mightyiam/infra]]
+** TODO Review [[https://github.com/vic/vix][vic/vix]]
+** TODO Review [[https://github.com/vic/flake-file][vic/flake-file]]
+** TODO Review [[https://github.com/tsandrini/flake-parts-builder][tsandrini/flake-parts-builder]]
