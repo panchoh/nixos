@@ -28,8 +28,16 @@ in
       userDirs = {
         enable = true;
         createDirectories = true;
+        desktop = null;
+        documents = null;
         download = "${config.home.homeDirectory}/incoming";
-        # TODO: decide what to do with the rest (disable most of them?)
+        # TODO: Handle Music/Libation (audiobooks)
+        # music = null;
+        pictures = null;
+        publicShare = null;
+        templates = null;
+        videos = null;
+        extraConfig.XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/screenshots";
       };
     };
   };
