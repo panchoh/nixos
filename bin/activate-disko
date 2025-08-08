@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+DEVICE="${1:-vda}"
 
 nix run                                          \
     --experimental-features 'nix-command flakes' \
     github:nix-community/disko                   \
     -- --mode disko                              \
-    ./modules/traits/disko/disk-config.nix
+    --argstr device /dev/"$DEVICE"               \
+    ./modules/traits/system/disko/os/disk-config.nix
