@@ -6,5 +6,7 @@ let
   inherit (inputs.nixpkgs.lib.trivial) flip;
   inherit (inputs.nixpkgs.lib.attrsets) genAttrs;
   inherit (inputs.nixpkgs) legacyPackages;
+
+  systems = boxen |> catAttrs "system" |> unique;
 in
-boxen |> catAttrs "system" |> unique |> flip genAttrs (system: legacyPackages.${system}.nixfmt-tree)
+systems |> flip genAttrs (system: legacyPackages.${system}.nixfmt-tree)
