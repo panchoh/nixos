@@ -25,7 +25,7 @@ let
     extraHomeModules = [ ];
   };
 in
-map (overrides: defaults // overrides) [
+[
   {
     hostName = "nixos";
     diskDevice = "/dev/vda";
@@ -91,3 +91,4 @@ map (overrides: defaults // overrides) [
   #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
   # }
 ]
+|> map (overrides: defaults // overrides)
