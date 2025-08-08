@@ -1,11 +1,14 @@
 inputs:
-builtins.foldl' (
-  acc: box:
-  let
-    inherit (inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
-    inherit (box) system;
+let
+  inherit (inputs.self.lib) systems;
+  inherit (inputs.nixpkgs.lib.attrsets) genAttrs;
 
-    devShell = pkgs.mkShellNoCC {
+  mkDevShell =
+    system:
+    let
+      inherit (inputs.nixpkgs.legacyPackages.${system}) pkgs;
+    in
+    pkgs.mkShellNoCC {
       name = "My-Flaky-NixOS-Config";
       packages = with pkgs; [
         cacert
@@ -23,11 +26,9 @@ builtins.foldl' (
         task
       '';
     };
-  in
-  acc
-  // {
-    ${system} = (acc.${system} or { }) // {
-      default = devShell;
-    };
-  }
-) { } inputs.self.lib.boxen
+
+  mkDefaultDevShellForSystem = system: {
+    default = mkDevShell system;
+  };
+in
+genAttrs systems mkDefaultDevShellForSystem
