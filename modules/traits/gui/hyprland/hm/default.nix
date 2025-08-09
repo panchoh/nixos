@@ -32,6 +32,27 @@ in
     };
 
     home.packages = with pkgs; [
+      (pkgs.writeShellApplication {
+        name = "toggle-bitdepth";
+        runtimeInputs = [ pkgs.jq ];
+        text = ''
+          # Toggle monitor bit depth between 8-bit and 10-bit
+
+          MON=$(hyprctl monitors -j | jq -r '.[0].name')
+
+          CUR=$(hyprctl monitors -j | jq -r --arg mon "$MON" '.[] | select(.name==$mon) | .currentFormat')
+
+          if [[ "$CUR" == *"101010" ]]; then
+            hyprctl keyword monitor 'desc:Dell Inc. DELL U4025QW B1MKH34, highrr, auto, auto, bitdepth, 8'
+            hyprctl keyword monitor 'desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 8'
+            hyprctl keyword monitor 'desc:XXX Beyond TV 0x00010000, preferred, auto, 1.5, bitdepth, 8'
+          else
+            hyprctl keyword monitor 'desc:Dell Inc. DELL U4025QW B1MKH34, highrr, auto, auto, bitdepth, 10'
+            hyprctl keyword monitor 'desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 10'
+            hyprctl keyword monitor 'desc:XXX Beyond TV 0x00010000, preferred, auto, 1.5, bitdepth, 10'
+          fi
+        '';
+      })
       hyprpolkitagent
       hyprland-qtutils
       swaylock
@@ -46,7 +67,9 @@ in
       xkeyboard_config
       libxkbcommon # for xkbcli interactive-wayland
       libinput # for libinput list-devices
+      wayland-utils # for wayland-info
       wtype
+      vrrtest
     ];
 
     wayland.windowManager.hyprland = {
@@ -61,7 +84,8 @@ in
       settings = {
         # CAVEAT EMPTOR: Google Meet does not support 10-bit depth, colors of shared windows will be off
         monitor = [
-          "desc:Dell Inc. DELL U4025QW B1MKH34, highrr, auto, auto, bitdepth, 10, vrr, 1"
+          # "desc:Dell Inc. DELL U4025QW B1MKH34, highrr, auto, auto, bitdepth, 10, vrr, 1"
+          "desc:Dell Inc. DELL U4025QW B1MKH34, highrr, auto, auto, bitdepth, 10"
           "desc:Dell Inc. DELL U3818DW 5KC0386E05KL, preferred, auto, auto, bitdepth, 10"
           "desc:Chimei Innolux Corporation 0x14D4, preferred, auto, 1"
           "desc:XXX Beyond TV 0x00010000, preferred, auto, 1.5, bitdepth, 10"
@@ -223,6 +247,7 @@ in
 
           "SUPER,       U, focusurgentorlast,"
           "SUPER,       T, togglefloating, active"
+          "SUPER SHIFT, B, exec, toggle-bitdepth"
 
           # Paste
           "SUPER,       V, sendshortcut, , mouse:274, activewindow"
