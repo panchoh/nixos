@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.qmk = {
-    enable = lib.mkEnableOption "qmk" // {
+    enable = lib.mkEnableOption "QMK" // {
       default = box.isStation or false;
     };
   };
