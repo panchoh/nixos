@@ -10,7 +10,7 @@ let
 in
 {
   options.traits.hm.git = {
-    enable = lib.mkEnableOption "git" // {
+    enable = lib.mkEnableOption "Git" // {
       default = true;
     };
   };

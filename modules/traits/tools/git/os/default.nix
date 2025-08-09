@@ -9,7 +9,7 @@ let
 in
 {
   options.traits.os.git = {
-    enable = lib.mkEnableOption "git" // {
+    enable = lib.mkEnableOption "Git" // {
       default = true;
     };
   };
