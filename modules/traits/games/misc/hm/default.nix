@@ -23,11 +23,9 @@ in
       crawl
       sl
       neofetch
-      # TODO: uncomment when fixed
-      # hyperrogue
+      hyperrogue
       notcurses
-      # TODO: uncomment when fixed
-      # torus-trooper
+      torus-trooper
 
       figlet
       toilet
