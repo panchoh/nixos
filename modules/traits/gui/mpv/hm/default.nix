@@ -47,6 +47,10 @@ in
         vd-lavc-dr = false;
 
         drm-vrr-enabled = "auto";
+
+        # HDR
+        # target-colorspace-hint = "auto";
+        # target-colorspace-hint-mode = "source"; # after mpv 0.40.0
       };
       profiles = {
         alsa-mm1 = {
