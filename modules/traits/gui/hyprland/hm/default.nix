@@ -224,7 +224,7 @@ in
         };
 
         render = {
-          direct_scanout = true;
+          direct_scanout = 2;
         };
 
         animation = [
