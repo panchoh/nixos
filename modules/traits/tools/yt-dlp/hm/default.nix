@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  box ? null,
   ...
 }:
 let
@@ -9,7 +10,7 @@ in
 {
   options.traits.hm.yt-dlp = {
     enable = lib.mkEnableOption "yt-dlp" // {
-      default = true;
+      default = box.isStation or false;
     };
   };
 
