@@ -53,8 +53,8 @@ in
 
     services.interception-tools = {
       enable = true;
-      plugins = with pkgs; [
-        interception-tools-plugins.dual-function-keys
+      plugins = [
+        pkgs.interception-tools-plugins.dual-function-keys
       ];
       udevmonConfig = ''
         - JOB: >-
