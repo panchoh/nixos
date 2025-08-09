@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  box ? null,
   ...
 }:
 let
@@ -9,7 +10,7 @@ in
 {
   options.traits.hm.chawan = {
     enable = lib.mkEnableOption "Chawan" // {
-      default = true;
+      default = box.isStation or false;
     };
   };
 
