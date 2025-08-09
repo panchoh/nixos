@@ -31,9 +31,6 @@ in
       useDHCP = false;
       enableIPv6 = false;
       wireless.iwd.enable = box.isLaptop or false;
-      firewall.allowedTCPPorts = [
-        51413 # transmission-gtk
-      ];
     };
 
     services = {
