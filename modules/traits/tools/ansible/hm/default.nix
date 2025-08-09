@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }:
 let
@@ -10,7 +11,7 @@ in
 {
   options.traits.ansible = {
     enable = lib.mkEnableOption "ansible" // {
-      default = true;
+      default = box.isStation or false;
     };
   };
 
