@@ -25,6 +25,7 @@ in
     ];
 
     virtualisation = {
+      spiceUSBRedirection.enable = true;
       libvirtd = {
         enable = true;
         qemu.runAsRoot = false;
