@@ -8,7 +8,7 @@ let
     box:
     let
       inherit (inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
-      inherit (inputs.self.nixosConfigurations.${box.hostName}.config.system.build) diskoScript;
+      inherit (inputs.self.nixosConfigurations.${box.hostName}.config.system.build) destroyFormatMount;
       inherit (inputs.self.nixosConfigurations.${box.hostName}.config.users.users.${box.userName}) home;
       inherit (box)
         hostName
@@ -61,7 +61,7 @@ let
               blkdiscard --force "${diskDevice}" --quiet --verbose
 
               echo -e '\nPartitioning and formatting with disko...'
-              ${diskoScript} &>> log
+              ${getExe destroyFormatMount} --yes-wipe-all-disks &>> log
 
               echo -e '\nInstalling NixOS...'
               nixos-install --no-root-password --no-channel-copy --flake "${inputs.self}#${hostName}"
