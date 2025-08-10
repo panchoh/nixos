@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    disko.nixosModules.default
+    disko.nixosModules.disko
     (import ./disk-config.nix { device = box.diskDevice or "/dev/vda"; })
   ];
 }
