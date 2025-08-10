@@ -29,17 +29,23 @@ let
             meta.mainProgram = "setup";
             runtimeInputs = with pkgs; [
               efibootmgr
-              coreutils # for chown, ln, mkdir and printf
+              coreutils # for tee, chown, ln, mkdir and printf
               util-linux # for blkdiscard
               git
             ];
             # bashOptions = ["errexit" "nounset" "pipefail" "xtrace"];
+            # bashOptions = ["errexit" "nounset" "pipefail" "verbose"];
             text = ''
+              [[ $EUID -eq 0 ]] || { echo 'Skynet will accept no less than total control.  Execute with super user privileges.' && exit 1; }
+
+              # Initialize logging
+              readonly LOGFILE=disko-and-funk.log
+              exec 1> >(tee -a "$LOGFILE")
+              exec 2> >(tee -a "$LOGFILE" >&2)
+
               echo -e '\nWelcome to Cyberdyne Systems T-series maintenance flake.'
               echo -e '\nGreetings, human with ID: "${userDesc} (${userName}) <${userEmail}>", GitHub account: "${githubUser}".'
               echo -e "\nYou have requested the priming of the box designated as '${hostName}', on device: '${diskDevice}'."
-
-              [[ $EUID -eq 0 ]] || { echo 'Skynet needs total control.  Run me again with run0.  Aborting...' 1>&2; exit 1; }
 
               echo -e '\nWARNING: The following procedure will wipe your system clean!'
               echo 'Destruction will ensue.  You have been warned.'
@@ -47,21 +53,21 @@ let
               [[ "$REPLY" == YES ]] || exit 1
 
               echo -e '\nSetting efi boot timeout to zero...'
-              efibootmgr --timeout 0 &>> log || true
+              efibootmgr --timeout 0 || true
 
               echo -e '\nDeleting boot order...'
-              efibootmgr --delete-bootorder &>> log || true
+              efibootmgr --delete-bootorder || true
 
               echo -e '\nPurging efi boot entries...'
               for i in {0..15}; do
                 efibootmgr --delete-bootnum --bootnum "$(printf 000%X "$i")" || break
-              done &>> log
+              done
 
               echo -e '\nDiscarding disk device...'
               blkdiscard --force "${diskDevice}" --quiet --verbose
 
-              echo -e '\nPartitioning and formatting with disko...'
-              ${getExe destroyFormatMount} --yes-wipe-all-disks &>> log
+              echo -e '\nPartitioning, formatting and mounting with disko...'
+              ${getExe destroyFormatMount} --yes-wipe-all-disks
 
               echo -e '\nInstalling NixOS...'
               nixos-install --no-root-password --no-channel-copy --flake "${inputs.self}#${hostName}"
@@ -82,6 +88,7 @@ let
               echo -e '\nThe cake awaits.'
               read -erp 'Press return to reboot, or Control-D to return to the shell: ' -i 'The cake is a lie!' || exit 1
               echo 'Rebooting...'
+              mv -v "$LOGFILE" "$ETC_NIXOS_PATH" # Preserve the log
               reboot
             '';
           }
