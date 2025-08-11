@@ -12,11 +12,11 @@ let
       inherit (box) system;
       modules = [ nixosModules.default ] ++ box.extraModules;
       specialArgs = inputs // {
+        inherit box;
+        home.imports = [ homeModules.default ] ++ box.extraHomeModules;
         extraSpecialArgs = inputs // {
           inherit box;
         };
-        home.imports = [ homeModules.default ] ++ box.extraHomeModules;
-        inherit box;
       };
     });
 in
