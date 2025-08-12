@@ -47,6 +47,20 @@ in
   }
 
   {
+    stateVersion = "25.11";
+    hostName = "aluminium";
+    macvlanAddr = "68:5b:35:a7:2f:4c";
+    isLaptop = true;
+    isStation = true;
+    diskDevice = "/dev/sda";
+    userName = "alpro";
+    userDesc = "Alberto Peón";
+    userEmail = "alberto.peon@FIXME.com";
+    githubUser = "Alberto-Peon";
+    extraModules = [ inputs.nixos-hardware.nixosModules.apple-macbook-air-6 ];
+  }
+
+  {
     hostName = "potassium";
     macvlanAddr = "1c:69:7a:02:8d:23";
     hasMedia = true;
