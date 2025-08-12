@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.traits.hm.gopass;
+  inherit (box) githubUser;
   passwordStoreDir = "${config.xdg.dataHome}/gopass/stores/root";
 in
 {
@@ -28,7 +29,7 @@ in
           rmdir --ignore-fail-on-non-empty "${passwordStoreDir}"
           if [[ ! -d "${passwordStoreDir}" ]]; then
             verboseEcho Cloning gopass-store
-            PATH="${config.home.path}/bin:$PATH" run gopass clone --check-keys=false git@github.com:panchoh/gopass-store.git
+            PATH="${config.home.path}/bin:$PATH" run gopass clone --check-keys=false git@github.com:${githubUser}/gopass-store.git
           fi
         '';
       };
