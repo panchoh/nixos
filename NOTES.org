@@ -92,6 +92,7 @@ Adhere to Semantic Commit Messages
 - https://github.com/NixOS/nixpkgs/blob/653038c38dee95539f74480e955a2c95000be732/nixos/tests/sway.nix#L49
 
 ** dotfiles to Explore
+- [ ] https://github.com/alyraffauf/nixcfg # with flake-parts
 - [ ] https://github.com/SenchoPens/base16.nix flake.nix lib
 - [ ] https://github.com/SenchoPens/base16.nix/blob/main/flake.nix
     interesting usage of lib at flake.nix. See usage on module.nix.
