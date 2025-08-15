@@ -1,5 +1,5 @@
-inputs: {
-  nixosModule = import ./module.nix inputs "os";
+flake: {
+  nixosModule = import ./module.nix flake "os";
 
-  homeModule = import ./module.nix inputs "hm";
+  homeModule = import ./module.nix flake "hm";
 }

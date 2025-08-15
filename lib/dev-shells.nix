@@ -1,12 +1,12 @@
-inputs:
+flake:
 let
-  inherit (inputs.self.lib) systems;
-  inherit (inputs.nixpkgs.lib.attrsets) genAttrs;
+  inherit (flake.lib) systems;
+  inherit (flake.inputs.nixpkgs.lib.attrsets) genAttrs;
 
   mkDevShell =
     system:
     let
-      inherit (inputs.nixpkgs.legacyPackages.${system}) pkgs;
+      inherit (flake.inputs.nixpkgs.legacyPackages.${system}) pkgs;
     in
     pkgs.mkShellNoCC {
       name = "My-Flaky-NixOS-Config";

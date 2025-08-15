@@ -1,4 +1,4 @@
-inputs:
+flake:
 let
   defaults = {
     stateVersion = "24.05";
@@ -43,7 +43,7 @@ in
     macvlanAddr = "00:2b:67:11:27:06";
     isLaptop = true;
     isStation = true;
-    extraModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
   }
 
   {
@@ -57,7 +57,7 @@ in
     userDesc = "Alberto Peón";
     userEmail = "alberto.peon@FIXME.com";
     githubUser = "Alberto-Peon";
-    extraModules = [ inputs.nixos-hardware.nixosModules.apple-macbook-air-6 ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.apple-macbook-air-6 ];
   }
 
   {
@@ -65,7 +65,7 @@ in
     macvlanAddr = "1c:69:7a:02:8d:23";
     hasMedia = true;
     extraModules = [
-      inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+      flake.inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
       { traits.os.minecraft.enable = true; }
     ];
   }
@@ -74,27 +74,27 @@ in
     hostName = "calcium";
     macvlanAddr = "1c:69:7a:06:76:c0";
     hasMedia = true;
-    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
   }
 
   {
     hostName = "scandium";
     macvlanAddr = "1c:69:7a:a7:e4:e5";
     isStation = true;
-    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
   }
 
   {
     hostName = "titanium";
     macvlanAddr = "1c:69:7a:a7:ad:ec";
-    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
   }
 
   {
     hostName = "vanadium";
     macvlanAddr = "1c:69:7a:a7:a8:a9";
     diskDevice = "/dev/sda";
-    extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
   }
 
   # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
@@ -102,7 +102,7 @@ in
   #   system = "aarch64-linux";
   #   hostName = "neon";
   #   macvlanAddr = "dc:a6:32:b1:ae:1d";
-  #   extraModules = [inputs.nixos-hardware.nixosModules.raspberry-pi-4];
+  #   extraModules = [flake.inputs.nixos-hardware.nixosModules.raspberry-pi-4];
   # }
 ]
 |> map (overrides: defaults // overrides)

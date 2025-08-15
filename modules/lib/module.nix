@@ -1,7 +1,7 @@
-inputs: moduleFamily:
+flake: moduleFamily:
 let
   inherit (builtins) readDir concatMap baseNameOf;
-  inherit (inputs.nixpkgs.lib.attrsets) mapAttrsToList;
+  inherit (flake.inputs.nixpkgs.lib.attrsets) mapAttrsToList;
 
   nameTypePair = name: type: { inherit name type; };
 

@@ -1,13 +1,13 @@
-inputs: {
-  boxen = import ./boxen.nix inputs;
+flake: {
+  boxen = import ./boxen.nix flake;
 
-  systems = import ./systems.nix inputs;
+  systems = import ./systems.nix flake;
 
-  nixfmt-tree = import ./nixfmt-tree.nix inputs;
+  nixfmt-tree = import ./nixfmt-tree.nix flake;
 
-  appsDiskoAndFunk = import ./apps-disko-and-funk.nix inputs;
+  appsDiskoAndFunk = import ./apps-disko-and-funk.nix flake;
 
-  devShells = import ./dev-shells.nix inputs;
+  devShells = import ./dev-shells.nix flake;
 
-  nixosConfigurations = import ./configurations.nix inputs;
+  nixosConfigurations = import ./configurations.nix flake;
 }
