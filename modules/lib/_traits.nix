@@ -1,25 +1,19 @@
 # WIP: finished, but still unused; might be useful with a flake_parts-driven organization.
 flake:
 let
-  inherit (builtins)
-    attrNames
-    concatMap
-    elem
-    readDir
-    ;
-  inherit (flake.inputs.nixpkgs.lib.strings) hasPrefix hasSuffix;
-
   listTraitsRecursive =
     dir:
     let
-      entries = readDir dir;
-      names = attrNames entries;
-      hasDefault = elem "default.nix" names && entries."default.nix" == "regular";
+      entries = builtins.readDir dir;
+      names = builtins.attrNames entries;
+      hasDefault = builtins.elem "default.nix" names && entries."default.nix" == "regular";
+      inherit (flake.inputs.nixpkgs.lib.strings) hasPrefix hasSuffix;
     in
     if hasDefault then
       [ "${dir}/default.nix" ]
     else
-      concatMap (
+      names
+      |> builtins.concatMap (
         name:
         let
           path = "${dir}/${name}";
@@ -33,7 +27,8 @@ let
           listTraitsRecursive path
         else
           [ ]
-      ) names;
+      );
 
+  traits = listTraitsRecursive ../traits;
 in
-listTraitsRecursive ../traits
+traits

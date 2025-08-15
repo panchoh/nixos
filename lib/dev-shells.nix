@@ -1,6 +1,5 @@
 flake:
 let
-  inherit (flake.lib) systems;
   inherit (flake.inputs.nixpkgs.lib.attrsets) genAttrs;
 
   mkDevShell =
@@ -30,5 +29,7 @@ let
   mkDefaultDevShellForSystem = system: {
     default = mkDevShell system;
   };
+
+  dev-shells = genAttrs flake.lib.systems mkDefaultDevShellForSystem;
 in
-genAttrs systems mkDefaultDevShellForSystem
+dev-shells
