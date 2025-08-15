@@ -1,9 +1,9 @@
-inputs:
+flake:
 let
-  inherit (inputs.self.lib) boxen;
-  inherit (inputs.self) nixosModules homeModules;
-  inherit (inputs.nixpkgs.lib.attrsets) nameValuePair;
-  inherit (inputs.nixpkgs.lib) nixosSystem;
+  inherit (flake.lib) boxen;
+  inherit (flake) nixosModules homeModules;
+  inherit (flake.inputs.nixpkgs.lib.attrsets) nameValuePair;
+  inherit (flake.inputs.nixpkgs.lib) nixosSystem;
   inherit (builtins) listToAttrs;
 
   mkSystem =
@@ -11,10 +11,10 @@ let
     nameValuePair box.hostName (nixosSystem {
       inherit (box) system;
       modules = [ nixosModules.default ] ++ box.extraModules;
-      specialArgs = inputs // {
+      specialArgs = flake.inputs // {
         inherit box boxen;
         home.imports = [ homeModules.default ] ++ box.extraHomeModules;
-        extraSpecialArgs = inputs // {
+        extraSpecialArgs = flake.inputs // {
           inherit box boxen;
         };
       };

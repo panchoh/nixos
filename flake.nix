@@ -56,9 +56,9 @@
   };
 
   outputs =
-    { self, ... }@inputs:
+    { self, ... }:
     {
-      lib = import ./lib inputs // import ./modules/lib inputs;
+      lib = import ./lib self // import ./modules/lib self;
 
       formatter = self.lib.nixfmt-tree;
 

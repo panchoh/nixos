@@ -1,5 +1,5 @@
 # WIP: finished, but still unused; might be useful with a flake_parts-driven organization.
-inputs:
+flake:
 let
   inherit (builtins)
     attrNames
@@ -7,7 +7,7 @@ let
     elem
     readDir
     ;
-  inherit (inputs.nixpkgs.lib.strings) hasPrefix hasSuffix;
+  inherit (flake.inputs.nixpkgs.lib.strings) hasPrefix hasSuffix;
 
   listTraitsRecursive =
     dir:

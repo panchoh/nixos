@@ -1,8 +1,8 @@
-inputs:
+flake:
 let
-  inherit (inputs.self.lib) boxen;
+  inherit (flake.lib) boxen;
   inherit (builtins) catAttrs;
-  inherit (inputs.nixpkgs.lib.lists) unique;
+  inherit (flake.inputs.nixpkgs.lib.lists) unique;
 
   systems = boxen |> catAttrs "system" |> unique;
 in
