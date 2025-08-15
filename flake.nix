@@ -58,20 +58,20 @@
   outputs =
     { self, ... }:
     {
-      lib = import ./lib self // import ./modules/lib self;
+      lib = import ./lib self;
 
-      formatter = self.lib.nixfmt-tree;
+      formatter = import ./lib/nixfmt-tree.nix self;
 
-      apps = self.lib.appsDiskoAndFunk;
+      apps = import ./lib/apps-disko-and-funk.nix self;
 
-      devShells = self.lib.devShells;
+      devShells = import ./lib/dev-shells.nix self;
 
       flakeModules.default = import ./modules self;
 
-      homeModules.default = self.lib.homeModule;
+      homeModules.default = import ./lib/module.nix self "hm";
 
-      nixosModules.default = self.lib.nixosModule;
+      nixosModules.default = import ./lib/module.nix self "os";
 
-      nixosConfigurations = self.lib.nixosConfigurations;
+      nixosConfigurations = import ./lib/configurations.nix self;
     };
 }
