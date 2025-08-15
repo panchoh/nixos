@@ -2,7 +2,6 @@ flake:
 let
   inherit (flake.inputs.nixpkgs.lib.meta) getExe;
   inherit (flake.inputs.nixpkgs.lib.attrsets) listToAttrs nameValuePair;
-  inherit (builtins) groupBy mapAttrs;
 
   mkApp =
     box:
@@ -13,14 +12,6 @@ let
         ;
       inherit (flake.nixosConfigurations.${box.hostName}.config.users.users.${box.userName})
         home
-        ;
-      inherit (box)
-        hostName
-        diskDevice
-        userName
-        userDesc
-        userEmail
-        githubUser
         ;
     in
     {
@@ -48,8 +39,8 @@ let
               exec 2> >(tee -a "$LOGFILE" >&2)
 
               echo -e '\nWelcome to Cyberdyne Systems T-series maintenance flake.'
-              echo -e '\nGreetings, human with ID: "${userDesc} (${userName}) <${userEmail}>", GitHub account: "${githubUser}".'
-              echo -e "\nYou have requested the priming of the box designated as '${hostName}', on device: '${diskDevice}'."
+              echo -e '\nGreetings, human with ID: "${box.userDesc} (${box.userName}) <${box.userEmail}>", GitHub account: "${box.githubUser}".'
+              echo -e "\nYou have requested the priming of the box designated as '${box.hostName}', on device: '${box.diskDevice}'."
 
               echo -e '\nWARNING: The following procedure will wipe your system clean!'
               echo 'Destruction will ensue.  You have been warned.'
@@ -68,25 +59,25 @@ let
               done
 
               echo -e '\nDiscarding disk device...'
-              blkdiscard --force "${diskDevice}" --quiet --verbose
+              blkdiscard --force "${box.diskDevice}" --quiet --verbose
 
               echo -e '\nPartitioning, formatting and mounting with disko...'
               ${getExe destroyFormatMount} --yes-wipe-all-disks
 
               echo -e '\nInstalling NixOS...'
-              nixos-install --no-root-password --no-channel-copy --flake "${flake}#${hostName}"
+              nixos-install --no-root-password --no-channel-copy --flake "${flake}#${box.hostName}"
 
               echo -e '\nInstalling flake on target system...'
-              FLAKE_PATH='/mnt${home}/sandbox/${githubUser}/nixos'
-              git clone https://github.com/${githubUser}/nixos.git "$FLAKE_PATH"
-              GIT_DIR="$FLAKE_PATH"/.git git remote add ${githubUser} git@github.com:${githubUser}/nixos.git
+              FLAKE_PATH='/mnt${home}/sandbox/${box.githubUser}/nixos'
+              git clone https://github.com/${box.githubUser}/nixos.git "$FLAKE_PATH"
+              GIT_DIR="$FLAKE_PATH"/.git git remote add ${box.githubUser} git@github.com:${box.githubUser}/nixos.git
               chown -R 1000:users '/mnt${home}'/sandbox
               ETC_NIXOS_PATH=/mnt/etc/nixos
               mkdir -p "$ETC_NIXOS_PATH"
               ln -s "''${FLAKE_PATH#/mnt}"/flake.nix "$ETC_NIXOS_PATH/"
 
-              echo -e '\nReset password for user ${userName}'
-              nixos-enter --root /mnt -c 'passwd ${userName}'
+              echo -e '\nReset password for user ${box.userName}'
+              nixos-enter --root /mnt -c 'passwd ${box.userName}'
 
               echo -e '\nPriming procedure completed successfully.\n'
               echo -e '\nThe cake awaits.'
@@ -101,7 +92,7 @@ let
     };
 in
 flake.lib.boxen
-|> groupBy (box: box.system)
-|> mapAttrs (
+|> builtins.groupBy (box: box.system)
+|> builtins.mapAttrs (
   _system: boxen: boxen |> map (box: nameValuePair box.hostName (mkApp box)) |> listToAttrs
 )

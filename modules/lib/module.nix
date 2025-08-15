@@ -1,15 +1,14 @@
 flake: moduleFamily:
 let
-  inherit (builtins) readDir concatMap baseNameOf;
   inherit (flake.inputs.nixpkgs.lib.attrsets) mapAttrsToList;
 
   nameTypePair = name: type: { inherit name type; };
 
   traverse =
     family: path:
-    readDir path
+    builtins.readDir path
     |> mapAttrsToList nameTypePair
-    |> concatMap (
+    |> builtins.concatMap (
       entry:
       let
         inherit (entry) name type;

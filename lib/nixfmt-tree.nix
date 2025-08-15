@@ -1,9 +1,10 @@
 flake:
 let
-  inherit (flake.lib) systems;
-  inherit (flake.inputs.nixpkgs.lib.attrsets) genAttrs;
   inherit (flake.inputs.nixpkgs) legacyPackages;
+  inherit (flake.inputs.nixpkgs.lib.attrsets) genAttrs;
 
   nixFmtTreeForSystem = system: legacyPackages.${system}.nixfmt-tree;
+
+  nixfmt-tree = genAttrs flake.lib.systems nixFmtTreeForSystem;
 in
-genAttrs systems nixFmtTreeForSystem
+nixfmt-tree
