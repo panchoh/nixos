@@ -28,7 +28,7 @@ let
         else
           [ ]
       );
-
-  traits = listTraitsRecursive ../traits;
 in
-traits
+{
+  imports = listTraitsRecursive ./traits;
+}
