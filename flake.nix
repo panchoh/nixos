@@ -66,6 +66,8 @@
 
       devShells = self.lib.devShells;
 
+      flakeModules.default = import ./modules self;
+
       homeModules.default = self.lib.homeModule;
 
       nixosModules.default = self.lib.nixosModule;
