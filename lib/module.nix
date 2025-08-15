@@ -22,5 +22,5 @@ let
     );
 in
 {
-  imports = traverse moduleFamily ../traits;
+  imports = traverse moduleFamily ../modules/traits;
 }
