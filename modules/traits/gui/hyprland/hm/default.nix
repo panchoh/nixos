@@ -117,50 +117,34 @@ in
         # Right Control: group switch
 
         device =
-          map
-            (
-              overrides:
-              {
-                name = "unnamed-keyboard";
-                kb_model = "pc104";
-                kb_layout = "us,us";
-                kb_variant = "altgr-intl,colemak_dh";
-                kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n";
-              }
-              // overrides
-            )
-            [
-              {
-                name = "keychron-keychron-q10";
-              }
-
-              {
-                name = "keychron-keychron-q8";
-              }
-
-              {
-                name = "PFU_Limited_HHKB-Classic";
-                kb_model = "hhk";
-              }
-
-              {
-                name = "at-translated-set-2-keyboard-1";
-                kb_model = "thinkpad";
-              }
-
-              {
-                name = "apple-inc.-apple-internal-keyboard-/-trackpad-1";
-                kb_model = "applealu_ansi";
-              }
-
-              {
-                name = "logitech-usb-receiver-2";
-              }
-
-              {
-                name = "logitech-k400-plus-2";
-              }
-            ];
+          let
+            defaults = {
+              name = "unnamed-keyboard";
+              kb_model = "pc104";
+              kb_layout = "us,us";
+              kb_variant = "altgr-intl,colemak_dh";
+              kb_options = "lv3:ralt_switch_multikey,grp:rctrl_toggle,nbsp:level3n";
+            };
+          in
+          [
+            {
+              name = "apple-inc.-apple-internal-keyboard-/-trackpad-1";
+              kb_model = "applealu_ansi";
+            }
+            {
+              name = "at-translated-set-2-keyboard-1";
+              kb_model = "thinkpad";
+            }
+            {
+              name = "PFU_Limited_HHKB-Classic";
+              kb_model = "hhk";
+            }
+            { name = "keychron-keychron-q8"; }
+            { name = "keychron-keychron-q10"; }
+            { name = "logitech-k400-plus-2"; }
+            { name = "logitech-usb-receiver-2"; }
+          ]
+          |> map (overrides: defaults // overrides);
 
         cursor = {
           inactive_timeout = 5;
