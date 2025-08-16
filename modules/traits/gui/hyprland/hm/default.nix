@@ -149,6 +149,11 @@ in
               }
 
               {
+                name = "apple-inc.-apple-internal-keyboard-/-trackpad-1";
+                kb_model = "applealu_ansi";
+              }
+
+              {
                 name = "logitech-usb-receiver-2";
               }
 
