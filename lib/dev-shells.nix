@@ -8,7 +8,7 @@ let
       inherit (flake.inputs.nixpkgs.legacyPackages.${system}) pkgs;
     in
     pkgs.mkShellNoCC {
-      name = "My-Flaky-NixOS-Config";
+      name = "copito--my-flaky-nixos-config";
       packages = with pkgs; [
         cacert
         nix
@@ -20,7 +20,7 @@ let
       ];
       shellHook = ''
         echo
-        toilet --font smbraille --gay "My Flaky NixOS Config"
+        toilet --font smbraille --gay "copito-my flaky NixOS config"
         echo
         task
       '';

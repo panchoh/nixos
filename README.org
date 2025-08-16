@@ -1,4 +1,4 @@
-#+title: My Flaky NixOS Config
+#+title: copito: my flaky NixOS config
 
 [[file:images/copito.png]]
 
