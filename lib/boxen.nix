@@ -14,6 +14,7 @@ let
     userDesc = "pancho horrillo";
     userEmail = "pancho@pancho.name";
     githubUser = "panchoh";
+    flakeRepoName = "copito";
     gpgSigningKey = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
     virtualHost = "canalplus.pancho.name";
     virtualHostRoot = "FF2E6E41-1FE8-4515-82D1-56D5C49EB2B5";
