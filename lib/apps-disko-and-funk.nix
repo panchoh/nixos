@@ -68,9 +68,9 @@ let
               nixos-install --no-root-password --no-channel-copy --flake "${flake}#${box.hostName}"
 
               echo -e '\nInstalling flake on target system...'
-              FLAKE_PATH='/mnt${home}/sandbox/${box.githubUser}/nixos'
-              git clone https://github.com/${box.githubUser}/nixos.git "$FLAKE_PATH"
-              GIT_DIR="$FLAKE_PATH"/.git git remote add ${box.githubUser} git@github.com:${box.githubUser}/nixos.git
+              FLAKE_PATH='/mnt${home}/sandbox/${box.githubUser}/${box.flakeRepoName}'
+              git clone https://github.com/${box.githubUser}/${box.flakeRepoName}.git "$FLAKE_PATH"
+              GIT_DIR="$FLAKE_PATH"/.git git remote add ${box.githubUser} git@github.com:${box.githubUser}/${box.flakeRepoName}.git
               chown -R 1000:users '/mnt${home}'/sandbox
               ETC_NIXOS_PATH=/mnt/etc/nixos
               mkdir -p "$ETC_NIXOS_PATH"
