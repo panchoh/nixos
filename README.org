@@ -1,5 +1,7 @@
 #+title: My Flaky NixOS Config
 
+[[file:images/copito.png]]
+
 * Bootstrapping
 1. Put a [[https://nixos.org/download.html#nixos-iso][bootable NixOS iso image]] on a usb thumbdrive, and boot it
 
