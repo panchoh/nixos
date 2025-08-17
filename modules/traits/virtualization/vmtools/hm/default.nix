@@ -42,7 +42,7 @@ in
 
         fixupPhase = ''
           for script in $out/bin/vm*; do
-            substituteInPlace $script --replace sudo run0
+            substituteInPlace $script --replace-quiet sudo run0
             wrapProgram $script --prefix PATH : ${lib.makeBinPath buildInputs}
           done
         '';
