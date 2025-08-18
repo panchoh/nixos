@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   box ? null,
   ...
 }:
@@ -16,6 +17,10 @@ in
 
   config = lib.mkIf cfg.enable {
     home.preferXdgDirectories = true;
+
+    home.packages = [
+      pkgs.xdg-user-dirs
+    ];
 
     # Identify mime type with `xdg-mime query filetype ./path/to/foobar.baz`
     # .desktop files are located in /etc/profiles/per-user/${user}/share/applications/*.desktop
