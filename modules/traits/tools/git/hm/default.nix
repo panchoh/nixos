@@ -19,6 +19,7 @@ in
     home.packages = with pkgs; [
       bvi
       diffoscope
+      git-absorb
       git-doc
       git-dive
       git-town
@@ -41,6 +42,11 @@ in
         init.defaultBranch = "master";
         merge.conflictStyle = "zdiff3";
         github.user = box.githubUser or "aliceq";
+        absorb = {
+          maxStack = 50;
+          oneFixupPerCommit = true;
+          autoStageIfNothingStaged = true;
+        };
       };
       delta = {
         enable = false;
