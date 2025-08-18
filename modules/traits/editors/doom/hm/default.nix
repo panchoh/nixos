@@ -64,6 +64,8 @@ in
       })
 
       nerd-fonts.symbols-only
+      emojione
+      twemoji-color-font
 
       findutils
       coreutils
