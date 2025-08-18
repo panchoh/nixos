@@ -63,6 +63,8 @@ in
         '';
       })
 
+      nerd-fonts.symbols-only
+
       findutils
       coreutils
       ddate
