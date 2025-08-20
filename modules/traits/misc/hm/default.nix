@@ -85,6 +85,8 @@ in
         fx
       ]
       ++ lib.optionals (box.isStation or false) [
+        nixos-anywhere
+
         ddrescue
         ddrescueview
 
