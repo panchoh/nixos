@@ -125,6 +125,7 @@ in
 
         discord
         dissent
+        # TODO: finish setting up nheko for Matrix comms
         # nheko
         fractal
         session-desktop
