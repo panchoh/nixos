@@ -60,6 +60,7 @@ in
         dua
         duf
         du-dust
+        dysk
         file
         fdupes
         rdfind
