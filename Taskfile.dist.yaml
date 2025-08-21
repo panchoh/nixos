@@ -21,17 +21,17 @@ tasks:
   nixos-rebuild-switch:
     desc: Rebuild and switch to the new NixOS configuration
     cmds:
-      - run0 nixos-rebuild switch --verbose
+      - run0 nixos-rebuild switch --verbose --print-build-logs
 
   nixos-rebuild-test:
     desc: Test the new NixOS configuration without switching
     cmds:
-      - run0 nixos-rebuild test --verbose
+      - run0 nixos-rebuild test --verbose --print-build-logs
 
   nixos-rebuild-build:
     desc: Build the new NixOS configuration
     cmds:
-      - run0 nixos-rebuild switch --verbose
+      - nixos-rebuild build --verbose --print-build-logs
 
   list-nixos-history:
     desc: Display the history of NixOS system profiles
@@ -71,7 +71,7 @@ tasks:
   gc:
     desc: Run garbage collection on the Nix store
     cmds:
-      - nix store gc --verbose --print-build-logs --auto-optimise-store
+      - nix store gc --verbose --auto-optimise-store
 
   gc-all:
     desc: Wipe NixOS and Home Manager histories, then run garbage collection
