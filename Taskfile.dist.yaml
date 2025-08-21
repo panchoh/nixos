@@ -13,6 +13,11 @@ tasks:
     cmds:
       - nix flake update --commit-lock-file
 
+  push:
+    desc: Push changes upstream
+    cmds:
+      - git push
+
   check:
     desc: Check the flake for errors
     cmds:
