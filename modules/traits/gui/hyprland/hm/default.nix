@@ -370,9 +370,9 @@ in
           "s[true],         gapsout:100, gapsin:50"
 
           "1,               defaultName:Doom,     on-created-empty: doom-emacs"
-          "2,               defaultName:Chromium, on-created-empty:[float] chromium"
+          "2,               defaultName:Chromium, on-created-empty: chromium"
           "3,               defaultName:Chrome,   on-created-empty: google-chrome-stable"
-          "4,               defaultName:Firefox,  on-created-empty: firefox"
+          "4,               defaultName:Firefox,  on-created-empty:[float] firefox"
           "special:special,                       on-created-empty: foot"
           "special:Telegram,                      on-created-empty: Telegram"
           "special:Transmission,                  on-created-empty: transmission-gtk"
