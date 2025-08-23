@@ -31,6 +31,7 @@ in
 
       extraPackages =
         epkgs: with epkgs; [
+          eglot-booster
           nix-ts-mode
           vterm
           treesit-grammars.with-all-grammars
@@ -66,6 +67,8 @@ in
       nerd-fonts.symbols-only
       emojione
       twemoji-color-font
+
+      emacs-lsp-booster
 
       findutils
       coreutils
