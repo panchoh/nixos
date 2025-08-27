@@ -170,11 +170,11 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1755787657,
-        "narHash": "sha256-NMTfJXmNvsdxx0ckMzdT47SrHTtyNoY/l7aLd1HVgvg=",
+        "lastModified": 1756305047,
+        "narHash": "sha256-JdFKV52EMCf3fLJRNIxd5gO/BMG2cTYCwng9yz2nPKU=",
         "owner": "doomemacs",
         "repo": "doomemacs",
-        "rev": "2129fffc79189bb6d4fd3bb665a4a936247411c4",
+        "rev": "058cb20a12e29cc1990b0c08b887873689bc968f",
         "type": "github"
       },
       "original": {
@@ -361,7 +361,9 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": "doomemacs",
+        "doomemacs": [
+          "doomemacs"
+        ],
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -522,6 +524,7 @@
         "autofirma-nix": "autofirma-nix",
         "disko": "disko",
         "doom-config": "doom-config",
+        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",

@@ -40,6 +40,7 @@
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
     nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
     nix-doom-emacs-unstraightened.inputs.emacs-overlay.follows = "emacs-overlay";
+    nix-doom-emacs-unstraightened.inputs.doomemacs.follows = "doomemacs";
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
@@ -47,6 +48,8 @@
   };
 
   inputs = {
+    doomemacs.url = "github:doomemacs/doomemacs";
+    doomemacs.flake = false;
     doom-config.url = "github:panchoh/doom";
     doom-config.flake = false;
     vmtools.url = "github:4km3/vmtools";
