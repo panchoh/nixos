@@ -17,24 +17,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.ssh = {
       enable = true;
+      enableDefaultConfig = false;
       package = pkgs.openssh;
-      addKeysToAgent = "yes";
-      controlMaster = "no";
-      controlPersist = "yes";
-      serverAliveInterval = 60;
-      extraConfig = ''
-        ExitOnForwardFailure yes
-        HostKeyAlgorithms    ssh-ed25519
-        IdentitiesOnly       yes
-        # IdentityFile         ~/.ssh/keys.d/id_ed25519-%r@%h
-        IdentityFile         ~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h
-        IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h
-        IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h
-        IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h
-        IdentityFile         ~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h
-        SendEnv              LC_*
-        VisualHostKey        yes
-      '';
       matchBlocks = {
         "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
           user = "sysadmin";
@@ -53,6 +37,27 @@ in
           };
           identityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
           proxyCommand = "nc ( string replace .vm '' %h ) %p";
+        };
+        "*" = {
+          addKeysToAgent = "yes";
+          serverAliveInterval = 60;
+          controlMaster = "no";
+          controlPersist = "yes";
+          sendEnv = [ "LC_*" ];
+          identitiesOnly = true;
+          identityFile = [
+            # "~/.ssh/keys.d/id_ed25519-%r@%h"
+            "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
+            "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h"
+            "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h"
+            "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
+            "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
+          ];
+          extraOptions = {
+            ExitOnForwardFailure = "yes";
+            HostKeyAlgorithms = "ssh-ed25519";
+            VisualHostKey = "yes";
+          };
         };
       };
     };
